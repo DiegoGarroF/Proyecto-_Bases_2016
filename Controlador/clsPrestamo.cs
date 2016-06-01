@@ -11,9 +11,9 @@ namespace Controlador
     {
         private string strSentencia;
 
-        public Boolean mInsertarCliente(clsConexionSQL conexion,  clsEntidadPrestamo pEntidadPrestamo)
+        public Boolean mInsertarCliente( clsEntidadPrestamo pEntidadPrestamo)
         {
-            strSentencia = "insert into prestamo(fechaInicio,fechaFin, nombreEstudiante, carnet) values('" + pEntidadPrestamo.setGetFechaInicio +"')";
+            strSentencia = "insert into prestamo(fechaInicio,fechaFin, nombreEstudiante, carnet) values('"+ pEntidadPrestamo.setGetFechaInicio +"')";
             return false;
         }
 

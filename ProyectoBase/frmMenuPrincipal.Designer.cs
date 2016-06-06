@@ -75,13 +75,13 @@
             // salirToolStripMenuItem
             // 
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.salirToolStripMenuItem.Text = "Auditoría";
             // 
             // salirToolStripMenuItem1
             // 
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
             // 
@@ -99,25 +99,26 @@
             // administrarUsuariosToolStripMenuItem
             // 
             this.administrarUsuariosToolStripMenuItem.Name = "administrarUsuariosToolStripMenuItem";
-            this.administrarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.administrarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.administrarUsuariosToolStripMenuItem.Text = "Agregar";
+            this.administrarUsuariosToolStripMenuItem.Click += new System.EventHandler(this.administrarUsuariosToolStripMenuItem_Click);
             // 
             // modificarUsuarioToolStripMenuItem
             // 
             this.modificarUsuarioToolStripMenuItem.Name = "modificarUsuarioToolStripMenuItem";
-            this.modificarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.modificarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modificarUsuarioToolStripMenuItem.Text = "Modificar ";
             // 
             // consultarUsuarioToolStripMenuItem
             // 
             this.consultarUsuarioToolStripMenuItem.Name = "consultarUsuarioToolStripMenuItem";
-            this.consultarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.consultarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.consultarUsuarioToolStripMenuItem.Text = "Consultar";
             // 
             // eliminarUsuarioToolStripMenuItem
             // 
             this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
-            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar";
             // 
             // préstamosToolStripMenuItem
@@ -169,25 +170,25 @@
             // administrarLibrosToolStripMenuItem
             // 
             this.administrarLibrosToolStripMenuItem.Name = "administrarLibrosToolStripMenuItem";
-            this.administrarLibrosToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.administrarLibrosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.administrarLibrosToolStripMenuItem.Text = "Nuevo";
             // 
             // consultaDeLibrosToolStripMenuItem
             // 
             this.consultaDeLibrosToolStripMenuItem.Name = "consultaDeLibrosToolStripMenuItem";
-            this.consultaDeLibrosToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.consultaDeLibrosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.consultaDeLibrosToolStripMenuItem.Text = "Modificar";
             // 
             // mToolStripMenuItem
             // 
             this.mToolStripMenuItem.Name = "mToolStripMenuItem";
-            this.mToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.mToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.mToolStripMenuItem.Text = "Buscar ";
             // 
             // eliminarLibroToolStripMenuItem
             // 
             this.eliminarLibroToolStripMenuItem.Name = "eliminarLibroToolStripMenuItem";
-            this.eliminarLibroToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
+            this.eliminarLibroToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eliminarLibroToolStripMenuItem.Text = "Eliminar";
             // 
             // frmMenuPrincipal

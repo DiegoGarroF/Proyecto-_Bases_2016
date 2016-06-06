@@ -29,6 +29,11 @@ namespace Vista
             Application.Exit();
         }
 
-       
+        private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmUsuario usuario = new frmUsuario(this);
+            this.Hide();
+            usuario.Show();
+        }
     }
 }

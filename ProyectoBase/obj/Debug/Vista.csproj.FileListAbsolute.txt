@@ -1,1 +1,15 @@
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe.config
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe.config
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.pdb
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Controlador.dll
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Modelo.dll
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Controlador.pdb
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Modelo.pdb
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.Properties.Resources.resources
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.exe
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.pdb
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmAcceso.resources
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmMenuPrincipal.resources

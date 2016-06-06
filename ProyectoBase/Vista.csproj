@@ -52,6 +52,12 @@
     <Compile Include="frmAcceso.designer.cs">
       <DependentUpon>frmAcceso.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmLibro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLibro.designer.cs">
+      <DependentUpon>frmLibro.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -68,6 +74,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmAcceso.resx">
       <DependentUpon>frmAcceso.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLibro.resx">
+      <DependentUpon>frmLibro.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>

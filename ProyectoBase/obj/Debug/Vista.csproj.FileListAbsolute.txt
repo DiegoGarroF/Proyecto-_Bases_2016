@@ -15,3 +15,19 @@ F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\
 F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmMenuPrincipal.resources
 C:\Users\Diego\Documents\Visual Studio 2015\Projects\Proyecto_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe.config
 F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmUsuario.resources
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe.config
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.pdb
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\bin\Debug\Controlador.dll
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\bin\Debug\Modelo.dll
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\bin\Debug\Controlador.pdb
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\bin\Debug\Modelo.pdb
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\Vista.frmAcceso.resources
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\Vista.frmLibro.resources
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\Vista.frmMenuPrincipal.resources
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\Vista.frmUsuario.resources
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.Properties.Resources.resources
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.exe
+C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.pdb

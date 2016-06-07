@@ -36,13 +36,16 @@
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnBuscar = new System.Windows.Forms.Button();
             this.gbxDatos = new System.Windows.Forms.GroupBox();
+            this.txtId = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbxBotones = new System.Windows.Forms.GroupBox();
+            this.gbxDatos.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNombreUsuario
             // 
             this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Location = new System.Drawing.Point(12, 34);
+            this.lblNombreUsuario.Location = new System.Drawing.Point(5, 63);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
             this.lblNombreUsuario.Size = new System.Drawing.Size(99, 13);
             this.lblNombreUsuario.TabIndex = 0;
@@ -51,7 +54,7 @@
             // lblContrasena
             // 
             this.lblContrasena.AutoSize = true;
-            this.lblContrasena.Location = new System.Drawing.Point(12, 85);
+            this.lblContrasena.Location = new System.Drawing.Point(5, 114);
             this.lblContrasena.Name = "lblContrasena";
             this.lblContrasena.Size = new System.Drawing.Size(64, 13);
             this.lblContrasena.TabIndex = 1;
@@ -59,14 +62,14 @@
             // 
             // txtNombreUsuario
             // 
-            this.txtNombreUsuario.Location = new System.Drawing.Point(135, 34);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(128, 63);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(153, 20);
             this.txtNombreUsuario.TabIndex = 2;
             // 
             // txtContrasena
             // 
-            this.txtContrasena.Location = new System.Drawing.Point(135, 85);
+            this.txtContrasena.Location = new System.Drawing.Point(128, 114);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '*';
             this.txtContrasena.Size = new System.Drawing.Size(153, 20);
@@ -80,6 +83,7 @@
             this.btnAccion.TabIndex = 4;
             this.btnAccion.Text = "Accion";
             this.btnAccion.UseVisualStyleBackColor = true;
+            this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
             // 
             // btnCancelar
             // 
@@ -93,7 +97,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(318, 34);
+            this.btnBuscar.Location = new System.Drawing.Point(314, 20);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(52, 24);
             this.btnBuscar.TabIndex = 6;
@@ -102,11 +106,34 @@
             // 
             // gbxDatos
             // 
+            this.gbxDatos.Controls.Add(this.txtId);
+            this.gbxDatos.Controls.Add(this.label1);
+            this.gbxDatos.Controls.Add(this.btnBuscar);
+            this.gbxDatos.Controls.Add(this.txtNombreUsuario);
+            this.gbxDatos.Controls.Add(this.lblNombreUsuario);
+            this.gbxDatos.Controls.Add(this.lblContrasena);
+            this.gbxDatos.Controls.Add(this.txtContrasena);
             this.gbxDatos.Location = new System.Drawing.Point(4, 22);
             this.gbxDatos.Name = "gbxDatos";
-            this.gbxDatos.Size = new System.Drawing.Size(376, 100);
+            this.gbxDatos.Size = new System.Drawing.Size(376, 155);
             this.gbxDatos.TabIndex = 7;
             this.gbxDatos.TabStop = false;
+            // 
+            // txtId
+            // 
+            this.txtId.Location = new System.Drawing.Point(128, 20);
+            this.txtId.Name = "txtId";
+            this.txtId.Size = new System.Drawing.Size(153, 20);
+            this.txtId.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(7, 20);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(68, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Identificador:";
             // 
             // gbxBotones
             // 
@@ -122,21 +149,17 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 261);
             this.ControlBox = false;
-            this.Controls.Add(this.btnBuscar);
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnAccion);
-            this.Controls.Add(this.txtContrasena);
-            this.Controls.Add(this.txtNombreUsuario);
-            this.Controls.Add(this.lblContrasena);
-            this.Controls.Add(this.lblNombreUsuario);
             this.Controls.Add(this.gbxDatos);
             this.Controls.Add(this.gbxBotones);
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manejo de usuarios";
             this.Load += new System.EventHandler(this.frmUsuario_Load);
+            this.gbxDatos.ResumeLayout(false);
+            this.gbxDatos.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -151,5 +174,7 @@
         private System.Windows.Forms.Button btnBuscar;
         private System.Windows.Forms.GroupBox gbxDatos;
         private System.Windows.Forms.GroupBox gbxBotones;
+        private System.Windows.Forms.TextBox txtId;
+        private System.Windows.Forms.Label label1;
     }
 }

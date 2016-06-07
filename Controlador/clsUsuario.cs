@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
+using System.Data.SqlClient;
 
 namespace Controlador
 {
@@ -12,9 +13,10 @@ namespace Controlador
         private string sentencia = "";
 
 
-        public void mBuscarUsuario(clsConexion conexion,clsEntidadUsuario pEntidadUsuario)
+        public SqlDataReader mBuscarUsuario(clsConexion conexion,clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "select idUsuario, usuario, contrasena from tbUsuario where idUsuario=?";
+            sentencia = "select idUsuario, usuario, contrasena from tbUsuario where idUsuario=@id";
+            return conexion.mSeleccionar(sentencia,conexion,pEntidadUsuario.mIdUsuario);
         }
     }
 }

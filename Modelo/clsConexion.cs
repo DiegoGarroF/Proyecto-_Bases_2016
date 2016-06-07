@@ -28,7 +28,7 @@ namespace Modelo
             this._codigo = "123";
             this._clave = "123";
             this._perfil = "";
-            this._baseDatos = "BDPortafolioUcr";
+            this._baseDatos = "BDBiblioteca";
         }
 
         #endregion
@@ -63,15 +63,16 @@ namespace Modelo
         #region Metodos
 
         //Este metodo permitira ejecutar los select
-        public SqlDataReader mSeleccionar(string strSentencia, clsConexion cone)
+        public SqlDataReader mSeleccionar(string strSentencia, clsConexion cone, int id)
         {
             try
             {
                 if (mConectar(cone))
                 {
-                    comando = new SqlCommand(strSentencia, this.conexion);
-                    
+
+                    comando = new SqlCommand(strSentencia, this.conexion);                    
                     comando.CommandType = System.Data.CommandType.Text;
+                    comando.Parameters.AddWithValue("@id",id);
                     //el ExecuteReader ejecuta solo select
                     return comando.ExecuteReader();
                 }

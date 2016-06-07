@@ -58,6 +58,12 @@
     <Compile Include="frmLibro.designer.cs">
       <DependentUpon>frmLibro.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListaGeneral.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaGeneral.Designer.cs">
+      <DependentUpon>frmListaGeneral.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -77,6 +83,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmLibro.resx">
       <DependentUpon>frmLibro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaGeneral.resx">
+      <DependentUpon>frmListaGeneral.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>

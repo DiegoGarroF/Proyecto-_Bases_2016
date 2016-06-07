@@ -70,6 +70,7 @@ namespace Modelo
                 if (mConectar(cone))
                 {
                     comando = new SqlCommand(strSentencia, this.conexion);
+                    
                     comando.CommandType = System.Data.CommandType.Text;
                     //el ExecuteReader ejecuta solo select
                     return comando.ExecuteReader();

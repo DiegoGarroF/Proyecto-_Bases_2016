@@ -41,8 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsConexion.cs" />
+    <Compile Include="clsConstantes.cs" />
     <Compile Include="clsEntidadPrestamo.cs" />
     <Compile Include="clsEntidadTrabajador.cs" />
+    <Compile Include="clsEntidadUsuario.cs" />
     <Compile Include="pEntidadLibro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

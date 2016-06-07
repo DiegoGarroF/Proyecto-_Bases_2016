@@ -99,27 +99,30 @@
             // administrarUsuariosToolStripMenuItem
             // 
             this.administrarUsuariosToolStripMenuItem.Name = "administrarUsuariosToolStripMenuItem";
-            this.administrarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.administrarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.administrarUsuariosToolStripMenuItem.Text = "Agregar";
             this.administrarUsuariosToolStripMenuItem.Click += new System.EventHandler(this.administrarUsuariosToolStripMenuItem_Click);
             // 
             // modificarUsuarioToolStripMenuItem
             // 
             this.modificarUsuarioToolStripMenuItem.Name = "modificarUsuarioToolStripMenuItem";
-            this.modificarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.modificarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modificarUsuarioToolStripMenuItem.Text = "Modificar ";
+            this.modificarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.modificarUsuarioToolStripMenuItem_Click);
             // 
             // consultarUsuarioToolStripMenuItem
             // 
             this.consultarUsuarioToolStripMenuItem.Name = "consultarUsuarioToolStripMenuItem";
-            this.consultarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.consultarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.consultarUsuarioToolStripMenuItem.Text = "Consultar";
+            this.consultarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.consultarUsuarioToolStripMenuItem_Click);
             // 
             // eliminarUsuarioToolStripMenuItem
             // 
             this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
-            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar";
+            this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
             // 
             // préstamosToolStripMenuItem
             // 
@@ -170,28 +173,28 @@
             // opcionNuevoLibro
             // 
             this.opcionNuevoLibro.Name = "opcionNuevoLibro";
-            this.opcionNuevoLibro.Size = new System.Drawing.Size(152, 22);
+            this.opcionNuevoLibro.Size = new System.Drawing.Size(125, 22);
             this.opcionNuevoLibro.Text = "Nuevo";
             this.opcionNuevoLibro.Click += new System.EventHandler(this.opcionNuevoLibro_Click);
             // 
             // opcionModificarLibro
             // 
             this.opcionModificarLibro.Name = "opcionModificarLibro";
-            this.opcionModificarLibro.Size = new System.Drawing.Size(152, 22);
+            this.opcionModificarLibro.Size = new System.Drawing.Size(125, 22);
             this.opcionModificarLibro.Text = "Modificar";
             this.opcionModificarLibro.Click += new System.EventHandler(this.opcionModificarLibro_Click);
             // 
             // opcionBuscarLibro
             // 
             this.opcionBuscarLibro.Name = "opcionBuscarLibro";
-            this.opcionBuscarLibro.Size = new System.Drawing.Size(152, 22);
+            this.opcionBuscarLibro.Size = new System.Drawing.Size(125, 22);
             this.opcionBuscarLibro.Text = "Buscar ";
             this.opcionBuscarLibro.Click += new System.EventHandler(this.opcionBuscarLibro_Click);
             // 
             // opcionEliminarLibro
             // 
             this.opcionEliminarLibro.Name = "opcionEliminarLibro";
-            this.opcionEliminarLibro.Size = new System.Drawing.Size(152, 22);
+            this.opcionEliminarLibro.Size = new System.Drawing.Size(125, 22);
             this.opcionEliminarLibro.Text = "Eliminar";
             this.opcionEliminarLibro.Click += new System.EventHandler(this.opcionEliminarLibro_Click);
             // 

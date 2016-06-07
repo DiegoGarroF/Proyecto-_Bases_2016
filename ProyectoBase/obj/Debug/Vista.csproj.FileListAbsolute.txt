@@ -31,3 +31,4 @@ C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.P
 C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache
 C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.exe
 C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.pdb
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmLibro.resources

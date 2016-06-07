@@ -29,31 +29,12 @@ namespace Vista
         {
 
         }
-        public void setBtnAccion(String titulo)
+        public void setBtnAccionTipo(String titulo)
         {
             btnMultiFuncion.Text = titulo;
         }
 
-        // Metodo para cuando el usuario selcciona una opcion del menu 
-        public void mSeleccion(String opcion)
-        {
-            switch(opcion)
-            {
-                case opcion2:
-                    this.btnMultiFuncion.Text = "Agregar";
-                break;
-                case "Modificar":
-                    this.btnMultiFuncion.Text = "Modificar";
-                    break;
-                case "Buscar":
-                    this.btnMultiFuncion.Text = "Consultar";
-                    break;
-                case "Eliminar":
-                    this.btnMultiFuncion.Text = "Eliminar";
-                    break;
-            }
-        }
-
+       
 
         private void label3_Click(object sender, EventArgs e)
         {

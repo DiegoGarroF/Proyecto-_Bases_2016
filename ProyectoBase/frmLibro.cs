@@ -12,6 +12,7 @@ namespace Vista
 {
     public partial class frmLibro : Form
     {
+        const string opcion2="";
         public frmLibro()
         {
             InitializeComponent();
@@ -28,14 +29,17 @@ namespace Vista
         {
 
         }
-
+        public void setBtnAccion(String titulo)
+        {
+            btnMultiFuncion.Text = titulo;
+        }
 
         // Metodo para cuando el usuario selcciona una opcion del menu 
         public void mSeleccion(String opcion)
         {
             switch(opcion)
             {
-                case "Nuevo":
+                case opcion2:
                     this.btnMultiFuncion.Text = "Agregar";
                 break;
                 case "Modificar":
@@ -49,9 +53,20 @@ namespace Vista
                     break;
             }
         }
+
+
         private void label3_Click(object sender, EventArgs e)
         {
 
+        }
+        //Este Metodo sera el encargado de verificar, el texto que tiene el boton multifuncion
+        //y asi realizar la accion correspondiente 
+        private void btnMultiFuncion_Click(object sender, EventArgs e)
+        {
+            if(btnMultiFuncion.Text.Equals(""))
+            {
+
+            }
         }
     }
 }

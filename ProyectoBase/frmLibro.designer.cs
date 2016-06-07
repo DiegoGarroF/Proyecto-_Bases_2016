@@ -105,6 +105,7 @@
             this.btnMultiFuncion.TabIndex = 5;
             this.btnMultiFuncion.Text = "button1";
             this.btnMultiFuncion.UseVisualStyleBackColor = true;
+            this.btnMultiFuncion.Click += new System.EventHandler(this.btnMultiFuncion_Click);
             // 
             // frmLibro
             // 

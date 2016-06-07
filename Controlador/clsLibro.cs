@@ -25,7 +25,7 @@ namespace Controlador
         public SqlDataReader mSeleccionar(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
             strSentencia = "";
-            return conexion.mSeleccionar(strSentencia, conexion);
+            return conexion.mSeleccionar(strSentencia, conexion,0);
         }
         public Boolean mModificarLibro(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {

@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="clsConexion.cs" />
+    <Compile Include="clsConstantes.cs" />
     <Compile Include="clsEntidadPrestamo.cs" />
     <Compile Include="clsEntidadTrabajador.cs" />
     <Compile Include="clsEntidadUsuario.cs" />

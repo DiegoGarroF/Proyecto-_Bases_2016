@@ -30,9 +30,9 @@ namespace Vista
             menu.Show();
         }
 
-        public void buscarUsuario()
+        public void setBtnAccionTipo(string tipo)
         {
-
+            this.btnAccion.Text = tipo;
         }
     }
 }

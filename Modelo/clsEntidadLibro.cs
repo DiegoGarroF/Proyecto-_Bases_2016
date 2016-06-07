@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Modelo
 {
-    public class pEntidadLibro
+    public class clsEntidadLibro
     {
         #region Atributos
 
@@ -17,7 +17,7 @@ namespace Modelo
         #endregion
 
         #region Constructor
-        public pEntidadLibro()
+        public clsEntidadLibro()
         {
             this.idLibro = 0;
             this.nombre = "";

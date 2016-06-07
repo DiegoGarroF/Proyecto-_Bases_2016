@@ -7,15 +7,21 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Modelo;
+using System.Data.SqlClient;
 namespace Vista
 {
     public partial class frmLibro : Form
     {
         const string opcion2="";
+        private clsConexion conexion;
+        private SqlDataReader dtr;
+        private clsEntidadLibro pEntidadLibro;
         public frmLibro()
         {
             InitializeComponent();
+            pEntidadLibro = new clsEntidadLibro();
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -44,10 +50,49 @@ namespace Vista
         //y asi realizar la accion correspondiente 
         private void btnMultiFuncion_Click(object sender, EventArgs e)
         {
-            if(btnMultiFuncion.Text.Equals(""))
+            if(btnMultiFuncion.Text.Equals(clsConstantes.AGREGAR))
+            {
+
+            }
+            else if(btnMultiFuncion.Text.Equals(clsConstantes.CONSULTAR))
+            {
+
+            }
+            else if (btnMultiFuncion.Text.Equals(clsConstantes.ELIMINAR))
+            {
+
+            }
+            else if (btnMultiFuncion.Text.Equals(clsConstantes.MODIFICAR))
             {
 
             }
         }
+
+        #region Metodos IMEC
+
+        //Metodo para agregar un nuevo libro
+        public Boolean mAgregar()
+        {
+            return false;
+        }
+        // Metodo para consultar un libro
+        public Boolean mConsultar()
+        {
+            return false;
+        }
+        // Metodo para modificar un libro
+        public Boolean mModificar()
+        {
+            return false;
+        }
+        //Metodo para eliminar 
+        public Boolean mEliminar()
+        {
+            return false;
+        }
+        #endregion
+
+
+
     }
 }

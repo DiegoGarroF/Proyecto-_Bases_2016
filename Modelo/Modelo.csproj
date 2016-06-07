@@ -45,7 +45,7 @@
     <Compile Include="clsEntidadPrestamo.cs" />
     <Compile Include="clsEntidadTrabajador.cs" />
     <Compile Include="clsEntidadUsuario.cs" />
-    <Compile Include="pEntidadLibro.cs" />
+    <Compile Include="clsEntidadLibro.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -68,5 +68,11 @@ namespace Vista
                 }
             }
         }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            frmListaGeneral  lista = new frmListaGeneral(conexion);
+            lista.ShowDialog();
+        }
     }
 }

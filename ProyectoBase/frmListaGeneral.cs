@@ -29,6 +29,8 @@ namespace Vista
 
         private void frmListaGeneral_Load(object senqder, EventArgs e)
         {
+            conexion.codigo = "123";
+            conexion.clave = "123";
             dtrUsuario = usuario.mConsultaGeneral(conexion);
             if(dtrUsuario!=null)
             while (dtrUsuario.Read())

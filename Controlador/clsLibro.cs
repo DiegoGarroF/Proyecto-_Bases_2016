@@ -32,7 +32,7 @@ namespace Controlador
         public SqlDataReader mSeleccionarTodos(clsConexion conexion)
         {
             strSentencia ="SELECT * FROM tbLibro";
-            return conexion.mSeleccionarGeneral(strSentencia);
+            return conexion.mSeleccionarGeneral(conexion,strSentencia);
         }
         public Boolean mModificarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {

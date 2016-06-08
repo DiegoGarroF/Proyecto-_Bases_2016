@@ -23,6 +23,7 @@ namespace Controlador
             return conexion.mEjecutar(strSentencia, conexion);
         }
 
+
         public SqlDataReader mSeleccionar(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
             strSentencia = "";

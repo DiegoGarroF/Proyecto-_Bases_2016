@@ -63,17 +63,16 @@ namespace Modelo
         #region Metodos
 
         //Este metodo permitira ejecutar los select
-        public SqlDataReader mSeleccionar(SqlCommand comando)//string strSentencia, clsConexion cone, int id)
+        public SqlDataReader mSeleccionar(String sentencia, int codigo)//string strSentencia, clsConexion cone, int id)
         {
             try
             {
                 if (conexion!=null)
                 {
 
-                  //  comando = new SqlCommand(strSentencia, this.conexion);                    
-                    //comando.CommandType = System.Data.CommandType.Text;
-                    //comando.Parameters.AddWithValue("@id",id);
-                    //el ExecuteReader ejecuta solo select
+                    comando = new SqlCommand(sentencia, conexion);
+                    comando.CommandType = System.Data.CommandType.Text;
+                    comando.Parameters.AddWithValue("@codigo", codigo);
                     return comando.ExecuteReader();
                 }
                 else
@@ -84,6 +83,24 @@ namespace Modelo
                 return null;
             }
         }// fin del metodo mSeleccionar
+
+        public SqlDataReader mSeleccionarGeneral(String sentencia)//string strSentencia, clsConexion cone, int id)
+        {
+            try
+            {
+                if (conexion != null)
+                {
+                    comando = new SqlCommand(sentencia, conexion);                 
+                    return comando.ExecuteReader();
+                }
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }
 
         //Este metodo permitira ejecutar los Insert, Update y Delete
         public Boolean mEjecutar(string strSentencia, clsConexion cone)

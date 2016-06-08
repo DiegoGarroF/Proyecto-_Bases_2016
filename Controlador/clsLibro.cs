@@ -17,16 +17,16 @@ namespace Controlador
          
         }
 
-        public Boolean mInsertarLibro(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
+        public Boolean mInsertarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "";
+            strSentencia = "INSERT INTO tbLibro(nombre,isbn) VALUES("+pEntidadLibro.getNombre()+"' , '"+pEntidadLibro.getISBN()+"')";
             return conexion.mEjecutar(strSentencia, conexion);
         }
 
 
         public SqlDataReader mSeleccionar(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "SELECT * FROM tbLibro where idLibro="+pEntidadLibro.getIdLibro()+" ;";
+            strSentencia = "SELECT * FROM tbLibro where idLibro=@"+pEntidadLibro.getIdLibro()+" ;";
             return conexion.mSeleccionar(strSentencia,pEntidadLibro.getIdLibro());
         }
         public SqlDataReader mSeleccionarTodos(clsConexion conexion)

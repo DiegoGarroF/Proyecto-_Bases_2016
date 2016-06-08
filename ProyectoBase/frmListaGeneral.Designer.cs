@@ -1,4 +1,4 @@
-﻿namespace ProyectoBase
+﻿namespace Vista
 {
     partial class frmListaGeneral
     {
@@ -50,6 +50,8 @@
             this.lvGeneral.TabIndex = 0;
             this.lvGeneral.UseCompatibleStateImageBehavior = false;
             this.lvGeneral.View = System.Windows.Forms.View.Details;
+            this.lvGeneral.SelectedIndexChanged += new System.EventHandler(this.lvGeneral_SelectedIndexChanged);
+            this.lvGeneral.DoubleClick += new System.EventHandler(this.lvGeneral_DoubleClick);
             // 
             // lvIdentificadorColumna
             // 
@@ -78,6 +80,7 @@
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // frmListaGeneral
             // 
@@ -89,7 +92,9 @@
             this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lvGeneral);
             this.Name = "frmListaGeneral";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Lista general";
+            this.Load += new System.EventHandler(this.frmListaGeneral_Load);
             this.ResumeLayout(false);
 
         }

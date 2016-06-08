@@ -73,6 +73,47 @@ namespace Vista
         {
             frmListaGeneral  lista = new frmListaGeneral(conexion);
             lista.ShowDialog();
+
+            if (lista.mIdUsuario != 0)
+            {
+                entidadUsuario.mIdUsuario=lista.mIdUsuario;
+                txtId.Text = Convert.ToString(lista.mIdUsuario);
+                mConsultaCodigo();
+            }
+        }
+
+        public void mConsultaCodigo()
+        {
+            entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
+            dtrUsuario = usuario.mBuscarUsuario(conexion,entidadUsuario);
+
+            if (dtrUsuario != null)
+            {
+                if (dtrUsuario.Read())
+                {
+                    txtNombreUsuario.Text = dtrUsuario.GetString(1);
+                    txtContrasena.Text= dtrUsuario.GetString(2);
+                }
+                else
+                {
+                    MessageBox.Show("Este usuario no existe","NOT FOUNT",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                }
+            }
+        }
+
+        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                mConsultaCodigo();
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtId.Text = "";
+            txtContrasena.Text = "";
+            txtNombreUsuario.Text = "";
         }
     }
 }

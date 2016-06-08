@@ -63,16 +63,16 @@ namespace Modelo
         #region Metodos
 
         //Este metodo permitira ejecutar los select
-        public SqlDataReader mSeleccionar(string strSentencia, clsConexion cone, int id)
+        public SqlDataReader mSeleccionar(SqlCommand comando)//string strSentencia, clsConexion cone, int id)
         {
             try
             {
-                if (mConectar(cone))
+                if (conexion!=null)
                 {
 
-                    comando = new SqlCommand(strSentencia, this.conexion);                    
-                    comando.CommandType = System.Data.CommandType.Text;
-                    comando.Parameters.AddWithValue("@id",id);
+                  //  comando = new SqlCommand(strSentencia, this.conexion);                    
+                    //comando.CommandType = System.Data.CommandType.Text;
+                    //comando.Parameters.AddWithValue("@id",id);
                     //el ExecuteReader ejecuta solo select
                     return comando.ExecuteReader();
                 }
@@ -90,14 +90,11 @@ namespace Modelo
         {
             try
             {
-                if (mConectar(cone))
-                {
-                    comando = new SqlCommand(strSentencia, this.conexion);
-                    comando.ExecuteNonQuery();
-                    return true;
-                }
-                else
-                    return false;
+
+                comando = new SqlCommand(strSentencia, this.conexion);
+                comando.ExecuteNonQuery();
+                return true;
+           
             }
             catch
             {
@@ -125,6 +122,15 @@ namespace Modelo
         public string mNomServidor()
         {
             return Dns.GetHostName();
+        }
+
+        public SqlConnection mRetornarConexion(clsConexion cone)
+        {
+            if (mConectar(cone))
+            {
+                return conexion;
+            }
+            return null;
         }
         #endregion
     }

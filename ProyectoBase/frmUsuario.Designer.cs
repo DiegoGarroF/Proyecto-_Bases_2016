@@ -39,7 +39,9 @@
             this.txtId = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.gbxBotones = new System.Windows.Forms.GroupBox();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.gbxDatos.SuspendLayout();
+            this.gbxBotones.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblNombreUsuario
@@ -77,7 +79,7 @@
             // 
             // btnAccion
             // 
-            this.btnAccion.Location = new System.Drawing.Point(73, 192);
+            this.btnAccion.Location = new System.Drawing.Point(6, 14);
             this.btnAccion.Name = "btnAccion";
             this.btnAccion.Size = new System.Drawing.Size(75, 31);
             this.btnAccion.TabIndex = 4;
@@ -87,7 +89,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(245, 192);
+            this.btnCancelar.Location = new System.Drawing.Point(224, 14);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 31);
             this.btnCancelar.TabIndex = 5;
@@ -103,6 +105,7 @@
             this.btnBuscar.TabIndex = 6;
             this.btnBuscar.Text = "Buscar";
             this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
             // 
             // gbxDatos
             // 
@@ -124,7 +127,8 @@
             this.txtId.Location = new System.Drawing.Point(128, 20);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(153, 20);
-            this.txtId.TabIndex = 8;
+            this.txtId.TabIndex = 1;
+            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
             // 
             // label1
             // 
@@ -137,11 +141,24 @@
             // 
             // gbxBotones
             // 
-            this.gbxBotones.Location = new System.Drawing.Point(54, 183);
+            this.gbxBotones.Controls.Add(this.btnLimpiar);
+            this.gbxBotones.Controls.Add(this.btnCancelar);
+            this.gbxBotones.Controls.Add(this.btnAccion);
+            this.gbxBotones.Location = new System.Drawing.Point(31, 183);
             this.gbxBotones.Name = "gbxBotones";
-            this.gbxBotones.Size = new System.Drawing.Size(282, 51);
+            this.gbxBotones.Size = new System.Drawing.Size(305, 51);
             this.gbxBotones.TabIndex = 8;
             this.gbxBotones.TabStop = false;
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(117, 14);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 31);
+            this.btnLimpiar.TabIndex = 7;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // frmUsuario
             // 
@@ -149,8 +166,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(382, 261);
             this.ControlBox = false;
-            this.Controls.Add(this.btnCancelar);
-            this.Controls.Add(this.btnAccion);
             this.Controls.Add(this.gbxDatos);
             this.Controls.Add(this.gbxBotones);
             this.Name = "frmUsuario";
@@ -159,6 +174,7 @@
             this.Load += new System.EventHandler(this.frmUsuario_Load);
             this.gbxDatos.ResumeLayout(false);
             this.gbxDatos.PerformLayout();
+            this.gbxBotones.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -176,5 +192,6 @@
         private System.Windows.Forms.GroupBox gbxBotones;
         private System.Windows.Forms.TextBox txtId;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

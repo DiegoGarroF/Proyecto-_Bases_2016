@@ -24,21 +24,24 @@ namespace Controlador
         }
 
 
-        public SqlDataReader mSeleccionar(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
+        public SqlDataReader mSeleccionar(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "";
-            comando = new SqlCommand(strSentencia, conexion.mRetornarConexion(conexion));
-            comando.CommandType = System.Data.CommandType.Text;
-            return conexion.mSeleccionar(comando);
+            strSentencia = "SELECT * FROM tbLibro where idLibro="+pEntidadLibro.getIdLibro()+" ;";
+            return conexion.mSeleccionar(strSentencia,pEntidadLibro.getIdLibro());
         }
-        public Boolean mModificarLibro(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
+        public SqlDataReader mSeleccionarTodos(clsConexion conexion)
         {
-             strSentencia = "";
+            strSentencia ="SELECT * FROM tbLibro";
+            return conexion.mSeleccionarGeneral(strSentencia);
+        }
+        public Boolean mModificarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
+        {
+             strSentencia = "UPDATE tbLibro set ";
             return conexion.mEjecutar(strSentencia, conexion);
         }
-        public Boolean mEliminarLibro(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
+        public Boolean mEliminarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "";
+            strSentencia = "DELETE FROM tbLibro where idLibro="+pEntidadLibro.getIdLibro()+" ;";
             return conexion.mEjecutar(strSentencia, conexion);
         }
     }

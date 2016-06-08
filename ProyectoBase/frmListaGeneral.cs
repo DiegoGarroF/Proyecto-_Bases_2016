@@ -30,6 +30,7 @@ namespace Vista
         private void frmListaGeneral_Load(object senqder, EventArgs e)
         {
             dtrUsuario = usuario.mConsultaGeneral(conexion);
+            if(dtrUsuario!=null)
             while (dtrUsuario.Read())
             {
                 ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetInt32(0)));

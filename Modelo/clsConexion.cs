@@ -84,11 +84,11 @@ namespace Modelo
             }
         }// fin del metodo mSeleccionar
 
-        public SqlDataReader mSeleccionarGeneral(String sentencia)//string strSentencia, clsConexion cone, int id)
+        public SqlDataReader mSeleccionarGeneral(clsConexion cone, String sentencia)//string strSentencia, clsConexion cone, int id)
         {
             try
             {
-                if (conexion != null)
+                if (mConectar(cone))
                 {
                     comando = new SqlCommand(sentencia, conexion);                 
                     return comando.ExecuteReader();

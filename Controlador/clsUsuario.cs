@@ -10,8 +10,7 @@ namespace Controlador
 {
     public class clsUsuario
     {
-        private string sentencia = "";
-        private SqlCommand comando;
+        private string sentencia = "";        
 
         public SqlDataReader mBuscarUsuario(clsConexion conexion,clsEntidadUsuario pEntidadUsuario)
         {
@@ -24,7 +23,7 @@ namespace Controlador
         public SqlDataReader mConsultaGeneral(clsConexion conexion)
         {
             sentencia = "select idUsuario, usuario, contrasena from tbUsuario";           
-            return conexion.mSeleccionarGeneral(sentencia);
+            return conexion.mSeleccionarGeneral(conexion,sentencia);
         }
     }
 }

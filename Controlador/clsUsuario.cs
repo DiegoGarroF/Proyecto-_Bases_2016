@@ -15,20 +15,16 @@ namespace Controlador
 
         public SqlDataReader mBuscarUsuario(clsConexion conexion,clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "select idUsuario, usuario, contrasena from tbUsuario where idUsuario=@id";
+            sentencia = "select idUsuario, usuario, contrasena from tbUsuario where idUsuario=@codigo";
 
-            comando = new SqlCommand(sentencia, conexion.mRetornarConexion(conexion));
-            comando.CommandType = System.Data.CommandType.Text;
-            comando.Parameters.AddWithValue("@id", pEntidadUsuario.mIdUsuario);
-            return conexion.mSeleccionar(comando);
+           
+            return conexion.mSeleccionar(sentencia,pEntidadUsuario.mIdUsuario);
         }
 
         public SqlDataReader mConsultaGeneral(clsConexion conexion)
         {
-            sentencia = "select idUsuario, usuario, contrasena from tbUsuario";
-            comando = new SqlCommand(sentencia, conexion.mRetornarConexion(conexion));
-            comando.CommandType = System.Data.CommandType.Text;
-            return conexion.mSeleccionar(comando);
+            sentencia = "select idUsuario, usuario, contrasena from tbUsuario";           
+            return conexion.mSeleccionarGeneral(sentencia);
         }
     }
 }

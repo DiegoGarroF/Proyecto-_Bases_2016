@@ -35,3 +35,5 @@ F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Nueva carpeta\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe.config
 C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\Vista.frmListaGeneral.resources
 C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.frmPrestamos.resources
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmListaGeneral.resources
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.frmPrestamos.resources

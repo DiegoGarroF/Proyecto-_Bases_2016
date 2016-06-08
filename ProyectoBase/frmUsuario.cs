@@ -84,6 +84,8 @@ namespace Vista
 
         public void mConsultaCodigo()
         {
+            conexion.codigo = "123";
+            conexion.clave = "123";
             entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
             dtrUsuario = usuario.mBuscarUsuario(conexion,entidadUsuario);
 

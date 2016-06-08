@@ -28,7 +28,7 @@ namespace Modelo
             this._codigo = "123";
             this._clave = "123";
             this._perfil = "";
-            this._baseDatos = "BDBiblioteca1";
+            this._baseDatos = "BDBiblioteca";
         }
 
         #endregion
@@ -67,7 +67,7 @@ namespace Modelo
         {
             try
             {
-                if (conexion!=null)
+                if (mConectar(this))
                 {
 
                     comando = new SqlCommand(sentencia, conexion);

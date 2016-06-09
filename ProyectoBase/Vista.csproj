@@ -70,6 +70,12 @@
     <Compile Include="frmListaGeneral.Designer.cs">
       <DependentUpon>frmListaGeneral.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmListaUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmListaUsuario.designer.cs">
+      <DependentUpon>frmListaUsuario.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmMenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -101,6 +107,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmListaGeneral.resx">
       <DependentUpon>frmListaGeneral.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmListaUsuario.resx">
+      <DependentUpon>frmListaUsuario.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>

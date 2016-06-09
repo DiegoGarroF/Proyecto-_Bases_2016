@@ -39,3 +39,22 @@ F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\
 F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.frmPrestamos.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe.config
 F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmBitacora.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.exe
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.pdb
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.pdb
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Controlador.dll
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Modelo.dll
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Controlador.pdb
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Modelo.pdb
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmAcceso.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmBitacora.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmLibro.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmListaGeneral.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmListaUsuario.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmMenuPrincipal.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.frmPrestamos.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmUsuario.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.Properties.Resources.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache

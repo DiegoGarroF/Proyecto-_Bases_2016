@@ -88,6 +88,7 @@
             this.Controls.Add(this.lvListaUusario);
             this.Name = "frmListaUsuario";
             this.Text = "frmListaUsuario";
+            this.Load += new System.EventHandler(this.frmListaUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

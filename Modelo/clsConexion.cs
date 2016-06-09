@@ -28,7 +28,7 @@ namespace Modelo
             this._codigo = "123";
             this._clave = "123";
             this._perfil = "";
-            this._baseDatos = "BDBiblioteca1";
+            this._baseDatos = "BDBiblioteca";
         }
 
         #endregion
@@ -125,9 +125,10 @@ namespace Modelo
             try
             {
                 conexion = new SqlConnection();
-                conexion.ConnectionString = "user id='" + cone.codigo + "'; password='" + cone.clave + "'; Data Source='" + mNomServidor() + "'; Initial Catalog='" + cone.baseDatos + "'";
+                conexion.ConnectionString = "user id='" + cone.codigo + "'; password='" + cone.clave + "'; Data Source='" + mNomServidor() + "'; Initial Catalog='" + this.baseDatos + "'";
                 conexion.Open();
                 return true;
+
             }
             catch
             {

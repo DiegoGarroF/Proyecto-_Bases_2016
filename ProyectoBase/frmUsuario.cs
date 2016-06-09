@@ -47,7 +47,13 @@ namespace Vista
 
         private void frmUsuario_Load(object sender, EventArgs e)
         {
+            
+            dtrUsuario = pantalla.mConsultarPantallas(conexion);
+            while (dtrUsuario.Read())
+            {
+                cbPantalla.Items.Add(dtrUsuario.GetSqlString(0));
 
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -63,7 +69,7 @@ namespace Vista
 
         private void btnAccion_Click(object sender, EventArgs e)
         {
-            conexion.codigo = "admBiblioteca";
+            conexion.codigo = "123";
             conexion.clave = "123";
             entidadUsuario.mIdUsuario =Convert.ToInt32(txtId.Text);
             dtrUsuario = usuario.mBuscarUsuario(conexion,entidadUsuario);
@@ -84,9 +90,10 @@ namespace Vista
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
+            limpiar();
             frmListaGeneral  lista = new frmListaGeneral(conexion);
-            lista.ShowDialog();
             lista.cargarListViewUsuarios();
+            lista.ShowDialog();
 
             if (lista.mIdUsuario != 0)
             {
@@ -102,8 +109,8 @@ namespace Vista
         {
             conexion.clave = "123";
             conexion.codigo = "123";
-
-            dtrRol = rol.mConsultaRolesUsuario(conexion);
+            entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
+            dtrRol = rol.mConsultaRolesUsuario(conexion,entidadUsuario);
 
             if (dtrRol != null)
             {
@@ -119,8 +126,8 @@ namespace Vista
         {
             conexion.clave = "123";
             conexion.codigo = "123";
-
-            dtrPantalla = pantalla.mConsultaPrivPantaUsuario(conexion);
+            entidadUsuario.mIdUsuario =Convert.ToInt32( txtId.Text);
+            dtrPantalla = pantalla.mConsultaPrivPantaUsuario(conexion, entidadUsuario);
 
             if (dtrPantalla != null)
             {
@@ -196,9 +203,15 @@ namespace Vista
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
+            limpiar();
+        }
+        public void limpiar()
+        {
             txtId.Text = "";
             txtContrasena.Text = "";
             txtNombreUsuario.Text = "";
+            lvPrivilegios.Items.Clear();
+            lvRoles.Items.Clear();
         }
 
         private void chkRol_CheckedChanged(object sender, EventArgs e)
@@ -215,15 +228,25 @@ namespace Vista
 
         private void chkPrivilegio_CheckedChanged(object sender, EventArgs e)
         {
-            if (cbPrivilegio.Enabled == true)
+            if (cbPantalla.Enabled == true)
             {
-                cbPrivilegio.Enabled = false;
+                
+                
                 cbPantalla.Enabled = false;
+                chkConsultar.Enabled = false;
+                chkEliminar.Enabled = false;
+                chkInsertar.Enabled = false;
+                chkModificar.Enabled = false;
+                btnAgregarPrivilegios.Enabled = false;
             }
             else
             {
-                cbPrivilegio.Enabled = true;
                 cbPantalla.Enabled = true;
+                chkConsultar.Enabled = true;
+                chkEliminar.Enabled = true;
+                chkInsertar.Enabled = true;
+                chkModificar.Enabled = true;
+                btnAgregarPrivilegios.Enabled = true;
             }
         }
 
@@ -267,7 +290,7 @@ namespace Vista
                         btnEliminarRol.Enabled = false;
                     }
                 }
-                
+                 
             }
         }
     }

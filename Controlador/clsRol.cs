@@ -12,10 +12,10 @@ namespace Controlador
     {
         private string sentencia = "";
 
-        public SqlDataReader mConsultaRolesUsuario(clsConexion conexion)
+        public SqlDataReader mConsultaRolesUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "select r.nombre from tbRol r, tbUsuarioRol ur, tbUsuario u where r.idRol=ur.idRol and u.idUsuario=ur.idUsuario";
-            return conexion.mSeleccionarGeneral(conexion, sentencia);
+            sentencia = "select r.nombre from tbRol r, tbUsuarioRol ur, tbUsuario u where r.idRol=ur.idRol and u.idUsuario=ur.idUsuario and u.idUsuario=@codigo";
+            return conexion.mSeleccionar(sentencia, pEntidadUsuario.mIdUsuario);
         }
     }
 }

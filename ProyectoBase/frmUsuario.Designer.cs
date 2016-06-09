@@ -49,21 +49,25 @@
             this.btnEliminarRol = new System.Windows.Forms.Button();
             this.lvPrivilegios = new System.Windows.Forms.ListView();
             this.lvPantallaColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvInsertarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvConsultarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvModificarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvEliminarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvRoles = new System.Windows.Forms.ListView();
             this.lvRolColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAgregarPrivilegios = new System.Windows.Forms.Button();
+            this.chkEliminar = new System.Windows.Forms.CheckBox();
+            this.chkModificar = new System.Windows.Forms.CheckBox();
+            this.chkConsultar = new System.Windows.Forms.CheckBox();
+            this.chkInsertar = new System.Windows.Forms.CheckBox();
             this.cbPantalla = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.cbPrivilegio = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.cbRol = new System.Windows.Forms.ComboBox();
             this.chkRol = new System.Windows.Forms.CheckBox();
             this.chkPrivilegio = new System.Windows.Forms.CheckBox();
-            this.lvInsertarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvConsultarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvModificarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvEliminarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbxBotones.SuspendLayout();
             this.gbxDatos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -278,6 +282,25 @@
             this.lvPantallaColumna.Text = "Pantalla";
             this.lvPantallaColumna.Width = 98;
             // 
+            // lvInsertarColumna
+            // 
+            this.lvInsertarColumna.Text = "Insertar";
+            this.lvInsertarColumna.Width = 47;
+            // 
+            // lvConsultarColumna
+            // 
+            this.lvConsultarColumna.Text = "Consultar";
+            // 
+            // lvModificarColumna
+            // 
+            this.lvModificarColumna.Text = "Modificar";
+            this.lvModificarColumna.Width = 56;
+            // 
+            // lvEliminarColumna
+            // 
+            this.lvEliminarColumna.Text = "Eliminar";
+            this.lvEliminarColumna.Width = 58;
+            // 
             // lvRoles
             // 
             this.lvRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
@@ -298,24 +321,82 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAgregarPrivilegios);
+            this.groupBox1.Controls.Add(this.chkEliminar);
+            this.groupBox1.Controls.Add(this.chkModificar);
+            this.groupBox1.Controls.Add(this.chkConsultar);
+            this.groupBox1.Controls.Add(this.chkInsertar);
             this.groupBox1.Controls.Add(this.cbPantalla);
             this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.cbPrivilegio);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.cbRol);
             this.groupBox1.Location = new System.Drawing.Point(459, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(429, 147);
+            this.groupBox1.Size = new System.Drawing.Size(456, 147);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
+            // 
+            // btnAgregarPrivilegios
+            // 
+            this.btnAgregarPrivilegios.Enabled = false;
+            this.btnAgregarPrivilegios.Location = new System.Drawing.Point(352, 101);
+            this.btnAgregarPrivilegios.Name = "btnAgregarPrivilegios";
+            this.btnAgregarPrivilegios.Size = new System.Drawing.Size(75, 42);
+            this.btnAgregarPrivilegios.TabIndex = 10;
+            this.btnAgregarPrivilegios.Text = "Agregar Privilegios";
+            this.btnAgregarPrivilegios.UseVisualStyleBackColor = true;
+            // 
+            // chkEliminar
+            // 
+            this.chkEliminar.AutoSize = true;
+            this.chkEliminar.Enabled = false;
+            this.chkEliminar.Location = new System.Drawing.Point(225, 120);
+            this.chkEliminar.Name = "chkEliminar";
+            this.chkEliminar.Size = new System.Drawing.Size(62, 17);
+            this.chkEliminar.TabIndex = 9;
+            this.chkEliminar.Text = "Eliminar";
+            this.chkEliminar.UseVisualStyleBackColor = true;
+            // 
+            // chkModificar
+            // 
+            this.chkModificar.AutoSize = true;
+            this.chkModificar.Enabled = false;
+            this.chkModificar.Location = new System.Drawing.Point(225, 101);
+            this.chkModificar.Name = "chkModificar";
+            this.chkModificar.Size = new System.Drawing.Size(69, 17);
+            this.chkModificar.TabIndex = 8;
+            this.chkModificar.Text = "Modificar";
+            this.chkModificar.UseVisualStyleBackColor = true;
+            // 
+            // chkConsultar
+            // 
+            this.chkConsultar.AutoSize = true;
+            this.chkConsultar.Enabled = false;
+            this.chkConsultar.Location = new System.Drawing.Point(225, 77);
+            this.chkConsultar.Name = "chkConsultar";
+            this.chkConsultar.Size = new System.Drawing.Size(70, 17);
+            this.chkConsultar.TabIndex = 7;
+            this.chkConsultar.Text = "Consultar";
+            this.chkConsultar.UseVisualStyleBackColor = true;
+            // 
+            // chkInsertar
+            // 
+            this.chkInsertar.AutoSize = true;
+            this.chkInsertar.Enabled = false;
+            this.chkInsertar.Location = new System.Drawing.Point(225, 54);
+            this.chkInsertar.Name = "chkInsertar";
+            this.chkInsertar.Size = new System.Drawing.Size(61, 17);
+            this.chkInsertar.TabIndex = 6;
+            this.chkInsertar.Text = "Insertar";
+            this.chkInsertar.UseVisualStyleBackColor = true;
             // 
             // cbPantalla
             // 
             this.cbPantalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPantalla.Enabled = false;
             this.cbPantalla.FormattingEnabled = true;
-            this.cbPantalla.Location = new System.Drawing.Point(306, 78);
+            this.cbPantalla.Location = new System.Drawing.Point(93, 78);
             this.cbPantalla.Name = "cbPantalla";
             this.cbPantalla.Size = new System.Drawing.Size(101, 21);
             this.cbPantalla.TabIndex = 5;
@@ -323,35 +404,20 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(226, 81);
+            this.label4.Location = new System.Drawing.Point(6, 78);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 4;
             this.label4.Text = "Pantalla:";
             // 
-            // cbPrivilegio
-            // 
-            this.cbPrivilegio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbPrivilegio.Enabled = false;
-            this.cbPrivilegio.FormattingEnabled = true;
-            this.cbPrivilegio.Items.AddRange(new object[] {
-            "Insertar",
-            "Consultar",
-            "Modificar",
-            "Eliminar"});
-            this.cbPrivilegio.Location = new System.Drawing.Point(94, 78);
-            this.cbPrivilegio.Name = "cbPrivilegio";
-            this.cbPrivilegio.Size = new System.Drawing.Size(100, 21);
-            this.cbPrivilegio.TabIndex = 3;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 81);
+            this.label3.Location = new System.Drawing.Point(222, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "Privilegio:";
+            this.label3.Text = "Privilegios de pantalla:";
             // 
             // label2
             // 
@@ -395,25 +461,6 @@
             this.chkPrivilegio.TabIndex = 13;
             this.chkPrivilegio.UseVisualStyleBackColor = true;
             this.chkPrivilegio.CheckedChanged += new System.EventHandler(this.chkPrivilegio_CheckedChanged);
-            // 
-            // lvInsertarColumna
-            // 
-            this.lvInsertarColumna.Text = "Insertar";
-            this.lvInsertarColumna.Width = 47;
-            // 
-            // lvConsultarColumna
-            // 
-            this.lvConsultarColumna.Text = "Consultar";
-            // 
-            // lvModificarColumna
-            // 
-            this.lvModificarColumna.Text = "Modificar";
-            this.lvModificarColumna.Width = 56;
-            // 
-            // lvEliminarColumna
-            // 
-            this.lvEliminarColumna.Text = "Eliminar";
-            this.lvEliminarColumna.Width = 58;
             // 
             // frmUsuario
             // 
@@ -466,8 +513,6 @@
         private System.Windows.Forms.ComboBox cbRol;
         private System.Windows.Forms.ComboBox cbPantalla;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox cbPrivilegio;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkRol;
         private System.Windows.Forms.CheckBox chkPrivilegio;
         private System.Windows.Forms.Button btnEliminarPrivilegioPantalla;
@@ -480,5 +525,11 @@
         private System.Windows.Forms.ColumnHeader lvConsultarColumna;
         private System.Windows.Forms.ColumnHeader lvModificarColumna;
         private System.Windows.Forms.ColumnHeader lvEliminarColumna;
+        private System.Windows.Forms.CheckBox chkModificar;
+        private System.Windows.Forms.CheckBox chkConsultar;
+        private System.Windows.Forms.CheckBox chkInsertar;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Button btnAgregarPrivilegios;
+        private System.Windows.Forms.CheckBox chkEliminar;
     }
 }

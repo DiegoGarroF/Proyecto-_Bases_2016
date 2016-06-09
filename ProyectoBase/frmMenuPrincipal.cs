@@ -111,5 +111,11 @@ namespace Vista
             this.Hide();
             usuario.Show();
         }
+
+        private void salirToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmBitacora frmBitacora = new frmBitacora();
+            frmBitacora.Show();
+        }
     }
 }

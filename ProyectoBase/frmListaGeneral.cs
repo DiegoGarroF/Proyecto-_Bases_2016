@@ -20,6 +20,7 @@ namespace Vista
         private clsUsuario usuario;
         private clsConexion conexion;
         private clsLibro libro;
+        private clsPrestamo prestamo;
         private int idUsuario;
         public frmListaGeneral(clsConexion cone)
         {
@@ -27,13 +28,14 @@ namespace Vista
             usuario = new clsUsuario();
             this.conexion = cone;
             this.libro = new clsLibro();
+            this.prestamo = new clsPrestamo();
             this.conexion.codigo = "123";
             this.conexion.clave = "123";
         }
 
         private void frmListaGeneral_Load(object senqder, EventArgs e)
         {
-       
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -65,7 +67,7 @@ namespace Vista
         //libros
         public void cargarListViewLibros()
         {
-          
+
             dataReader = libro.mSeleccionarTodos(conexion);
             lvGeneral.Items.Clear();
             if (dataReader != null)
@@ -81,7 +83,7 @@ namespace Vista
         {
 
             dataReader = usuario.mConsultaGeneral(conexion);
-           
+
             if (dataReader != null)
                 while (dataReader.Read())
                 {
@@ -89,10 +91,22 @@ namespace Vista
                     item.SubItems.Add(dataReader.GetString(1));
                     lvGeneral.Items.Add(item);
                 }
-        }
+        } 
+
+        //Metodo que se utiliza para cargar los usuariosClientes
         public void cargarListViewUsuariosCliente()
         {
+            dataReader = prestamo.mSeleccionarTodos(conexion);
 
+            if (dataReader != null)
+            {
+                while (dataReader.Read())
+                {
+                    ListViewItem item = new ListViewItem(Convert.ToString(dataReader.GetInt32(0)));
+                    item.SubItems.Add(dataReader.GetString(1));
+                    lvGeneral.Items.Add(item);
+                }
+            }
         }
     }
 }

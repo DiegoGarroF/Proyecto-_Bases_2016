@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo;
+using System.Data.SqlClient;
 
 namespace Controlador
 {
@@ -17,6 +18,12 @@ namespace Controlador
             return false;
         }
 
+
+        public SqlDataReader mSeleccionarTodos(clsConexion conexion)
+        {
+            strSentencia = "select * from tbPrestamo where tipoUsuario='Estudiante' ";
+            return conexion.mSeleccionarGeneral(conexion, strSentencia);
+        }
 
     }
 }

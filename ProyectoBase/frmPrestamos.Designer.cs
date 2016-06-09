@@ -40,12 +40,15 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtIdPrestamo = new System.Windows.Forms.TextBox();
+            this.btnBuscarGeneral = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // txtIdLibro
             // 
-            this.txtIdLibro.Location = new System.Drawing.Point(129, 33);
+            this.txtIdLibro.Location = new System.Drawing.Point(129, 72);
             this.txtIdLibro.Name = "txtIdLibro";
             this.txtIdLibro.Size = new System.Drawing.Size(100, 20);
             this.txtIdLibro.TabIndex = 6;
@@ -62,21 +65,21 @@
             // 
             // txtIdUsuarioEstudiante
             // 
-            this.txtIdUsuarioEstudiante.Location = new System.Drawing.Point(129, 138);
+            this.txtIdUsuarioEstudiante.Location = new System.Drawing.Point(129, 166);
             this.txtIdUsuarioEstudiante.Name = "txtIdUsuarioEstudiante";
             this.txtIdUsuarioEstudiante.Size = new System.Drawing.Size(100, 20);
             this.txtIdUsuarioEstudiante.TabIndex = 8;
             // 
             // txtIdUsurio
             // 
-            this.txtIdUsurio.Location = new System.Drawing.Point(129, 86);
+            this.txtIdUsurio.Location = new System.Drawing.Point(129, 122);
             this.txtIdUsurio.Name = "txtIdUsurio";
             this.txtIdUsurio.Size = new System.Drawing.Size(100, 20);
             this.txtIdUsurio.TabIndex = 7;
             // 
             // btnBuscarUsuarioEstudiante
             // 
-            this.btnBuscarUsuarioEstudiante.Location = new System.Drawing.Point(281, 138);
+            this.btnBuscarUsuarioEstudiante.Location = new System.Drawing.Point(280, 162);
             this.btnBuscarUsuarioEstudiante.Name = "btnBuscarUsuarioEstudiante";
             this.btnBuscarUsuarioEstudiante.Size = new System.Drawing.Size(75, 26);
             this.btnBuscarUsuarioEstudiante.TabIndex = 5;
@@ -86,7 +89,7 @@
             // 
             // btnBuscarLibro
             // 
-            this.btnBuscarLibro.Location = new System.Drawing.Point(281, 28);
+            this.btnBuscarLibro.Location = new System.Drawing.Point(280, 67);
             this.btnBuscarLibro.Name = "btnBuscarLibro";
             this.btnBuscarLibro.Size = new System.Drawing.Size(75, 29);
             this.btnBuscarLibro.TabIndex = 4;
@@ -96,7 +99,7 @@
             // 
             // btnBuscarUsuario
             // 
-            this.btnBuscarUsuario.Location = new System.Drawing.Point(281, 81);
+            this.btnBuscarUsuario.Location = new System.Drawing.Point(280, 119);
             this.btnBuscarUsuario.Name = "btnBuscarUsuario";
             this.btnBuscarUsuario.Size = new System.Drawing.Size(75, 25);
             this.btnBuscarUsuario.TabIndex = 3;
@@ -115,6 +118,9 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnBuscarGeneral);
+            this.groupBox1.Controls.Add(this.txtIdPrestamo);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.txtIdUsuarioEstudiante);
             this.groupBox1.Controls.Add(this.txtIdUsurio);
             this.groupBox1.Controls.Add(this.txtIdLibro);
@@ -134,16 +140,16 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 145);
+            this.label3.Location = new System.Drawing.Point(-3, 173);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(104, 13);
+            this.label3.Size = new System.Drawing.Size(86, 13);
             this.label3.TabIndex = 2;
-            this.label3.Text = "idUsuarioEstudiante:";
+            this.label3.Text = "idUsuarioCliente:";
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 93);
+            this.label2.Location = new System.Drawing.Point(6, 125);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(54, 13);
             this.label2.TabIndex = 1;
@@ -152,11 +158,36 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 36);
+            this.label1.Location = new System.Drawing.Point(6, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "idLibro:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(12, 32);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(21, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "ID:";
+            // 
+            // txtIdPrestamo
+            // 
+            this.txtIdPrestamo.Location = new System.Drawing.Point(129, 29);
+            this.txtIdPrestamo.Name = "txtIdPrestamo";
+            this.txtIdPrestamo.Size = new System.Drawing.Size(100, 20);
+            this.txtIdPrestamo.TabIndex = 10;
+            // 
+            // btnBuscarGeneral
+            // 
+            this.btnBuscarGeneral.Location = new System.Drawing.Point(280, 16);
+            this.btnBuscarGeneral.Name = "btnBuscarGeneral";
+            this.btnBuscarGeneral.Size = new System.Drawing.Size(75, 29);
+            this.btnBuscarGeneral.TabIndex = 11;
+            this.btnBuscarGeneral.Text = "Buscar";
+            this.btnBuscarGeneral.UseVisualStyleBackColor = true;
             // 
             // frmPrestamos
             // 
@@ -191,5 +222,8 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btnBuscarGeneral;
+        private System.Windows.Forms.TextBox txtIdPrestamo;
+        private System.Windows.Forms.Label label4;
     }
 }

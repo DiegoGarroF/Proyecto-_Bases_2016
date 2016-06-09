@@ -13,7 +13,7 @@ namespace Controlador
 
         public Boolean mInsertarCliente( clsEntidadPrestamo pEntidadPrestamo)
         {
-            strSentencia = "insert into prestamo(fechaInicio,fechaFin, nombreEstudiante, carnet) values('"+ pEntidadPrestamo.setGetFechaInicio +"')";
+            strSentencia = "insert into prestamo(fechaInicio,fechaFin, nombreEstudiante, carnet) values('"+ pEntidadPrestamo.setGetFecha +"')";
             return false;
         }
 

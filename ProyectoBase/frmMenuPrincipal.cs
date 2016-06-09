@@ -121,7 +121,7 @@ namespace Vista
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBitacora frmBitacora = new frmBitacora();
+            frmBitacora frmBitacora = new frmBitacora(conexion);
             frmBitacora.Show();
         }
 

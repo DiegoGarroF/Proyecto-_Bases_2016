@@ -12,3 +12,10 @@ C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\Controlador\bi
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.csprojResolveAssemblyReference.cache
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.dll
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.pdb
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\bin\Debug\Controlador.dll
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\bin\Debug\Controlador.pdb
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\bin\Debug\Modelo.dll
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\bin\Debug\Modelo.pdb
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.csprojResolveAssemblyReference.cache
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.dll
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.pdb

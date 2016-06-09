@@ -58,3 +58,22 @@ C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\o
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmUsuario.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.Properties.Resources.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.exe
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.pdb
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.pdb
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Controlador.dll
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Modelo.dll
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Controlador.pdb
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\Modelo.pdb
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmAcceso.resources
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmBitacora.resources
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmLibro.resources
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmListaGeneral.resources
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmListaUsuario.resources
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmMenuPrincipal.resources
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmUsuario.resources
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.Properties.Resources.resources
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache
+C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmPrestamos.resources

@@ -139,26 +139,30 @@
             // agregarPréstamoToolStripMenuItem
             // 
             this.agregarPréstamoToolStripMenuItem.Name = "agregarPréstamoToolStripMenuItem";
-            this.agregarPréstamoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.agregarPréstamoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.agregarPréstamoToolStripMenuItem.Text = "Agregar ";
+            this.agregarPréstamoToolStripMenuItem.Click += new System.EventHandler(this.agregarPréstamoToolStripMenuItem_Click);
             // 
             // modificarPréstamoToolStripMenuItem
             // 
             this.modificarPréstamoToolStripMenuItem.Name = "modificarPréstamoToolStripMenuItem";
-            this.modificarPréstamoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.modificarPréstamoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.modificarPréstamoToolStripMenuItem.Text = "Modificar";
+            this.modificarPréstamoToolStripMenuItem.Click += new System.EventHandler(this.modificarPréstamoToolStripMenuItem_Click);
             // 
             // consultarPréstamoToolStripMenuItem
             // 
             this.consultarPréstamoToolStripMenuItem.Name = "consultarPréstamoToolStripMenuItem";
-            this.consultarPréstamoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.consultarPréstamoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.consultarPréstamoToolStripMenuItem.Text = "Consultar ";
+            this.consultarPréstamoToolStripMenuItem.Click += new System.EventHandler(this.consultarPréstamoToolStripMenuItem_Click);
             // 
             // eliminarPréstamoToolStripMenuItem
             // 
             this.eliminarPréstamoToolStripMenuItem.Name = "eliminarPréstamoToolStripMenuItem";
-            this.eliminarPréstamoToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.eliminarPréstamoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.eliminarPréstamoToolStripMenuItem.Text = "Eliminar";
+            this.eliminarPréstamoToolStripMenuItem.Click += new System.EventHandler(this.eliminarPréstamoToolStripMenuItem_Click);
             // 
             // librosToolStripMenuItem
             // 

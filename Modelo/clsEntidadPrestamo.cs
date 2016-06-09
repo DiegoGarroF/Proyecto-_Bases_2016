@@ -9,36 +9,36 @@ namespace Modelo
     public class clsEntidadPrestamo
     {
         #region Atributos
-        private string fechaInicio;
-        private string fechaFin;
-        private string nombreEstudiante;
-        private string carnet;
+        private string fecha;
+        private int idUsuario;
+        private int idLibro;
+        private int idUsuarioCliente;
         #endregion
 
         #region Set y get
 
-        public string setGetFechaInicio 
+        public string setGetFecha 
         {
-            get { return fechaInicio; }
-            set { fechaInicio = value; }
+            get { return fecha; }
+            set { fecha = value; }
         }
 
-        public string setGetFechaFin
+        public int setGetIdUsuario
         {
-            get { return fechaFin; }
-            set { fechaFin = value; }
+            get { return idUsuario; }
+            set { idUsuario = value; }
         }
 
-        public string setGetNombreEstudiante
+        public int setGetidLibro
         {
-            get { return nombreEstudiante; }
-            set { nombreEstudiante = value; }
+            get { return idLibro; }
+            set { idLibro = value; }
         }
 
-        public string setGetCarnet
+        public int setGetIdUsuariocliente
         {
-            get { return carnet; }
-            set { carnet = value; }
+            get { return idUsuarioCliente; }
+            set { idUsuarioCliente = value; }
         }
 
 

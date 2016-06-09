@@ -1,4 +1,4 @@
-﻿namespace ProyectoBase
+﻿namespace Vista
 {
     partial class frmPrestamos
     {
@@ -35,7 +35,7 @@
             this.btnBuscarUsuarioEstudiante = new System.Windows.Forms.Button();
             this.btnBuscarLibro = new System.Windows.Forms.Button();
             this.btnBuscarUsuario = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnFuncional = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -58,6 +58,7 @@
             this.btnSalir.TabIndex = 5;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
+            this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // txtIdUsuarioEstudiante
             // 
@@ -100,14 +101,14 @@
             this.btnBuscarUsuario.Text = "Buscar";
             this.btnBuscarUsuario.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // btnFuncional
             // 
-            this.button1.Location = new System.Drawing.Point(27, 251);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 35);
-            this.button1.TabIndex = 4;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnFuncional.Location = new System.Drawing.Point(27, 251);
+            this.btnFuncional.Name = "btnFuncional";
+            this.btnFuncional.Size = new System.Drawing.Size(75, 35);
+            this.btnFuncional.TabIndex = 4;
+            this.btnFuncional.Text = "button1";
+            this.btnFuncional.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -161,10 +162,12 @@
             this.ClientSize = new System.Drawing.Size(379, 329);
             this.ControlBox = false;
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btnFuncional);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmPrestamos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión Prestamos";
+            this.Load += new System.EventHandler(this.frmPrestamos_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -180,7 +183,7 @@
         private System.Windows.Forms.Button btnBuscarUsuarioEstudiante;
         private System.Windows.Forms.Button btnBuscarLibro;
         private System.Windows.Forms.Button btnBuscarUsuario;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnFuncional;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;

@@ -124,5 +124,33 @@ namespace Vista
             frmBitacora frmBitacora = new frmBitacora();
             frmBitacora.Show();
         }
+
+        private void agregarPréstamoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPrestamos prestamos = new frmPrestamos();
+            prestamos.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.AGREGAR));
+            prestamos.ShowDialog();
+        }
+
+        private void modificarPréstamoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPrestamos prestamos = new frmPrestamos();
+            prestamos.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.MODIFICAR));
+            prestamos.ShowDialog();
+        }
+
+        private void consultarPréstamoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPrestamos prestamos = new frmPrestamos();
+            prestamos.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.CONSULTAR));
+            prestamos.ShowDialog();
+        }
+
+        private void eliminarPréstamoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPrestamos prestamos = new frmPrestamos();
+            prestamos.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.ELIMINAR));
+            prestamos.ShowDialog();
+        }
     }
 }

@@ -38,16 +38,7 @@ namespace Vista
             frmListaUsuario frmLista = new frmListaUsuario();
             frmLista.Show();
 
-          /*  dtrUsuario = usuario.mConsultaGeneral(conexion);
-            if (tbNombreUsuario != null)
-            {
-                while (dtrUsuario.Read())
-                {
-                    ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetInt32(0)));
-                    item.SubItems.Add(dtrUsuario.GetString(1));
-                    lvBitacora.Items.Add(item);
-                }
-            }*/
+           
         }
 
         

@@ -55,12 +55,17 @@ namespace Vista
 
         private void frmListaUsuario_Load(object sender, EventArgs e)
         {
-           strUsuarios = usuario.mConsultaLista(conexion);
-            while (strUsuarios.Read())
-            {
-                ListViewItem lista;
-                lista = lvListaUusario.Items.Add(strUsuarios.GetString(3));
-            }
+            strUsuarios = usuario.mConsultarListaBitacora(conexion);
+            lvListaUusario.Items.Clear();
+            if (strUsuarios != null)
+                while (strUsuarios.Read())
+                {
+                    ListViewItem item = new ListViewItem(strUsuarios.GetString(0));
+                    item.SubItems.Add(strUsuarios.GetString(1));
+                    item.SubItems.Add(strUsuarios.GetString(2));
+                    lvListaUusario.Items.Add(item);
+                }
+
         }
     }
 }

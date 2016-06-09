@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using Modelo;
 namespace Vista
 {
     public partial class frmListaUsuario : Form
@@ -16,17 +16,19 @@ namespace Vista
         #region Atributos 
 
         private String stUsuario;
+        clsConexion conexion;
 
         #endregion
         public frmListaUsuario()
         {
+            conexion = new clsConexion();
             InitializeComponent();
         }
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
 
-            frmBitacora frmBitacora = new frmBitacora();
+            frmBitacora frmBitacora = new frmBitacora(conexion);
             for (int i = 0; i < lvListaUusario.Items.Count; i++)
             {
                 if (lvListaUusario.Items[i].Selected)

@@ -20,10 +20,11 @@ namespace Vista
         clsUsuario usuario;
         clsConexion conexion;
         
-        public frmBitacora()
+        public frmBitacora(clsConexion conexion)
         {
+            usuario = new clsUsuario();
             entidadUsuario = new clsEntidadUsuario();
-            conexion = new clsConexion();
+            this.conexion = conexion;
             InitializeComponent();
         }
 

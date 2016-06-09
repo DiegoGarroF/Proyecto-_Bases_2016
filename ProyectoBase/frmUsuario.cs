@@ -117,5 +117,51 @@ namespace Vista
             txtContrasena.Text = "";
             txtNombreUsuario.Text = "";
         }
+
+        private void chkRol_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbRol.Enabled == true)
+            {
+                cbRol.Enabled = false;
+            }
+            else
+            {
+                cbRol.Enabled = true;
+            }
+        }
+
+        private void chkPrivilegio_CheckedChanged(object sender, EventArgs e)
+        {
+            if (cbPrivilegio.Enabled == true)
+            {
+                cbPrivilegio.Enabled = false;
+                cbPantalla.Enabled = false;
+            }
+            else
+            {
+                cbPrivilegio.Enabled = true;
+                cbPantalla.Enabled = true;
+            }
+        }
+
+        public void controlAgregarRolPriv(Boolean estado)
+        {
+            if (estado == true)
+            {
+                chkPrivilegio.Enabled = true;
+                chkRol.Enabled = true;
+
+                lvRoles.Enabled = false;
+                lvPrivilegios.Enabled = false;           
+            }
+            else
+            {
+                chkPrivilegio.Enabled = false;
+                chkRol.Enabled = false;
+
+                lvRoles.Enabled = true;
+                lvPrivilegios.Enabled = true;
+            }
+        }
     }
 }

@@ -40,22 +40,30 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.gbxDatos = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblApellidos = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbPantalla = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.comboBox3 = new System.Windows.Forms.ComboBox();
+            this.cbPrivilegio = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.cbRol = new System.Windows.Forms.ComboBox();
             this.chkRol = new System.Windows.Forms.CheckBox();
             this.chkPrivilegio = new System.Windows.Forms.CheckBox();
+            this.lvRoles = new System.Windows.Forms.ListView();
+            this.lvRolColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvPrivilegios = new System.Windows.Forms.ListView();
+            this.lvPrivilegioColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvPantallaColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnEliminarRol = new System.Windows.Forms.Button();
+            this.btnEliminarPrivilegioPantalla = new System.Windows.Forms.Button();
             this.gbxBotones.SuspendLayout();
             this.gbxDatos.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,7 +102,7 @@
             this.gbxBotones.Controls.Add(this.btnLimpiar);
             this.gbxBotones.Controls.Add(this.btnCancelar);
             this.gbxBotones.Controls.Add(this.btnAccion);
-            this.gbxBotones.Location = new System.Drawing.Point(318, 369);
+            this.gbxBotones.Location = new System.Drawing.Point(48, 398);
             this.gbxBotones.Name = "gbxBotones";
             this.gbxBotones.Size = new System.Drawing.Size(305, 51);
             this.gbxBotones.TabIndex = 8;
@@ -179,46 +187,6 @@
             this.gbxDatos.TabIndex = 7;
             this.gbxDatos.TabStop = false;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Location = new System.Drawing.Point(459, 191);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(429, 153);
-            this.groupBox2.TabIndex = 12;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Roles y Privilegios asignados a este usuario";
-            // 
-            // groupBox1
-            // 
-            this.groupBox1.Controls.Add(this.comboBox3);
-            this.groupBox1.Controls.Add(this.label4);
-            this.groupBox1.Controls.Add(this.comboBox2);
-            this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.comboBox1);
-            this.groupBox1.Location = new System.Drawing.Point(459, 22);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(429, 147);
-            this.groupBox1.TabIndex = 11;
-            this.groupBox1.TabStop = false;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(6, 19);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(72, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Rol a asignar:";
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(94, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 21);
-            this.comboBox1.TabIndex = 0;
-            // 
             // txtApellidos
             // 
             this.txtApellidos.Location = new System.Drawing.Point(126, 215);
@@ -251,22 +219,42 @@
             this.lblNombre.TabIndex = 12;
             this.lblNombre.Text = "Nombre:";
             // 
-            // label3
+            // groupBox2
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(9, 81);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(52, 13);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "Privilegio:";
+            this.groupBox2.Controls.Add(this.btnEliminarPrivilegioPantalla);
+            this.groupBox2.Controls.Add(this.btnEliminarRol);
+            this.groupBox2.Controls.Add(this.lvPrivilegios);
+            this.groupBox2.Controls.Add(this.lvRoles);
+            this.groupBox2.Location = new System.Drawing.Point(459, 191);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(429, 241);
+            this.groupBox2.TabIndex = 12;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Roles y Privilegios asignados a este usuario";
             // 
-            // comboBox2
+            // groupBox1
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(94, 78);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(100, 21);
-            this.comboBox2.TabIndex = 3;
+            this.groupBox1.Controls.Add(this.cbPantalla);
+            this.groupBox1.Controls.Add(this.label4);
+            this.groupBox1.Controls.Add(this.cbPrivilegio);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.label2);
+            this.groupBox1.Controls.Add(this.cbRol);
+            this.groupBox1.Location = new System.Drawing.Point(459, 22);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(429, 147);
+            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabStop = false;
+            // 
+            // cbPantalla
+            // 
+            this.cbPantalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPantalla.Enabled = false;
+            this.cbPantalla.FormattingEnabled = true;
+            this.cbPantalla.Location = new System.Drawing.Point(306, 78);
+            this.cbPantalla.Name = "cbPantalla";
+            this.cbPantalla.Size = new System.Drawing.Size(101, 21);
+            this.cbPantalla.TabIndex = 5;
             // 
             // label4
             // 
@@ -277,13 +265,52 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Pantalla:";
             // 
-            // comboBox3
+            // cbPrivilegio
             // 
-            this.comboBox3.FormattingEnabled = true;
-            this.comboBox3.Location = new System.Drawing.Point(306, 78);
-            this.comboBox3.Name = "comboBox3";
-            this.comboBox3.Size = new System.Drawing.Size(101, 21);
-            this.comboBox3.TabIndex = 5;
+            this.cbPrivilegio.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbPrivilegio.Enabled = false;
+            this.cbPrivilegio.FormattingEnabled = true;
+            this.cbPrivilegio.Items.AddRange(new object[] {
+            "Insertar",
+            "Consultar",
+            "Modificar",
+            "Eliminar"});
+            this.cbPrivilegio.Location = new System.Drawing.Point(94, 78);
+            this.cbPrivilegio.Name = "cbPrivilegio";
+            this.cbPrivilegio.Size = new System.Drawing.Size(100, 21);
+            this.cbPrivilegio.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(9, 81);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "Privilegio:";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(6, 19);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 13);
+            this.label2.TabIndex = 1;
+            this.label2.Text = "Rol a asignar:";
+            // 
+            // cbRol
+            // 
+            this.cbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbRol.Enabled = false;
+            this.cbRol.FormattingEnabled = true;
+            this.cbRol.Items.AddRange(new object[] {
+            "Administrador",
+            "Estudiante",
+            "Atención al cliente"});
+            this.cbRol.Location = new System.Drawing.Point(94, 16);
+            this.cbRol.Name = "cbRol";
+            this.cbRol.Size = new System.Drawing.Size(100, 21);
+            this.cbRol.TabIndex = 0;
             // 
             // chkRol
             // 
@@ -293,6 +320,7 @@
             this.chkRol.Size = new System.Drawing.Size(15, 14);
             this.chkRol.TabIndex = 13;
             this.chkRol.UseVisualStyleBackColor = true;
+            this.chkRol.CheckedChanged += new System.EventHandler(this.chkRol_CheckedChanged);
             // 
             // chkPrivilegio
             // 
@@ -302,6 +330,70 @@
             this.chkPrivilegio.Size = new System.Drawing.Size(15, 14);
             this.chkPrivilegio.TabIndex = 13;
             this.chkPrivilegio.UseVisualStyleBackColor = true;
+            this.chkPrivilegio.CheckedChanged += new System.EventHandler(this.chkPrivilegio_CheckedChanged);
+            // 
+            // lvRoles
+            // 
+            this.lvRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvRolColumna});
+            this.lvRoles.Enabled = false;
+            this.lvRoles.GridLines = true;
+            this.lvRoles.Location = new System.Drawing.Point(32, 32);
+            this.lvRoles.Name = "lvRoles";
+            this.lvRoles.Size = new System.Drawing.Size(109, 143);
+            this.lvRoles.TabIndex = 0;
+            this.lvRoles.UseCompatibleStateImageBehavior = false;
+            this.lvRoles.View = System.Windows.Forms.View.Details;
+            // 
+            // lvRolColumna
+            // 
+            this.lvRolColumna.Text = "Rol";
+            this.lvRolColumna.Width = 105;
+            // 
+            // lvPrivilegios
+            // 
+            this.lvPrivilegios.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvPrivilegioColumna,
+            this.lvPantallaColumna});
+            this.lvPrivilegios.Enabled = false;
+            this.lvPrivilegios.FullRowSelect = true;
+            this.lvPrivilegios.GridLines = true;
+            this.lvPrivilegios.Location = new System.Drawing.Point(213, 32);
+            this.lvPrivilegios.Name = "lvPrivilegios";
+            this.lvPrivilegios.Size = new System.Drawing.Size(194, 143);
+            this.lvPrivilegios.TabIndex = 1;
+            this.lvPrivilegios.UseCompatibleStateImageBehavior = false;
+            this.lvPrivilegios.View = System.Windows.Forms.View.Details;
+            // 
+            // lvPrivilegioColumna
+            // 
+            this.lvPrivilegioColumna.Text = "Privilegio";
+            this.lvPrivilegioColumna.Width = 90;
+            // 
+            // lvPantallaColumna
+            // 
+            this.lvPantallaColumna.Text = "Pantalla";
+            this.lvPantallaColumna.Width = 98;
+            // 
+            // btnEliminarRol
+            // 
+            this.btnEliminarRol.Enabled = false;
+            this.btnEliminarRol.Location = new System.Drawing.Point(46, 192);
+            this.btnEliminarRol.Name = "btnEliminarRol";
+            this.btnEliminarRol.Size = new System.Drawing.Size(75, 43);
+            this.btnEliminarRol.TabIndex = 2;
+            this.btnEliminarRol.Text = "Eliminar rol";
+            this.btnEliminarRol.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminarPrivilegioPantalla
+            // 
+            this.btnEliminarPrivilegioPantalla.Enabled = false;
+            this.btnEliminarPrivilegioPantalla.Location = new System.Drawing.Point(271, 192);
+            this.btnEliminarPrivilegioPantalla.Name = "btnEliminarPrivilegioPantalla";
+            this.btnEliminarPrivilegioPantalla.Size = new System.Drawing.Size(75, 43);
+            this.btnEliminarPrivilegioPantalla.TabIndex = 3;
+            this.btnEliminarPrivilegioPantalla.Text = "Eliminar provilegio";
+            this.btnEliminarPrivilegioPantalla.UseVisualStyleBackColor = true;
             // 
             // frmUsuario
             // 
@@ -322,6 +414,7 @@
             this.gbxBotones.ResumeLayout(false);
             this.gbxDatos.ResumeLayout(false);
             this.gbxDatos.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -350,12 +443,19 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.ComboBox comboBox3;
+        private System.Windows.Forms.ComboBox cbRol;
+        private System.Windows.Forms.ComboBox cbPantalla;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.ComboBox comboBox2;
+        private System.Windows.Forms.ComboBox cbPrivilegio;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.CheckBox chkRol;
         private System.Windows.Forms.CheckBox chkPrivilegio;
+        private System.Windows.Forms.Button btnEliminarPrivilegioPantalla;
+        private System.Windows.Forms.Button btnEliminarRol;
+        private System.Windows.Forms.ListView lvPrivilegios;
+        private System.Windows.Forms.ColumnHeader lvPrivilegioColumna;
+        private System.Windows.Forms.ColumnHeader lvPantallaColumna;
+        private System.Windows.Forms.ListView lvRoles;
+        private System.Windows.Forms.ColumnHeader lvRolColumna;
     }
 }

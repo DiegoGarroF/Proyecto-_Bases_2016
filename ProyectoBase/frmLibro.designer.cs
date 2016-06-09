@@ -33,7 +33,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.Datos = new System.Windows.Forms.GroupBox();
             this.btnConsultar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtISBN = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -75,7 +75,7 @@
             // Datos
             // 
             this.Datos.Controls.Add(this.btnConsultar);
-            this.Datos.Controls.Add(this.textBox1);
+            this.Datos.Controls.Add(this.txtID);
             this.Datos.Controls.Add(this.label3);
             this.Datos.Controls.Add(this.txtISBN);
             this.Datos.Controls.Add(this.txtNombre);
@@ -103,12 +103,12 @@
             this.btnConsultar.UseVisualStyleBackColor = false;
             this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
-            // textBox1
+            // txtID
             // 
-            this.textBox1.Location = new System.Drawing.Point(81, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 20);
-            this.textBox1.TabIndex = 9;
+            this.txtID.Location = new System.Drawing.Point(81, 29);
+            this.txtID.Name = "txtID";
+            this.txtID.Size = new System.Drawing.Size(151, 20);
+            this.txtID.TabIndex = 9;
             // 
             // label3
             // 
@@ -147,7 +147,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(354, 307);
+            this.ClientSize = new System.Drawing.Size(344, 307);
             this.ControlBox = false;
             this.Controls.Add(this.btnMultiFuncion);
             this.Controls.Add(this.Datos);
@@ -172,7 +172,7 @@
         private System.Windows.Forms.TextBox txtNombre;
         private System.Windows.Forms.Button btnMultiFuncion;
         private System.Windows.Forms.Button btnConsultar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtID;
         private System.Windows.Forms.Label label3;
     }
 }

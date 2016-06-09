@@ -20,14 +20,19 @@ namespace Controlador
         public Boolean mInsertarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
             strSentencia = "INSERT INTO tbLibro(nombre,isbn) VALUES("+pEntidadLibro.getNombre()+"' , '"+pEntidadLibro.getISBN()+"')";
-            return conexion.mEjecutar(strSentencia, conexion);
+            return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
 
 
-        public SqlDataReader mSeleccionar(clsConexion conexion, clsEntidadLibro pEntidadLibro)
+        public SqlDataReader mSeleccionarLibroID(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
             strSentencia = "SELECT * FROM tbLibro where idLibro=@"+pEntidadLibro.getIdLibro()+" ;";
             return conexion.mSeleccionar(strSentencia,pEntidadLibro.getIdLibro());
+        }
+        public SqlDataReader mSeleccionarLibroISBN(clsConexion conexion, clsEntidadLibro pEntidadLibro)
+        {
+            strSentencia = "SELECT * FROM tbLibro where isbn=@" + pEntidadLibro.getIdLibro() + " ;";
+            return conexion.mSeleccionar(strSentencia, pEntidadLibro.getIdLibro());
         }
         public SqlDataReader mSeleccionarTodos(clsConexion conexion)
         {
@@ -37,12 +42,12 @@ namespace Controlador
         public Boolean mModificarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
              strSentencia = "UPDATE tbLibro set ";
-            return conexion.mEjecutar(strSentencia, conexion);
+            return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
         public Boolean mEliminarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
             strSentencia = "DELETE FROM tbLibro where idLibro="+pEntidadLibro.getIdLibro()+" ;";
-            return conexion.mEjecutar(strSentencia, conexion);
+            return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
     }
 }

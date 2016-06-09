@@ -17,7 +17,7 @@ namespace Vista
         const string opcion2="";
         private clsConexion conexion;
         private SqlDataReader dtr;
-        public clsLibro libro;
+        public  clsLibro libro;
         private clsEntidadLibro pEntidadLibro;
 
         public frmLibro(clsConexion conexion)
@@ -26,6 +26,7 @@ namespace Vista
             pEntidadLibro = new clsEntidadLibro();
             libro = new clsLibro();
             this.conexion = conexion;
+
 
 
         }
@@ -79,6 +80,23 @@ namespace Vista
         //Metodo para agregar un nuevo libro
         public Boolean mAgregar()
         {
+            dtr = libro.mSeleccionarTodos(conexion);
+            if(!verificarEspacioISBN())
+            {
+                if(!verificarEspacioNombre())
+                {
+
+                }
+                else
+                {
+                    mMostraMensaje(clsConstantes.COMPLETE_NOMBRE, clsConstantes.TIPO_GENERAL);
+                }
+            }
+            else
+            {
+                mMostraMensaje(clsConstantes.COMPLETE_ISBN, clsConstantes.TIPO_GENERAL);
+            }
+
             return false;
         }
         // Metodo para consultar un libro
@@ -106,6 +124,66 @@ namespace Vista
             listaGeneral.cargarListViewLibros();
             listaGeneral.Visible = true;
         }
-        
+
+        public void mTipoAccion()
+        {
+            switch(btnMultiFuncion.Text)
+            {
+                case clsConstantes.AGREGAR:
+
+                    break;
+                case clsConstantes.MODIFICAR:
+                    break;
+                case clsConstantes.ELIMINAR:
+                    break;
+                case clsConstantes.CONSULTAR:
+                    break;
+            }
+        }
+
+        #region Metodos Control espacios
+        // Metodo para verificar que exista un isbn
+        public Boolean verificarEspacioISBN()
+        {
+            if (!this.txtISBN.Text.Trim().Equals(""))
+                return true;
+            return false;
+        }
+        // Metodo para verificar que exista un nombre
+        public Boolean verificarEspacioNombre()
+        {
+            if (!this.txtNombre.Text.Trim().Equals(""))
+                return true;
+            return false;
+        }
+        // Metodo para verificar que exista un ID
+        public Boolean verificarEspacioID()
+        {
+            if (!this.txtID.Text.Trim().Equals(""))
+                return true;
+            return false;
+        }
+        #endregion
+
+        public void mMostraMensaje(String mensaje, int tipo)
+        {
+            
+            
+            switch(tipo)
+            {
+                case clsConstantes.TIPO_AGREGAR:
+                    MessageBox.Show(clsConstantes.AGREGAR_LIBRO, clsConstantes.TIPO_LIBRO, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    break;
+                case clsConstantes.TIPO_ELIMINAR:
+                    MessageBox.Show(clsConstantes.ELIMINAR_LIBRO, clsConstantes.TIPO_LIBRO, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    break;
+                case clsConstantes.TIPO_MODIFICAR:
+                    MessageBox.Show(clsConstantes.MODIFICAR_LIBRO, clsConstantes.TIPO_LIBRO, MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    break;
+                default:
+                    MessageBox.Show(mensaje, clsConstantes.TIPO_LIBRO, MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    break;     
+            }
+        }
     }
 }

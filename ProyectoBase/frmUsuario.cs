@@ -76,20 +76,31 @@ namespace Vista
             {
                 if (mValidarRolUsuario() == true)
                 {
-                    entidadUsuario.mUsuario = txtNombreUsuario.Text;
-                    entidadUsuario.mContrasena = txtContrasena.Text;
-                    entidadUsuario.mNombre = txtNombre.Text;
-                    entidadUsuario.mTipoUsuario = txtTipoUsuario.Text;
-                    entidadUsuario.mApellidos = txtApellidos.Text;
+                    //entidadUsuario.mUsuario = txtNombreUsuario.Text;
+                    //entidadUsuario.mContrasena = txtContrasena.Text;
+                    //entidadUsuario.mNombre = txtNombre.Text;
+                    //entidadUsuario.mTipoUsuario = txtTipoUsuario.Text;
+                    //entidadUsuario.mApellidos = txtApellidos.Text;
 
+                    foreach (ListViewItem I in lvRoles.Items)
+                    {
+                        entidadRol.mNombreRol = I.SubItems[0].Text;
+                        Console.WriteLine(I.SubItems[0].Text);
+                        //Debo hacer un select para sacar el id del rol
+                        //dtrRol = rol.mConsultaIdRoles(conexion,entidadRol);
+
+
+                    }
+                    /*
                     if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                     {
                         MessageBox.Show("Se insertó correctamente el usuario","Éxito", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                        limpiar();
                     }
                     else
                     {
                         MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
+                    }*/
                 }
                 else
                 {

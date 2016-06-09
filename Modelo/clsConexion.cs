@@ -84,6 +84,27 @@ namespace Modelo
             }
         }// fin del metodo mSeleccionar
 
+        public SqlDataReader mSeleccionarTipoString(String sentencia, string codigo)//string strSentencia, clsConexion cone, int id)
+        {
+            try
+            {
+                if (mConectar(this))
+                {
+
+                    comando = new SqlCommand(sentencia, conexion);
+                    comando.CommandType = System.Data.CommandType.Text;
+                    comando.Parameters.AddWithValue("@codigo", codigo);
+                    return comando.ExecuteReader();
+                }
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }// fin del metodo mSeleccionar
+
         public SqlDataReader mSeleccionarGeneral(clsConexion cone, String sentencia)//string strSentencia, clsConexion cone, int id)
         {
             try
@@ -107,44 +128,48 @@ namespace Modelo
         {
             try
             {
-                comando = new SqlCommand(strSentencia, conexion);
-                comando.CommandType = System.Data.CommandType.Text;
+                if (mConectar(cone))
+                {
+                    comando = new SqlCommand(strSentencia, conexion);
+                    comando.CommandType = System.Data.CommandType.Text;
 
-                if (objeto is clsEntidadUsuario)
-                {
-                    clsEntidadUsuario entidadUsuario = (clsEntidadUsuario)objeto;
-                    
-                    comando.Parameters.AddWithValue("@nombreUsuario", entidadUsuario.mUsuario);
-                    comando.Parameters.AddWithValue("@contrasena", entidadUsuario.mContrasena);
-                    comando.Parameters.AddWithValue("@nombre", entidadUsuario.mNombre);
-                    comando.Parameters.AddWithValue("@tipoUsuario", entidadUsuario.mTipoUsuario);
-                    comando.Parameters.AddWithValue("@apellidos", entidadUsuario.mApellidos);
-                    comando.ExecuteNonQuery();
-                    return true;
-                }
-                else
-                {
-                    if(objeto is clsEntidadRol)
+                    if (objeto is clsEntidadUsuario)
                     {
-                        clsEntidadRol entidadRol = (clsEntidadRol)objeto;
-                        comando.Parameters.AddWithValue("@nombre", entidadRol.mNombreRol);
+                        clsEntidadUsuario entidadUsuario = (clsEntidadUsuario)objeto;
+
+                        comando.Parameters.AddWithValue("@usuario", entidadUsuario.mUsuario);
+                        comando.Parameters.AddWithValue("@contrasena", entidadUsuario.mContrasena);
+                        comando.Parameters.AddWithValue("@nombre", entidadUsuario.mNombre);
+                        comando.Parameters.AddWithValue("@tipoUsuario", entidadUsuario.mTipoUsuario);
+                        comando.Parameters.AddWithValue("@apellidos", entidadUsuario.mApellidos);
                         comando.ExecuteNonQuery();
                         return true;
                     }
                     else
                     {
-                        if(objeto is clsEntidadUsuarioPantalla)
+                        if (objeto is clsEntidadUsuarioRol)
                         {
-                            clsEntidadUsuarioPantalla entidadUsuarioPantalla = (clsEntidadUsuarioPantalla)objeto;
-                            comando.Parameters.AddWithValue("@idUsuario", entidadUsuarioPantalla.mIdUsuario);
-                            comando.Parameters.AddWithValue("@idPantalla", entidadUsuarioPantalla.mIdPantalla);
-                            comando.Parameters.AddWithValue("@modificar", entidadUsuarioPantalla.mModificar);
-                            comando.Parameters.AddWithValue("@insertar", entidadUsuarioPantalla.mInsertar);
-                            comando.Parameters.AddWithValue("@consultar", entidadUsuarioPantalla.mConsultar);
-                            comando.Parameters.AddWithValue("@eliminar", entidadUsuarioPantalla.mEliminar);
+                            clsEntidadUsuarioRol entidadUsuarioRol = (clsEntidadUsuarioRol)objeto;
+                            comando.Parameters.AddWithValue("@idUsuario", entidadUsuarioRol.mIdUsuario);
+                            comando.Parameters.AddWithValue("@idRol", entidadUsuarioRol.mIdRol);
                             comando.ExecuteNonQuery();
                             return true;
+                        }
+                        else
+                        {
+                            if (objeto is clsEntidadUsuarioPantalla)
+                            {
+                                clsEntidadUsuarioPantalla entidadUsuarioPantalla = (clsEntidadUsuarioPantalla)objeto;
+                                comando.Parameters.AddWithValue("@idUsuario", entidadUsuarioPantalla.mIdUsuario);
+                                comando.Parameters.AddWithValue("@idPantalla", entidadUsuarioPantalla.mIdPantalla);
+                                comando.Parameters.AddWithValue("@modificar", entidadUsuarioPantalla.mModificar);
+                                comando.Parameters.AddWithValue("@insertar", entidadUsuarioPantalla.mInsertar);
+                                comando.Parameters.AddWithValue("@consultar", entidadUsuarioPantalla.mConsultar);
+                                comando.Parameters.AddWithValue("@eliminar", entidadUsuarioPantalla.mEliminar);
+                                comando.ExecuteNonQuery();
+                                return true;
 
+                            }
                         }
                     }
                 }

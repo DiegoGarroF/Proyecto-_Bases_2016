@@ -82,6 +82,7 @@
             this.btnBuscarUsuarioEstudiante.TabIndex = 5;
             this.btnBuscarUsuarioEstudiante.Text = "Buscar";
             this.btnBuscarUsuarioEstudiante.UseVisualStyleBackColor = true;
+            this.btnBuscarUsuarioEstudiante.Click += new System.EventHandler(this.btnBuscarUsuarioEstudiante_Click);
             // 
             // btnBuscarLibro
             // 
@@ -91,6 +92,7 @@
             this.btnBuscarLibro.TabIndex = 4;
             this.btnBuscarLibro.Text = "Buscar";
             this.btnBuscarLibro.UseVisualStyleBackColor = true;
+            this.btnBuscarLibro.Click += new System.EventHandler(this.btnBuscarLibro_Click);
             // 
             // btnBuscarUsuario
             // 
@@ -100,6 +102,7 @@
             this.btnBuscarUsuario.TabIndex = 3;
             this.btnBuscarUsuario.Text = "Buscar";
             this.btnBuscarUsuario.UseVisualStyleBackColor = true;
+            this.btnBuscarUsuario.Click += new System.EventHandler(this.btnBuscarUsuario_Click);
             // 
             // btnFuncional
             // 

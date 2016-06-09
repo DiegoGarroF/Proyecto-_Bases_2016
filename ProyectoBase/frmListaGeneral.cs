@@ -90,5 +90,9 @@ namespace Vista
                     lvGeneral.Items.Add(item);
                 }
         }
+        public void cargarListViewUsuariosCliente()
+        {
+
+        }
     }
 }

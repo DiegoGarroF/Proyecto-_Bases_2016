@@ -28,7 +28,7 @@ namespace Modelo
             this._codigo = "123";
             this._clave = "123";
             this._perfil = "";
-            this._baseDatos = "BDBiblioteca";
+            this._baseDatos = "BDBiblioteca1";
         }
 
         #endregion

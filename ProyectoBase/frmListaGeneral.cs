@@ -16,29 +16,24 @@ namespace Vista
 {
     public partial class frmListaGeneral : Form
     {
-        private SqlDataReader dtrUsuario;
+        private SqlDataReader dataReader;
         private clsUsuario usuario;
         private clsConexion conexion;
+        private clsLibro libro;
         private int idUsuario;
         public frmListaGeneral(clsConexion cone)
         {
             InitializeComponent();
             usuario = new clsUsuario();
             this.conexion = cone;
+            this.libro = new clsLibro();
+            this.conexion.codigo = "123";
+            this.conexion.clave = "123";
         }
 
         private void frmListaGeneral_Load(object senqder, EventArgs e)
         {
-            conexion.codigo = "123";
-            conexion.clave = "123";
-            dtrUsuario = usuario.mConsultaGeneral(conexion);
-            if(dtrUsuario!=null)
-            while (dtrUsuario.Read())
-            {
-                ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetInt32(0)));
-                item.SubItems.Add(dtrUsuario.GetString(1)); 
-                lvGeneral.Items.Add(item);
-            }
+       
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -65,6 +60,35 @@ namespace Vista
         {
             get { return idUsuario; }
             set { idUsuario = value; }
+        }
+
+        //libros
+        public void cargarListViewLibros()
+        {
+          
+            dataReader = libro.mSeleccionarTodos(conexion);
+            lvGeneral.Items.Clear();
+            if (dataReader != null)
+                while (dataReader.Read())
+                {
+                    ListViewItem item = new ListViewItem(Convert.ToString(dataReader.GetInt32(0)));
+                    item.SubItems.Add(dataReader.GetString(1));
+                    lvGeneral.Items.Add(item);
+                }
+        }
+        // Usuario
+        public void cargarListViewUsuarios()
+        {
+
+            dataReader = usuario.mConsultaGeneral(conexion);
+           
+            if (dataReader != null)
+                while (dataReader.Read())
+                {
+                    ListViewItem item = new ListViewItem(Convert.ToString(dataReader.GetInt32(0)));
+                    item.SubItems.Add(dataReader.GetString(1));
+                    lvGeneral.Items.Add(item);
+                }
         }
     }
 }

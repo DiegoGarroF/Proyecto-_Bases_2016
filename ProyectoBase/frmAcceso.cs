@@ -21,14 +21,18 @@ namespace Vista
         #region
         
         SqlDataReader dtrUsuario; //Retorno de las tuplas
-        int contador = 0;              
+        int contador = 0;
         #endregion
 
         //Inicializamos los atributos que utilizaremos en toda la clase
+        private clsConexion conexion;
         public frmAcceso()
         {
             
             InitializeComponent();
+            this.conexion = new clsConexion();
+            this.conexion.codigo = "123";
+            this.conexion.clave = "123";
         }
 
         private void frmAcceso_Load(object sender, EventArgs e)
@@ -120,7 +124,7 @@ namespace Vista
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            frmMenuPrincipal menu = new frmMenuPrincipal();
+            frmMenuPrincipal menu = new frmMenuPrincipal(conexion);
             menu.Show();
             this.SetVisibleCore(false);
             

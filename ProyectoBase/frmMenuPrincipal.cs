@@ -15,10 +15,13 @@ namespace Vista
     {
 
         private frmUsuario usuario;
-        public frmMenuPrincipal()
+        private clsConexion conexion;
+        public frmMenuPrincipal(clsConexion conexion)
         {
             InitializeComponent();
             usuario = new frmUsuario(this);
+            this.conexion = conexion;
+
         }
 
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
@@ -41,7 +44,7 @@ namespace Vista
 
         private void opcionNuevoLibro_Click(object sender, EventArgs e)
         {
-            frmLibro nuevoLibro = new frmLibro();
+            frmLibro nuevoLibro = new frmLibro(conexion);
             nuevoLibro.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.AGREGAR));
             nuevoLibro.Visible = true;
             this.Close();
@@ -49,7 +52,7 @@ namespace Vista
 
         private void opcionModificarLibro_Click(object sender, EventArgs e)
         {
-            frmLibro nuevoLibro = new frmLibro();
+            frmLibro nuevoLibro = new frmLibro(conexion);
             nuevoLibro.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.MODIFICAR));
             nuevoLibro.Visible = true;
             this.Close();
@@ -57,7 +60,7 @@ namespace Vista
 
         private void opcionBuscarLibro_Click(object sender, EventArgs e)
         {
-            frmLibro nuevoLibro = new frmLibro();
+            frmLibro nuevoLibro = new frmLibro(conexion);
             nuevoLibro.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.CONSULTAR));
             nuevoLibro.Visible = true;
             this.Close();
@@ -65,7 +68,7 @@ namespace Vista
 
         private void opcionEliminarLibro_Click(object sender, EventArgs e)
         {
-            frmLibro nuevoLibro = new frmLibro();
+            frmLibro nuevoLibro = new frmLibro(conexion);
             nuevoLibro.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.ELIMINAR));
             nuevoLibro.Visible = true;
             

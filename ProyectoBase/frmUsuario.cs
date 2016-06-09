@@ -86,6 +86,7 @@ namespace Vista
         {
             frmListaGeneral  lista = new frmListaGeneral(conexion);
             lista.ShowDialog();
+            lista.cargarListViewUsuarios();
 
             if (lista.mIdUsuario != 0)
             {

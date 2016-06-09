@@ -5,3 +5,10 @@ F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\bin\D
 F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.csprojResolveAssemblyReference.cache
 F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.dll
 F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.pdb
+C:\Users\Diego\Desktop\Proyecto-_Bases_2016\Controlador\bin\Debug\Controlador.dll
+C:\Users\Diego\Desktop\Proyecto-_Bases_2016\Controlador\bin\Debug\Controlador.pdb
+C:\Users\Diego\Desktop\Proyecto-_Bases_2016\Controlador\bin\Debug\Modelo.dll
+C:\Users\Diego\Desktop\Proyecto-_Bases_2016\Controlador\bin\Debug\Modelo.pdb
+C:\Users\Diego\Desktop\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.csprojResolveAssemblyReference.cache
+C:\Users\Diego\Desktop\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.dll
+C:\Users\Diego\Desktop\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.pdb

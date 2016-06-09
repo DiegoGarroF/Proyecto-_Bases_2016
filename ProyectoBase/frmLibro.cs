@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Modelo;
 using System.Data.SqlClient;
+using Controlador;
 namespace Vista
 {
     public partial class frmLibro : Form
@@ -16,18 +17,23 @@ namespace Vista
         const string opcion2="";
         private clsConexion conexion;
         private SqlDataReader dtr;
+        public clsLibro libro;
         private clsEntidadLibro pEntidadLibro;
-        public frmLibro()
+
+        public frmLibro(clsConexion conexion)
         {
             InitializeComponent();
             pEntidadLibro = new clsEntidadLibro();
+            libro = new clsLibro();
+            this.conexion = conexion;
+
 
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmMenuPrincipal frmMenu = new frmMenuPrincipal();
+            frmMenuPrincipal frmMenu = new frmMenuPrincipal(conexion);
             frmMenu.Visible = true;
         }
 
@@ -90,9 +96,16 @@ namespace Vista
         {
             return false;
         }
+
+
         #endregion
 
-
-
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            frmListaGeneral listaGeneral = new frmListaGeneral(conexion);
+            listaGeneral.cargarListViewLibros();
+            listaGeneral.Visible = true;
+        }
+        
     }
 }

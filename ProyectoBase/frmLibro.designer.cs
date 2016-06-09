@@ -32,12 +32,12 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Datos = new System.Windows.Forms.GroupBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtISBN = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.btnMultiFuncion = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.btnConsultar = new System.Windows.Forms.Button();
             this.Datos.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -89,6 +89,36 @@
             this.Datos.TabStop = false;
             this.Datos.Text = "Datos";
             // 
+            // btnConsultar
+            // 
+            this.btnConsultar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnConsultar.Image = global::ProyectoBase.Properties.Resources.buscar;
+            this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnConsultar.Location = new System.Drawing.Point(249, 19);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(45, 39);
+            this.btnConsultar.TabIndex = 10;
+            this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnConsultar.UseVisualStyleBackColor = false;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(81, 29);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(151, 20);
+            this.textBox1.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(16, 36);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "ID";
+            // 
             // txtISBN
             // 
             this.txtISBN.Location = new System.Drawing.Point(81, 173);
@@ -112,35 +142,6 @@
             this.btnMultiFuncion.Text = "button1";
             this.btnMultiFuncion.UseVisualStyleBackColor = true;
             this.btnMultiFuncion.Click += new System.EventHandler(this.btnMultiFuncion_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(16, 36);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 13);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "ID";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(81, 29);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(151, 20);
-            this.textBox1.TabIndex = 9;
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnConsultar.Image = global::ProyectoBase.Properties.Resources.buscar;
-            this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnConsultar.Location = new System.Drawing.Point(249, 19);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(45, 39);
-            this.btnConsultar.TabIndex = 10;
-            this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnConsultar.UseVisualStyleBackColor = false;
             // 
             // frmLibro
             // 

@@ -54,7 +54,6 @@ C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\o
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmListaGeneral.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmListaUsuario.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmMenuPrincipal.resources
-C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.frmPrestamos.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmUsuario.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.Properties.Resources.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache
@@ -77,3 +76,4 @@ C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\o
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.Properties.Resources.resources
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmPrestamos.resources
+C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmPrestamos.resources

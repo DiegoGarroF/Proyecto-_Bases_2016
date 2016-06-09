@@ -35,15 +35,10 @@ namespace Vista
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-           
+            frmListaUsuario frmLista = new frmListaUsuario();
+            frmLista.Show();
 
-        }
-
-        
-      
-        private void frmBitacora_Load(object sender, EventArgs e)
-        {
-            dtrUsuario = usuario.mConsultaGeneral(conexion);
+          /*  dtrUsuario = usuario.mConsultaGeneral(conexion);
             if (tbNombreUsuario != null)
             {
                 while (dtrUsuario.Read())
@@ -52,7 +47,13 @@ namespace Vista
                     item.SubItems.Add(dtrUsuario.GetString(1));
                     lvBitacora.Items.Add(item);
                 }
-            }
+            }*/
+        }
+
+        
+      
+        private void frmBitacora_Load(object sender, EventArgs e)
+        {
         }
     }
 }

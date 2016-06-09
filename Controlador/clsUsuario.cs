@@ -25,5 +25,11 @@ namespace Controlador
             sentencia = "select idUsuario, usuario, contrasena from tbUsuario";           
             return conexion.mSeleccionarGeneral(conexion,sentencia);
         }
+
+        public SqlDataReader mConsultarListaBitacora(clsConexion conexion)
+        {
+            sentencia = "select nombre, apellidos, tipoUsuario from tbUsuario";
+            return conexion.mSeleccionarGeneral(conexion, sentencia);
+        }
     }
 }

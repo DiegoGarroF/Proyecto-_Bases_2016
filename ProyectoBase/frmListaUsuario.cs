@@ -55,11 +55,11 @@ namespace Vista
 
         private void frmListaUsuario_Load(object sender, EventArgs e)
         {
-            strUsuarios = usuario.mConsultaGeneral(conexion);
+           strUsuarios = usuario.mConsultaLista(conexion);
             while (strUsuarios.Read())
             {
                 ListViewItem lista;
-                lista = lvListaUusario.Items.Add(strUsuarios.GetString(0));
+                lista = lvListaUusario.Items.Add(strUsuarios.GetString(3));
             }
         }
     }

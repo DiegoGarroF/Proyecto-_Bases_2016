@@ -68,6 +68,7 @@
             this.cbRol = new System.Windows.Forms.ComboBox();
             this.chkRol = new System.Windows.Forms.CheckBox();
             this.chkPrivilegio = new System.Windows.Forms.CheckBox();
+            this.btnAgregarRol = new System.Windows.Forms.Button();
             this.gbxBotones.SuspendLayout();
             this.gbxDatos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -90,7 +91,7 @@
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 31);
             this.btnCancelar.TabIndex = 5;
-            this.btnCancelar.Text = "Cancelar";
+            this.btnCancelar.Text = "Salir";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
@@ -232,32 +233,32 @@
             this.groupBox2.Controls.Add(this.btnEliminarRol);
             this.groupBox2.Controls.Add(this.lvPrivilegios);
             this.groupBox2.Controls.Add(this.lvRoles);
-            this.groupBox2.Location = new System.Drawing.Point(413, 191);
+            this.groupBox2.Location = new System.Drawing.Point(413, 208);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(502, 241);
+            this.groupBox2.Size = new System.Drawing.Size(502, 255);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Roles y Privilegios asignados a este usuario";
             // 
             // btnEliminarPrivilegioPantalla
             // 
-            this.btnEliminarPrivilegioPantalla.Enabled = false;
-            this.btnEliminarPrivilegioPantalla.Location = new System.Drawing.Point(271, 192);
+            this.btnEliminarPrivilegioPantalla.Location = new System.Drawing.Point(271, 204);
             this.btnEliminarPrivilegioPantalla.Name = "btnEliminarPrivilegioPantalla";
             this.btnEliminarPrivilegioPantalla.Size = new System.Drawing.Size(75, 43);
             this.btnEliminarPrivilegioPantalla.TabIndex = 3;
             this.btnEliminarPrivilegioPantalla.Text = "Eliminar provilegio";
             this.btnEliminarPrivilegioPantalla.UseVisualStyleBackColor = true;
+            this.btnEliminarPrivilegioPantalla.Click += new System.EventHandler(this.btnEliminarPrivilegioPantalla_Click);
             // 
             // btnEliminarRol
             // 
-            this.btnEliminarRol.Enabled = false;
-            this.btnEliminarRol.Location = new System.Drawing.Point(22, 192);
+            this.btnEliminarRol.Location = new System.Drawing.Point(22, 206);
             this.btnEliminarRol.Name = "btnEliminarRol";
             this.btnEliminarRol.Size = new System.Drawing.Size(75, 43);
             this.btnEliminarRol.TabIndex = 2;
             this.btnEliminarRol.Text = "Eliminar rol";
             this.btnEliminarRol.UseVisualStyleBackColor = true;
+            this.btnEliminarRol.Click += new System.EventHandler(this.btnEliminarRol_Click);
             // 
             // lvPrivilegios
             // 
@@ -321,6 +322,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAgregarRol);
             this.groupBox1.Controls.Add(this.btnAgregarPrivilegios);
             this.groupBox1.Controls.Add(this.chkEliminar);
             this.groupBox1.Controls.Add(this.chkModificar);
@@ -333,25 +335,26 @@
             this.groupBox1.Controls.Add(this.cbRol);
             this.groupBox1.Location = new System.Drawing.Point(459, 22);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(456, 147);
+            this.groupBox1.Size = new System.Drawing.Size(456, 180);
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
             // btnAgregarPrivilegios
             // 
             this.btnAgregarPrivilegios.Enabled = false;
-            this.btnAgregarPrivilegios.Location = new System.Drawing.Point(352, 101);
+            this.btnAgregarPrivilegios.Location = new System.Drawing.Point(352, 124);
             this.btnAgregarPrivilegios.Name = "btnAgregarPrivilegios";
             this.btnAgregarPrivilegios.Size = new System.Drawing.Size(75, 42);
             this.btnAgregarPrivilegios.TabIndex = 10;
             this.btnAgregarPrivilegios.Text = "Agregar Privilegios";
             this.btnAgregarPrivilegios.UseVisualStyleBackColor = true;
+            this.btnAgregarPrivilegios.Click += new System.EventHandler(this.btnAgregarPrivilegios_Click);
             // 
             // chkEliminar
             // 
             this.chkEliminar.AutoSize = true;
             this.chkEliminar.Enabled = false;
-            this.chkEliminar.Location = new System.Drawing.Point(225, 120);
+            this.chkEliminar.Location = new System.Drawing.Point(225, 143);
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Size = new System.Drawing.Size(62, 17);
             this.chkEliminar.TabIndex = 9;
@@ -362,7 +365,7 @@
             // 
             this.chkModificar.AutoSize = true;
             this.chkModificar.Enabled = false;
-            this.chkModificar.Location = new System.Drawing.Point(225, 101);
+            this.chkModificar.Location = new System.Drawing.Point(225, 124);
             this.chkModificar.Name = "chkModificar";
             this.chkModificar.Size = new System.Drawing.Size(69, 17);
             this.chkModificar.TabIndex = 8;
@@ -373,7 +376,7 @@
             // 
             this.chkConsultar.AutoSize = true;
             this.chkConsultar.Enabled = false;
-            this.chkConsultar.Location = new System.Drawing.Point(225, 77);
+            this.chkConsultar.Location = new System.Drawing.Point(225, 100);
             this.chkConsultar.Name = "chkConsultar";
             this.chkConsultar.Size = new System.Drawing.Size(70, 17);
             this.chkConsultar.TabIndex = 7;
@@ -384,7 +387,7 @@
             // 
             this.chkInsertar.AutoSize = true;
             this.chkInsertar.Enabled = false;
-            this.chkInsertar.Location = new System.Drawing.Point(225, 54);
+            this.chkInsertar.Location = new System.Drawing.Point(225, 77);
             this.chkInsertar.Name = "chkInsertar";
             this.chkInsertar.Size = new System.Drawing.Size(61, 17);
             this.chkInsertar.TabIndex = 6;
@@ -396,7 +399,7 @@
             this.cbPantalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPantalla.Enabled = false;
             this.cbPantalla.FormattingEnabled = true;
-            this.cbPantalla.Location = new System.Drawing.Point(93, 78);
+            this.cbPantalla.Location = new System.Drawing.Point(93, 101);
             this.cbPantalla.Name = "cbPantalla";
             this.cbPantalla.Size = new System.Drawing.Size(101, 21);
             this.cbPantalla.TabIndex = 5;
@@ -404,7 +407,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(6, 78);
+            this.label4.Location = new System.Drawing.Point(6, 101);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 4;
@@ -413,7 +416,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(222, 16);
+            this.label3.Location = new System.Drawing.Point(222, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 2;
@@ -455,12 +458,23 @@
             // chkPrivilegio
             // 
             this.chkPrivilegio.AutoSize = true;
-            this.chkPrivilegio.Location = new System.Drawing.Point(435, 100);
+            this.chkPrivilegio.Location = new System.Drawing.Point(435, 122);
             this.chkPrivilegio.Name = "chkPrivilegio";
             this.chkPrivilegio.Size = new System.Drawing.Size(15, 14);
             this.chkPrivilegio.TabIndex = 13;
             this.chkPrivilegio.UseVisualStyleBackColor = true;
             this.chkPrivilegio.CheckedChanged += new System.EventHandler(this.chkPrivilegio_CheckedChanged);
+            // 
+            // btnAgregarRol
+            // 
+            this.btnAgregarRol.Enabled = false;
+            this.btnAgregarRol.Location = new System.Drawing.Point(352, 16);
+            this.btnAgregarRol.Name = "btnAgregarRol";
+            this.btnAgregarRol.Size = new System.Drawing.Size(75, 37);
+            this.btnAgregarRol.TabIndex = 11;
+            this.btnAgregarRol.Text = "Agregar Rol";
+            this.btnAgregarRol.UseVisualStyleBackColor = true;
+            this.btnAgregarRol.Click += new System.EventHandler(this.button1_Click);
             // 
             // frmUsuario
             // 
@@ -531,5 +545,6 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnAgregarPrivilegios;
         private System.Windows.Forms.CheckBox chkEliminar;
+        private System.Windows.Forms.Button btnAgregarRol;
     }
 }

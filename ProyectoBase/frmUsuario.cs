@@ -22,7 +22,7 @@ namespace Vista
         private SqlDataReader dtrRol;     
         private clsConexion conexion;
         private clsEntidadRol entidadRol;
-        private clsRol rol;
+        private clsRol rol;       
 
         private clsPantalla pantalla;
         private clsEntidadPantalla entidadPantalla;
@@ -71,21 +71,35 @@ namespace Vista
         {
             conexion.codigo = "123";
             conexion.clave = "123";
-            entidadUsuario.mIdUsuario =Convert.ToInt32(txtId.Text);
-            dtrUsuario = usuario.mBuscarUsuario(conexion,entidadUsuario);
-            if (dtrUsuario != null)
+
+            if (mValidarInfoUsuario()==true & mValidarPrivilegioRolUsuario()==true)
             {
-                if (dtrUsuario.Read())
-                {
-                    txtNombreUsuario.Text = dtrUsuario.GetString(1);
-                    txtContrasena.Text = dtrUsuario.GetString(2);
 
-
-
-
-
-                }
             }
+            else
+            {
+                MessageBox.Show("Información insuficiente para agregar un usuario","Verifique los datos", MessageBoxButtons.OK,MessageBoxIcon.Error);
+            }
+            
+        }
+
+        public Boolean mValidarPrivilegioRolUsuario()
+        {
+            if (lvRoles.Items.Count>0|| lvPrivilegios.Items.Count>0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public Boolean mValidarInfoUsuario()
+        {
+            if (txtNombre.Text!="" & txtApellidos.Text!="" & txtContrasena.Text!="" & txtId.Text!="" & txtNombreUsuario.Text!=null)
+            {
+                return true;
+            }
+            return false;
         }
 
         private void btnBuscar_Click(object sender, EventArgs e)
@@ -219,10 +233,12 @@ namespace Vista
             if (cbRol.Enabled == true)
             {
                 cbRol.Enabled = false;
+                btnAgregarRol.Enabled = false;
             }
             else
             {
                 cbRol.Enabled = true;
+                btnAgregarRol.Enabled = true;
             }
         }
 
@@ -257,40 +273,139 @@ namespace Vista
                 chkPrivilegio.Enabled = true;
                 chkRol.Enabled = true;
 
-                lvRoles.Enabled = false;
-                lvPrivilegios.Enabled = false;
+                lvRoles.Enabled = true;
+                lvPrivilegios.Enabled = true;
 
-                btnEliminarPrivilegioPantalla.Enabled = false;
-                btnEliminarRol.Enabled = false;
+                btnEliminarPrivilegioPantalla.Enabled = true;
+                btnEliminarRol.Enabled = true;
+                
             }
             else
             {
-                if (estado == 1)
+                if (estado == 2)
                 {
-                    chkPrivilegio.Enabled = true;
-                    chkRol.Enabled = true;
+                    chkPrivilegio.Enabled = false;
+                    chkRol.Enabled = false;
 
-                    lvRoles.Enabled = true;
-                    lvPrivilegios.Enabled = true;
+                    lvRoles.Enabled = false;
+                    lvPrivilegios.Enabled = false;
 
-                    btnEliminarPrivilegioPantalla.Enabled = true;
-                    btnEliminarRol.Enabled = true;
+                    btnEliminarPrivilegioPantalla.Enabled = false;
+                    btnEliminarRol.Enabled = false;
+                }
+
+            }
+        }
+
+        private void btnAgregarPrivilegios_Click(object sender, EventArgs e)
+        {
+            if (cbPantalla.Text != "")
+            {
+                ListViewItem item = new ListViewItem(cbPantalla.Text);
+                if (chkInsertar.Checked == true)
+                {
+                    item.SubItems.Add("Sí");
                 }
                 else
                 {
-                    if (estado == 2)
-                    {
-                        chkPrivilegio.Enabled = false;
-                        chkRol.Enabled = false;
-
-                        lvRoles.Enabled = false;
-                        lvPrivilegios.Enabled = false;
-
-                        btnEliminarPrivilegioPantalla.Enabled = false;
-                        btnEliminarRol.Enabled = false;
-                    }
+                    item.SubItems.Add("No");
                 }
-                 
+
+                if (chkConsultar.Checked == true)
+                {
+                    item.SubItems.Add("Sí");
+                }
+                else
+                {
+                    item.SubItems.Add("No");
+                }
+
+                if (chkModificar.Checked == true)
+                {
+                    item.SubItems.Add("Sí");
+                }
+                else
+                {
+                    item.SubItems.Add("No");
+                }
+
+                if (chkEliminar.Checked == true)
+                {
+                    item.SubItems.Add("Sí");
+                }
+                else
+                {
+                    item.SubItems.Add("No");
+                }
+                lvPrivilegios.Items.Add(item);
+            }
+            else
+            {
+                MessageBox.Show("Seleccione una pantalla","Datos incompletos",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+            }
+            
+        }
+
+        private void btnEliminarPrivilegioPantalla_Click(object sender, EventArgs e)
+        {
+            if (itemSeleccionPrivilegio() != -1)
+            {
+                lvPrivilegios.Items.RemoveAt(itemSeleccionPrivilegio());
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un item válido", "No se ha seleccionado nada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        public int itemSeleccionPrivilegio()
+        {
+            for (int i = 0; i < lvPrivilegios.Items.Count; i++)
+            {
+                if (lvPrivilegios.Items[i].Selected)
+                {                    
+                    return lvPrivilegios.Items[i].Index;
+                }
+            }
+            return -1;
+        }
+
+        public int itemSeleccionRol()
+        {
+            for (int i = 0; i < lvRoles.Items.Count; i++)
+            {
+                if (lvRoles.Items[i].Selected)
+                {                    
+                    return lvRoles.Items[i].Index;
+                }
+            }
+            return -1;
+        }
+
+        private void btnEliminarRol_Click(object sender, EventArgs e)
+        {
+            if (itemSeleccionRol() != -1)
+            {
+                lvRoles.Items.RemoveAt(itemSeleccionRol());
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un item válido","No se ha seleccionado nada",MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            if (cbRol.Text != "")
+            {
+                ListViewItem item = new ListViewItem(cbRol.Text);
+                lvRoles.Items.Add(item);
+            }
+            else
+            {
+                MessageBox.Show("Seleccione un rol válido", "Rol no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
     }

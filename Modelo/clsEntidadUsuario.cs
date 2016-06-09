@@ -12,6 +12,10 @@ namespace Modelo
         private int idUsuario;
         private string usuario;
         private string contrasena;
+
+        private string nombre;
+        private string apellidos;
+        private string tipoUsuario;
         #endregion
 
         #region Propiedades
@@ -32,6 +36,22 @@ namespace Modelo
             set { contrasena = value; }
         }
 
+        public string mNombre
+        {
+            get { return nombre; }
+            set { nombre = value; }
+        }
+
+        public string mApellidos
+        {
+            get { return apellidos; }
+            set { apellidos = value; }
+        }
+        public string mTipoUsuario
+        {
+            get { return tipoUsuario; }
+            set { tipoUsuario = value; }
+        }
         #endregion
     }
 }

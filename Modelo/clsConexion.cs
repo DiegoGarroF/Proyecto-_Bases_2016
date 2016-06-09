@@ -103,14 +103,54 @@ namespace Modelo
         }
 
         //Este metodo permitira ejecutar los Insert, Update y Delete
-        public Boolean mEjecutar(string strSentencia, clsConexion cone)
+        public Boolean mEjecutar(string strSentencia, clsConexion cone, Object objeto)
         {
             try
             {
+                comando = new SqlCommand(strSentencia, conexion);
+                comando.CommandType = System.Data.CommandType.Text;
 
-                comando = new SqlCommand(strSentencia, this.conexion);
-                comando.ExecuteNonQuery();
-                return true;
+                if (objeto is clsEntidadUsuario)
+                {
+                    clsEntidadUsuario entidadUsuario = (clsEntidadUsuario)objeto;
+                    
+                    comando.Parameters.AddWithValue("@nombreUsuario", entidadUsuario.mUsuario);
+                    comando.Parameters.AddWithValue("@contrasena", entidadUsuario.mContrasena);
+                    comando.Parameters.AddWithValue("@nombre", entidadUsuario.mNombre);
+                    comando.Parameters.AddWithValue("@tipoUsuario", entidadUsuario.mTipoUsuario);
+                    comando.Parameters.AddWithValue("@apellidos", entidadUsuario.mApellidos);
+                    comando.ExecuteNonQuery();
+                    return true;
+                }
+                else
+                {
+                    if(objeto is clsEntidadRol)
+                    {
+                        clsEntidadRol entidadRol = (clsEntidadRol)objeto;
+                        comando.Parameters.AddWithValue("@nombre", entidadRol.mNombreRol);
+                        comando.ExecuteNonQuery();
+                        return true;
+                    }
+                    else
+                    {
+                        if(objeto is clsEntidadUsuarioPantalla)
+                        {
+                            clsEntidadUsuarioPantalla entidadUsuarioPantalla = (clsEntidadUsuarioPantalla)objeto;
+                            comando.Parameters.AddWithValue("@idUsuario", entidadUsuarioPantalla.mIdUsuario);
+                            comando.Parameters.AddWithValue("@idPantalla", entidadUsuarioPantalla.mIdPantalla);
+                            comando.Parameters.AddWithValue("@modificar", entidadUsuarioPantalla.mModificar);
+                            comando.Parameters.AddWithValue("@insertar", entidadUsuarioPantalla.mInsertar);
+                            comando.Parameters.AddWithValue("@consultar", entidadUsuarioPantalla.mConsultar);
+                            comando.Parameters.AddWithValue("@eliminar", entidadUsuarioPantalla.mEliminar);
+                            comando.ExecuteNonQuery();
+                            return true;
+
+                        }
+                    }
+                }
+
+               
+                return false;
            
             }
             catch

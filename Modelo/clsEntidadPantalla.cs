@@ -11,7 +11,7 @@ namespace Modelo
         private int idPantalla;
         private string nombrePantalla;
 
-        public int mIdRol
+        public int mIdPantalla
         {
             get { return idPantalla; }
             set { idPantalla = value; }

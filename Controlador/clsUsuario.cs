@@ -31,5 +31,11 @@ namespace Controlador
             sentencia = "select nombre, apellidos, tipoUsuario from tbUsuario";
             return conexion.mSeleccionarGeneral(conexion, sentencia);
         }
+
+        public Boolean mInsertarUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
+        {
+            sentencia = "insert into tbUsuario(usuario, contrasena, nombre, tipoUsuario, apellidos) values (@usuario, @contrasena, @nombre, @tipoUsuario, @apellidos) ";
+            return conexion.mEjecutar(sentencia,conexion, pEntidadUsuario); 
+        }
     }
 }

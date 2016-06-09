@@ -68,25 +68,76 @@ namespace Vista
             this.btnAccion.Text = tipo;
         }
 
+        private void mAgregarUsuario()
+        {
+            conexion.codigo = "123";
+            conexion.clave = "123";
+            if ((mValidarInfoUsuario() == true & mValidarPrivilegioUsuario() == true) || (mValidarRolUsuario() == true & mValidarInfoUsuario() == true))
+            {
+                if (mValidarRolUsuario() == true)
+                {
+                    entidadUsuario.mUsuario = txtNombreUsuario.Text;
+                    entidadUsuario.mContrasena = txtContrasena.Text;
+                    entidadUsuario.mNombre = txtNombre.Text;
+                    entidadUsuario.mTipoUsuario = txtTipoUsuario.Text;
+                    entidadUsuario.mApellidos = txtApellidos.Text;
+
+                    if (usuario.mInsertarUsuario(conexion, entidadUsuario))
+                    {
+                        MessageBox.Show("Se insertó correctamente el usuario","Éxito", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    }
+                }
+                else
+                {
+                    if (mValidarPrivilegioUsuario() == true)
+                    {
+
+                    }
+                    else
+                    {
+                        if (mValidarPrivilegioUsuario() == true & mValidarRolUsuario() == true)
+                        {
+
+                        }
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Información insuficiente para agregar un usuario", "Verifique los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
         private void btnAccion_Click(object sender, EventArgs e)
         {
             conexion.codigo = "123";
             conexion.clave = "123";
-
-            if (mValidarInfoUsuario()==true & mValidarPrivilegioRolUsuario()==true)
+            
+            if(btnAccion.Text== "Agregar")
             {
+                mAgregarUsuario();
+            }
 
-            }
-            else
-            {
-                MessageBox.Show("Información insuficiente para agregar un usuario","Verifique los datos", MessageBoxButtons.OK,MessageBoxIcon.Error);
-            }
+            
             
         }
 
-        public Boolean mValidarPrivilegioRolUsuario()
+        public Boolean mValidarPrivilegioUsuario()
         {
-            if (lvRoles.Items.Count>0|| lvPrivilegios.Items.Count>0)
+            if (lvPrivilegios.Items.Count>0)
+            {
+                return true;
+            }
+
+            return false;
+        }
+        public Boolean mValidarRolUsuario()
+        {
+            if (lvRoles.Items.Count > 0)
             {
                 return true;
             }

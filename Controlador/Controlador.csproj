@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="Class1.cs" />
     <Compile Include="clsLibro.cs" />
+    <Compile Include="clsPantalla.cs" />
     <Compile Include="clsPrestamo.cs" />
+    <Compile Include="clsRol.cs" />
     <Compile Include="clsUsuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

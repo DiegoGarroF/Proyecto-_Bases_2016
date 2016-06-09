@@ -42,7 +42,9 @@
   <ItemGroup>
     <Compile Include="clsConexion.cs" />
     <Compile Include="clsConstantes.cs" />
+    <Compile Include="clsEntidadPantalla.cs" />
     <Compile Include="clsEntidadPrestamo.cs" />
+    <Compile Include="clsEntidadRol.cs" />
     <Compile Include="clsEntidadTrabajador.cs" />
     <Compile Include="clsEntidadUsuario.cs" />
     <Compile Include="clsEntidadLibro.cs" />

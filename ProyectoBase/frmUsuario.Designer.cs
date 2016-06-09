@@ -45,6 +45,12 @@
             this.lblApellidos = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnEliminarPrivilegioPantalla = new System.Windows.Forms.Button();
+            this.btnEliminarRol = new System.Windows.Forms.Button();
+            this.lvPrivilegios = new System.Windows.Forms.ListView();
+            this.lvPantallaColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvRoles = new System.Windows.Forms.ListView();
+            this.lvRolColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbPantalla = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,13 +60,10 @@
             this.cbRol = new System.Windows.Forms.ComboBox();
             this.chkRol = new System.Windows.Forms.CheckBox();
             this.chkPrivilegio = new System.Windows.Forms.CheckBox();
-            this.lvRoles = new System.Windows.Forms.ListView();
-            this.lvRolColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvPrivilegios = new System.Windows.Forms.ListView();
-            this.lvPrivilegioColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lvPantallaColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnEliminarRol = new System.Windows.Forms.Button();
-            this.btnEliminarPrivilegioPantalla = new System.Windows.Forms.Button();
+            this.lvInsertarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvConsultarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvModificarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvEliminarColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.gbxBotones.SuspendLayout();
             this.gbxDatos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -225,12 +228,73 @@
             this.groupBox2.Controls.Add(this.btnEliminarRol);
             this.groupBox2.Controls.Add(this.lvPrivilegios);
             this.groupBox2.Controls.Add(this.lvRoles);
-            this.groupBox2.Location = new System.Drawing.Point(459, 191);
+            this.groupBox2.Location = new System.Drawing.Point(413, 191);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(429, 241);
+            this.groupBox2.Size = new System.Drawing.Size(502, 241);
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Roles y Privilegios asignados a este usuario";
+            // 
+            // btnEliminarPrivilegioPantalla
+            // 
+            this.btnEliminarPrivilegioPantalla.Enabled = false;
+            this.btnEliminarPrivilegioPantalla.Location = new System.Drawing.Point(271, 192);
+            this.btnEliminarPrivilegioPantalla.Name = "btnEliminarPrivilegioPantalla";
+            this.btnEliminarPrivilegioPantalla.Size = new System.Drawing.Size(75, 43);
+            this.btnEliminarPrivilegioPantalla.TabIndex = 3;
+            this.btnEliminarPrivilegioPantalla.Text = "Eliminar provilegio";
+            this.btnEliminarPrivilegioPantalla.UseVisualStyleBackColor = true;
+            // 
+            // btnEliminarRol
+            // 
+            this.btnEliminarRol.Enabled = false;
+            this.btnEliminarRol.Location = new System.Drawing.Point(22, 192);
+            this.btnEliminarRol.Name = "btnEliminarRol";
+            this.btnEliminarRol.Size = new System.Drawing.Size(75, 43);
+            this.btnEliminarRol.TabIndex = 2;
+            this.btnEliminarRol.Text = "Eliminar rol";
+            this.btnEliminarRol.UseVisualStyleBackColor = true;
+            // 
+            // lvPrivilegios
+            // 
+            this.lvPrivilegios.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvPantallaColumna,
+            this.lvInsertarColumna,
+            this.lvConsultarColumna,
+            this.lvModificarColumna,
+            this.lvEliminarColumna});
+            this.lvPrivilegios.Enabled = false;
+            this.lvPrivilegios.FullRowSelect = true;
+            this.lvPrivilegios.GridLines = true;
+            this.lvPrivilegios.Location = new System.Drawing.Point(140, 32);
+            this.lvPrivilegios.Name = "lvPrivilegios";
+            this.lvPrivilegios.Size = new System.Drawing.Size(323, 143);
+            this.lvPrivilegios.TabIndex = 1;
+            this.lvPrivilegios.UseCompatibleStateImageBehavior = false;
+            this.lvPrivilegios.View = System.Windows.Forms.View.Details;
+            // 
+            // lvPantallaColumna
+            // 
+            this.lvPantallaColumna.Text = "Pantalla";
+            this.lvPantallaColumna.Width = 98;
+            // 
+            // lvRoles
+            // 
+            this.lvRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.lvRolColumna});
+            this.lvRoles.Enabled = false;
+            this.lvRoles.GridLines = true;
+            this.lvRoles.Location = new System.Drawing.Point(12, 32);
+            this.lvRoles.Name = "lvRoles";
+            this.lvRoles.Size = new System.Drawing.Size(109, 143);
+            this.lvRoles.TabIndex = 0;
+            this.lvRoles.UseCompatibleStateImageBehavior = false;
+            this.lvRoles.View = System.Windows.Forms.View.Details;
+            // 
+            // lvRolColumna
+            // 
+            this.lvRolColumna.Text = "Rol";
+            this.lvRolColumna.Width = 105;
             // 
             // groupBox1
             // 
@@ -332,68 +396,24 @@
             this.chkPrivilegio.UseVisualStyleBackColor = true;
             this.chkPrivilegio.CheckedChanged += new System.EventHandler(this.chkPrivilegio_CheckedChanged);
             // 
-            // lvRoles
+            // lvInsertarColumna
             // 
-            this.lvRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.lvRolColumna});
-            this.lvRoles.Enabled = false;
-            this.lvRoles.GridLines = true;
-            this.lvRoles.Location = new System.Drawing.Point(32, 32);
-            this.lvRoles.Name = "lvRoles";
-            this.lvRoles.Size = new System.Drawing.Size(109, 143);
-            this.lvRoles.TabIndex = 0;
-            this.lvRoles.UseCompatibleStateImageBehavior = false;
-            this.lvRoles.View = System.Windows.Forms.View.Details;
+            this.lvInsertarColumna.Text = "Insertar";
+            this.lvInsertarColumna.Width = 47;
             // 
-            // lvRolColumna
+            // lvConsultarColumna
             // 
-            this.lvRolColumna.Text = "Rol";
-            this.lvRolColumna.Width = 105;
+            this.lvConsultarColumna.Text = "Consultar";
             // 
-            // lvPrivilegios
+            // lvModificarColumna
             // 
-            this.lvPrivilegios.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.lvPrivilegioColumna,
-            this.lvPantallaColumna});
-            this.lvPrivilegios.Enabled = false;
-            this.lvPrivilegios.FullRowSelect = true;
-            this.lvPrivilegios.GridLines = true;
-            this.lvPrivilegios.Location = new System.Drawing.Point(213, 32);
-            this.lvPrivilegios.Name = "lvPrivilegios";
-            this.lvPrivilegios.Size = new System.Drawing.Size(194, 143);
-            this.lvPrivilegios.TabIndex = 1;
-            this.lvPrivilegios.UseCompatibleStateImageBehavior = false;
-            this.lvPrivilegios.View = System.Windows.Forms.View.Details;
+            this.lvModificarColumna.Text = "Modificar";
+            this.lvModificarColumna.Width = 56;
             // 
-            // lvPrivilegioColumna
+            // lvEliminarColumna
             // 
-            this.lvPrivilegioColumna.Text = "Privilegio";
-            this.lvPrivilegioColumna.Width = 90;
-            // 
-            // lvPantallaColumna
-            // 
-            this.lvPantallaColumna.Text = "Pantalla";
-            this.lvPantallaColumna.Width = 98;
-            // 
-            // btnEliminarRol
-            // 
-            this.btnEliminarRol.Enabled = false;
-            this.btnEliminarRol.Location = new System.Drawing.Point(46, 192);
-            this.btnEliminarRol.Name = "btnEliminarRol";
-            this.btnEliminarRol.Size = new System.Drawing.Size(75, 43);
-            this.btnEliminarRol.TabIndex = 2;
-            this.btnEliminarRol.Text = "Eliminar rol";
-            this.btnEliminarRol.UseVisualStyleBackColor = true;
-            // 
-            // btnEliminarPrivilegioPantalla
-            // 
-            this.btnEliminarPrivilegioPantalla.Enabled = false;
-            this.btnEliminarPrivilegioPantalla.Location = new System.Drawing.Point(271, 192);
-            this.btnEliminarPrivilegioPantalla.Name = "btnEliminarPrivilegioPantalla";
-            this.btnEliminarPrivilegioPantalla.Size = new System.Drawing.Size(75, 43);
-            this.btnEliminarPrivilegioPantalla.TabIndex = 3;
-            this.btnEliminarPrivilegioPantalla.Text = "Eliminar provilegio";
-            this.btnEliminarPrivilegioPantalla.UseVisualStyleBackColor = true;
+            this.lvEliminarColumna.Text = "Eliminar";
+            this.lvEliminarColumna.Width = 58;
             // 
             // frmUsuario
             // 
@@ -453,9 +473,12 @@
         private System.Windows.Forms.Button btnEliminarPrivilegioPantalla;
         private System.Windows.Forms.Button btnEliminarRol;
         private System.Windows.Forms.ListView lvPrivilegios;
-        private System.Windows.Forms.ColumnHeader lvPrivilegioColumna;
         private System.Windows.Forms.ColumnHeader lvPantallaColumna;
         private System.Windows.Forms.ListView lvRoles;
         private System.Windows.Forms.ColumnHeader lvRolColumna;
+        private System.Windows.Forms.ColumnHeader lvInsertarColumna;
+        private System.Windows.Forms.ColumnHeader lvConsultarColumna;
+        private System.Windows.Forms.ColumnHeader lvModificarColumna;
+        private System.Windows.Forms.ColumnHeader lvEliminarColumna;
     }
 }

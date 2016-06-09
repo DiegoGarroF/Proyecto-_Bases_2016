@@ -19,7 +19,14 @@ namespace Vista
         private clsEntidadUsuario entidadUsuario;
         private clsUsuario usuario;
         private SqlDataReader dtrUsuario;
+        private SqlDataReader dtrRol;     
         private clsConexion conexion;
+        private clsEntidadRol entidadRol;
+        private clsRol rol;
+
+        private clsPantalla pantalla;
+        private clsEntidadPantalla entidadPantalla;
+        private SqlDataReader dtrPantalla;
 
         private frmMenuPrincipal menu;
         public frmUsuario(frmMenuPrincipal menuPrincipal)
@@ -29,6 +36,12 @@ namespace Vista
             entidadUsuario = new clsEntidadUsuario();
             usuario = new clsUsuario();
             conexion = new clsConexion();
+
+            entidadRol = new clsEntidadRol();
+            rol = new clsRol();
+
+            entidadPantalla = new clsEntidadPantalla();
+            pantalla = new clsPantalla();
 
         }
 
@@ -79,6 +92,75 @@ namespace Vista
                 entidadUsuario.mIdUsuario=lista.mIdUsuario;
                 txtId.Text = Convert.ToString(lista.mIdUsuario);
                 mConsultaCodigo();
+                cargarRolesUsuario();
+                cargarPrivilPantallasUsuario();
+            }
+        }
+
+        public void cargarRolesUsuario()
+        {
+            conexion.clave = "123";
+            conexion.codigo = "123";
+
+            dtrRol = rol.mConsultaRolesUsuario(conexion);
+
+            if (dtrRol != null)
+            {
+                while (dtrRol.Read())
+                {
+                    ListViewItem item = new ListViewItem(dtrRol.GetString(0));
+                    lvRoles.Items.Add(item);
+                }
+            }
+        }
+
+        public void cargarPrivilPantallasUsuario()
+        {
+            conexion.clave = "123";
+            conexion.codigo = "123";
+
+            dtrPantalla = pantalla.mConsultaPrivPantaUsuario(conexion);
+
+            if (dtrPantalla != null)
+            {
+                while (dtrPantalla.Read())
+                {
+                    ListViewItem item = new ListViewItem(dtrPantalla.GetString(0));
+
+                    if (dtrPantalla.GetBoolean(1) == true)
+                    {
+                        item.SubItems.Add("Sí");
+                    }
+                    else
+                    {
+                        item.SubItems.Add("No");
+                    }
+                    if (dtrPantalla.GetBoolean(2) == true)
+                    {
+                        item.SubItems.Add("Sí");
+                    }
+                    else
+                    {
+                        item.SubItems.Add("No");
+                    }
+                    if (dtrPantalla.GetBoolean(3) == true)
+                    {
+                        item.SubItems.Add("Sí");
+                    }
+                    else
+                    {
+                        item.SubItems.Add("No");
+                    }
+                    if (dtrPantalla.GetBoolean(4) == true)
+                    {
+                        item.SubItems.Add("Sí");
+                    }
+                    else
+                    {
+                        item.SubItems.Add("No");
+                    }
+                    lvPrivilegios.Items.Add(item);
+                }
             }
         }
 
@@ -144,23 +226,47 @@ namespace Vista
             }
         }
 
-        public void controlAgregarRolPriv(Boolean estado)
+        public void controlAgregarRolPriv(int estado)
         {
-            if (estado == true)
+            if (estado ==0)
             {
                 chkPrivilegio.Enabled = true;
                 chkRol.Enabled = true;
 
                 lvRoles.Enabled = false;
-                lvPrivilegios.Enabled = false;           
+                lvPrivilegios.Enabled = false;
+
+                btnEliminarPrivilegioPantalla.Enabled = false;
+                btnEliminarRol.Enabled = false;
             }
             else
             {
-                chkPrivilegio.Enabled = false;
-                chkRol.Enabled = false;
+                if (estado == 1)
+                {
+                    chkPrivilegio.Enabled = true;
+                    chkRol.Enabled = true;
 
-                lvRoles.Enabled = true;
-                lvPrivilegios.Enabled = true;
+                    lvRoles.Enabled = true;
+                    lvPrivilegios.Enabled = true;
+
+                    btnEliminarPrivilegioPantalla.Enabled = true;
+                    btnEliminarRol.Enabled = true;
+                }
+                else
+                {
+                    if (estado == 2)
+                    {
+                        chkPrivilegio.Enabled = false;
+                        chkRol.Enabled = false;
+
+                        lvRoles.Enabled = false;
+                        lvPrivilegios.Enabled = false;
+
+                        btnEliminarPrivilegioPantalla.Enabled = false;
+                        btnEliminarRol.Enabled = false;
+                    }
+                }
+                
             }
         }
     }

@@ -38,3 +38,4 @@ C:\Users\Diego\Desktop\Proyecto_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.f
 F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmListaGeneral.resources
 F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\ProyectoBase.frmPrestamos.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\bin\Debug\ProyectoBase.exe.config
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmBitacora.resources

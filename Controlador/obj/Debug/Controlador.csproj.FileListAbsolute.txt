@@ -1,0 +1,7 @@
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\bin\Debug\Controlador.dll
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\bin\Debug\Controlador.pdb
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\bin\Debug\Modelo.dll
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\bin\Debug\Modelo.pdb
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.csprojResolveAssemblyReference.cache
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.dll
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.pdb

@@ -1,0 +1,5 @@
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Modelo\bin\Debug\Modelo.dll
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Modelo\bin\Debug\Modelo.pdb
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Modelo\obj\Debug\Modelo.dll
+F:\Documentos\Visual Studio 2015\Projects\Proyecto-_Bases_2016\Modelo\obj\Debug\Modelo.pdb

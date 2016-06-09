@@ -49,6 +49,7 @@ namespace Vista
         {
             
             dtrUsuario = pantalla.mConsultarPantallas(conexion);
+            if(dtrUsuario!=null)
             while (dtrUsuario.Read())
             {
                 cbPantalla.Items.Add(dtrUsuario.GetSqlString(0));

@@ -96,7 +96,7 @@ namespace Vista
 
         public Boolean mValidarInfoUsuario()
         {
-            if (txtNombre.Text!="" & txtApellidos.Text!="" & txtContrasena.Text!="" & txtId.Text!="" & txtNombreUsuario.Text!=null)
+            if (txtNombre.Text!="" & txtApellidos.Text!="" & txtContrasena.Text!="" & txtId.Text!="" & txtNombreUsuario.Text!="" & txtNombre.Text!="" & txtApellidos.Text!="" & txtTipoUsuario.Text!="")
             {
                 return true;
             }
@@ -200,6 +200,9 @@ namespace Vista
                 {
                     txtNombreUsuario.Text = dtrUsuario.GetString(1);
                     txtContrasena.Text= dtrUsuario.GetString(2);
+                    txtNombre.Text = dtrUsuario.GetString(3);
+                    txtApellidos.Text = dtrUsuario.GetString(4);
+                    txtTipoUsuario.Text = dtrUsuario.GetString(5); ;
                 }
                 else
                 {
@@ -225,6 +228,9 @@ namespace Vista
             txtId.Text = "";
             txtContrasena.Text = "";
             txtNombreUsuario.Text = "";
+            txtNombre.Text = "";
+            txtApellidos.Text = "";
+            txtTipoUsuario.Text = "";
             lvPrivilegios.Items.Clear();
             lvRoles.Items.Clear();
         }

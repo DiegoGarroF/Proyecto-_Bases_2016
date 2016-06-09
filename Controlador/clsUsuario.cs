@@ -14,7 +14,7 @@ namespace Controlador
 
         public SqlDataReader mBuscarUsuario(clsConexion conexion,clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "select idUsuario, usuario, contrasena from tbUsuario where idUsuario=@codigo";
+            sentencia = "select idUsuario, usuario, contrasena, nombre, apellidos, tipoUsuario from tbUsuario where idUsuario=@codigo";
 
            
             return conexion.mSeleccionar(sentencia,pEntidadUsuario.mIdUsuario);

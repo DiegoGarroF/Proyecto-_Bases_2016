@@ -56,6 +56,7 @@
             this.lvRoles = new System.Windows.Forms.ListView();
             this.lvRolColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAgregarRol = new System.Windows.Forms.Button();
             this.btnAgregarPrivilegios = new System.Windows.Forms.Button();
             this.chkEliminar = new System.Windows.Forms.CheckBox();
             this.chkModificar = new System.Windows.Forms.CheckBox();
@@ -68,7 +69,8 @@
             this.cbRol = new System.Windows.Forms.ComboBox();
             this.chkRol = new System.Windows.Forms.CheckBox();
             this.chkPrivilegio = new System.Windows.Forms.CheckBox();
-            this.btnAgregarRol = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtTipoUsuario = new System.Windows.Forms.TextBox();
             this.gbxBotones.SuspendLayout();
             this.gbxDatos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -178,6 +180,8 @@
             // 
             // gbxDatos
             // 
+            this.gbxDatos.Controls.Add(this.txtTipoUsuario);
+            this.gbxDatos.Controls.Add(this.label5);
             this.gbxDatos.Controls.Add(this.txtApellidos);
             this.gbxDatos.Controls.Add(this.txtNombre);
             this.gbxDatos.Controls.Add(this.lblApellidos);
@@ -339,6 +343,17 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             // 
+            // btnAgregarRol
+            // 
+            this.btnAgregarRol.Enabled = false;
+            this.btnAgregarRol.Location = new System.Drawing.Point(352, 16);
+            this.btnAgregarRol.Name = "btnAgregarRol";
+            this.btnAgregarRol.Size = new System.Drawing.Size(75, 37);
+            this.btnAgregarRol.TabIndex = 11;
+            this.btnAgregarRol.Text = "Agregar Rol";
+            this.btnAgregarRol.UseVisualStyleBackColor = true;
+            this.btnAgregarRol.Click += new System.EventHandler(this.button1_Click);
+            // 
             // btnAgregarPrivilegios
             // 
             this.btnAgregarPrivilegios.Enabled = false;
@@ -465,16 +480,21 @@
             this.chkPrivilegio.UseVisualStyleBackColor = true;
             this.chkPrivilegio.CheckedChanged += new System.EventHandler(this.chkPrivilegio_CheckedChanged);
             // 
-            // btnAgregarRol
+            // label5
             // 
-            this.btnAgregarRol.Enabled = false;
-            this.btnAgregarRol.Location = new System.Drawing.Point(352, 16);
-            this.btnAgregarRol.Name = "btnAgregarRol";
-            this.btnAgregarRol.Size = new System.Drawing.Size(75, 37);
-            this.btnAgregarRol.TabIndex = 11;
-            this.btnAgregarRol.Text = "Agregar Rol";
-            this.btnAgregarRol.UseVisualStyleBackColor = true;
-            this.btnAgregarRol.Click += new System.EventHandler(this.button1_Click);
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 258);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Tipo:";
+            // 
+            // txtTipoUsuario
+            // 
+            this.txtTipoUsuario.Location = new System.Drawing.Point(126, 258);
+            this.txtTipoUsuario.Name = "txtTipoUsuario";
+            this.txtTipoUsuario.Size = new System.Drawing.Size(153, 20);
+            this.txtTipoUsuario.TabIndex = 17;
             // 
             // frmUsuario
             // 
@@ -546,5 +566,7 @@
         private System.Windows.Forms.Button btnAgregarPrivilegios;
         private System.Windows.Forms.CheckBox chkEliminar;
         private System.Windows.Forms.Button btnAgregarRol;
+        private System.Windows.Forms.TextBox txtTipoUsuario;
+        private System.Windows.Forms.Label label5;
     }
 }

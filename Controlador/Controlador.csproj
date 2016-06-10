@@ -46,6 +46,7 @@
     <Compile Include="clsPrestamo.cs" />
     <Compile Include="clsRol.cs" />
     <Compile Include="clsUsuario.cs" />
+    <Compile Include="clsUsuarioPantalla.cs" />
     <Compile Include="clsUsuarioRol.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

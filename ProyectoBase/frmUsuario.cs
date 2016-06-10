@@ -22,7 +22,13 @@ namespace Vista
         private SqlDataReader dtrRol;     
         private clsConexion conexion;
         private clsEntidadRol entidadRol;
-        private clsRol rol;       
+        private clsRol rol;
+
+        private clsUsuarioRol usuarioRol;
+        private clsEntidadUsuarioRol entidadUsuarioRol;
+
+        private clsEntidadUsuarioPantalla entidadUsuarioPantalla;
+        private clsUsuarioPantalla usuarioPantalla;
 
         private clsPantalla pantalla;
         private clsEntidadPantalla entidadPantalla;
@@ -42,6 +48,12 @@ namespace Vista
 
             entidadPantalla = new clsEntidadPantalla();
             pantalla = new clsPantalla();
+
+            usuarioRol = new clsUsuarioRol();
+            entidadUsuarioRol = new clsEntidadUsuarioRol();
+
+            entidadUsuarioPantalla = new clsEntidadUsuarioPantalla();
+            usuarioPantalla = new clsUsuarioPantalla();
 
         }
 
@@ -72,9 +84,10 @@ namespace Vista
         {
             conexion.codigo = "123";
             conexion.clave = "123";
+            //Se compara si se está asignando un rol o privilegio a un usuario, y si además se llenaron todos los datos del usuario
             if ((mValidarInfoUsuario() == true & mValidarPrivilegioUsuario() == true) || (mValidarRolUsuario() == true & mValidarInfoUsuario() == true))
             {
-                if (mValidarRolUsuario() == true)
+                if (mValidarPrivilegioUsuario() == true & mValidarRolUsuario() == true)
                 {
                     //entidadUsuario.mUsuario = txtNombreUsuario.Text;
                     //entidadUsuario.mContrasena = txtContrasena.Text;
@@ -82,19 +95,27 @@ namespace Vista
                     //entidadUsuario.mTipoUsuario = txtTipoUsuario.Text;
                     //entidadUsuario.mApellidos = txtApellidos.Text;
 
-                    foreach (ListViewItem I in lvRoles.Items)
-                    {
-                        entidadRol.mNombreRol = I.SubItems[0].Text;
-                        Console.WriteLine(I.SubItems[0].Text);
-                        //Debo hacer un select para sacar el id del rol
-                        //dtrRol = rol.mConsultaIdRoles(conexion,entidadRol);
+                    //Privilegio sobre pantallas
+                    entidadUsuarioPantalla.mIdUsuario =Convert.ToInt32(txtId.Text);
+                    
 
-
-                    }
                     /*
                     if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                     {
                         MessageBox.Show("Se insertó correctamente el usuario","Éxito", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                         foreach (ListViewItem I in lvRoles.Items)
+                    {
+                        entidadRol.mNombreRol = I.SubItems[0].Text;
+                        dtrRol = rol.mConsultaIdRoles(conexion,entidadRol);
+                        if (dtrRol != null)
+                            if (dtrRol.Read())
+                            {
+                                entidadUsuarioRol.mIdRol=dtrRol.GetInt32(0);
+                                entidadUsuarioRol.mIdUsuario =Convert.ToInt32( txtId.Text);
+                                usuarioRol.mInsertarUsuarioRol(conexion,entidadUsuarioRol);
+                            }
+
+                    }
                         limpiar();
                     }
                     else
@@ -110,7 +131,7 @@ namespace Vista
                     }
                     else
                     {
-                        if (mValidarPrivilegioUsuario() == true & mValidarRolUsuario() == true)
+                        if (mValidarRolUsuario() == true)
                         {
 
                         }

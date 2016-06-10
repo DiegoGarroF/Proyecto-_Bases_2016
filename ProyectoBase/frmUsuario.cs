@@ -120,72 +120,89 @@ namespace Vista
 
         }
 
+        public void agregarUsuarioRolPrivilegio(int idUsuarioAgregado)
+        {            
+                agregarUsuarioRol(idUsuarioAgregado);
+                agregarUsuarioPrivilegio(idUsuarioAgregado);
+                limpiar();
+        }
+        public void agregarUsuarioRol(int idUsuarioAgregado)
+        {
+            foreach (ListViewItem I in lvRoles.Items)
+            {
+                entidadRol.mNombreRol = I.SubItems[0].Text;
+                dtrRol = rol.mConsultaIdRoles(conexion, entidadRol);
+                if (dtrRol != null)
+                    if (dtrRol.Read())
+                    {
+                        entidadUsuarioRol.mIdRol = dtrRol.GetInt32(0);
+                        entidadUsuarioRol.mIdUsuario = idUsuarioAgregado;
+                        if (usuarioRol.mInsertarUsuarioRol(conexion, entidadUsuarioRol))
+                        {
+                            MessageBox.Show("Se insertó rol del usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                    }
+
+            }
+        }
+
+        public void agregarUsuarioPrivilegio(int idUsuarioAgregado)
+        {
+            entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
+            foreach (ListViewItem I in lvPrivilegios.Items)
+            {
+                entidadPantalla.mNombrePantalla = I.SubItems[0].Text;
+                dtrPantalla = pantalla.mConsultaIdPantalla(conexion, entidadPantalla);
+                if (dtrPantalla != null)
+                    if (dtrPantalla.Read())
+                    {
+                        entidadUsuarioPantalla.mIdPantalla = dtrPantalla.GetInt32(0);
+                        entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
+                        llenarPrivilegiosUsuarioPantalla(I);
+                        if (usuarioPantalla.mInsertarUsuarioPantalla(conexion, entidadUsuarioPantalla))
+                        {
+                            MessageBox.Show("Se insertó privilegios del usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
+
+                    }
+
+            }
+        }
+
+        public int seleccionIdUsuarioAgregado()
+        {
+            entidadUsuario.mUsuario = txtNombreUsuario.Text;
+            dtrUsuario = usuario.mConsultaIdUsuario(conexion, entidadUsuario);
+            if (dtrUsuario != null)
+                if (dtrUsuario.Read())//Deve devolver solo 1
+                {
+                    return  dtrUsuario.GetInt32(0);
+                }
+            return -1;
+        }
+
         private void mAgregarUsuario()
         {
             conexion.codigo = "123";
             conexion.clave = "123";
             int idUsuarioAgregado=-1;
+            entidadUsuario.mUsuario = txtNombreUsuario.Text;
+            entidadUsuario.mContrasena = txtContrasena.Text;
+            entidadUsuario.mNombre = txtNombre.Text;
+            entidadUsuario.mTipoUsuario = txtTipoUsuario.Text;
+            entidadUsuario.mApellidos = txtApellidos.Text;
+
             //Se compara si se está asignando un rol o privilegio a un usuario, y si además se llenaron todos los datos del usuario
             if ((mValidarInfoUsuario() == true & mValidarPrivilegioUsuario() == true) || (mValidarRolUsuario() == true & mValidarInfoUsuario() == true))
-            {
-                if (mValidarPrivilegioUsuario() & mValidarRolUsuario() == true)
-                {
-                    entidadUsuario.mUsuario = txtNombreUsuario.Text;
-                    entidadUsuario.mContrasena = txtContrasena.Text;
-                    entidadUsuario.mNombre = txtNombre.Text;
-                    entidadUsuario.mTipoUsuario = txtTipoUsuario.Text;
-                    entidadUsuario.mApellidos = txtApellidos.Text;                              
+            {                
 
-                    
+                if (mValidarPrivilegioUsuario() & mValidarRolUsuario() == true)
+                {                                                                     
                     if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                     {
-                        entidadUsuario.mUsuario = txtNombreUsuario.Text;
-                        dtrUsuario = usuario.mConsultaIdUsuario(conexion,entidadUsuario);
-                        if(dtrUsuario!=null)
-                            if (dtrUsuario.Read())//Deve devolver solo 1
-                            {
-                                idUsuarioAgregado = dtrUsuario.GetInt32(0);
-                            }
-
-                    foreach (ListViewItem I in lvRoles.Items)
-                    {
-                        entidadRol.mNombreRol = I.SubItems[0].Text;
-                        dtrRol = rol.mConsultaIdRoles(conexion,entidadRol);
-                        if (dtrRol != null)
-                            if (dtrRol.Read())
-                            {
-                                entidadUsuarioRol.mIdRol=dtrRol.GetInt32(0);
-                                entidadUsuarioRol.mIdUsuario = idUsuarioAgregado;
-                                    if (usuarioRol.mInsertarUsuarioRol(conexion, entidadUsuarioRol)){
-                                        MessageBox.Show("Se insertó rol del usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    
-                                }
-
-                    }
-                        
-
-                        entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
-                    foreach (ListViewItem I in lvPrivilegios.Items)
-                    {
-                        entidadPantalla.mNombrePantalla = I.SubItems[0].Text;
-                        dtrPantalla = pantalla.mConsultaIdPantalla(conexion, entidadPantalla);
-                        if (dtrPantalla != null)
-                            if (dtrPantalla.Read())
-                            {
-                                entidadUsuarioPantalla.mIdPantalla = dtrPantalla.GetInt32(0);
-                                entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
-                                llenarPrivilegiosUsuarioPantalla(I);
-                               if(usuarioPantalla.mInsertarUsuarioPantalla(conexion, entidadUsuarioPantalla))
-                                    {
-                                        MessageBox.Show("Se insertó privilegios del usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    }
-                                    
-                                }
-
-                    }
-                        MessageBox.Show("Se insertó correctamente el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        limpiar();
+                        idUsuarioAgregado=seleccionIdUsuarioAgregado();
+                        agregarUsuarioRolPrivilegio(idUsuarioAgregado);
                     }
                     else
                     {
@@ -197,12 +214,29 @@ namespace Vista
                     if (mValidarPrivilegioUsuario() == true)
                     {
 
+                        if (usuario.mInsertarUsuario(conexion, entidadUsuario))
+                        {
+                            idUsuarioAgregado = seleccionIdUsuarioAgregado();
+                            agregarUsuarioPrivilegio(idUsuarioAgregado);
+                        }
+                        else
+                        {
+                            MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
                     }
                     else
                     {
                         if (mValidarRolUsuario() == true)
                         {
-
+                            if (usuario.mInsertarUsuario(conexion, entidadUsuario))
+                            {
+                                idUsuarioAgregado = seleccionIdUsuarioAgregado();
+                                agregarUsuarioRol(idUsuarioAgregado);
+                            }
+                            else
+                            {
+                                MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
                         }
                     }
                 }

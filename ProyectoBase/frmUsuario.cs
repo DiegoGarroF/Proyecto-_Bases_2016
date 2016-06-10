@@ -80,30 +80,74 @@ namespace Vista
             this.btnAccion.Text = tipo;
         }
 
+        public void llenarPrivilegiosUsuarioPantalla(ListViewItem I)
+        {
+            if (I.SubItems[1].Text == "No")
+            {
+                entidadUsuarioPantalla.mInsertar = false;
+            }
+            else
+            {
+                entidadUsuarioPantalla.mInsertar = true;
+            }
+
+            if (I.SubItems[2].Text == "No")
+            {
+                entidadUsuarioPantalla.mConsultar = false;
+            }
+            else
+            {
+                entidadUsuarioPantalla.mConsultar = true;
+            }
+
+            if (I.SubItems[3].Text == "No")
+            {
+                entidadUsuarioPantalla.mModificar = false;
+            }
+            else
+            {
+                entidadUsuarioPantalla.mModificar = true;
+            }
+
+            if (I.SubItems[4].Text == "No")
+            {
+                entidadUsuarioPantalla.mEliminar = false;
+            }
+            else
+            {
+                entidadUsuarioPantalla.mEliminar = true;
+            }
+
+        }
+
         private void mAgregarUsuario()
         {
             conexion.codigo = "123";
             conexion.clave = "123";
+            int idUsuarioAgregado=-1;
             //Se compara si se está asignando un rol o privilegio a un usuario, y si además se llenaron todos los datos del usuario
             if ((mValidarInfoUsuario() == true & mValidarPrivilegioUsuario() == true) || (mValidarRolUsuario() == true & mValidarInfoUsuario() == true))
             {
-                if (mValidarPrivilegioUsuario() == true & mValidarRolUsuario() == true)
+                if (mValidarPrivilegioUsuario() & mValidarRolUsuario() == true)
                 {
-                    //entidadUsuario.mUsuario = txtNombreUsuario.Text;
-                    //entidadUsuario.mContrasena = txtContrasena.Text;
-                    //entidadUsuario.mNombre = txtNombre.Text;
-                    //entidadUsuario.mTipoUsuario = txtTipoUsuario.Text;
-                    //entidadUsuario.mApellidos = txtApellidos.Text;
+                    entidadUsuario.mUsuario = txtNombreUsuario.Text;
+                    entidadUsuario.mContrasena = txtContrasena.Text;
+                    entidadUsuario.mNombre = txtNombre.Text;
+                    entidadUsuario.mTipoUsuario = txtTipoUsuario.Text;
+                    entidadUsuario.mApellidos = txtApellidos.Text;                              
 
-                    //Privilegio sobre pantallas
-                    entidadUsuarioPantalla.mIdUsuario =Convert.ToInt32(txtId.Text);
                     
-
-                    /*
                     if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                     {
-                        MessageBox.Show("Se insertó correctamente el usuario","Éxito", MessageBoxButtons.OK,MessageBoxIcon.Information);
-                         foreach (ListViewItem I in lvRoles.Items)
+                        entidadUsuario.mUsuario = txtNombreUsuario.Text;
+                        dtrUsuario = usuario.mConsultaIdUsuario(conexion,entidadUsuario);
+                        if(dtrUsuario!=null)
+                            if (dtrUsuario.Read())//Deve devolver solo 1
+                            {
+                                idUsuarioAgregado = dtrUsuario.GetInt32(0);
+                            }
+
+                    foreach (ListViewItem I in lvRoles.Items)
                     {
                         entidadRol.mNombreRol = I.SubItems[0].Text;
                         dtrRol = rol.mConsultaIdRoles(conexion,entidadRol);
@@ -111,17 +155,42 @@ namespace Vista
                             if (dtrRol.Read())
                             {
                                 entidadUsuarioRol.mIdRol=dtrRol.GetInt32(0);
-                                entidadUsuarioRol.mIdUsuario =Convert.ToInt32( txtId.Text);
-                                usuarioRol.mInsertarUsuarioRol(conexion,entidadUsuarioRol);
-                            }
+                                entidadUsuarioRol.mIdUsuario = idUsuarioAgregado;
+                                    if (usuarioRol.mInsertarUsuarioRol(conexion, entidadUsuarioRol)){
+                                        MessageBox.Show("Se insertó rol del usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    
+                                }
 
                     }
+                        
+
+                        entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
+                    foreach (ListViewItem I in lvPrivilegios.Items)
+                    {
+                        entidadPantalla.mNombrePantalla = I.SubItems[0].Text;
+                        dtrPantalla = pantalla.mConsultaIdPantalla(conexion, entidadPantalla);
+                        if (dtrPantalla != null)
+                            if (dtrPantalla.Read())
+                            {
+                                entidadUsuarioPantalla.mIdPantalla = dtrPantalla.GetInt32(0);
+                                entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
+                                llenarPrivilegiosUsuarioPantalla(I);
+                               if(usuarioPantalla.mInsertarUsuarioPantalla(conexion, entidadUsuarioPantalla))
+                                    {
+                                        MessageBox.Show("Se insertó privilegios del usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    }
+                                    
+                                }
+
+                    }
+                        MessageBox.Show("Se insertó correctamente el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpiar();
                     }
                     else
                     {
                         MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }*/
+                    }
                 }
                 else
                 {
@@ -179,7 +248,7 @@ namespace Vista
 
         public Boolean mValidarInfoUsuario()
         {
-            if (txtNombre.Text!="" & txtApellidos.Text!="" & txtContrasena.Text!="" & txtId.Text!="" & txtNombreUsuario.Text!="" & txtNombre.Text!="" & txtApellidos.Text!="" & txtTipoUsuario.Text!="")
+            if (txtNombre.Text!="" & txtApellidos.Text!="" & txtContrasena.Text!="" & txtNombreUsuario.Text!="" & txtNombre.Text!="" & txtApellidos.Text!="" & txtTipoUsuario.Text!="")
             {
                 return true;
             }
@@ -316,6 +385,13 @@ namespace Vista
             txtTipoUsuario.Text = "";
             lvPrivilegios.Items.Clear();
             lvRoles.Items.Clear();
+
+            chkConsultar.Checked = false;
+            chkEliminar.Checked = false;
+            chkInsertar.Checked = false;
+            chkModificar.Checked = false;
+            chkPrivilegio.Checked = false;
+            chkRol.Checked = false;
         }
 
         private void chkRol_CheckedChanged(object sender, EventArgs e)
@@ -368,6 +444,11 @@ namespace Vista
 
                 btnEliminarPrivilegioPantalla.Enabled = true;
                 btnEliminarRol.Enabled = true;
+
+                txtId.Enabled = false;
+                btnBuscar.Enabled = false;
+
+                txtId.Text = "Valor automático";
                 
             }
             else
@@ -382,6 +463,10 @@ namespace Vista
 
                     btnEliminarPrivilegioPantalla.Enabled = false;
                     btnEliminarRol.Enabled = false;
+
+                    txtId.Enabled = true;
+                    btnBuscar.Enabled = true;
+                    txtId.Text = "";
                 }
 
             }

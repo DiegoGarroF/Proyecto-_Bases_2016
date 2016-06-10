@@ -99,7 +99,7 @@ namespace Vista
         {
             usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.MODIFICAR));
             this.Hide();
-            usuario.controlAgregarRolPriv(1);
+            usuario.controlAgregarRolPriv(2);
             usuario.Show();
         }
 

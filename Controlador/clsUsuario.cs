@@ -26,6 +26,7 @@ namespace Controlador
             return conexion.mSeleccionarGeneral(conexion,sentencia);
         }
 
+        //Creo que este método no va en esta clase
         public SqlDataReader mConsultarListaBitacora(clsConexion conexion)
         {
             sentencia = "select nombre, apellidos, tipoUsuario from tbUsuario";
@@ -36,6 +37,12 @@ namespace Controlador
         {
             sentencia = "insert into tbUsuario(usuario, contrasena, nombre, tipoUsuario, apellidos) values (@usuario, @contrasena, @nombre, @tipoUsuario, @apellidos) ";
             return conexion.mEjecutar(sentencia,conexion, pEntidadUsuario); 
+        }
+
+        public SqlDataReader mConsultaIdUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
+        {
+            sentencia = "select idUsuario from tbUsuario where  usuario=@codigo";
+            return conexion.mSeleccionarTipoString(sentencia, pEntidadUsuario.mUsuario);
         }
     }
 }

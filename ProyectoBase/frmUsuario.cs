@@ -190,7 +190,7 @@ namespace Vista
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
             entidadUsuario.mContrasena = txtContrasena.Text;
             entidadUsuario.mNombre = txtNombre.Text;
-            entidadUsuario.mTipoUsuario = txtTipoUsuario.Text;
+            entidadUsuario.mTipoUsuario = cbTipoUsuario.Text;
             entidadUsuario.mApellidos = txtApellidos.Text;
 
             //Se compara si se está asignando un rol o privilegio a un usuario, y si además se llenaron todos los datos del usuario
@@ -282,7 +282,7 @@ namespace Vista
 
         public Boolean mValidarInfoUsuario()
         {
-            if (txtNombre.Text!="" & txtApellidos.Text!="" & txtContrasena.Text!="" & txtNombreUsuario.Text!="" & txtNombre.Text!="" & txtApellidos.Text!="" & txtTipoUsuario.Text!="")
+            if (txtNombre.Text!="" & txtApellidos.Text!="" & txtContrasena.Text!="" & txtNombreUsuario.Text!="" & txtNombre.Text!="" & txtApellidos.Text!="" & cbTipoUsuario.Text!="")
             {
                 return true;
             }
@@ -388,7 +388,7 @@ namespace Vista
                     txtContrasena.Text= dtrUsuario.GetString(2);
                     txtNombre.Text = dtrUsuario.GetString(3);
                     txtApellidos.Text = dtrUsuario.GetString(4);
-                    txtTipoUsuario.Text = dtrUsuario.GetString(5); ;
+                    cbTipoUsuario.Text = dtrUsuario.GetString(5); ;
                 }
                 else
                 {
@@ -416,7 +416,9 @@ namespace Vista
             txtNombreUsuario.Text = "";
             txtNombre.Text = "";
             txtApellidos.Text = "";
-            txtTipoUsuario.Text = "";
+            cbRol.SelectedIndex = -1;
+            cbPantalla.SelectedIndex = -1;
+            cbTipoUsuario.SelectedIndex = -1;
             lvPrivilegios.Items.Clear();
             lvRoles.Items.Clear();
 

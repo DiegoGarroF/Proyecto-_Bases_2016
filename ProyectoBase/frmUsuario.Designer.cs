@@ -40,6 +40,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.gbxDatos = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblApellidos = new System.Windows.Forms.Label();
@@ -69,8 +70,7 @@
             this.cbRol = new System.Windows.Forms.ComboBox();
             this.chkRol = new System.Windows.Forms.CheckBox();
             this.chkPrivilegio = new System.Windows.Forms.CheckBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtTipoUsuario = new System.Windows.Forms.TextBox();
+            this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.gbxBotones.SuspendLayout();
             this.gbxDatos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -180,7 +180,6 @@
             // 
             // gbxDatos
             // 
-            this.gbxDatos.Controls.Add(this.txtTipoUsuario);
             this.gbxDatos.Controls.Add(this.label5);
             this.gbxDatos.Controls.Add(this.txtApellidos);
             this.gbxDatos.Controls.Add(this.txtNombre);
@@ -191,6 +190,7 @@
             this.gbxDatos.Controls.Add(this.btnBuscar);
             this.gbxDatos.Controls.Add(this.txtNombreUsuario);
             this.gbxDatos.Controls.Add(this.lblNombreUsuario);
+            this.gbxDatos.Controls.Add(this.cbTipoUsuario);
             this.gbxDatos.Controls.Add(this.lblContrasena);
             this.gbxDatos.Controls.Add(this.txtContrasena);
             this.gbxDatos.Location = new System.Drawing.Point(4, 22);
@@ -198,6 +198,15 @@
             this.gbxDatos.Size = new System.Drawing.Size(376, 322);
             this.gbxDatos.TabIndex = 7;
             this.gbxDatos.TabStop = false;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(10, 258);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(31, 13);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Tipo:";
             // 
             // txtApellidos
             // 
@@ -480,21 +489,18 @@
             this.chkPrivilegio.UseVisualStyleBackColor = true;
             this.chkPrivilegio.CheckedChanged += new System.EventHandler(this.chkPrivilegio_CheckedChanged);
             // 
-            // label5
+            // cbTipoUsuario
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 258);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(31, 13);
-            this.label5.TabIndex = 16;
-            this.label5.Text = "Tipo:";
-            // 
-            // txtTipoUsuario
-            // 
-            this.txtTipoUsuario.Location = new System.Drawing.Point(126, 258);
-            this.txtTipoUsuario.Name = "txtTipoUsuario";
-            this.txtTipoUsuario.Size = new System.Drawing.Size(153, 20);
-            this.txtTipoUsuario.TabIndex = 17;
+            this.cbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoUsuario.FormattingEnabled = true;
+            this.cbTipoUsuario.Items.AddRange(new object[] {
+            "Administrador",
+            "Estudiante",
+            "Atención al cliente"});
+            this.cbTipoUsuario.Location = new System.Drawing.Point(126, 258);
+            this.cbTipoUsuario.Name = "cbTipoUsuario";
+            this.cbTipoUsuario.Size = new System.Drawing.Size(100, 21);
+            this.cbTipoUsuario.TabIndex = 0;
             // 
             // frmUsuario
             // 
@@ -566,7 +572,7 @@
         private System.Windows.Forms.Button btnAgregarPrivilegios;
         private System.Windows.Forms.CheckBox chkEliminar;
         private System.Windows.Forms.Button btnAgregarRol;
-        private System.Windows.Forms.TextBox txtTipoUsuario;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cbTipoUsuario;
     }
 }

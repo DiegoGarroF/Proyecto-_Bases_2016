@@ -38,6 +38,7 @@ namespace Vista
         {                        
             usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.AGREGAR));
             this.Hide();
+            usuario.limpiar();
             usuario.controlAgregarRolPriv(0);
             usuario.Show();
         }

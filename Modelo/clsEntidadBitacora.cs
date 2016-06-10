@@ -4,17 +4,18 @@ using System.Linq;
 using System.Text;
 using System.Timers;
 using System.Threading.Tasks;
+using System.Globalization;
 
 
 namespace Modelo
 {
-    class clsEntidadBitacora
+    public class clsEntidadBitacora
     {
         #region Atributos
 
         private int idBitacora;
-        private String fecha;
-        private String hora;
+        private DateTime fecha;
+        private DateTime hora;
         private String tabla;
         private String descripcion;
         private int idUsuario;
@@ -24,8 +25,8 @@ namespace Modelo
         public clsEntidadBitacora()
         {
             this.idBitacora = 0;
-            this.fecha ="";
-            this.hora ="";
+            //this.fecha = 1998 - 01 - 02 00:00:00.000;
+            //this.hora = ;
             this.tabla = "";
             this.descripcion = "";
             this.idUsuario = 0;
@@ -39,12 +40,12 @@ namespace Modelo
             this.idBitacora = idBitacora;
         }
 
-        public void setFecha(String fecha)
+        public void setFecha(DateTime fecha)
         {
             this.fecha = fecha;
         }
 
-        public void setHora(String hora)
+        public void setHora(DateTime hora)
         {
             this.hora = hora;
         }
@@ -71,12 +72,12 @@ namespace Modelo
             return idBitacora;
         }
 
-        public String getFecha()
+        public DateTime getFecha()
         {
             return fecha;
         }
 
-        public String getHora()
+        public DateTime getHora()
         {
             return hora;
         }
@@ -85,7 +86,7 @@ namespace Modelo
         {
             return tabla;
         }
-         public String getDescripcion()
+        public String getDescripcion()
         {
             return descripcion;
         }
@@ -93,8 +94,11 @@ namespace Modelo
         {
             return idUsuario;
         }
-        
+
+
+
+       
+
         #endregion
     }
-}
 }

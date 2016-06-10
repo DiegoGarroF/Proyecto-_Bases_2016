@@ -35,7 +35,7 @@ namespace Vista
 
         private void frmPrestamos_Load(object sender, EventArgs e)
         {
-
+            camposInvalidos();
         }
         public void setBtnAccionTipo(String titulo)
         {
@@ -55,8 +55,8 @@ namespace Vista
             if (listaGeneral.mIdUsuario != 0)
             {
                 // entidadUsuario.mIdUsuario = lista.mIdUsuario;
-                txtIdUsurio.Text = Convert.ToString(listaGeneral.mIdUsuario);
-
+                txtIdLibro.Text = Convert.ToString(listaGeneral.mIdUsuario);
+                
             }
 
         }
@@ -82,7 +82,34 @@ namespace Vista
         private void btnBuscarUsuarioEstudiante_Click(object sender, EventArgs e)
         {
             frmListaGeneral listaGeneral = new frmListaGeneral(conexion);
+            listaGeneral.cargarListViewUsuariosCliente();
             listaGeneral.ShowDialog();
+            if (listaGeneral.mIdUsuario !=0)
+            {
+                txtIdUsuarioEstudiante.Text = Convert.ToString(listaGeneral.mIdUsuario);
+            }
+        }
+        public void camposInvalidos()
+        {
+            if (btnFuncional.Text.Equals(clsConstantes.AGREGAR))
+            {
+                txtIdPrestamo.Text = "Automatico";
+                txtIdPrestamo.Enabled = false;
+                btnBuscarGeneral.Enabled = false;
+                txtFecha.Text = "Automatico";
+                txtFecha.Enabled = false;
+            }
+            else
+            {
+                if (btnFuncional.Text.Equals(clsConstantes.CONSULTAR))
+                {
+                    btnBuscarLibro.Enabled = false;
+                    btnBuscarUsuario.Enabled = false;
+                    btnBuscarUsuarioEstudiante.Enabled = false;
+                }
+            }
+
+           
         }
     }
 }

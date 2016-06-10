@@ -96,7 +96,7 @@ namespace Vista
         //Metodo que se utiliza para cargar los usuariosClientes
         public void cargarListViewUsuariosCliente()
         {
-            dataReader = prestamo.mSeleccionarTodos(conexion);
+            dataReader = prestamo.mConsultaGeneralCliente(conexion);
 
             if (dataReader != null)
             {

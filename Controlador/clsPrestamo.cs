@@ -19,9 +19,9 @@ namespace Controlador
         }
 
 
-        public SqlDataReader mSeleccionarTodos(clsConexion conexion)
+        public SqlDataReader mConsultaGeneralCliente(clsConexion conexion)
         {
-            strSentencia = "select * from tbPrestamo where tipoUsuario='Estudiante' ";
+            strSentencia = "select * from tbUsuario where tipoUsuario='Estudiante'";
             return conexion.mSeleccionarGeneral(conexion, strSentencia);
         }
 

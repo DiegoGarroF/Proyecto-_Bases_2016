@@ -26,8 +26,7 @@ namespace Vista
             InitializeComponent();
             this.conexion = conexion;
             this.prestamo = new clsPrestamo();
-            conexion.clave = "123";
-            conexion.codigo = "123";
+           
         }
 
         private void btnSalir_Click(object sender, EventArgs e)

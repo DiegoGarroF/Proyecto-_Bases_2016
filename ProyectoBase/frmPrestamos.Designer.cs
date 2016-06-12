@@ -174,6 +174,7 @@
             this.txtIdPrestamo.Name = "txtIdPrestamo";
             this.txtIdPrestamo.Size = new System.Drawing.Size(100, 20);
             this.txtIdPrestamo.TabIndex = 10;
+            this.txtIdPrestamo.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtIdPrestamo_KeyPress);
             // 
             // label4
             // 

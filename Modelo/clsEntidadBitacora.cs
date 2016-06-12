@@ -25,8 +25,8 @@ namespace Modelo
         public clsEntidadBitacora()
         {
             this.idBitacora = 0;
-            this.fecha ="";
-            this.hora = "";
+            //this.fecha ="";
+            //this.hora = "";
             this.tabla = "";
             this.descripcion = "";
             this.idUsuario = 0;

@@ -29,6 +29,13 @@ namespace Controlador
             strSentencia= "select * from tbPestamo";
             return conexion.mSeleccionarGeneral(conexion, strSentencia);
         }
+
+        //Consultas individuales
+        public SqlDataReader mConsultarPrestamo(clsConexion conexion, clsEntidadPrestamo pEntidadPrestamo)
+        {
+            strSentencia = "select * from tbPestamo where idPrestamo=@codigo";
+            return conexion.mSeleccionar(strSentencia, pEntidadPrestamo.setGetIdPrestamo);
+        }
         public Boolean mInsertarPrestamo(clsConexion conexion, clsEntidadPrestamo pEntidadPrestamo)
         {
             strSentencia = "insert into tbPestamo(fecha, idUsuario, idLibro, idUsuarioCliente) values (@fecha, @idUsuario, @idLibro, @idUsuarioCliente) ";
@@ -40,5 +47,6 @@ namespace Controlador
             strSentencia = "delete from tbPestamo where idPrestamo=@idPrestamo";
             return conexion.mEjecutarElimModif(strSentencia, conexion, pEntidadPrestamo, tipo);
         }
+        
     }
 }

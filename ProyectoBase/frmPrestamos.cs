@@ -22,6 +22,8 @@ namespace Vista
         int idUsuario;
         SqlDataReader dtrPrestamo;
         #endregion
+
+        //Metodo constructor
         public frmPrestamos()
         {
             InitializeComponent();
@@ -37,6 +39,7 @@ namespace Vista
         {
             camposInvalidos();
         }
+        //Metodo asigna el texto a las botones
         public void setBtnAccionTipo(String titulo)
         {
             btnFuncional.Text = titulo;
@@ -47,6 +50,7 @@ namespace Vista
             this.Close();
         }
 
+        //Metodo que se utiliza para llenar listview de un libro
         private void btnBuscarLibro_Click(object sender, EventArgs e)
         {
             frmListaGeneral listaGeneral = new frmListaGeneral(conexion);
@@ -61,6 +65,7 @@ namespace Vista
 
         }
 
+        //Metodo que se utiliza para llenar listview de un usuario
         private void btnBuscarUsuario_Click(object sender, EventArgs e)
         {
             frmListaGeneral lista = new frmListaGeneral(conexion);
@@ -74,11 +79,15 @@ namespace Vista
             }
         }
 
+
+        //Para guardar un campo del listview
         public int mIdUsuario
         {
             get { return idUsuario; }
             set { idUsuario = value; }
         }
+
+        //metodo para llenar el listview con la informacion del Usuario cliente
         private void btnBuscarUsuarioEstudiante_Click(object sender, EventArgs e)
         {
             frmListaGeneral listaGeneral = new frmListaGeneral(conexion);
@@ -89,6 +98,9 @@ namespace Vista
                 txtIdUsuarioEstudiante.Text = Convert.ToString(listaGeneral.mIdUsuario);
             }
         }
+
+
+        //metodo para validar los campos que se ocupen dependiendo de los opciones que se necesiten
         public void camposInvalidos()
         {
             if (btnFuncional.Text.Equals(clsConstantes.AGREGAR))
@@ -106,6 +118,10 @@ namespace Vista
                     btnBuscarLibro.Enabled = false;
                     btnBuscarUsuario.Enabled = false;
                     btnBuscarUsuarioEstudiante.Enabled = false;
+                    txtFecha.Enabled = false;
+                    txtIdLibro.Enabled = false;
+                    txtIdUsuarioEstudiante.Enabled = false;
+                    txtIdUsurio.Enabled = false;
                 }
                 else
                 {
@@ -125,19 +141,48 @@ namespace Vista
 
            
         } 
+
+        //Motodo para tomar la fecha del sistema
         public string fechaSistema()
         {
             DateTime fechaSistema = DateTime.Today;
             return fechaSistema.ToString("d");
         }
 
+        //Metodo para consultar todos los prestamos y guardarlos en un listview
         public void btnBuscarGeneral_Click(object sender, EventArgs e)
         {
-            frmConsultaPrestamos consultaPrestamos = new frmConsultaPrestamos(this.conexion);
-            consultaPrestamos.ShowDialog();
+            frmConsultaPrestamos consultaPrestamos = new frmConsultaPrestamos(conexion);
             consultaPrestamos.mCargarListViewPrestamos();
+            consultaPrestamos.ShowDialog();
+            
+            if (consultaPrestamos.mIdUsuario > 0)
+            {
+                
+                txtIdPrestamo.Text = Convert.ToString(consultaPrestamos.mIdUsuario);
+                pEntidadPrestamo.setGetIdPrestamo = Convert.ToInt32(txtIdPrestamo.Text);
+                mConsultarPrestamo();
+            }
         }
         
+        //Metodo para realizar una consulta de un prestamo con el boton Consultar
+        public void mConsultarPrestamo()
+        {
+            pEntidadPrestamo.setGetIdPrestamo = Convert.ToInt32(txtIdPrestamo.Text);
+            dtrPrestamo = prestamo.mConsultarPrestamo(conexion, pEntidadPrestamo);
+            if (dtrPrestamo!= null)
+            {
+                if (dtrPrestamo.Read())
+                {
+                    txtFecha.Text = Convert.ToString( dtrPrestamo.GetDateTime(1));
+                    txtIdUsurio.Text = Convert.ToString( dtrPrestamo.GetInt32(2));
+                    txtIdLibro.Text = Convert.ToString( dtrPrestamo.GetInt32(3));
+                    txtIdUsuarioEstudiante.Text = Convert.ToString( dtrPrestamo.GetInt32(4));
+                }
+            }
+        }
+
+        //Metodo para agregar un pretamo
         public void mAgregarPrestamos()
         {
            
@@ -156,6 +201,8 @@ namespace Vista
                 }
             
         }
+
+        //Metodo para limpiar los cmapos de informacion
         public void mLimpiar()
         {
             txtIdLibro.Text = "";
@@ -163,6 +210,7 @@ namespace Vista
             txtIdUsuarioEstudiante.Text = "";
         }
 
+        //metodo para eliminar un prestamo ingresando el codigo del prestamo
         public void mEliminar()
         {
             pEntidadPrestamo.setGetIdPrestamo = Convert.ToInt32(txtIdPrestamo.Text);
@@ -177,6 +225,7 @@ namespace Vista
             }
         }
 
+        //Metodo para las funciones que va a realizar el boton funcional
         private void btnFuncional_Click(object sender, EventArgs e)
         {
             if (btnFuncional.Text.Equals(clsConstantes.AGREGAR))
@@ -195,11 +244,21 @@ namespace Vista
                 {
                     if (btnFuncional.Text.Equals(clsConstantes.CONSULTAR))
                     {
-
+                        mConsultarPrestamo();
                     }
                 }
             }
 
+        }
+
+
+        //metodo que se utiliza para realizar una busqueda presionandi la tecla enter.
+        private void txtIdPrestamo_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)Keys.Enter)
+            {
+                mConsultarPrestamo();
+            }
         }
     }
 }

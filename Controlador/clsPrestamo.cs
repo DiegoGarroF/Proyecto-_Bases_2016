@@ -24,6 +24,21 @@ namespace Controlador
             strSentencia = "select * from tbUsuario where tipoUsuario='Estudiante'";
             return conexion.mSeleccionarGeneral(conexion, strSentencia);
         }
+        public SqlDataReader mConsultaGeneral(clsConexion conexion)
+        {
+            strSentencia= "select * from tbPestamo";
+            return conexion.mSeleccionarGeneral(conexion, strSentencia);
+        }
+        public Boolean mInsertarPrestamo(clsConexion conexion, clsEntidadPrestamo pEntidadPrestamo)
+        {
+            strSentencia = "insert into tbPestamo(fecha, idUsuario, idLibro, idUsuarioCliente) values (@fecha, @idUsuario, @idLibro, @idUsuarioCliente) ";
+            return conexion.mEjecutar(strSentencia, conexion, pEntidadPrestamo);
+        }
 
+        public Boolean mEliminarPrestamo(clsConexion conexion, clsEntidadPrestamo pEntidadPrestamo, string tipo)
+        {
+            strSentencia = "delete from tbPestamo where idPrestamo=@idPrestamo";
+            return conexion.mEjecutarElimModif(strSentencia, conexion, pEntidadPrestamo, tipo);
+        }
     }
 }

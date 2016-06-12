@@ -37,14 +37,14 @@
             this.btnBuscarUsuario = new System.Windows.Forms.Button();
             this.btnFuncional = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtFecha = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnBuscarGeneral = new System.Windows.Forms.Button();
             this.txtIdPrestamo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtFecha = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -117,6 +117,7 @@
             this.btnFuncional.TabIndex = 4;
             this.btnFuncional.Text = "button1";
             this.btnFuncional.UseVisualStyleBackColor = true;
+            this.btnFuncional.Click += new System.EventHandler(this.btnFuncional_Click);
             // 
             // groupBox1
             // 
@@ -141,6 +142,22 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informacion Prestamo";
             // 
+            // txtFecha
+            // 
+            this.txtFecha.Location = new System.Drawing.Point(129, 212);
+            this.txtFecha.Name = "txtFecha";
+            this.txtFecha.Size = new System.Drawing.Size(100, 20);
+            this.txtFecha.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 219);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "Fecha:";
+            // 
             // btnBuscarGeneral
             // 
             this.btnBuscarGeneral.Location = new System.Drawing.Point(280, 16);
@@ -149,6 +166,7 @@
             this.btnBuscarGeneral.TabIndex = 11;
             this.btnBuscarGeneral.Text = "Buscar";
             this.btnBuscarGeneral.UseVisualStyleBackColor = true;
+            this.btnBuscarGeneral.Click += new System.EventHandler(this.btnBuscarGeneral_Click);
             // 
             // txtIdPrestamo
             // 
@@ -192,22 +210,6 @@
             this.label1.Size = new System.Drawing.Size(41, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "idLibro:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 219);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(40, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Fecha:";
-            // 
-            // txtFecha
-            // 
-            this.txtFecha.Location = new System.Drawing.Point(129, 212);
-            this.txtFecha.Name = "txtFecha";
-            this.txtFecha.Size = new System.Drawing.Size(100, 20);
-            this.txtFecha.TabIndex = 13;
             // 
             // frmPrestamos
             // 

@@ -3,3 +3,4 @@
 ################################################################################
 
 *.dll
+/ProyectoBase/obj/Debug/Vista.frmConsultaPrestamos.resources

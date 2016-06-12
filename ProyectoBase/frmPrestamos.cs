@@ -96,7 +96,7 @@ namespace Vista
                 txtIdPrestamo.Text = "Automatico";
                 txtIdPrestamo.Enabled = false;
                 btnBuscarGeneral.Enabled = false;
-                txtFecha.Text = "Automatico";
+                txtFecha.Text = fechaSistema();
                 txtFecha.Enabled = false;
             }
             else
@@ -107,9 +107,99 @@ namespace Vista
                     btnBuscarUsuario.Enabled = false;
                     btnBuscarUsuarioEstudiante.Enabled = false;
                 }
+                else
+                {
+                    if (btnFuncional.Text.Equals(clsConstantes.ELIMINAR))
+                    {
+                        btnBuscarLibro.Enabled = false;
+                        btnBuscarUsuario.Enabled = false;
+                        btnBuscarUsuarioEstudiante.Enabled = false;
+                        txtFecha.Enabled = false;
+                        txtIdLibro.Enabled = false;
+                        txtIdUsuarioEstudiante.Enabled = false;
+                        txtIdUsurio.Enabled = false;
+
+                    }
+                }
             }
 
            
+        } 
+        public string fechaSistema()
+        {
+            DateTime fechaSistema = DateTime.Today;
+            return fechaSistema.ToString("d");
+        }
+
+        public void btnBuscarGeneral_Click(object sender, EventArgs e)
+        {
+            frmConsultaPrestamos consultaPrestamos = new frmConsultaPrestamos(this.conexion);
+            consultaPrestamos.ShowDialog();
+            consultaPrestamos.mCargarListViewPrestamos();
+        }
+        
+        public void mAgregarPrestamos()
+        {
+           
+                pEntidadPrestamo.setGetFecha = Convert.ToDateTime( txtFecha.Text);
+                pEntidadPrestamo.setGetidLibro = Convert.ToInt32(txtIdLibro.Text);
+                pEntidadPrestamo.setGetIdUsuario = Convert.ToInt32(txtIdUsurio.Text);
+                pEntidadPrestamo.setGetIdUsuariocliente= Convert.ToInt32(txtIdUsuarioEstudiante.Text);
+               
+                if (prestamo.mInsertarPrestamo(conexion, pEntidadPrestamo))
+                {
+                    MessageBox.Show("Se inserto con Exito el Prestamo", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error al insertar el Prestamo", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+            
+        }
+        public void mLimpiar()
+        {
+            txtIdLibro.Text = "";
+            txtIdUsurio.Text = "";
+            txtIdUsuarioEstudiante.Text = "";
+        }
+
+        public void mEliminar()
+        {
+            pEntidadPrestamo.setGetIdPrestamo = Convert.ToInt32(txtIdPrestamo.Text);
+            if (prestamo.mEliminarPrestamo(conexion, pEntidadPrestamo, btnFuncional.Text))
+            {
+                MessageBox.Show("Prestamo eliminado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+               
+            }
+            else
+            {
+                MessageBox.Show("Ocurrio un error al Eliminar el Prestamo", "Incorrecto", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+        }
+
+        private void btnFuncional_Click(object sender, EventArgs e)
+        {
+            if (btnFuncional.Text.Equals(clsConstantes.AGREGAR))
+            {
+                mAgregarPrestamos();
+                mLimpiar();
+            }
+            else
+            {
+                if (btnFuncional.Text.Equals(clsConstantes.ELIMINAR))
+                {
+                    mEliminar();
+                    mLimpiar();
+                }
+                else
+                {
+                    if (btnFuncional.Text.Equals(clsConstantes.CONSULTAR))
+                    {
+
+                    }
+                }
+            }
+
         }
     }
 }

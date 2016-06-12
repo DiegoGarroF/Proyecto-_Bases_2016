@@ -140,6 +140,17 @@ namespace Modelo
                                     comando.Parameters.AddWithValue("@idUsuario", entidadUsuario.mIdUsuario);
                                     comando.ExecuteNonQuery();
                                 }
+
+                                //Eliminar un Prestamo
+                                else
+                                {
+                                    if(objeto is clsEntidadPrestamo)
+                                    {
+                                        clsEntidadPrestamo pEntidadPrestamo = (clsEntidadPrestamo)objeto;
+                                        comando.Parameters.AddWithValue("@idPrestamo", pEntidadPrestamo.setGetIdPrestamo);
+                                        comando.ExecuteNonQuery();
+                                    }
+                                }
                             }
                         }
                         return true;
@@ -222,6 +233,21 @@ namespace Modelo
                                 comando.ExecuteNonQuery();
                                 return true;
 
+                            }
+                            //Agregar un Prestamo
+                            else
+                            {
+                                if(objeto is clsEntidadPrestamo)
+                                {
+                                    clsEntidadPrestamo pEntidadPrestamo = (clsEntidadPrestamo)objeto;
+                                    comando.Parameters.AddWithValue("@fecha", pEntidadPrestamo.setGetFecha);
+                                    comando.Parameters.AddWithValue("@idUsuario", pEntidadPrestamo.setGetIdUsuario);
+                                    comando.Parameters.AddWithValue("@idLibro", pEntidadPrestamo.setGetidLibro);
+                                    comando.Parameters.AddWithValue("@idUsuarioCliente", pEntidadPrestamo.setGetIdUsuariocliente);
+                                    comando.ExecuteNonQuery();
+                                    return true;
+
+                                }
                             }
                         }
                     }

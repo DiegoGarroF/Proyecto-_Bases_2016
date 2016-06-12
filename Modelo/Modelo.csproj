@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="clsConexion.cs" />
     <Compile Include="clsConstantes.cs" />
+    <Compile Include="clsEntidadBitacora.cs" />
     <Compile Include="clsEntidadPantalla.cs" />
     <Compile Include="clsEntidadPrestamo.cs" />
     <Compile Include="clsEntidadRol.cs" />

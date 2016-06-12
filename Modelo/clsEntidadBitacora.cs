@@ -25,13 +25,15 @@ namespace Modelo
         public clsEntidadBitacora()
         {
             this.idBitacora = 0;
-            //this.fecha = 1998 - 01 - 02 00:00:00.000;
-            //this.hora = ;
+            this.fecha ="";
+            this.hora = "";
             this.tabla = "";
             this.descripcion = "";
             this.idUsuario = 0;
         }
         #endregion
+
+
 
         //Metodos Set para los atributos
         #region Metodos Set

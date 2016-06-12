@@ -256,9 +256,45 @@ namespace Vista
             {
                 mAgregarUsuario();
             }
+            else
+            {
+                if (btnAccion.Text == "Eliminar")
+                {
+                    mEliminarUsuario();
+                }
+            }
 
             
             
+        }
+        public void mEliminarUsuario()
+        {
+            conexion.clave = "123";
+            conexion.codigo = "123";
+
+           if(mEliminarUsuarioRol()==true & mEliminarUsuarioPrivilegio()==true)
+            {
+                entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
+                if (usuario.mEliminarUsuario(conexion,entidadUsuario,btnAccion.Text))
+                {
+                    MessageBox.Show("Usuario eliminado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    limpiar();
+                }
+            }
+            
+        }
+
+        public Boolean mEliminarUsuarioRol()
+        {
+            
+            entidadUsuarioRol.mIdUsuario=Convert.ToInt32(txtId.Text);
+            return usuarioRol.mEliminarRolesUsuario(conexion, entidadUsuarioRol, btnAccion.Text);
+            
+        }
+        public Boolean mEliminarUsuarioPrivilegio()
+        {
+            entidadUsuarioPantalla.mIdUsuario = Convert.ToInt32(txtId.Text);
+            return usuarioPantalla.mEliminarPantallasUsuario(conexion, entidadUsuarioPantalla, btnAccion.Text);
         }
 
         public Boolean mValidarPrivilegioUsuario()

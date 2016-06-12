@@ -17,5 +17,11 @@ namespace Controlador
             sentencia = "insert into tbUsuarioPantalla(idUsuario, idPantalla, modificar,insertar, consultar, eliminar) values (@idUsuario, @idPantalla, @modificar, @insertar, @consultar, @eliminar) ";
             return conexion.mEjecutar(sentencia, conexion, pEntidadUsuarioPantalla);
         }
+
+        public Boolean mEliminarPantallasUsuario(clsConexion conexion, clsEntidadUsuarioPantalla pEntidadUsuarioPantalla, string tipo)
+        {
+            sentencia = "delete from tbUsuarioPantalla where idUsuario=@idUsuario";
+            return conexion.mEjecutarElimModif(sentencia, conexion, pEntidadUsuarioPantalla, tipo);
+        }
     }
 }

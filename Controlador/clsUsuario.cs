@@ -44,5 +44,11 @@ namespace Controlador
             sentencia = "select idUsuario from tbUsuario where  usuario=@codigo";
             return conexion.mSeleccionarTipoString(sentencia, pEntidadUsuario.mUsuario);
         }
+
+        public Boolean mEliminarUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario, string tipo)
+        {
+            sentencia = "delete from tbUsuario where idUsuario=@idUsuario";
+            return conexion.mEjecutarElimModif(sentencia, conexion, pEntidadUsuario, tipo);
+        }
     }
 }

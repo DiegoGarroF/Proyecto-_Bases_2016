@@ -62,8 +62,10 @@ namespace Modelo
         //Metodo para la conexion con la base de datos
         #region Metodos
 
+
+
         //Este metodo permitira ejecutar los select
-        public SqlDataReader mSeleccionar(String sentencia, int codigo)//string strSentencia, clsConexion cone, int id)
+        public SqlDataReader mSeleccionar(String sentencia, int codigo)
         {
             try
             {
@@ -104,6 +106,57 @@ namespace Modelo
                 return null;
             }
         }// fin del metodo mSeleccionar
+
+        public Boolean mEjecutarElimModif(string strSentencia, clsConexion cone, Object objeto, string tipo)
+        {
+            try
+            {
+                if (mConectar(cone))
+                {
+                    comando = new SqlCommand(strSentencia, conexion);
+                    comando.CommandType = System.Data.CommandType.Text;
+
+                    if (tipo == "Eliminar")
+                    {
+                        if (objeto is clsEntidadUsuarioRol) {
+
+                        clsEntidadUsuarioRol entidadUsuarioRol = (clsEntidadUsuarioRol)objeto;
+                        comando.Parameters.AddWithValue("@idUsuario", entidadUsuarioRol.mIdUsuario);
+                        comando.ExecuteNonQuery();
+                        }
+                        else
+                        {
+                            if (objeto is clsEntidadUsuarioPantalla)
+                            {
+                                clsEntidadUsuarioPantalla entidadUsuarioPantalla = (clsEntidadUsuarioPantalla)objeto;
+                                comando.Parameters.AddWithValue("@idUsuario", entidadUsuarioPantalla.mIdUsuario);
+                                comando.ExecuteNonQuery();
+                            }
+                            else
+                            {
+                                if(objeto is clsEntidadUsuario)
+                                {
+                                    clsEntidadUsuario entidadUsuario = (clsEntidadUsuario)objeto;
+                                    comando.Parameters.AddWithValue("@idUsuario", entidadUsuario.mIdUsuario);
+                                    comando.ExecuteNonQuery();
+                                }
+                            }
+                        }
+                        return true;
+                    }
+                    else {
+                        return false;
+                    }
+                    
+                }
+                else
+                    return false;
+            }
+            catch
+            {
+                return false;
+            }
+       }
 
         public SqlDataReader mSeleccionarGeneral(clsConexion cone, String sentencia)//string strSentencia, clsConexion cone, int id)
         {

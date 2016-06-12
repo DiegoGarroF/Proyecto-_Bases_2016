@@ -17,5 +17,11 @@ namespace Controlador
             sentencia = "insert into tbUsuarioRol(idUsuario, idRol) values (@idUsuario, @idRol) ";
             return conexion.mEjecutar(sentencia, conexion, pEntidadUsuarioRol);
         }
+
+        public Boolean mEliminarRolesUsuario(clsConexion conexion, clsEntidadUsuarioRol pEntidadUsuarioRol, string tipo)
+        {
+            sentencia = "delete from tbUsuarioRol where idUsuario=@idUsuario";
+            return conexion.mEjecutarElimModif(sentencia, conexion, pEntidadUsuarioRol,tipo);
+        }
     }
 }

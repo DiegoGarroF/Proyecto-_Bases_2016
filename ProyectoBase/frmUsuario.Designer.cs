@@ -45,6 +45,7 @@
             this.txtNombre = new System.Windows.Forms.TextBox();
             this.lblApellidos = new System.Windows.Forms.Label();
             this.lblNombre = new System.Windows.Forms.Label();
+            this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnEliminarPrivilegioPantalla = new System.Windows.Forms.Button();
             this.btnEliminarRol = new System.Windows.Forms.Button();
@@ -70,7 +71,6 @@
             this.cbRol = new System.Windows.Forms.ComboBox();
             this.chkRol = new System.Windows.Forms.CheckBox();
             this.chkPrivilegio = new System.Windows.Forms.CheckBox();
-            this.cbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.gbxBotones.SuspendLayout();
             this.gbxDatos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -239,6 +239,19 @@
             this.lblNombre.Size = new System.Drawing.Size(47, 13);
             this.lblNombre.TabIndex = 12;
             this.lblNombre.Text = "Nombre:";
+            // 
+            // cbTipoUsuario
+            // 
+            this.cbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbTipoUsuario.FormattingEnabled = true;
+            this.cbTipoUsuario.Items.AddRange(new object[] {
+            "Administrador",
+            "Estudiante",
+            "Atención al cliente"});
+            this.cbTipoUsuario.Location = new System.Drawing.Point(126, 258);
+            this.cbTipoUsuario.Name = "cbTipoUsuario";
+            this.cbTipoUsuario.Size = new System.Drawing.Size(110, 21);
+            this.cbTipoUsuario.TabIndex = 0;
             // 
             // groupBox2
             // 
@@ -466,7 +479,7 @@
             "Atención al cliente"});
             this.cbRol.Location = new System.Drawing.Point(94, 16);
             this.cbRol.Name = "cbRol";
-            this.cbRol.Size = new System.Drawing.Size(100, 21);
+            this.cbRol.Size = new System.Drawing.Size(117, 21);
             this.cbRol.TabIndex = 0;
             // 
             // chkRol
@@ -488,19 +501,6 @@
             this.chkPrivilegio.TabIndex = 13;
             this.chkPrivilegio.UseVisualStyleBackColor = true;
             this.chkPrivilegio.CheckedChanged += new System.EventHandler(this.chkPrivilegio_CheckedChanged);
-            // 
-            // cbTipoUsuario
-            // 
-            this.cbTipoUsuario.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbTipoUsuario.FormattingEnabled = true;
-            this.cbTipoUsuario.Items.AddRange(new object[] {
-            "Administrador",
-            "Estudiante",
-            "Atención al cliente"});
-            this.cbTipoUsuario.Location = new System.Drawing.Point(126, 258);
-            this.cbTipoUsuario.Name = "cbTipoUsuario";
-            this.cbTipoUsuario.Size = new System.Drawing.Size(100, 21);
-            this.cbTipoUsuario.TabIndex = 0;
             // 
             // frmUsuario
             // 

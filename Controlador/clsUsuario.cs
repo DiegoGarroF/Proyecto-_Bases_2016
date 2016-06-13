@@ -22,7 +22,7 @@ namespace Controlador
 
         public SqlDataReader mConsultaGeneral(clsConexion conexion)
         {
-            sentencia = "select idUsuario, usuario, contrasena from tbUsuario";           
+            sentencia = "select idUsuario, nombre, contrasena,apellidos from tbUsuario";           
             return conexion.mSeleccionarGeneral(conexion,sentencia);
         }
 
@@ -49,6 +49,12 @@ namespace Controlador
         {
             sentencia = "delete from tbUsuario where idUsuario=@idUsuario";
             return conexion.mEjecutarElimModif(sentencia, conexion, pEntidadUsuario, tipo);
+        }
+
+        public Boolean mModificarUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
+        {
+            sentencia = "update tbUsuario set usuario=@usuario, contrasena=@contrasena, nombre=@nombre, tipoUsuario=@tipoUsuario, apellidos=@apellidos";
+            return conexion.mEjecutar(sentencia, conexion, pEntidadUsuario);
         }
     }
 }

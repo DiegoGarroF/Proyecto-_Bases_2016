@@ -115,9 +115,7 @@ namespace Modelo
                 {
                     comando = new SqlCommand(strSentencia, conexion);
                     comando.CommandType = System.Data.CommandType.Text;
-
-                    if (tipo == "Eliminar")
-                    {
+                                       
                         if (objeto is clsEntidadUsuarioRol) {
 
                         clsEntidadUsuarioRol entidadUsuarioRol = (clsEntidadUsuarioRol)objeto;
@@ -154,10 +152,7 @@ namespace Modelo
                             }
                         }
                         return true;
-                    }
-                    else {
-                        return false;
-                    }
+                   
                     
                 }
                 else

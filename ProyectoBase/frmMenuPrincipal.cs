@@ -100,7 +100,8 @@ namespace Vista
         {
             usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.MODIFICAR));
             this.Hide();
-            usuario.controlAgregarRolPriv(2);
+            usuario.controlAgregarRolPriv(1);
+            usuario.limpiar();
             usuario.Show();
         }
 
@@ -109,6 +110,7 @@ namespace Vista
             usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.CONSULTAR));
             this.Hide();
             usuario.controlAgregarRolPriv(2);
+            usuario.limpiar();
             usuario.Show();
         }
 
@@ -117,6 +119,7 @@ namespace Vista
             usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.ELIMINAR));
             this.Hide();
             usuario.controlAgregarRolPriv(2);
+            usuario.limpiar();
             usuario.Show();
         }
 

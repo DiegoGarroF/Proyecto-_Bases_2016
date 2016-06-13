@@ -137,13 +137,8 @@ namespace Vista
                     {
                         entidadUsuarioRol.mIdRol = dtrRol.GetInt32(0);
                         entidadUsuarioRol.mIdUsuario = idUsuarioAgregado;
-                        if (usuarioRol.mInsertarUsuarioRol(conexion, entidadUsuarioRol))
-                        {
-                            MessageBox.Show("Se insertó rol del usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-
+                        usuarioRol.mInsertarUsuarioRol(conexion, entidadUsuarioRol);
                     }
-
             }
         }
 
@@ -160,13 +155,8 @@ namespace Vista
                         entidadUsuarioPantalla.mIdPantalla = dtrPantalla.GetInt32(0);
                         entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
                         llenarPrivilegiosUsuarioPantalla(I);
-                        if (usuarioPantalla.mInsertarUsuarioPantalla(conexion, entidadUsuarioPantalla))
-                        {
-                            MessageBox.Show("Se insertó privilegios del usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        }
-
+                        usuarioPantalla.mInsertarUsuarioPantalla(conexion, entidadUsuarioPantalla);               
                     }
-
             }
         }
 
@@ -201,8 +191,10 @@ namespace Vista
                 {                                                                     
                     if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                     {
-                        idUsuarioAgregado=seleccionIdUsuarioAgregado();
+                        MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        idUsuarioAgregado =seleccionIdUsuarioAgregado();
                         agregarUsuarioRolPrivilegio(idUsuarioAgregado);
+                       
                     }
                     else
                     {
@@ -216,6 +208,7 @@ namespace Vista
 
                         if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                         {
+                            MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             idUsuarioAgregado = seleccionIdUsuarioAgregado();
                             agregarUsuarioPrivilegio(idUsuarioAgregado);
                         }
@@ -230,8 +223,10 @@ namespace Vista
                         {
                             if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                             {
+                                
                                 idUsuarioAgregado = seleccionIdUsuarioAgregado();
                                 agregarUsuarioRol(idUsuarioAgregado);
+                                MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             }
                             else
                             {
@@ -251,8 +246,8 @@ namespace Vista
         {
             conexion.codigo = "123";
             conexion.clave = "123";
-            
-            if(btnAccion.Text== "Agregar")
+
+            if (btnAccion.Text == "Agregar")
             {
                 mAgregarUsuario();
             }
@@ -262,33 +257,89 @@ namespace Vista
                 {
                     mEliminarUsuario();
                 }
-            }
+                else
+                {
+                    if (btnAccion.Text == "Modificar")
+                    {
+                        int idUsuarioSeleccionado = -1;
+                        idUsuarioSeleccionado = Convert.ToInt32(txtId.Text);
+
+                        if (idUsuarioSeleccionado != -1)
+                        {
+                            modificarUsuario(idUsuarioSeleccionado);
+
+                            //Elimino roles y privilegios
+                            mEliminarUsuarioRol();
+                            mEliminarUsuarioPrivilegio();
+                            agregarUsuarioRolPrivilegio(idUsuarioSeleccionado);
+                            limpiar();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Seleccione un usuario a modificar","Indique un usuario",MessageBoxButtons.OK,MessageBoxIcon.Warning);
+                        }
+                            
+                    }
+                }
+            }    
+            
+        }
+
+        public void modificarUsuario( int idUsuarioSeleccionado)
+        {
+            
+
+            conexion.codigo = "123";
+            conexion.clave = "123";
+            
+            entidadUsuario.mUsuario = txtNombreUsuario.Text;
+            entidadUsuario.mContrasena = txtContrasena.Text;
+            entidadUsuario.mNombre = txtNombre.Text;
+            entidadUsuario.mTipoUsuario = cbTipoUsuario.Text;
+            entidadUsuario.mApellidos = txtApellidos.Text;
 
             
-            
+            if (usuario.mModificarUsuario(conexion, entidadUsuario) == true)
+            {
+                MessageBox.Show("Se ha modificado el usuario","Modificación exitosa",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                
+            }
+
         }
         public void mEliminarUsuario()
         {
             conexion.clave = "123";
             conexion.codigo = "123";
 
-           if(mEliminarUsuarioRol()==true & mEliminarUsuarioPrivilegio()==true)
+            if (txtId.Text != "")
             {
-                entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
-                if (usuario.mEliminarUsuario(conexion,entidadUsuario,btnAccion.Text))
+                if (mEliminarUsuarioRol() == true & mEliminarUsuarioPrivilegio() == true)
                 {
-                    MessageBox.Show("Usuario eliminado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    limpiar();
+                    entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
+                    if (usuario.mEliminarUsuario(conexion, entidadUsuario, btnAccion.Text))
+                    {
+                        MessageBox.Show("Usuario eliminado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        limpiar();
+                    }
                 }
             }
+            else
+            {
+                MessageBox.Show("Favor indique el usuario a eliminar", "????", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                
+            }
+
+          
             
         }
 
         public Boolean mEliminarUsuarioRol()
         {
+           
+                entidadUsuarioRol.mIdUsuario = Convert.ToInt32(txtId.Text);
+                return usuarioRol.mEliminarRolesUsuario(conexion, entidadUsuarioRol, btnAccion.Text);
+           
             
-            entidadUsuarioRol.mIdUsuario=Convert.ToInt32(txtId.Text);
-            return usuarioRol.mEliminarRolesUsuario(conexion, entidadUsuarioRol, btnAccion.Text);
             
         }
         public Boolean mEliminarUsuarioPrivilegio()
@@ -539,6 +590,25 @@ namespace Vista
                     txtId.Enabled = true;
                     btnBuscar.Enabled = true;
                     txtId.Text = "";
+                }
+                else
+                {
+                    if (estado == 1)
+                    {                        
+                            chkPrivilegio.Enabled = true;
+                            chkRol.Enabled = true;
+
+                            lvRoles.Enabled = true;
+                            lvPrivilegios.Enabled = true;
+
+                            btnEliminarPrivilegioPantalla.Enabled = true;
+                            btnEliminarRol.Enabled = true;
+
+                            txtId.Enabled = true;
+                            btnBuscar.Enabled = true;
+                            txtId.Text = "";
+                        
+                    }
                 }
 
             }

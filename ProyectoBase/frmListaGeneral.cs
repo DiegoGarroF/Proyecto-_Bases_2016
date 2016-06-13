@@ -88,7 +88,7 @@ namespace Vista
                 while (dataReader.Read())
                 {
                     ListViewItem item = new ListViewItem(Convert.ToString(dataReader.GetInt32(0)));
-                    item.SubItems.Add(dataReader.GetString(1));
+                    item.SubItems.Add(dataReader.GetString(1) +" "+ dataReader.GetString(3));
                     lvGeneral.Items.Add(item);
                 }
         } 

@@ -39,14 +39,21 @@ namespace Vista
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            frmListaUsuario frmLista = new frmListaUsuario();
-            frmLista.Show();
+            frmListaUsuario frmLista = new frmListaUsuario(conexion);
+            frmLista.ShowDialog();
+            if (frmLista.get() != " ")
+            {
+                usuario.setCodigo(consultaUsu.getCodigo());
+                txtCodigo.Text = consultaUsu.getCodigo(); // para cargar
+                mConsultarCodigo();
+            }
 
-           
+
+
         }
 
-        
-      
+
+
         private void frmBitacora_Load(object sender, EventArgs e)
         {
             dtrUsuario = clbitacora.mConsultaGeneral(conexion);

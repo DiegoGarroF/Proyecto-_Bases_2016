@@ -30,18 +30,20 @@
         {
             this.lvListaUusario = new System.Windows.Forms.ListView();
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.lbUsuario = new System.Windows.Forms.Label();
-            this.btnSalir = new System.Windows.Forms.Button();
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lbUsuario = new System.Windows.Forms.Label();
+            this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lvListaUusario
             // 
+            this.lvListaUusario.Activation = System.Windows.Forms.ItemActivation.TwoClick;
             this.lvListaUusario.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader3,
             this.columnHeader4});
+            this.lvListaUusario.FullRowSelect = true;
             this.lvListaUusario.GridLines = true;
             this.lvListaUusario.Location = new System.Drawing.Point(12, 45);
             this.lvListaUusario.Name = "lvListaUusario";
@@ -49,12 +51,22 @@
             this.lvListaUusario.TabIndex = 0;
             this.lvListaUusario.UseCompatibleStateImageBehavior = false;
             this.lvListaUusario.View = System.Windows.Forms.View.Details;
-            this.lvListaUusario.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+            this.lvListaUusario.DoubleClick += new System.EventHandler(this.lvListaUusario_DoubleClick);
             // 
             // columnHeader1
             // 
             this.columnHeader1.Text = "Nombre";
             this.columnHeader1.Width = 153;
+            // 
+            // columnHeader3
+            // 
+            this.columnHeader3.Text = "Apellidos";
+            this.columnHeader3.Width = 186;
+            // 
+            // columnHeader4
+            // 
+            this.columnHeader4.Text = "Tipo";
+            this.columnHeader4.Width = 177;
             // 
             // lbUsuario
             // 
@@ -74,16 +86,6 @@
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Apellidos";
-            this.columnHeader3.Width = 186;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Tipo";
-            this.columnHeader4.Width = 177;
             // 
             // frmListaUsuario
             // 

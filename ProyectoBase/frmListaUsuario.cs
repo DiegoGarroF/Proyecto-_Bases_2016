@@ -26,18 +26,14 @@ namespace Vista
         clsConexion conexion;
 
         #endregion
-        public frmListaUsuario()
+        public frmListaUsuario(clsConexion conexion)
         {
-            conexion = new clsConexion();
+            this.conexion = conexion;
             usuario = new clsUsuario();
             InitializeComponent();
         }
 
-        private void listView1_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
+        
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -60,6 +56,17 @@ namespace Vista
         }
 
         private void lvListaUusario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lvListaUusario.Items.Count; i++)
+            {
+                if (lvListaUusario.Items[i].Selected)
+                {
+                    stUsuario = lvListaUusario.Items[i].Text;
+                }
+            }
+        }
+
+        private void lvListaUusario_DoubleClick(object sender, EventArgs e)
         {
             for (int i = 0; i < lvListaUusario.Items.Count; i++)
             {

@@ -35,7 +35,13 @@ namespace Vista
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-
+            for (int i = 0; i < lvListaUusario.Items.Count; i++)
+            {
+                if (lvListaUusario.Items[i].Selected)
+                {
+                    stUsuario = lvListaUusario.Items[i].Text;
+                }
+            }
         }
 
 

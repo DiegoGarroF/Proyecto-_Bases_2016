@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 using Controlador;
 
 namespace Vista
-    
+
 {
     public partial class frmListaUsuario : Form
     {
@@ -35,18 +35,9 @@ namespace Vista
 
         private void listView1_SelectedIndexChanged(object sender, EventArgs e)
         {
-            
-            for (int i = 0; i < lvListaUusario.Items.Count; i++)
-            {
-                if (lvListaUusario.Items[i].Selected)
-                {
-                    stUsuario = lvListaUusario.Items[i].Text;
 
-                }
-            }
-          
         }
-        
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -66,6 +57,17 @@ namespace Vista
                     lvListaUusario.Items.Add(item);
                 }
 
+        }
+
+        private void lvListaUusario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lvListaUusario.Items.Count; i++)
+            {
+                if (lvListaUusario.Items[i].Selected)
+                {
+                    stUsuario = lvListaUusario.Items[i].Text;
+                }
+            }
         }
     }
 }

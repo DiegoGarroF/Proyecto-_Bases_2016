@@ -15,14 +15,18 @@ namespace Vista
 {
     public partial class frmBitacora : Form
     {
+
         clsEntidadUsuario entidadUsuario;
+        clsBitacora clbitacora;
         SqlDataReader dtrUsuario;
         clsUsuario usuario;
         clsConexion conexion;
-        
+
+
         public frmBitacora(clsConexion conexion)
         {
             usuario = new clsUsuario();
+            clbitacora = new clsBitacora();
             entidadUsuario = new clsEntidadUsuario();
             this.conexion = conexion;
             InitializeComponent();
@@ -45,6 +49,20 @@ namespace Vista
       
         private void frmBitacora_Load(object sender, EventArgs e)
         {
+            dtrUsuario = clbitacora.mConsultaGeneral(conexion);
+            if (clbitacora.mTrigger(conexion, entidadUsuario) == true)
+
+                lvBitacora.Items.Clear();
+            if (dtrUsuario != null)
+                while (dtrUsuario.Read())
+                {
+                    ListViewItem item = new ListViewItem(dtrUsuario.GetString(0));
+                    item.SubItems.Add(dtrUsuario.GetString(1));
+                    item.SubItems.Add(dtrUsuario.GetString(2));
+                    item.SubItems.Add(dtrUsuario.GetString(3));
+                    item.SubItems.Add(dtrUsuario.GetString(4));
+                    lvBitacora.Items.Add(item);
+                }
         }
     }
 }

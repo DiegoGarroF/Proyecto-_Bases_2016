@@ -39,7 +39,7 @@ namespace Vista
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            frmListaUsuario frmLista = new frmListaUsuario(conexion);
+           /* frmListaUsuario frmLista = new frmListaUsuario(conexion);
             frmLista.ShowDialog();
             if (frmLista.get() != " ")
             {
@@ -48,7 +48,7 @@ namespace Vista
                 mConsultarCodigo();
             }
 
-
+    */
 
         }
 

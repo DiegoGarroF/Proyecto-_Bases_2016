@@ -33,10 +33,6 @@
             this.salirToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.salirToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.administrarUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.modificarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.consultarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.eliminarUsuarioToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agregarPréstamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.modificarPréstamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,6 +40,9 @@
             this.eliminarPréstamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.librosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionNuevoLibro = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoDeRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mantenimientoDePantallasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,41 +85,12 @@
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.administrarUsuariosToolStripMenuItem,
-            this.modificarUsuarioToolStripMenuItem,
-            this.consultarUsuarioToolStripMenuItem,
-            this.eliminarUsuarioToolStripMenuItem});
+            this.mantenimientoDeUsuariosToolStripMenuItem,
+            this.mantenimientoDeRolesToolStripMenuItem,
+            this.mantenimientoDePantallasToolStripMenuItem});
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(64, 20);
-            this.usuariosToolStripMenuItem.Text = "Usuarios";
-            // 
-            // administrarUsuariosToolStripMenuItem
-            // 
-            this.administrarUsuariosToolStripMenuItem.Name = "administrarUsuariosToolStripMenuItem";
-            this.administrarUsuariosToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.administrarUsuariosToolStripMenuItem.Text = "Agregar";
-            this.administrarUsuariosToolStripMenuItem.Click += new System.EventHandler(this.administrarUsuariosToolStripMenuItem_Click);
-            // 
-            // modificarUsuarioToolStripMenuItem
-            // 
-            this.modificarUsuarioToolStripMenuItem.Name = "modificarUsuarioToolStripMenuItem";
-            this.modificarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.modificarUsuarioToolStripMenuItem.Text = "Modificar ";
-            this.modificarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.modificarUsuarioToolStripMenuItem_Click);
-            // 
-            // consultarUsuarioToolStripMenuItem
-            // 
-            this.consultarUsuarioToolStripMenuItem.Name = "consultarUsuarioToolStripMenuItem";
-            this.consultarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.consultarUsuarioToolStripMenuItem.Text = "Consultar";
-            this.consultarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.consultarUsuarioToolStripMenuItem_Click);
-            // 
-            // eliminarUsuarioToolStripMenuItem
-            // 
-            this.eliminarUsuarioToolStripMenuItem.Name = "eliminarUsuarioToolStripMenuItem";
-            this.eliminarUsuarioToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.eliminarUsuarioToolStripMenuItem.Text = "Eliminar";
-            this.eliminarUsuarioToolStripMenuItem.Click += new System.EventHandler(this.eliminarUsuarioToolStripMenuItem_Click);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.usuariosToolStripMenuItem.Text = "Seguridad";
             // 
             // préstamosToolStripMenuItem
             // 
@@ -176,6 +146,25 @@
             this.opcionNuevoLibro.Text = "Mantenimiento";
             this.opcionNuevoLibro.Click += new System.EventHandler(this.opcionMantenimientoLibros);
             // 
+            // mantenimientoDeUsuariosToolStripMenuItem
+            // 
+            this.mantenimientoDeUsuariosToolStripMenuItem.Name = "mantenimientoDeUsuariosToolStripMenuItem";
+            this.mantenimientoDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.mantenimientoDeUsuariosToolStripMenuItem.Text = "Mantenimiento de Usuarios";
+            this.mantenimientoDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeUsuariosToolStripMenuItem_Click);
+            // 
+            // mantenimientoDeRolesToolStripMenuItem
+            // 
+            this.mantenimientoDeRolesToolStripMenuItem.Name = "mantenimientoDeRolesToolStripMenuItem";
+            this.mantenimientoDeRolesToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.mantenimientoDeRolesToolStripMenuItem.Text = "Mantenimiento de Roles";
+            // 
+            // mantenimientoDePantallasToolStripMenuItem
+            // 
+            this.mantenimientoDePantallasToolStripMenuItem.Name = "mantenimientoDePantallasToolStripMenuItem";
+            this.mantenimientoDePantallasToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.mantenimientoDePantallasToolStripMenuItem.Text = "Mantenimiento de Pantallas";
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -201,17 +190,16 @@
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem salirToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem administrarUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem préstamosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem agregarPréstamoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem modificarPréstamoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem consultarPréstamoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eliminarPréstamoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem librosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem modificarUsuarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem consultarUsuarioToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem eliminarUsuarioToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem opcionNuevoLibro;
+        private System.Windows.Forms.ToolStripMenuItem mantenimientoDeUsuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mantenimientoDeRolesToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mantenimientoDePantallasToolStripMenuItem;
     }
 }
 

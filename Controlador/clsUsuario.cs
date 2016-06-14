@@ -20,6 +20,14 @@ namespace Controlador
             return conexion.mSeleccionar(sentencia,pEntidadUsuario.mIdUsuario);
         }
 
+        public SqlDataReader mBuscarPorLogin(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
+        {
+            sentencia = "select idUsuario, usuario, contrasena, nombre, apellidos, tipoUsuario from tbUsuario where usuario=@codigo";
+
+
+            return conexion.mSeleccionarTipoString(sentencia, pEntidadUsuario.mUsuario);
+        }
+
         public SqlDataReader mConsultaGeneral(clsConexion conexion)
         {
             sentencia = "select idUsuario, nombre, contrasena,apellidos from tbUsuario";           

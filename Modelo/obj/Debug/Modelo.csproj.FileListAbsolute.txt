@@ -13,3 +13,8 @@ C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Modelo\bin\Deb
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Modelo\obj\Debug\Modelo.dll
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Modelo\obj\Debug\Modelo.pdb
+C:\Users\Diego\Desktop\Proyecto Bases\Modelo\bin\Debug\Modelo.dll
+C:\Users\Diego\Desktop\Proyecto Bases\Modelo\bin\Debug\Modelo.pdb
+C:\Users\Diego\Desktop\Proyecto Bases\Modelo\obj\Debug\Modelo.csprojResolveAssemblyReference.cache
+C:\Users\Diego\Desktop\Proyecto Bases\Modelo\obj\Debug\Modelo.dll
+C:\Users\Diego\Desktop\Proyecto Bases\Modelo\obj\Debug\Modelo.pdb

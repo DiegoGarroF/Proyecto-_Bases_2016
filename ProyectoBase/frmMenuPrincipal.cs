@@ -43,39 +43,6 @@ namespace Vista
             usuario.Show();
         }
 
-        private void opcionNuevoLibro_Click(object sender, EventArgs e)
-        {
-            frmLibro nuevoLibro = new frmLibro(conexion);
-            nuevoLibro.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.AGREGAR));
-            nuevoLibro.Visible = true;
-            this.Close();
-        }
-
-        private void opcionModificarLibro_Click(object sender, EventArgs e)
-        {
-            frmLibro nuevoLibro = new frmLibro(conexion);
-            nuevoLibro.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.MODIFICAR));
-            nuevoLibro.Visible = true;
-            this.Close();
-        }
-
-        private void opcionBuscarLibro_Click(object sender, EventArgs e)
-        {
-            frmLibro nuevoLibro = new frmLibro(conexion);
-            nuevoLibro.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.CONSULTAR));
-            nuevoLibro.Visible = true;
-            this.Close();
-        }
-
-        private void opcionEliminarLibro_Click(object sender, EventArgs e)
-        {
-            frmLibro nuevoLibro = new frmLibro(conexion);
-            nuevoLibro.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.ELIMINAR));
-            nuevoLibro.Visible = true;
-            
-            this.Close();
-        }
-
         public string mEstablecerTipoBoton(string tipo)
         {             
             switch (tipo)
@@ -155,6 +122,13 @@ namespace Vista
             frmPrestamos prestamos = new frmPrestamos();
             prestamos.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.ELIMINAR));
             prestamos.ShowDialog();
+        }
+
+        private void opcionMantenimientoLibros(object sender, EventArgs e)
+        {
+            frmLibro nuevoLibro = new frmLibro(conexion);
+            nuevoLibro.Visible = true;
+            this.Close();
         }
     }
 }

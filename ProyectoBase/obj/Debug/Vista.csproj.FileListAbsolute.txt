@@ -77,3 +77,24 @@ C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\o
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmPrestamos.resources
 C:\Users\acerpc\Documents\ProyectoFinalBases\Proyecto-_Bases_2016\ProyectoBase\obj\Debug\Vista.frmPrestamos.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\bin\Debug\ProyectoBase.exe.config
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\ProyectoBase.exe
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\ProyectoBase.pdb
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\bin\Debug\ProyectoBase.exe
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\bin\Debug\ProyectoBase.pdb
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\bin\Debug\Controlador.dll
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\bin\Debug\Modelo.dll
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\bin\Debug\Controlador.pdb
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\bin\Debug\Modelo.pdb
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.csprojResolveAssemblyReference.cache
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.frmAcceso.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.frmBitacora.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.frmConsultaPrestamos.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.frmLibro.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.frmListaGeneral.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.frmListaUsuario.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.frmMenuPrincipal.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.frmPrestamos.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.frmUsuario.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\ProyectoBase.Properties.Resources.resources
+C:\Users\Diego\Desktop\Proyecto Bases\ProyectoBase\obj\Debug\Vista.csproj.GenerateResource.Cache

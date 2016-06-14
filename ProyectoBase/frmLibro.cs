@@ -44,7 +44,7 @@ namespace Vista
         }
         public void setBtnAccionTipo(String titulo)
         {
-            btnMultiFuncion.Text = titulo;
+            btnAgregar.Text = titulo;
         }
 
        
@@ -57,19 +57,19 @@ namespace Vista
         //y asi realizar la accion correspondiente 
         private void btnMultiFuncion_Click(object sender, EventArgs e)
         {
-            if(btnMultiFuncion.Text.Equals(clsConstantes.AGREGAR))
+            if(btnAgregar.Text.Equals(clsConstantes.AGREGAR))
             {
 
             }
-            else if(btnMultiFuncion.Text.Equals(clsConstantes.CONSULTAR))
+            else if(btnAgregar.Text.Equals(clsConstantes.CONSULTAR))
             {
 
             }
-            else if (btnMultiFuncion.Text.Equals(clsConstantes.ELIMINAR))
+            else if (btnAgregar.Text.Equals(clsConstantes.ELIMINAR))
             {
 
             }
-            else if (btnMultiFuncion.Text.Equals(clsConstantes.MODIFICAR))
+            else if (btnAgregar.Text.Equals(clsConstantes.MODIFICAR))
             {
 
             }
@@ -123,11 +123,18 @@ namespace Vista
             frmListaGeneral listaGeneral = new frmListaGeneral(conexion);
             listaGeneral.cargarListViewLibros();
             listaGeneral.Visible = true;
+            
+            if (listaGeneral.mIdUsuario != 0)
+            {
+                // entidadUsuario.mIdUsuario = lista.mIdUsuario;
+                txtID.Text = Convert.ToString(listaGeneral.mIdUsuario);
+
+            }
         }
 
         public void mTipoAccion()
         {
-            switch(btnMultiFuncion.Text)
+            switch(btnAgregar.Text)
             {
                 case clsConstantes.AGREGAR:
 

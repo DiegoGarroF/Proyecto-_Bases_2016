@@ -19,3 +19,10 @@ C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\bi
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.csprojResolveAssemblyReference.cache
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.dll
 C:\Users\Erick Gonzalez\Documents\I Ciclo\BD\Proyecto-_Bases_2016\Controlador\obj\Debug\Controlador.pdb
+C:\Users\Diego\Desktop\Proyecto Bases\Controlador\bin\Debug\Controlador.dll
+C:\Users\Diego\Desktop\Proyecto Bases\Controlador\bin\Debug\Controlador.pdb
+C:\Users\Diego\Desktop\Proyecto Bases\Controlador\bin\Debug\Modelo.dll
+C:\Users\Diego\Desktop\Proyecto Bases\Controlador\bin\Debug\Modelo.pdb
+C:\Users\Diego\Desktop\Proyecto Bases\Controlador\obj\Debug\Controlador.csprojResolveAssemblyReference.cache
+C:\Users\Diego\Desktop\Proyecto Bases\Controlador\obj\Debug\Controlador.dll
+C:\Users\Diego\Desktop\Proyecto Bases\Controlador\obj\Debug\Controlador.pdb

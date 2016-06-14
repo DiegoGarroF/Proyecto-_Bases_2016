@@ -243,6 +243,15 @@ namespace Modelo
                                     return true;
 
                                 }
+                                else if (objeto is clsEntidadLibro)
+                                {
+                                    clsEntidadLibro pEntidadLibro = (clsEntidadLibro)objeto;
+                                    comando.Parameters.AddWithValue("@nombre", pEntidadLibro.getNombre());
+                                    comando.Parameters.AddWithValue("@isbn", pEntidadLibro.getISBN());
+                                    comando.ExecuteNonQuery();
+                                    return true;
+
+                                }
                             }
                         }
                     }

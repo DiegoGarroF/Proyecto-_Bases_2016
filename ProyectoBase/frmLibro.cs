@@ -127,6 +127,17 @@ namespace Vista
             {
                 // entidadUsuario.mIdUsuario = lista.mIdUsuario;
                 txtID.Text = Convert.ToString(listaGeneral.mIdUsuario);
+                
+                pEntidadLibro.setIdLibro(Int32.Parse(txtID.Text));
+                dtr = libro.mSeleccionarLibroID(conexion, pEntidadLibro);
+                if(dtr!=null)
+                {
+                    if (dtr.Read())
+                    {
+                        txtNombre.Text = dtr.GetString(1);
+                        txtISBN.Text = dtr.GetString(2);
+                    }
+                }
 
             }
         }
@@ -165,7 +176,7 @@ namespace Vista
         // Metodo para verificar que exista un ID
         public Boolean verificarEspacioID()
         {
-            if (!this.txtID.Text.Trim().Equals(""))
+            if (this.txtID.Text.Trim().Equals("Automatico"))
                 return true;
             return false;
         }
@@ -194,7 +205,48 @@ namespace Vista
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+            if (!verificarEspacioID())
+            {
 
+                MessageBox.Show("El Id Se Encuentra Registrado\n\nSe Utilizara Uno De Forma Automática", "ID LIBRO EXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                this.txtID.Text = "Automatico";
+            }
+            if (verificarEspacioISBN()&& verificarEspacioNombre())
+            {
+              
+                pEntidadLibro.setISBN(this.txtISBN.Text);
+                pEntidadLibro.setNombre(this.txtNombre.Text);
+                dtr = libro.mSeleccionarLibroISBN(this.conexion, pEntidadLibro);
+                MessageBox.Show(pEntidadLibro.getISBN());
+                if (dtr==null)
+                {
+                    if (libro.mInsertarLibro(this.conexion, pEntidadLibro))
+                    {
+                        MessageBox.Show("Libro Agregado Correctamente", "Proceso Exítoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        mLimpiar();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Surgió Un Error Al Agregar Un Libro", "Proceso No Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("No Pueden Existir Dos Libros Con El Mismo ISBN", "Proceso No Completado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+               
+
+            }
+            else
+            {
+                MessageBox.Show("Debe Completar los Espacios Solicitados", "Complete Los Datos", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+            
+        }
+        public void mLimpiar()
+        {
+            this.txtISBN.Text = "";
+            this.txtNombre.Text = "";
         }
     }
 }

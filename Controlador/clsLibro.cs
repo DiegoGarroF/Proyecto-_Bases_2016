@@ -19,20 +19,20 @@ namespace Controlador
 
         public Boolean mInsertarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "INSERT INTO tbLibro(nombre,isbn) VALUES("+pEntidadLibro.getNombre()+"' , '"+pEntidadLibro.getISBN()+"')";
+            strSentencia = "INSERT INTO tbLibro(nombre,isbn) VALUES('"+pEntidadLibro.getNombre()+"' , '"+pEntidadLibro.getISBN()+"')";
             return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
 
 
         public SqlDataReader mSeleccionarLibroID(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "SELECT * FROM tbLibro where idLibro=@"+pEntidadLibro.getIdLibro()+" ;";
-            return conexion.mSeleccionar(strSentencia,pEntidadLibro.getIdLibro());
+            strSentencia = "SELECT * FROM tbLibro where idLibro=@codigo";
+            return conexion.mSeleccionarTipoString(strSentencia,""+pEntidadLibro.getIdLibro());
         }
         public SqlDataReader mSeleccionarLibroISBN(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "SELECT * FROM tbLibro where isbn=@" + pEntidadLibro.getIdLibro() + " ;";
-            return conexion.mSeleccionar(strSentencia, pEntidadLibro.getIdLibro());
+            strSentencia = "SELECT * FROM tbLibro where isbn=@codigo";
+            return conexion.mSeleccionarTipoString(strSentencia, pEntidadLibro.getISBN());
         }
         public SqlDataReader mSeleccionarTodos(clsConexion conexion)
         {

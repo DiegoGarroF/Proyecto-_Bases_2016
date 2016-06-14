@@ -191,5 +191,10 @@ namespace Vista
                     break;     
             }
         }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

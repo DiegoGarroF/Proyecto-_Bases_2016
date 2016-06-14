@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Datos = new System.Windows.Forms.GroupBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtISBN = new System.Windows.Forms.TextBox();
@@ -39,7 +40,6 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.Datos.SuspendLayout();
             this.SuspendLayout();
@@ -78,6 +78,20 @@
             this.Datos.TabIndex = 4;
             this.Datos.TabStop = false;
             this.Datos.Text = "Datos";
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnConsultar.Image = global::ProyectoBase.Properties.Resources.buscar;
+            this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnConsultar.Location = new System.Drawing.Point(249, 19);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(45, 39);
+            this.btnConsultar.TabIndex = 10;
+            this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnConsultar.UseVisualStyleBackColor = false;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // txtID
             // 
@@ -124,6 +138,7 @@
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregar.UseVisualStyleBackColor = false;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // button2
             // 
@@ -154,20 +169,6 @@
             this.btnModificar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
-            // 
-            // btnConsultar
-            // 
-            this.btnConsultar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnConsultar.Image = global::ProyectoBase.Properties.Resources.buscar;
-            this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnConsultar.Location = new System.Drawing.Point(249, 19);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(45, 39);
-            this.btnConsultar.TabIndex = 10;
-            this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnConsultar.UseVisualStyleBackColor = false;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // btnSalir
             // 

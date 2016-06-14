@@ -73,12 +73,7 @@ namespace Vista
         {
             this.Hide();
             menu.Show();
-        }
-
-        public void setBtnAccionTipo(string tipo)
-        {
-            this.btnAccion.Text = tipo;
-        }
+        }        
 
         public void llenarPrivilegiosUsuarioPantalla(ListViewItem I)
         {
@@ -194,7 +189,7 @@ namespace Vista
                         MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         idUsuarioAgregado =seleccionIdUsuarioAgregado();
                         agregarUsuarioRolPrivilegio(idUsuarioAgregado);
-                       
+                        limpiar();
                     }
                     else
                     {
@@ -211,6 +206,7 @@ namespace Vista
                             MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             idUsuarioAgregado = seleccionIdUsuarioAgregado();
                             agregarUsuarioPrivilegio(idUsuarioAgregado);
+                            limpiar();
                         }
                         else
                         {
@@ -227,6 +223,7 @@ namespace Vista
                                 idUsuarioAgregado = seleccionIdUsuarioAgregado();
                                 agregarUsuarioRol(idUsuarioAgregado);
                                 MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                limpiar();
                             }
                             else
                             {
@@ -242,48 +239,7 @@ namespace Vista
             }
         }
 
-        private void btnAccion_Click(object sender, EventArgs e)
-        {
-            conexion.codigo = "123";
-            conexion.clave = "123";
-
-            if (btnAccion.Text == "Agregar")
-            {
-                mAgregarUsuario();
-            }
-            else
-            {
-                if (btnAccion.Text == "Eliminar")
-                {
-                    mEliminarUsuario();
-                }
-                else
-                {
-                    if (btnAccion.Text == "Modificar")
-                    {
-                        int idUsuarioSeleccionado = -1;
-                        idUsuarioSeleccionado = Convert.ToInt32(txtId.Text);
-
-                        if (idUsuarioSeleccionado != -1)
-                        {
-                            modificarUsuario(idUsuarioSeleccionado);
-
-                            //Elimino roles y privilegios
-                            mEliminarUsuarioRol();
-                            mEliminarUsuarioPrivilegio();
-                            agregarUsuarioRolPrivilegio(idUsuarioSeleccionado);
-                            limpiar();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Seleccione un usuario a modificar","Indique un usuario",MessageBoxButtons.OK,MessageBoxIcon.Warning);
-                        }
-                            
-                    }
-                }
-            }    
-            
-        }
+       
 
         public void modificarUsuario( int idUsuarioSeleccionado)
         {
@@ -316,7 +272,7 @@ namespace Vista
                 if (mEliminarUsuarioRol() == true & mEliminarUsuarioPrivilegio() == true)
                 {
                     entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
-                    if (usuario.mEliminarUsuario(conexion, entidadUsuario, btnAccion.Text))
+                    if (usuario.mEliminarUsuario(conexion, entidadUsuario, btnAgregar.Text))
                     {
                         MessageBox.Show("Usuario eliminado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         limpiar();
@@ -327,25 +283,19 @@ namespace Vista
             {
                 MessageBox.Show("Favor indique el usuario a eliminar", "????", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 
-            }
-
-          
-            
+            }                    
         }
 
         public Boolean mEliminarUsuarioRol()
         {
            
                 entidadUsuarioRol.mIdUsuario = Convert.ToInt32(txtId.Text);
-                return usuarioRol.mEliminarRolesUsuario(conexion, entidadUsuarioRol, btnAccion.Text);
-           
-            
-            
+                return usuarioRol.mEliminarRolesUsuario(conexion, entidadUsuarioRol, btnAgregar.Text);           
         }
         public Boolean mEliminarUsuarioPrivilegio()
         {
             entidadUsuarioPantalla.mIdUsuario = Convert.ToInt32(txtId.Text);
-            return usuarioPantalla.mEliminarPantallasUsuario(conexion, entidadUsuarioPantalla, btnAccion.Text);
+            return usuarioPantalla.mEliminarPantallasUsuario(conexion, entidadUsuarioPantalla, btnAgregar.Text);
         }
 
         public Boolean mValidarPrivilegioUsuario()
@@ -378,16 +328,21 @@ namespace Vista
 
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            limpiar();
+            
             frmListaGeneral  lista = new frmListaGeneral(conexion);
             lista.cargarListViewUsuarios();
             lista.ShowDialog();
+
+            conexion.codigo = "123";
+            conexion.clave = "123";
+            entidadUsuario.mIdUsuario = lista.mIdUsuario;
+            dtrUsuario = usuario.mBuscarUsuario(conexion, entidadUsuario);
 
             if (lista.mIdUsuario != 0)
             {
                 entidadUsuario.mIdUsuario=lista.mIdUsuario;
                 txtId.Text = Convert.ToString(lista.mIdUsuario);
-                mConsultaCodigo();
+                mConsultaUsuario(dtrUsuario);
                 cargarRolesUsuario();
                 cargarPrivilPantallasUsuario();
             }
@@ -460,22 +415,20 @@ namespace Vista
             }
         }
 
-        public void mConsultaCodigo()
+        public void mConsultaUsuario(SqlDataReader dtrUsuario)
         {
-            conexion.codigo = "123";
-            conexion.clave = "123";
-            entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
-            dtrUsuario = usuario.mBuscarUsuario(conexion,entidadUsuario);
+            
 
             if (dtrUsuario != null)
             {
                 if (dtrUsuario.Read())
                 {
+                    txtId.Text =Convert.ToString( dtrUsuario.GetInt32(0));
                     txtNombreUsuario.Text = dtrUsuario.GetString(1);
                     txtContrasena.Text= dtrUsuario.GetString(2);
                     txtNombre.Text = dtrUsuario.GetString(3);
                     txtApellidos.Text = dtrUsuario.GetString(4);
-                    cbTipoUsuario.Text = dtrUsuario.GetString(5); ;
+                    cbTipoUsuario.Text = dtrUsuario.GetString(5); 
                 }
                 else
                 {
@@ -483,22 +436,15 @@ namespace Vista
                 }
             }
         }
-
-        private void txtId_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == (Char)Keys.Enter)
-            {
-                mConsultaCodigo();
-            }
-        }
+     
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             limpiar();
         }
-        public void limpiar()
+        public void limpiar( )
         {
-            txtId.Text = "";
+            txtId.Text = "Automático";
             txtContrasena.Text = "";
             txtNombreUsuario.Text = "";
             txtNombre.Text = "";
@@ -555,64 +501,7 @@ namespace Vista
             }
         }
 
-        public void controlAgregarRolPriv(int estado)
-        {
-            if (estado ==0)
-            {
-                chkPrivilegio.Enabled = true;
-                chkRol.Enabled = true;
-
-                lvRoles.Enabled = true;
-                lvPrivilegios.Enabled = true;
-
-                btnEliminarPrivilegioPantalla.Enabled = true;
-                btnEliminarRol.Enabled = true;
-
-                txtId.Enabled = false;
-                btnBuscar.Enabled = false;
-
-                txtId.Text = "Valor automático";
-                
-            }
-            else
-            {
-                if (estado == 2)
-                {
-                    chkPrivilegio.Enabled = false;
-                    chkRol.Enabled = false;
-
-                    lvRoles.Enabled = false;
-                    lvPrivilegios.Enabled = false;
-
-                    btnEliminarPrivilegioPantalla.Enabled = false;
-                    btnEliminarRol.Enabled = false;
-
-                    txtId.Enabled = true;
-                    btnBuscar.Enabled = true;
-                    txtId.Text = "";
-                }
-                else
-                {
-                    if (estado == 1)
-                    {                        
-                            chkPrivilegio.Enabled = true;
-                            chkRol.Enabled = true;
-
-                            lvRoles.Enabled = true;
-                            lvPrivilegios.Enabled = true;
-
-                            btnEliminarPrivilegioPantalla.Enabled = true;
-                            btnEliminarRol.Enabled = true;
-
-                            txtId.Enabled = true;
-                            btnBuscar.Enabled = true;
-                            txtId.Text = "";
-                        
-                    }
-                }
-
-            }
-        }
+      
 
         private void btnAgregarPrivilegios_Click(object sender, EventArgs e)
         {
@@ -665,36 +554,24 @@ namespace Vista
 
         private void btnEliminarPrivilegioPantalla_Click(object sender, EventArgs e)
         {
-            if (itemSeleccionPrivilegio() != -1)
+            if (itemSeleccion(lvPrivilegios) != -1)
             {
-                lvPrivilegios.Items.RemoveAt(itemSeleccionPrivilegio());
+                lvPrivilegios.Items.RemoveAt(itemSeleccion(lvPrivilegios));
             }
             else
             {
                 MessageBox.Show("Seleccione un item válido", "No se ha seleccionado nada", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }
+        }        
 
-        public int itemSeleccionPrivilegio()
+        public int itemSeleccion(ListView lista) //Usar solo 1 método
         {
-            for (int i = 0; i < lvPrivilegios.Items.Count; i++)
+            for (int i = 0; i < lista.Items.Count; i++)
             {
-                if (lvPrivilegios.Items[i].Selected)
+                if (lista.Items[i].Selected)
                 {                    
-                    return lvPrivilegios.Items[i].Index;
-                }
-            }
-            return -1;
-        }
-
-        public int itemSeleccionRol()
-        {
-            for (int i = 0; i < lvRoles.Items.Count; i++)
-            {
-                if (lvRoles.Items[i].Selected)
-                {                    
-                    return lvRoles.Items[i].Index;
+                    return lista.Items[i].Index;
                 }
             }
             return -1;
@@ -702,9 +579,9 @@ namespace Vista
 
         private void btnEliminarRol_Click(object sender, EventArgs e)
         {
-            if (itemSeleccionRol() != -1)
+            if (itemSeleccion(lvRoles) != -1)
             {
-                lvRoles.Items.RemoveAt(itemSeleccionRol());
+                lvRoles.Items.RemoveAt(itemSeleccion(lvRoles));
             }
             else
             {
@@ -723,6 +600,63 @@ namespace Vista
             else
             {
                 MessageBox.Show("Seleccione un rol válido", "Rol no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }      
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            mEliminarUsuario();
+        }
+
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            cargarDatosUsuario();
+        }
+
+        public void cargarDatosUsuario()
+        {
+            conexion.codigo = "123";
+            conexion.clave = "123";
+            entidadUsuario.mUsuario = txtNombreUsuario.Text;
+            dtrUsuario = usuario.mBuscarPorLogin(conexion, entidadUsuario);
+            mConsultaUsuario(dtrUsuario);
+            cargarPrivilPantallasUsuario();
+            cargarRolesUsuario();
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            int idUsuarioSeleccionado = -1;
+            idUsuarioSeleccionado = Convert.ToInt32(txtId.Text);
+
+            if (idUsuarioSeleccionado != -1)
+            {
+                modificarUsuario(idUsuarioSeleccionado);
+
+                //Elimino roles y privilegios
+                mEliminarUsuarioRol();
+                mEliminarUsuarioPrivilegio();
+                agregarUsuarioRolPrivilegio(idUsuarioSeleccionado);
+                limpiar();
+            }
+            else
+            {
+                MessageBox.Show("Realice una búsqueda del usuario a modificar", "Indique un usuario", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            conexion.codigo = "123";
+            conexion.clave = "123";
+            mAgregarUsuario();
+        }
+
+        private void txtNombreUsuario_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar ==(Char) Keys.Enter)
+            {
+                cargarDatosUsuario();
             }
         }
     }

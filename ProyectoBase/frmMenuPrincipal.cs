@@ -36,10 +36,10 @@ namespace Vista
 
         private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {                        
-            usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.AGREGAR));
+            //usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.AGREGAR));
             this.Hide();
             usuario.limpiar();
-            usuario.controlAgregarRolPriv(0);
+            //usuario.controlAgregarRolPriv(0);
             usuario.Show();
         }
 
@@ -63,32 +63,7 @@ namespace Vista
             return null;
         }
 
-        private void modificarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.MODIFICAR));
-            this.Hide();
-            usuario.controlAgregarRolPriv(1);
-            usuario.limpiar();
-            usuario.Show();
-        }
-
-        private void consultarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.CONSULTAR));
-            this.Hide();
-            usuario.controlAgregarRolPriv(2);
-            usuario.limpiar();
-            usuario.Show();
-        }
-
-        private void eliminarUsuarioToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.ELIMINAR));
-            this.Hide();
-            usuario.controlAgregarRolPriv(2);
-            usuario.limpiar();
-            usuario.Show();
-        }
+       
 
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -129,6 +104,15 @@ namespace Vista
             frmLibro nuevoLibro = new frmLibro(conexion);
             nuevoLibro.Visible = true;
             this.Close();
+        }
+
+        private void mantenimientoDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+            this.Hide();
+            usuario.limpiar();
+            //usuario.controlAgregarRolPriv(0);
+            usuario.Show();
         }
     }
 }

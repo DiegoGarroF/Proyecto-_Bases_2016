@@ -19,7 +19,6 @@ namespace Vista
         private SqlDataReader dtr;
         public  clsLibro libro;
         private clsEntidadLibro pEntidadLibro;
-
         public frmLibro(clsConexion conexion)
         {
             InitializeComponent();
@@ -74,7 +73,7 @@ namespace Vista
 
             }
         }
-
+   
         #region Metodos IMEC
 
         //Metodo para agregar un nuevo libro
@@ -122,7 +121,7 @@ namespace Vista
         {
             frmListaGeneral listaGeneral = new frmListaGeneral(conexion);
             listaGeneral.cargarListViewLibros();
-            listaGeneral.Visible = true;
+            listaGeneral.ShowDialog();
             
             if (listaGeneral.mIdUsuario != 0)
             {

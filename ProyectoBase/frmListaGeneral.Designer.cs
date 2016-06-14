@@ -31,7 +31,6 @@
             this.lvGeneral = new System.Windows.Forms.ListView();
             this.lvIdentificadorColumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lvNombreComlumna = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.btnAceptar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
@@ -63,20 +62,11 @@
             this.lvNombreComlumna.Text = "Nombre";
             this.lvNombreComlumna.Width = 130;
             // 
-            // btnAceptar
-            // 
-            this.btnAceptar.Location = new System.Drawing.Point(32, 227);
-            this.btnAceptar.Name = "btnAceptar";
-            this.btnAceptar.Size = new System.Drawing.Size(60, 30);
-            this.btnAceptar.TabIndex = 1;
-            this.btnAceptar.Text = "Aceptar";
-            this.btnAceptar.UseVisualStyleBackColor = true;
-            // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(149, 227);
+            this.btnSalir.Location = new System.Drawing.Point(192, 212);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(60, 30);
+            this.btnSalir.Size = new System.Drawing.Size(51, 29);
             this.btnSalir.TabIndex = 1;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -86,10 +76,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(253, 269);
+            this.ClientSize = new System.Drawing.Size(244, 241);
             this.ControlBox = false;
             this.Controls.Add(this.btnSalir);
-            this.Controls.Add(this.btnAceptar);
             this.Controls.Add(this.lvGeneral);
             this.Name = "frmListaGeneral";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -104,7 +93,6 @@
         private System.Windows.Forms.ListView lvGeneral;
         private System.Windows.Forms.ColumnHeader lvIdentificadorColumna;
         private System.Windows.Forms.ColumnHeader lvNombreComlumna;
-        private System.Windows.Forms.Button btnAceptar;
         private System.Windows.Forms.Button btnSalir;
     }
 }

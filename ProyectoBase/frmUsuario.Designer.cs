@@ -28,10 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.btnAccion = new System.Windows.Forms.Button();
+            this.btnAgregar = new System.Windows.Forms.Button();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.gbxBotones = new System.Windows.Forms.GroupBox();
+            this.btnEliminar = new System.Windows.Forms.Button();
+            this.btnModificar = new System.Windows.Forms.Button();
+            this.btnConsultar = new System.Windows.Forms.Button();
             this.txtContrasena = new System.Windows.Forms.TextBox();
             this.lblContrasena = new System.Windows.Forms.Label();
             this.lblNombreUsuario = new System.Windows.Forms.Label();
@@ -77,19 +80,19 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // btnAccion
+            // btnAgregar
             // 
-            this.btnAccion.Location = new System.Drawing.Point(6, 14);
-            this.btnAccion.Name = "btnAccion";
-            this.btnAccion.Size = new System.Drawing.Size(75, 31);
-            this.btnAccion.TabIndex = 4;
-            this.btnAccion.Text = "Accion";
-            this.btnAccion.UseVisualStyleBackColor = true;
-            this.btnAccion.Click += new System.EventHandler(this.btnAccion_Click);
+            this.btnAgregar.Location = new System.Drawing.Point(6, 19);
+            this.btnAgregar.Name = "btnAgregar";
+            this.btnAgregar.Size = new System.Drawing.Size(75, 31);
+            this.btnAgregar.TabIndex = 4;
+            this.btnAgregar.Text = "Agregar";
+            this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(224, 14);
+            this.btnCancelar.Location = new System.Drawing.Point(255, 76);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 31);
             this.btnCancelar.TabIndex = 5;
@@ -99,7 +102,7 @@
             // 
             // btnLimpiar
             // 
-            this.btnLimpiar.Location = new System.Drawing.Point(117, 14);
+            this.btnLimpiar.Location = new System.Drawing.Point(255, 19);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 31);
             this.btnLimpiar.TabIndex = 7;
@@ -109,14 +112,47 @@
             // 
             // gbxBotones
             // 
+            this.gbxBotones.Controls.Add(this.btnEliminar);
+            this.gbxBotones.Controls.Add(this.btnModificar);
+            this.gbxBotones.Controls.Add(this.btnConsultar);
             this.gbxBotones.Controls.Add(this.btnLimpiar);
             this.gbxBotones.Controls.Add(this.btnCancelar);
-            this.gbxBotones.Controls.Add(this.btnAccion);
-            this.gbxBotones.Location = new System.Drawing.Point(48, 398);
+            this.gbxBotones.Controls.Add(this.btnAgregar);
+            this.gbxBotones.Location = new System.Drawing.Point(17, 350);
             this.gbxBotones.Name = "gbxBotones";
-            this.gbxBotones.Size = new System.Drawing.Size(305, 51);
+            this.gbxBotones.Size = new System.Drawing.Size(336, 113);
             this.gbxBotones.TabIndex = 8;
             this.gbxBotones.TabStop = false;
+            // 
+            // btnEliminar
+            // 
+            this.btnEliminar.Location = new System.Drawing.Point(134, 76);
+            this.btnEliminar.Name = "btnEliminar";
+            this.btnEliminar.Size = new System.Drawing.Size(75, 31);
+            this.btnEliminar.TabIndex = 10;
+            this.btnEliminar.Text = "Eliminar";
+            this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
+            // 
+            // btnModificar
+            // 
+            this.btnModificar.Location = new System.Drawing.Point(6, 76);
+            this.btnModificar.Name = "btnModificar";
+            this.btnModificar.Size = new System.Drawing.Size(75, 31);
+            this.btnModificar.TabIndex = 9;
+            this.btnModificar.Text = "Modificar";
+            this.btnModificar.UseVisualStyleBackColor = true;
+            this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
+            // 
+            // btnConsultar
+            // 
+            this.btnConsultar.Location = new System.Drawing.Point(134, 19);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(75, 31);
+            this.btnConsultar.TabIndex = 8;
+            this.btnConsultar.Text = "Consultar";
+            this.btnConsultar.UseVisualStyleBackColor = true;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
             // 
             // txtContrasena
             // 
@@ -150,10 +186,11 @@
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(153, 20);
             this.txtNombreUsuario.TabIndex = 2;
+            this.txtNombreUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreUsuario_KeyPress);
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(314, 20);
+            this.btnBuscar.Location = new System.Drawing.Point(307, 63);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(52, 24);
             this.btnBuscar.TabIndex = 6;
@@ -172,11 +209,12 @@
             // 
             // txtId
             // 
+            this.txtId.Enabled = false;
             this.txtId.Location = new System.Drawing.Point(128, 20);
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(153, 20);
             this.txtId.TabIndex = 1;
-            this.txtId.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtId_KeyPress);
+            this.txtId.Text = "Automático";
             // 
             // gbxDatos
             // 
@@ -294,7 +332,6 @@
             this.lvConsultarColumna,
             this.lvModificarColumna,
             this.lvEliminarColumna});
-            this.lvPrivilegios.Enabled = false;
             this.lvPrivilegios.FullRowSelect = true;
             this.lvPrivilegios.GridLines = true;
             this.lvPrivilegios.Location = new System.Drawing.Point(140, 32);
@@ -332,7 +369,6 @@
             // 
             this.lvRoles.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lvRolColumna});
-            this.lvRoles.Enabled = false;
             this.lvRoles.GridLines = true;
             this.lvRoles.Location = new System.Drawing.Point(12, 32);
             this.lvRoles.Name = "lvRoles";
@@ -531,7 +567,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button btnAccion;
+        private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnLimpiar;
         private System.Windows.Forms.GroupBox gbxBotones;
@@ -574,5 +610,8 @@
         private System.Windows.Forms.Button btnAgregarRol;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cbTipoUsuario;
+        private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Button btnModificar;
+        private System.Windows.Forms.Button btnConsultar;
     }
 }

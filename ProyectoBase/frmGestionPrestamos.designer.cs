@@ -32,22 +32,23 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnBuscarPrestamo = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtApellidos = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.btnBuscarCliente = new System.Windows.Forms.Button();
             this.txtNombreCliente = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.txtIdCliente = new System.Windows.Forms.TextBox();
             this.IdCliente = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtIsbn = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
             this.btnBuscarLibro = new System.Windows.Forms.Button();
             this.txtNombreLibro = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtIdLibro = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtApellidos = new System.Windows.Forms.TextBox();
-            this.txtIsbn = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.txtLimpiar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -60,19 +61,21 @@
             this.btnAgregar.TabIndex = 6;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(247, 237);
+            this.btnEliminar.Location = new System.Drawing.Point(314, 237);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 7;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnBuscarPrestamo
             // 
-            this.btnBuscarPrestamo.Location = new System.Drawing.Point(136, 237);
+            this.btnBuscarPrestamo.Location = new System.Drawing.Point(129, 237);
             this.btnBuscarPrestamo.Name = "btnBuscarPrestamo";
             this.btnBuscarPrestamo.Size = new System.Drawing.Size(75, 23);
             this.btnBuscarPrestamo.TabIndex = 8;
@@ -95,6 +98,22 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Informacion del Cliente";
+            // 
+            // txtApellidos
+            // 
+            this.txtApellidos.Location = new System.Drawing.Point(71, 102);
+            this.txtApellidos.Name = "txtApellidos";
+            this.txtApellidos.Size = new System.Drawing.Size(100, 20);
+            this.txtApellidos.TabIndex = 11;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 102);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Apellidos:";
             // 
             // btnBuscarCliente
             // 
@@ -154,6 +173,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Informacion del Libro";
             // 
+            // txtIsbn
+            // 
+            this.txtIsbn.Location = new System.Drawing.Point(71, 105);
+            this.txtIsbn.Name = "txtIsbn";
+            this.txtIsbn.Size = new System.Drawing.Size(100, 20);
+            this.txtIsbn.TabIndex = 13;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(6, 105);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.TabIndex = 12;
+            this.label5.Text = "ISBN:";
+            // 
             // btnBuscarLibro
             // 
             this.btnBuscarLibro.Location = new System.Drawing.Point(202, 25);
@@ -198,7 +233,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(366, 237);
+            this.btnSalir.Location = new System.Drawing.Point(420, 237);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 11;
@@ -206,37 +241,15 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // label1
+            // txtLimpiar
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 102);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
-            this.label1.TabIndex = 10;
-            this.label1.Text = "Apellidos:";
-            // 
-            // txtApellidos
-            // 
-            this.txtApellidos.Location = new System.Drawing.Point(71, 102);
-            this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(100, 20);
-            this.txtApellidos.TabIndex = 11;
-            // 
-            // txtIsbn
-            // 
-            this.txtIsbn.Location = new System.Drawing.Point(71, 105);
-            this.txtIsbn.Name = "txtIsbn";
-            this.txtIsbn.Size = new System.Drawing.Size(100, 20);
-            this.txtIsbn.TabIndex = 13;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(6, 105);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "ISBN:";
+            this.txtLimpiar.Location = new System.Drawing.Point(220, 237);
+            this.txtLimpiar.Name = "txtLimpiar";
+            this.txtLimpiar.Size = new System.Drawing.Size(75, 23);
+            this.txtLimpiar.TabIndex = 12;
+            this.txtLimpiar.Text = "Limpiar";
+            this.txtLimpiar.UseVisualStyleBackColor = true;
+            this.txtLimpiar.Click += new System.EventHandler(this.txtLimpiar_Click);
             // 
             // frmGestionPrestamos
             // 
@@ -244,6 +257,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(717, 312);
             this.ControlBox = false;
+            this.Controls.Add(this.txtLimpiar);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -251,6 +265,7 @@
             this.Controls.Add(this.btnEliminar);
             this.Controls.Add(this.btnAgregar);
             this.Name = "frmGestionPrestamos";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Gestión Prestamos";
             this.Load += new System.EventHandler(this.frmGestionPrestamos_Load);
             this.groupBox1.ResumeLayout(false);
@@ -282,5 +297,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtIsbn;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button txtLimpiar;
     }
 }

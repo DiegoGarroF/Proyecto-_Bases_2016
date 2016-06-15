@@ -145,7 +145,8 @@ namespace Modelo
                                     if(objeto is clsEntidadPrestamo)
                                     {
                                         clsEntidadPrestamo pEntidadPrestamo = (clsEntidadPrestamo)objeto;
-                                        comando.Parameters.AddWithValue("@idPrestamo", pEntidadPrestamo.setGetIdPrestamo);
+                                        comando.Parameters.AddWithValue("@idLibro", pEntidadPrestamo.setGetidLibro);
+                                        comando.Parameters.AddWithValue("@idUsuarioCliente", pEntidadPrestamo.setGetIdUsuariocliente);
                                         comando.ExecuteNonQuery();
                                     }
                                 if (objeto is clsEntidadLibro)

@@ -18,8 +18,9 @@ namespace Vista
         #region Atributos
         private SqlDataReader dataReader;
         private clsPrestamo prestamo;
-        private int idUsuarios;
+        private int idLibros;
         private clsConexion conexion;
+        private int idCLiente;
         #endregion
         public frmConsultaPrestamos(clsConexion conexion)
         {
@@ -56,14 +57,21 @@ namespace Vista
             {
                 if (lvConsultaPrestamos.Items[i].Selected)
                 {
-                    idUsuarios = Convert.ToInt32(lvConsultaPrestamos.Items[i].Text);
+                  //  idUsuarios = Convert.ToInt32(lvConsultaPrestamos.Items[i].Text);
+                    idLibros= Convert.ToInt32( lvConsultaPrestamos.Items[i].SubItems[3].Text);
+                    idCLiente = Convert.ToInt32(lvConsultaPrestamos.Items[i].SubItems[4].Text);
                 }
             }
         }
-        public int mIdUsuario
+        public int mIdCLiente
         {
-            get { return idUsuarios; }
-            set { idUsuarios = value; }
+            get { return idCLiente; }
+            set { idCLiente = value; }
+        }
+        public int mIdLibros
+        {
+            get { return idLibros; }
+            set { idLibros = value; }
         }
         public void mCargarListViewPrestamos()
         {

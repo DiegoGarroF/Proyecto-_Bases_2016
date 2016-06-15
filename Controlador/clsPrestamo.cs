@@ -30,6 +30,9 @@ namespace Controlador
             return conexion.mSeleccionarGeneral(conexion, strSentencia);
         }
 
+
+       
+
         //Consultas individuales
         public SqlDataReader mConsultarPrestamo(clsConexion conexion, clsEntidadPrestamo pEntidadPrestamo)
         {
@@ -44,7 +47,7 @@ namespace Controlador
 
         public Boolean mEliminarPrestamo(clsConexion conexion, clsEntidadPrestamo pEntidadPrestamo, string tipo)
         {
-            strSentencia = "delete from tbPestamo where idPrestamo=@idPrestamo";
+            strSentencia = "delete from tbPestamo where idLibro=@idLibro and idUsuarioCliente=@idUsuarioCliente";
             return conexion.mEjecutarElimModif(strSentencia, conexion, pEntidadPrestamo, tipo);
         }
         

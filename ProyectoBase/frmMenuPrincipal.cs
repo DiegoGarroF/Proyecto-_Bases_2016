@@ -71,33 +71,7 @@ namespace Vista
             frmBitacora.Show();
         }
 
-        private void agregarPréstamoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPrestamos prestamos = new frmPrestamos();
-            prestamos.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.AGREGAR));
-            prestamos.ShowDialog();
-        }
-
-        private void modificarPréstamoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPrestamos prestamos = new frmPrestamos();
-            prestamos.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.MODIFICAR));
-            prestamos.ShowDialog();
-        }
-
-        private void consultarPréstamoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPrestamos prestamos = new frmPrestamos();
-            prestamos.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.CONSULTAR));
-            prestamos.ShowDialog();
-        }
-
-        private void eliminarPréstamoToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmPrestamos prestamos = new frmPrestamos();
-            prestamos.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.ELIMINAR));
-            prestamos.ShowDialog();
-        }
+      
 
         private void opcionMantenimientoLibros(object sender, EventArgs e)
         {
@@ -113,6 +87,12 @@ namespace Vista
             usuario.limpiar();
             //usuario.controlAgregarRolPriv(0);
             usuario.Show();
+        }
+
+        private void mantenimientoPrestamoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmGestionPrestamos prestamos = new frmGestionPrestamos(conexion);
+            prestamos.ShowDialog();
         }
     }
 }

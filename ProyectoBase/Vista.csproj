@@ -64,6 +64,12 @@
     <Compile Include="frmConsultaPrestamos.Designer.cs">
       <DependentUpon>frmConsultaPrestamos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmGestionPrestamos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmGestionPrestamos.designer.cs">
+      <DependentUpon>frmGestionPrestamos.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmLibro.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,6 +116,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaPrestamos.resx">
       <DependentUpon>frmConsultaPrestamos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmGestionPrestamos.resx">
+      <DependentUpon>frmGestionPrestamos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmLibro.resx">
       <DependentUpon>frmLibro.cs</DependentUpon>

@@ -260,5 +260,7 @@ namespace Vista
                 mConsultarPrestamo();
             }
         }
+
+       
     }
 }

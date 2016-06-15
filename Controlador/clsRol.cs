@@ -29,5 +29,12 @@ namespace Controlador
             sentencia = "select idRol from tbRol where  nombre=@codigo";
             return conexion.mSeleccionarTipoString(sentencia, pEntidadRol.mNombreRol);
         }
+        
+
+       public SqlDataReader mConsultarRoles(clsConexion conexion)
+        {
+            sentencia = "select nombre from tbRol";
+            return conexion.mSeleccionarGeneral(conexion, sentencia);
+        }
     }
 }

@@ -410,7 +410,7 @@
             this.btnAgregarRol.TabIndex = 11;
             this.btnAgregarRol.Text = "Agregar Rol";
             this.btnAgregarRol.UseVisualStyleBackColor = true;
-            this.btnAgregarRol.Click += new System.EventHandler(this.button1_Click);
+            this.btnAgregarRol.Click += new System.EventHandler(this.btnAgregarRol_Click);
             // 
             // btnAgregarPrivilegios
             // 
@@ -509,10 +509,6 @@
             this.cbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRol.Enabled = false;
             this.cbRol.FormattingEnabled = true;
-            this.cbRol.Items.AddRange(new object[] {
-            "Administrador",
-            "Estudiante",
-            "Atención al cliente"});
             this.cbRol.Location = new System.Drawing.Point(94, 16);
             this.cbRol.Name = "cbRol";
             this.cbRol.Size = new System.Drawing.Size(117, 21);

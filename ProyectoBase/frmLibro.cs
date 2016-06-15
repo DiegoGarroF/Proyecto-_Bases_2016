@@ -14,11 +14,21 @@ namespace Vista
 {
     public partial class frmLibro : Form
     {
+        #region Load
+
+        private void frmLibro_Load(object sender, EventArgs e)
+        {
+
+        }
+        #endregion
+        #region Atributos
         const string opcion2="";
         private clsConexion conexion;
         private SqlDataReader dtr;
         public  clsLibro libro;
         private clsEntidadLibro pEntidadLibro;
+        #endregion
+        #region Constructor
         public frmLibro(clsConexion conexion)
         {
             InitializeComponent();
@@ -29,108 +39,44 @@ namespace Vista
 
 
         }
-
-        private void btnSalir_Click(object sender, EventArgs e)
+        #endregion
+        #region Eliminar Libro
+        public void mEliminarLibro()
         {
-            this.Close();
-            frmMenuPrincipal frmMenu = new frmMenuPrincipal(conexion);
-            frmMenu.Visible = true;
-        }
-
-        private void frmLibro_Load(object sender, EventArgs e)
-        {
-
-        }
-        public void setBtnAccionTipo(String titulo)
-        {
-            btnAgregar.Text = titulo;
-        }
-
-       
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-        //Este Metodo sera el encargado de verificar, el texto que tiene el boton multifuncion
-        //y asi realizar la accion correspondiente 
-        private void btnMultiFuncion_Click(object sender, EventArgs e)
-        {
-            if(btnAgregar.Text.Equals(clsConstantes.AGREGAR))
+            if (!verificarEspacioID())
             {
-
-            }
-            else if(btnAgregar.Text.Equals(clsConstantes.CONSULTAR))
-            {
-
-            }
-            else if (btnAgregar.Text.Equals(clsConstantes.ELIMINAR))
-            {
-
-            }
-            else if (btnAgregar.Text.Equals(clsConstantes.MODIFICAR))
-            {
-
-            }
-        }
-   
-        #region Metodos IMEC
-
-        //Metodo para agregar un nuevo libro
-        public Boolean mAgregar()
-        {
-            dtr = libro.mSeleccionarTodos(conexion);
-            if(!verificarEspacioISBN())
-            {
-                if(!verificarEspacioNombre())
+                pEntidadLibro.setIdLibro(Int32.Parse(this.txtID.Text));
+                if (libro.mEliminarLibro(conexion, pEntidadLibro))
                 {
-
+                    MessageBox.Show("El Libro con el codigo " + txtID.Text + " eliminado con Exito", "Acción", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    mLimpiar();
                 }
                 else
                 {
-                    mMostraMensaje(clsConstantes.COMPLETE_NOMBRE, clsConstantes.TIPO_GENERAL);
+                    MessageBox.Show("Surgio un Error, Libro No Eliminado", "Acción", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
             }
             else
             {
-                mMostraMensaje(clsConstantes.COMPLETE_ISBN, clsConstantes.TIPO_GENERAL);
+                MessageBox.Show("Debe Seleccionar un Libro Para eliminar", "ID LIBRO NO EXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
-
-            return false;
         }
-        // Metodo para consultar un libro
-        public Boolean mConsultar()
-        {
-            return false;
-        }
-        // Metodo para modificar un libro
-        public Boolean mModificar()
-        {
-            return false;
-        }
-        //Metodo para eliminar 
-        public Boolean mEliminar()
-        {
-            return false;
-        }
-
-
         #endregion
-
-        private void btnConsultar_Click(object sender, EventArgs e)
+        #region Consultar Libro
+        public void mConsultarLibro()
         {
-            frmListaGeneral listaGeneral = new frmListaGeneral(conexion);
-            listaGeneral.cargarListViewLibros();
-            listaGeneral.ShowDialog();
-            
-            if (listaGeneral.mIdUsuario != 0)
+            frmListaGeneral listaGeneral = new frmListaGeneral(conexion);//Crea el listView
+            listaGeneral.cargarListViewLibros();//carga el ListView con los datos de todos los libros
+            listaGeneral.ShowDialog();//Activa el showDialog
+
+            if (listaGeneral.mIdUsuario != 0)//Verifica que se haya seleccionado un libro
             {
                 // entidadUsuario.mIdUsuario = lista.mIdUsuario;
                 txtID.Text = Convert.ToString(listaGeneral.mIdUsuario);
-                
+
                 pEntidadLibro.setIdLibro(Int32.Parse(txtID.Text));
                 dtr = libro.mSeleccionarLibroID(conexion, pEntidadLibro);
-                if(dtr!=null)
+                if (dtr != null)
                 {
                     if (dtr.Read())
                     {
@@ -141,23 +87,62 @@ namespace Vista
 
             }
         }
-
-        public void mTipoAccion()
+        #endregion
+        #region Metodo Modificar
+        public void mModificar()
         {
-            switch(btnAgregar.Text)
+            if (libro.mModificarLibro(conexion, pEntidadLibro))
             {
-                case clsConstantes.AGREGAR:
+                MessageBox.Show("El Libro Ha Sido Modificado Con Exito", "Accion Efectuada", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                mLimpiar();
+            }
+            else
+            {
+                MessageBox.Show("Surgio Un Error ", "No se pudo modificar", MessageBoxButtons.OK, MessageBoxIcon.Stop);
 
-                    break;
-                case clsConstantes.MODIFICAR:
-                    break;
-                case clsConstantes.ELIMINAR:
-                    break;
-                case clsConstantes.CONSULTAR:
-                    break;
             }
         }
+        #endregion
+        #region Metodo para limpiar
 
+        public void mLimpiar()
+        {
+            this.txtISBN.Text = "";
+            this.txtNombre.Text = "";
+            this.txtID.Text = "Automatico";
+        }
+        #endregion
+        #region Acciones de los Botones
+
+        private void btnSalir_Click(object sender, EventArgs e)
+        {
+            this.Close();
+            frmMenuPrincipal frmMenu = new frmMenuPrincipal(conexion);
+            frmMenu.Visible = true;
+        }
+        private void btnConsultar_Click(object sender, EventArgs e)
+        {
+            mConsultarLibro();
+        }
+
+
+        private void btnAgregar_Click(object sender, EventArgs e)
+        {
+            mAgreagarLibro();
+
+        }
+
+        private void clickBtnEliminar(object sender, EventArgs e)
+        {
+            mEliminarLibro();
+
+        }
+
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            mModificar();
+        }
+        #endregion
         #region Metodos Control espacios
         // Metodo para verificar que exista un isbn
         public Boolean verificarEspacioISBN()
@@ -181,72 +166,96 @@ namespace Vista
             return false;
         }
         #endregion
-
-        public void mMostraMensaje(String mensaje, int tipo)
-        {
-            
-            
-            switch(tipo)
-            {
-                case clsConstantes.TIPO_AGREGAR:
-                    MessageBox.Show(clsConstantes.AGREGAR_LIBRO, clsConstantes.TIPO_LIBRO, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    break;
-                case clsConstantes.TIPO_ELIMINAR:
-                    MessageBox.Show(clsConstantes.ELIMINAR_LIBRO, clsConstantes.TIPO_LIBRO, MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    break;
-                case clsConstantes.TIPO_MODIFICAR:
-                    MessageBox.Show(clsConstantes.MODIFICAR_LIBRO, clsConstantes.TIPO_LIBRO, MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    break;
-                default:
-                    MessageBox.Show(mensaje, clsConstantes.TIPO_LIBRO, MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                    break;     
-            }
-        }
-
-        private void btnAgregar_Click(object sender, EventArgs e)
+        #region Metodo para agregar un Libro
+        public void mAgreagarLibro()
         {
             if (!verificarEspacioID())
             {
 
-                MessageBox.Show("El Id Se Encuentra Registrado\n\nSe Utilizara Uno De Forma Automática", "ID LIBRO EXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("El id se encuentra registrado\n\nSe utilizara uno de forma Automática", "ID LIBRO EXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 this.txtID.Text = "Automatico";
-            }
-            if (verificarEspacioISBN()&& verificarEspacioNombre())
+            }// fin del if que verifca si se selecciono un libro ya existente 
+            if (verificarEspacioISBN() && verificarEspacioNombre())
             {
-              
+                //Carga la entidad con los datos
                 pEntidadLibro.setISBN(this.txtISBN.Text);
                 pEntidadLibro.setNombre(this.txtNombre.Text);
-                dtr = libro.mSeleccionarLibroISBN(this.conexion, pEntidadLibro);
-                MessageBox.Show(pEntidadLibro.getISBN());
-                if (dtr==null)
+                dtr = libro.mSeleccionarLibroISBN(this.conexion, pEntidadLibro);//Cinsulta un libro por isbn , con el fin de saber si existe ese isbn
+
+                if (dtr != null)
                 {
-                    if (libro.mInsertarLibro(this.conexion, pEntidadLibro))
+                    if (dtr.Read())
                     {
-                        MessageBox.Show("Libro Agregado Correctamente", "Proceso Exítoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        mLimpiar();
-                    }
+                        MessageBox.Show("No Pueden Existir Dos Libros Con El Mismo ISBN", "Proceso No Completado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    }//fin del if que verifica si existe el isb y si existe devuelve un mensaje de error
+
                     else
                     {
-                        MessageBox.Show("Surgió Un Error Al Agregar Un Libro", "Proceso No Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("No Pueden Existir Dos Libros Con El Mismo ISBN", "Proceso No Completado", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                }
-               
+                        if (libro.mInsertarLibro(this.conexion, pEntidadLibro))
+                        {
+                            MessageBox.Show("Libro Agregado Correctamente", "Proceso Exítoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            mLimpiar();
+                        }// fin del if que inserto un libro
 
+                        else
+                        {
+                            MessageBox.Show("Surgió un Error al Agregar un libro", "Proceso No Completado", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }//fin del else que controla si se realizo el insert
+                    }// fin del else que verifica que no exista un ISBN igual al que se quiere ingresar
+
+                }
             }
             else
             {
                 MessageBox.Show("Debe Completar los Espacios Solicitados", "Complete Los Datos", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-            }
-            
+            }// fin del else que virifca que los espacios esten correctamente
         }
-        public void mLimpiar()
+        #endregion
+        #region Metodo Controlar el metodo Modificar 
+        public void mControlModificar()
         {
-            this.txtISBN.Text = "";
-            this.txtNombre.Text = "";
+            if (!verificarEspacioID())
+            {
+                pEntidadLibro.setIdLibro(Int32.Parse(this.txtID.Text));
+                pEntidadLibro.setISBN(this.txtISBN.Text);
+                pEntidadLibro.setNombre(this.txtNombre.Text);
+                if(verificarEspacioISBN()&& verificarEspacioNombre())
+                {
+                    dtr = libro.mSeleccionarLibroISBN(conexion, pEntidadLibro);
+                    if(dtr!=null)
+                    {
+                        if(dtr.Read())
+                        {
+                            if (dtr.GetInt32(0)==Int32.Parse(this.txtID.Text))
+                            {
+                                mModificar();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Este ISBN ya se encuentra registrado", "Existen Espacios Vacios", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                            }
+                        }
+                        else
+                        {
+                            mModificar();
+                        }
+                    }
+                    
+                }
+                else
+                {
+                    MessageBox.Show("Complete Los Espacios", "Existen Espacios Vacios", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+              
+            }
+            else
+            {
+                MessageBox.Show("Debe Seleccionar un Libro Para Modificarlo", "ID LIBRO NO EXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
         }
+        #endregion
+
+
+      
     }
 }

@@ -41,12 +41,12 @@ namespace Controlador
         }
         public Boolean mModificarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-             strSentencia = "UPDATE tbLibro set ";
+            strSentencia = "update tbLibro set nombre=@nombre, isbn=@isbn where idLibro=@idLibro ; ";
             return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
         public Boolean mEliminarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "DELETE FROM tbLibro where idLibro="+pEntidadLibro.getIdLibro()+" ;";
+            strSentencia = "DELETE FROM tbLibro where idLibro=@idLibro ;";
             return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
     }

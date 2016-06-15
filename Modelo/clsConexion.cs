@@ -148,7 +148,13 @@ namespace Modelo
                                         comando.Parameters.AddWithValue("@idPrestamo", pEntidadPrestamo.setGetIdPrestamo);
                                         comando.ExecuteNonQuery();
                                     }
+                                if (objeto is clsEntidadLibro)
+                                {
+                                    clsEntidadLibro pEntidadLibro = (clsEntidadLibro)objeto;
+                                    comando.Parameters.AddWithValue("@id", pEntidadLibro.getIdLibro());
+                                    comando.ExecuteNonQuery();
                                 }
+                            }
                             }
                         }
                         return true;
@@ -248,6 +254,7 @@ namespace Modelo
                                     clsEntidadLibro pEntidadLibro = (clsEntidadLibro)objeto;
                                     comando.Parameters.AddWithValue("@nombre", pEntidadLibro.getNombre());
                                     comando.Parameters.AddWithValue("@isbn", pEntidadLibro.getISBN());
+                                    comando.Parameters.AddWithValue("@idLibro", pEntidadLibro.getIdLibro());
                                     comando.ExecuteNonQuery();
                                     return true;
 

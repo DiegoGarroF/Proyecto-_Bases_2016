@@ -22,6 +22,8 @@ namespace Vista
         
         SqlDataReader dtrUsuario; //Retorno de las tuplas
         int contador = 0;
+        clsEntidadUsuario entidadUsuario;
+        clsUsuario usuario;
         #endregion
 
         //Inicializamos los atributos que utilizaremos en toda la clase
@@ -31,8 +33,8 @@ namespace Vista
             
             InitializeComponent();
             this.conexion = new clsConexion();
-            this.conexion.codigo = "123";
-            this.conexion.clave = "123";
+            entidadUsuario = new clsEntidadUsuario();
+            usuario = new clsUsuario();            
         }
 
         private void frmAcceso_Load(object sender, EventArgs e)
@@ -50,8 +52,17 @@ namespace Vista
         private void txtUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (e.KeyChar == (char)(Keys.Enter))
-                //Focus traslada el cursor del mouse al espacio indicado
-                this.txtClave.Focus();
+            {
+                if (txtUsuario.Text != "")
+                {
+                    this.txtClave.Focus();
+                }
+                else
+                {
+                    MessageBox.Show("Ingrese un usuario válido","OJO",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                }
+            }                
+                
         }
 
         private void txtClave_KeyPress(object sender, KeyPressEventArgs e)
@@ -60,12 +71,8 @@ namespace Vista
             {
                 if (mValidarDatos() == true)
                 {
-                    this.btnIngresar.Enabled = true;
-                }
-                else
-                {
-
-                }
+                    
+                }               
             }
         }//Fin del keyPress
 
@@ -78,39 +85,48 @@ namespace Vista
             if (contador <= 2)
             {
                 //llenado de variables o atributos del servidor para conectarme a la BD
-
+                conexion.codigo="123";
+                conexion.clave="123";
 
                 //llenado de los atributos de la clase EntidadUsuario
-
+                entidadUsuario.mUsuario = txtUsuario.Text;
+                entidadUsuario.mContrasena = txtClave.Text;
 
                 //Consultamos si el usuario existe
-
-                return false;
+                dtrUsuario = usuario.mLogueoPrincipal(conexion,entidadUsuario);
+                                
                 //Evaluamos si retorna tuplas o datos
                 if (dtrUsuario != null)
                 {
                     if (dtrUsuario.Read())
-                    {
-
-                        
-                        /*if (pEntidadUsuario.getEstado() == 0)
+                    {                        
+                        if (dtrUsuario.GetBoolean(6) == true)
                         {
-                            this.btnIngresar.Enabled = true;
-                            return true;
+                            if (dtrUsuario.GetBoolean(7) == false)
+                            {
+                                //LLamar ventana para cambiar pw
+                                return false;
+                            }
+                            else
+                            {
+                                btnIngresar.Enabled = true;
+                                return true;
+                            }
+                            
                         }
                         else
                         {
-                            MessageBox.Show("El usuario esta bloqueado", "Atencion", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                            MessageBox.Show("El usuario esta bloqueado", "Atención", MessageBoxButtons.OK,MessageBoxIcon.Information);
                             return false;
-                        }//Fin del pEntidadUsuario*/
+                        }//Fin del pEntidadUsuario
                     }
                     else {
-                        MessageBox.Show("El usuario no existe", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Usuario o contraseña errónea", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return false;
                     }//Fin del if del Read  
                 }
                 else {
-                    MessageBox.Show("El usuario no existe", "Atencion", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    MessageBox.Show("Usuario o contraseña errónea", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return false;
                 }//Fin del if del null
 

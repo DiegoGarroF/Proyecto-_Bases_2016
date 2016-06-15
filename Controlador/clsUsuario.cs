@@ -22,10 +22,17 @@ namespace Controlador
 
         public SqlDataReader mBuscarPorLogin(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "select idUsuario, usuario, contrasena, nombre, apellidos, tipoUsuario from tbUsuario where usuario=@codigo";
+            sentencia = "select idUsuario, usuario, contrasena, nombre, apellidos, tipoUsuario, estadoUsuario, estadoContrasena from tbUsuario where usuario=@codigo";
 
 
             return conexion.mSeleccionarTipoString(sentencia, pEntidadUsuario.mUsuario);
+        }
+        public SqlDataReader mLogueoPrincipal(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
+        {
+            sentencia = "select idUsuario, usuario, contrasena, nombre, apellidos, tipoUsuario, estadoUsuario, estadoContrasena from tbUsuario where usuario=@codigo and contrasena=@contrasena";
+
+
+            return conexion.mSeleccionarLogueo(sentencia, pEntidadUsuario.mUsuario, pEntidadUsuario.mContrasena);
         }
 
         public SqlDataReader mConsultaGeneral(clsConexion conexion)

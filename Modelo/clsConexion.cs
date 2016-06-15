@@ -107,6 +107,28 @@ namespace Modelo
             }
         }// fin del metodo mSeleccionar
 
+        public SqlDataReader mSeleccionarLogueo(String sentencia, string codigo, string contrasena)//string strSentencia, clsConexion cone, int id)
+        {
+            try
+            {
+                if (mConectar(this))
+                {
+
+                    comando = new SqlCommand(sentencia, conexion);
+                    comando.CommandType = System.Data.CommandType.Text;
+                    comando.Parameters.AddWithValue("@codigo", codigo);
+                    comando.Parameters.AddWithValue("@contrasena", contrasena);
+                    return comando.ExecuteReader();
+                }
+                else
+                    return null;
+            }
+            catch
+            {
+                return null;
+            }
+        }// fin del metodo mSeleccionar
+
         public Boolean mEjecutarElimModif(string strSentencia, clsConexion cone, Object objeto, string tipo)
         {
             try

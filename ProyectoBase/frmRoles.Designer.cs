@@ -43,8 +43,10 @@
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtNombreRol = new System.Windows.Forms.TextBox();
             this.lbNombre = new System.Windows.Forms.Label();
+            this.lvPantalla = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -59,16 +61,16 @@
             this.groupBox2.Controls.Add(this.chkConsultar);
             this.groupBox2.Controls.Add(this.chkEliminar);
             this.groupBox2.Controls.Add(this.chkModificar);
-            this.groupBox2.Location = new System.Drawing.Point(411, 37);
+            this.groupBox2.Location = new System.Drawing.Point(548, 37);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(307, 200);
+            this.groupBox2.Size = new System.Drawing.Size(307, 233);
             this.groupBox2.TabIndex = 29;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Privilegios";
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(214, 171);
+            this.button1.Location = new System.Drawing.Point(213, 182);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 33;
@@ -86,7 +88,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(117, 171);
+            this.button2.Location = new System.Drawing.Point(116, 182);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 32;
@@ -106,7 +108,7 @@
             // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(36, 171);
+            this.button3.Location = new System.Drawing.Point(35, 182);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 31;
@@ -148,16 +150,17 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.lvPantalla);
             this.groupBox1.Controls.Add(this.cbPantalla);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.btnEliminar);
             this.groupBox1.Controls.Add(this.btnModificar);
             this.groupBox1.Controls.Add(this.btnAgregar);
-            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.txtNombreRol);
             this.groupBox1.Controls.Add(this.lbNombre);
             this.groupBox1.Location = new System.Drawing.Point(12, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(353, 200);
+            this.groupBox1.Size = new System.Drawing.Size(509, 233);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Roles";
@@ -183,7 +186,7 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.Location = new System.Drawing.Point(228, 154);
+            this.btnEliminar.Location = new System.Drawing.Point(241, 157);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
             this.btnEliminar.TabIndex = 25;
@@ -192,7 +195,7 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.Location = new System.Drawing.Point(131, 154);
+            this.btnModificar.Location = new System.Drawing.Point(144, 157);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 23);
             this.btnModificar.TabIndex = 24;
@@ -201,19 +204,20 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.Location = new System.Drawing.Point(50, 154);
+            this.btnAgregar.Location = new System.Drawing.Point(63, 157);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
             this.btnAgregar.TabIndex = 23;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
+            this.btnAgregar.Click += new System.EventHandler(this.btnAgregar_Click);
             // 
-            // textBox1
+            // txtNombreRol
             // 
-            this.textBox1.Location = new System.Drawing.Point(142, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(154, 20);
-            this.textBox1.TabIndex = 22;
+            this.txtNombreRol.Location = new System.Drawing.Point(142, 24);
+            this.txtNombreRol.Name = "txtNombreRol";
+            this.txtNombreRol.Size = new System.Drawing.Size(154, 20);
+            this.txtNombreRol.TabIndex = 22;
             // 
             // lbNombre
             // 
@@ -224,11 +228,29 @@
             this.lbNombre.TabIndex = 21;
             this.lbNombre.Text = "Nombre Rol";
             // 
+            // lvPantalla
+            // 
+            this.lvPantalla.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvPantalla.FullRowSelect = true;
+            this.lvPantalla.GridLines = true;
+            this.lvPantalla.Location = new System.Drawing.Point(354, 19);
+            this.lvPantalla.Name = "lvPantalla";
+            this.lvPantalla.Size = new System.Drawing.Size(140, 200);
+            this.lvPantalla.TabIndex = 31;
+            this.lvPantalla.UseCompatibleStateImageBehavior = false;
+            this.lvPantalla.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "Nombre Pantalla";
+            this.columnHeader1.Width = 132;
+            // 
             // frmRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 300);
+            this.ClientSize = new System.Drawing.Size(867, 307);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "frmRoles";
@@ -258,7 +280,9 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnAgregar;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtNombreRol;
         private System.Windows.Forms.Label lbNombre;
+        private System.Windows.Forms.ListView lvPantalla;
+        private System.Windows.Forms.ColumnHeader columnHeader1;
     }
 }

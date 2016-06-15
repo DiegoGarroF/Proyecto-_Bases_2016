@@ -9,13 +9,15 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Modelo;
 using Controlador;
-
+using System.Data.SqlClient;
 namespace ProyectoBase
 {
     public partial class frmRoles : Form
     {
         clsConexion conexion;
         clsEntidadRol entidadRol;
+        SqlDataReader strRol;
+        String strPantalla;
         clsRol clRol;
 
         public frmRoles()
@@ -32,13 +34,15 @@ namespace ProyectoBase
             {
                 //int idRol = -1;
                 entidadRol.mNombreRol = txtNombreRol.Text;
+                clRol.mInsertarRol(conexion,entidadRol);
+            }
             else
             {
-                    MessageBox.Show("Seleccione un rol válido", "Rol no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                MessageBox.Show("Seleccione un rol válido", "Rol no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
                 //Se compara si se está asignando un rol o privilegio a un usuario, y si además se llenaron todos los datos del usuario
-                if ((mValidarInformacionRoles() == true & mValidarPermisos(lvPantalla) == true))
+             if ((mValidarInformacionRoles() == true & mValidarPermisos(lvPantalla) == true))
                 {
                     //Se realiza inserción de roles y privilegios directos
                     if (mValidarPermisos(lvPantalla) == true)
@@ -61,8 +65,8 @@ namespace ProyectoBase
                 }
 
 
-                 }
         }// fin del metodo
+
 
         public Boolean mValidarInformacionRoles()
         {
@@ -99,8 +103,61 @@ namespace ProyectoBase
 
         }
 
+        private void btnModificar_Click(object sender, EventArgs e)
+        {
+            mModificarRol();
+        }
+
+
+        public Boolean verificarNombre()
+        {
+            if (!this.txtNombreRol.Text.Trim().Equals(""))
+                return true;
+            return false;
+        }
+
+
+        public void llenadoPantalla()
+        {
+            strRol = clRol.mConsultarRoles(conexion);
+            while (strRol.Read())
+            {
+                ListViewItem lista;
+                lista = lvPantalla.Items.Add(strRol.GetString(0));
+            }
+        }
 
 
 
+      
+        public void mModificarRol()
+        {
+            if (!verificarNombre()&& lvPantalla != null)
+            {
+                btnQuitarPantalla.Enabled = true;
+                
+                if(strRol!=null)
+                {
+                    entidadRol.mNombreRol = txtNombreRol.Text;
+                }
+               
+            }
+            else
+            {
+                MessageBox.Show("No digitó el nombre del rol ", "No se pudo modificar", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+
+            }
+        }
+
+        private void lvPantalla_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            for (int i = 0; i < lvPantalla.Items.Count; i++)
+            {
+                if (lvPantalla.Items[i].Selected)
+                {
+                    strPantalla = lvPantalla.Items[i].Text;
+                }
+            }
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace Controlador
     {
         private string sentencia = "";
 
+
         public SqlDataReader mConsultaPrivPantaUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
             sentencia = "select p.nombre,up.insertar,up.consultar,up.modificar,up.eliminar from tbPantalla p, tbUsuario u, tbUsuarioPantalla up where u.idUsuario = up.idUsuario and p.idPantalla = up.idPantalla and up.idUsuario=@codigo";
@@ -29,5 +30,8 @@ namespace Controlador
             sentencia = "select idPantalla from tbPantalla where  nombre=@codigo";
             return conexion.mSeleccionarTipoString(sentencia, pEntidadPantalla.mNombrePantalla);
         }
+
+        
+
     }
 }

@@ -38,8 +38,7 @@
             this.chkEliminar = new System.Windows.Forms.CheckBox();
             this.chkModificar = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lvPantalla = new System.Windows.Forms.ListView();
-            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.btnQuitarPantalla = new System.Windows.Forms.Button();
             this.cbPantalla = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.btnEliminar = new System.Windows.Forms.Button();
@@ -47,7 +46,8 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.txtNombreRol = new System.Windows.Forms.TextBox();
             this.lbNombre = new System.Windows.Forms.Label();
-            this.btnQuitarPantalla = new System.Windows.Forms.Button();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.lvPantalla = new System.Windows.Forms.ListView();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -167,24 +167,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Roles";
             // 
-            // lvPantalla
+            // btnQuitarPantalla
             // 
-            this.lvPantalla.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1});
-            this.lvPantalla.FullRowSelect = true;
-            this.lvPantalla.GridLines = true;
-            this.lvPantalla.Location = new System.Drawing.Point(272, 19);
-            this.lvPantalla.Name = "lvPantalla";
-            this.lvPantalla.Size = new System.Drawing.Size(140, 200);
-            this.lvPantalla.TabIndex = 31;
-            this.lvPantalla.UseCompatibleStateImageBehavior = false;
-            this.lvPantalla.View = System.Windows.Forms.View.Details;
-            this.lvPantalla.SelectedIndexChanged += new System.EventHandler(this.lvPantalla_SelectedIndexChanged);
-            // 
-            // columnHeader1
-            // 
-            this.columnHeader1.Text = "Nombre Pantalla";
-            this.columnHeader1.Width = 132;
+            this.btnQuitarPantalla.Enabled = false;
+            this.btnQuitarPantalla.Location = new System.Drawing.Point(428, 42);
+            this.btnQuitarPantalla.Name = "btnQuitarPantalla";
+            this.btnQuitarPantalla.Size = new System.Drawing.Size(75, 36);
+            this.btnQuitarPantalla.TabIndex = 32;
+            this.btnQuitarPantalla.Text = "Quitar Pantalla";
+            this.btnQuitarPantalla.UseVisualStyleBackColor = true;
             // 
             // cbPantalla
             // 
@@ -250,15 +241,24 @@
             this.lbNombre.TabIndex = 21;
             this.lbNombre.Text = "Nombre Rol";
             // 
-            // btnQuitarPantalla
+            // columnHeader1
             // 
-            this.btnQuitarPantalla.Enabled = false;
-            this.btnQuitarPantalla.Location = new System.Drawing.Point(428, 42);
-            this.btnQuitarPantalla.Name = "btnQuitarPantalla";
-            this.btnQuitarPantalla.Size = new System.Drawing.Size(75, 36);
-            this.btnQuitarPantalla.TabIndex = 32;
-            this.btnQuitarPantalla.Text = "Quitar Pantalla";
-            this.btnQuitarPantalla.UseVisualStyleBackColor = true;
+            this.columnHeader1.Text = "Nombre Pantalla";
+            this.columnHeader1.Width = 132;
+            // 
+            // lvPantalla
+            // 
+            this.lvPantalla.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1});
+            this.lvPantalla.FullRowSelect = true;
+            this.lvPantalla.GridLines = true;
+            this.lvPantalla.Location = new System.Drawing.Point(272, 19);
+            this.lvPantalla.Name = "lvPantalla";
+            this.lvPantalla.Size = new System.Drawing.Size(140, 200);
+            this.lvPantalla.TabIndex = 31;
+            this.lvPantalla.UseCompatibleStateImageBehavior = false;
+            this.lvPantalla.View = System.Windows.Forms.View.Details;
+            this.lvPantalla.SelectedIndexChanged += new System.EventHandler(this.lvPantalla_SelectedIndexChanged);
             // 
             // frmRoles
             // 
@@ -296,8 +296,8 @@
         private System.Windows.Forms.Button btnAgregar;
         private System.Windows.Forms.TextBox txtNombreRol;
         private System.Windows.Forms.Label lbNombre;
+        private System.Windows.Forms.Button btnQuitarPantalla;
         private System.Windows.Forms.ListView lvPantalla;
         private System.Windows.Forms.ColumnHeader columnHeader1;
-        private System.Windows.Forms.Button btnQuitarPantalla;
     }
 }

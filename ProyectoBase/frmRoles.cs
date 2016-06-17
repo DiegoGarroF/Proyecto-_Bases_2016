@@ -32,7 +32,7 @@ namespace ProyectoBase
         {
             if (txtNombreRol.Text != "")
             {
-                //int idRol = -1;
+               
                 entidadRol.mNombreRol = txtNombreRol.Text;
                 clRol.mInsertarRol(conexion,entidadRol);
             }
@@ -41,27 +41,30 @@ namespace ProyectoBase
                 MessageBox.Show("Seleccione un rol válido", "Rol no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-                //Se compara si se está asignando un rol o privilegio a un usuario, y si además se llenaron todos los datos del usuario
+               
              if ((mValidarInformacionRoles() == true & mValidarPermisos(lvPantalla) == true))
                 {
                     //Se realiza inserción de roles y privilegios directos
                     if (mValidarPermisos(lvPantalla) == true)
                     {
+                    if (cbPantalla.Text != null)
+                    {
                         if (clRol.mInsertarRol(conexion, entidadRol))
                         {
-                            MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                            MessageBox.Show("Se ha insertado el rol", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                             limpiar();
                         }
                         else
                         {
-                            MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            MessageBox.Show("Ocurrió un error al insertar el rol", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
+                    }
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Información insuficiente para agregar un usuario", "Verifique los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Información insuficiente para agregar un rol", "Verifique los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
 
 

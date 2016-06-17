@@ -12,13 +12,6 @@ namespace Controlador
     {
         private string strSentencia;
 
-        public Boolean mInsertarCliente( clsEntidadPrestamo pEntidadPrestamo)
-        {
-            strSentencia = "insert into prestamo(fechaInicio,fechaFin, nombreEstudiante, carnet) values('"+ pEntidadPrestamo.setGetFecha +"')";
-            return false;
-        }
-
-
         public SqlDataReader mConsultaGeneralCliente(clsConexion conexion)
         {
             strSentencia = "select * from tbUsuario where tipoUsuario='Estudiante'";

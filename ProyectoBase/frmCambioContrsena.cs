@@ -75,7 +75,7 @@ namespace Vista
             }
         }
         private void btnConfirmar_Click(object sender, EventArgs e)
-        {
+        { 
             if(verificarCampos()== true)
             {
                 if (confirmarCcontra() == true)
@@ -87,6 +87,7 @@ namespace Vista
                         MessageBox.Show("Contraseña cambiada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         frmMenuPrincipal menu = new frmMenuPrincipal(conexion);
                         menu.Show();
+                        this.Hide();
                     }
                     
                 }

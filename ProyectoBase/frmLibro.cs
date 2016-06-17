@@ -18,7 +18,7 @@ namespace Vista
 
         private void frmLibro_Load(object sender, EventArgs e)
         {
-
+           
         }
         #endregion
         #region Atributos

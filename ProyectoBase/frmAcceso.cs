@@ -27,6 +27,7 @@ namespace Vista
         #endregion
 
         //Inicializamos los atributos que utilizaremos en toda la clase
+      
         private clsConexion conexion;
         public frmAcceso()
         {
@@ -169,6 +170,7 @@ namespace Vista
             frmMenuPrincipal menu = new frmMenuPrincipal(conexion);
             menu.Show();
             entidadUsuario.mEstadoUsuario = 0;
+            clsConstantes.nombreUsuario = entidadUsuario.mUsuario;
             usuario.mModificarEstadoUsuario(conexion, entidadUsuario);
             this.SetVisibleCore(false);
             

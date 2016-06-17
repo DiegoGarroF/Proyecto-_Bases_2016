@@ -19,7 +19,7 @@ namespace Controlador
 
         public Boolean mInsertarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "INSERT INTO tbLibro(nombre,isbn) VALUES('"+pEntidadLibro.getNombre()+"' , '"+pEntidadLibro.getISBN()+"')";
+            strSentencia = "INSERT INTO tbLibro(nombre,isbn,creadoPor, fechaCreacion) VALUES(@nombre , @isbn , @creadoPor ,@fechaCreacion)";
             return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
 

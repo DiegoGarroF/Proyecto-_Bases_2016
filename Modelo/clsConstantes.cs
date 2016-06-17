@@ -8,6 +8,9 @@ namespace Modelo
 {
     public class clsConstantes
     {
+       
+
+        public static  string nombreUsuario="";
         public const string ELIMINAR  = "Eliminar";
         public const string CONSULTAR = "Consultar";
         public const string MODIFICAR = "Modificar";

@@ -14,6 +14,10 @@ namespace Modelo
         private String nombre;
         private String ISBN;
         private String autor;
+        private string creadoPor;
+        private string fechaCreacion;
+        private string modificadoPor;
+        private string fechaModificacion;
         #endregion
 
         #region Constructor
@@ -47,6 +51,22 @@ namespace Modelo
         {
             this.autor = autor;
         }
+        public void setCreadoPor(String creadoPor)
+        {
+            this.creadoPor = creadoPor;
+        }
+        public void setFechaCreacion(String fechaCreacion)
+        {
+            this.fechaCreacion = fechaCreacion;
+        }
+        public void setModificadoPor(String modificadoPor)
+        {
+            this.modificadoPor = modificadoPor;
+        }
+        public void setFechaModificacion(String fechaModificacion)
+        {
+            this.fechaModificacion = fechaModificacion;
+        }
         #endregion
         //Metodos Get para los atributos
         #region Metodos Get
@@ -69,6 +89,29 @@ namespace Modelo
         {
             return autor;
         }
+
+        public String getCreadoPor()
+        {
+            return creadoPor;
+        }
+        public String getFechaCreacion()
+        {
+            return fechaCreacion;
+        }
+
+        public String getModificadoPor()
+        {
+            return modificadoPor;
+        }
+        public String getFechaModificacion()
+        {
+            return fechaModificacion;
+        }
         #endregion
+
+
+
+
+       
     }
 }

@@ -427,40 +427,43 @@
             // 
             this.chkEliminar.AutoSize = true;
             this.chkEliminar.Enabled = false;
-            this.chkEliminar.Location = new System.Drawing.Point(225, 143);
+            this.chkEliminar.Location = new System.Drawing.Point(242, 148);
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Size = new System.Drawing.Size(62, 17);
             this.chkEliminar.TabIndex = 9;
             this.chkEliminar.Text = "Eliminar";
             this.chkEliminar.UseVisualStyleBackColor = true;
+            this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
             // 
             // chkModificar
             // 
             this.chkModificar.AutoSize = true;
             this.chkModificar.Enabled = false;
-            this.chkModificar.Location = new System.Drawing.Point(225, 124);
+            this.chkModificar.Location = new System.Drawing.Point(242, 129);
             this.chkModificar.Name = "chkModificar";
             this.chkModificar.Size = new System.Drawing.Size(69, 17);
             this.chkModificar.TabIndex = 8;
             this.chkModificar.Text = "Modificar";
             this.chkModificar.UseVisualStyleBackColor = true;
+            this.chkModificar.CheckedChanged += new System.EventHandler(this.chkModificar_CheckedChanged);
             // 
             // chkConsultar
             // 
             this.chkConsultar.AutoSize = true;
             this.chkConsultar.Enabled = false;
-            this.chkConsultar.Location = new System.Drawing.Point(225, 100);
+            this.chkConsultar.Location = new System.Drawing.Point(242, 105);
             this.chkConsultar.Name = "chkConsultar";
             this.chkConsultar.Size = new System.Drawing.Size(70, 17);
             this.chkConsultar.TabIndex = 7;
             this.chkConsultar.Text = "Consultar";
             this.chkConsultar.UseVisualStyleBackColor = true;
+            this.chkConsultar.CheckedChanged += new System.EventHandler(this.chkConsultar_CheckedChanged);
             // 
             // chkInsertar
             // 
             this.chkInsertar.AutoSize = true;
             this.chkInsertar.Enabled = false;
-            this.chkInsertar.Location = new System.Drawing.Point(225, 77);
+            this.chkInsertar.Location = new System.Drawing.Point(242, 82);
             this.chkInsertar.Name = "chkInsertar";
             this.chkInsertar.Size = new System.Drawing.Size(61, 17);
             this.chkInsertar.TabIndex = 6;
@@ -472,9 +475,9 @@
             this.cbPantalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPantalla.Enabled = false;
             this.cbPantalla.FormattingEnabled = true;
-            this.cbPantalla.Location = new System.Drawing.Point(93, 101);
+            this.cbPantalla.Location = new System.Drawing.Point(67, 103);
             this.cbPantalla.Name = "cbPantalla";
-            this.cbPantalla.Size = new System.Drawing.Size(101, 21);
+            this.cbPantalla.Size = new System.Drawing.Size(152, 21);
             this.cbPantalla.TabIndex = 5;
             // 
             // label4
@@ -489,11 +492,12 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(222, 49);
+            this.label3.Location = new System.Drawing.Point(239, 54);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Privilegios de pantalla:";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -509,9 +513,9 @@
             this.cbRol.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbRol.Enabled = false;
             this.cbRol.FormattingEnabled = true;
-            this.cbRol.Location = new System.Drawing.Point(94, 16);
+            this.cbRol.Location = new System.Drawing.Point(84, 16);
             this.cbRol.Name = "cbRol";
-            this.cbRol.Size = new System.Drawing.Size(117, 21);
+            this.cbRol.Size = new System.Drawing.Size(135, 21);
             this.cbRol.TabIndex = 0;
             // 
             // chkRol

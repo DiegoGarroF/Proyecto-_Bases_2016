@@ -313,6 +313,7 @@ namespace Modelo
 
                         comando.Parameters.AddWithValue("@usuario", entidadUsuario.mUsuario);
                         comando.Parameters.AddWithValue("@contrasena", entidadUsuario.mContrasena);
+                        comando.Parameters.AddWithValue("@estadoUsuario", entidadUsuario.mEstadoUsuario);
                         comando.Parameters.AddWithValue("estadoContrasena", true);
                         comando.ExecuteNonQuery();
                         return true;

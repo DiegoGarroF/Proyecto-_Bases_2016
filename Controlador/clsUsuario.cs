@@ -78,7 +78,7 @@ namespace Controlador
         }
         public Boolean mModificarEstadoUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "update tbUsuario set estadoUsuario=(estadoUsuario+1) where usuario=@usuario";
+            sentencia = "update tbUsuario set estadoUsuario=@estadoUsuario where usuario=@usuario";
             return conexion.mEjecutarModificar(sentencia, conexion, pEntidadUsuario);
         }
     }

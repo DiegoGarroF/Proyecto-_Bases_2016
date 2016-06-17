@@ -107,6 +107,7 @@ namespace Vista
                                        
                         if (dtrUsuario.GetInt32(6) == 0 || dtrUsuario.GetInt32(6) == 1 || dtrUsuario.GetInt32(6) == 2)
                         {
+                            entidadUsuario.mEstadoUsuario = dtrUsuario.GetInt32(6);
                             if (mValidarContraseña(dtrUsuario.GetString(2)))
                             {
                                 if (dtrUsuario.GetBoolean(7) == false)
@@ -122,15 +123,18 @@ namespace Vista
                                 else
                                 {
                                     btnIngresar.Enabled = true;
+                                    this.txtClave.Enabled = false;
+                                    this.txtUsuario.Enabled = false;
                                     return true;
                                 }
                              
                             }//fin del if que valida las contraseñas
                             else
                             {
-
-                                MessageBox.Show("Contraseña Incorrecta");
-                                
+                                entidadUsuario.mEstadoUsuario = (dtrUsuario.GetInt32(6)+1);
+                                usuario.mModificarEstadoUsuario(conexion, entidadUsuario);
+                                MessageBox.Show("Intentos Restantes "+(2-dtrUsuario.GetInt32(6)),"Contraseña Incorrecta", MessageBoxButtons.OK,MessageBoxIcon.Information);
+                                return false;
                             }
                             
                             
@@ -161,8 +165,11 @@ namespace Vista
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
+            
             frmMenuPrincipal menu = new frmMenuPrincipal(conexion);
             menu.Show();
+            entidadUsuario.mEstadoUsuario = 0;
+            usuario.mModificarEstadoUsuario(conexion, entidadUsuario);
             this.SetVisibleCore(false);
             
         }

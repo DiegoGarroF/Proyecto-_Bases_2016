@@ -58,6 +58,12 @@
     <Compile Include="frmBitacora.designer.cs">
       <DependentUpon>frmBitacora.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmCambioContrsena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCambioContrsena.Designer.cs">
+      <DependentUpon>frmCambioContrsena.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmConsultaPrestamos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmBitacora.resx">
       <DependentUpon>frmBitacora.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCambioContrsena.resx">
+      <DependentUpon>frmCambioContrsena.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmConsultaPrestamos.resx">
       <DependentUpon>frmConsultaPrestamos.cs</DependentUpon>

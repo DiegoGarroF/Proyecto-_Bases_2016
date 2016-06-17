@@ -126,7 +126,7 @@ namespace Modelo
             catch
             {
                 return null;
-            }
+      }
         }// fin del metodo mSeleccionar
 
         public Boolean mEjecutarElimModif(string strSentencia, clsConexion cone, Object objeto, string tipo)
@@ -158,7 +158,8 @@ namespace Modelo
                                 {
                                     clsEntidadUsuario entidadUsuario = (clsEntidadUsuario)objeto;
                                     comando.Parameters.AddWithValue("@idUsuario", entidadUsuario.mIdUsuario);
-                                    comando.ExecuteNonQuery();
+                                    comando.Parameters.AddWithValue("@usuario", entidadUsuario.mUsuario);
+                                comando.ExecuteNonQuery();
                                 }
 
                                 //Eliminar un Prestamo
@@ -297,6 +298,38 @@ namespace Modelo
             }
         }
 
+        public Boolean mEjecutarModificar(String strSentencia, clsConexion cone, Object objeto)
+        {
+            try
+            {
+                if (mConectar(cone))
+                {
+                    comando = new SqlCommand(strSentencia, conexion);
+                    comando.CommandType = System.Data.CommandType.Text;
+
+                    if (objeto is clsEntidadUsuario)
+                    {
+                        clsEntidadUsuario entidadUsuario = (clsEntidadUsuario)objeto;
+
+                        comando.Parameters.AddWithValue("@usuario", entidadUsuario.mUsuario);
+                        comando.Parameters.AddWithValue("@contrasena", entidadUsuario.mContrasena);
+                        comando.Parameters.AddWithValue("estadoContrasena", true);
+                        comando.ExecuteNonQuery();
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                }
+                return false;
+            }
+            catch
+            {
+                return false;
+            }
+
+        }
         //Este metodo nos permite abrir y conectarnos con la base de datos
         public Boolean mConectar(clsConexion cone)
         {

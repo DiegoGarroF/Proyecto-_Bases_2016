@@ -71,5 +71,10 @@ namespace Controlador
             sentencia = "update tbUsuario set usuario=@usuario, contrasena=@contrasena, nombre=@nombre, tipoUsuario=@tipoUsuario, apellidos=@apellidos";
             return conexion.mEjecutar(sentencia, conexion, pEntidadUsuario);
         }
+        public Boolean mModificarContraseña(clsConexion conexion, clsEntidadUsuario pEntidadUsuario, string tipo)
+        {
+            sentencia = "update tbUsuario set contrasena=@contrasena, estadoContrasena=@estadoContrasena where usuario=@usuario";
+            return conexion.mEjecutarModificar(sentencia, conexion, pEntidadUsuario);
+        }
     }
 }

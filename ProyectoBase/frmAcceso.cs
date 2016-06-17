@@ -78,6 +78,10 @@ namespace Vista
 
 
         #region Metodos
+        public string guardarUsuario()
+        {
+            return txtUsuario.Text;
+        }
         //Este método permite validar la existencia del usuario segun
         //el codigo y clave digitada
         public Boolean mValidarDatos()
@@ -100,11 +104,16 @@ namespace Vista
                 {
                     if (dtrUsuario.Read())
                     {                        
-                        if (dtrUsuario.GetBoolean(6) == true)
+                        if (dtrUsuario.GetInt32(6) == 0 || dtrUsuario.GetInt32(6) == 1 || dtrUsuario.GetInt32(6) == 2)
                         {
                             if (dtrUsuario.GetBoolean(7) == false)
                             {
                                 //LLamar ventana para cambiar pw
+                                guardarUsuario();
+                                frmCambioContrsena contraseña = new frmCambioContrsena(this, conexion);
+                                contraseña.Show();
+                                this.Visible = false;
+                
                                 return false;
                             }
                             else

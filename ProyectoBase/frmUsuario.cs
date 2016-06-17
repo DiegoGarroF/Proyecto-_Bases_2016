@@ -626,5 +626,25 @@ namespace Vista
                 MessageBox.Show("Seleccione un rol válido", "Rol no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void chkConsultar_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void chkModificar_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

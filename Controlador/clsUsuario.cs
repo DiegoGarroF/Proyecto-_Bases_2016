@@ -50,7 +50,7 @@ namespace Controlador
 
         public Boolean mInsertarUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "insert into tbUsuario(usuario, contrasena, nombre, tipoUsuario, apellidos) values (@usuario, @contrasena, @nombre, @tipoUsuario, @apellidos) ";
+            sentencia = "insert into tbUsuario(usuario, contrasena, nombre, tipoUsuario, apellidos, estadoUsuario, estadoContrasena, creadoPor, fechaCreacion) values (@usuario, @contrasena, @nombre, @tipoUsuario, @apellidos, @estadoUsuario, @estadoContrasena, @creadoPor, @fechaCreacion) ";
             return conexion.mEjecutar(sentencia,conexion, pEntidadUsuario); 
         }
 

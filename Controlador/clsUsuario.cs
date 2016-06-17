@@ -29,7 +29,7 @@ namespace Controlador
         }
         public SqlDataReader mLogueoPrincipal(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "select idUsuario, usuario, contrasena, nombre, apellidos, tipoUsuario, estadoUsuario, estadoContrasena from tbUsuario where usuario=@codigo and contrasena=@contrasena";
+            sentencia = "select idUsuario, usuario, contrasena, nombre, apellidos, tipoUsuario, estadoUsuario, estadoContrasena from tbUsuario where usuario=@codigo";
 
 
             return conexion.mSeleccionarLogueo(sentencia, pEntidadUsuario.mUsuario, pEntidadUsuario.mContrasena);

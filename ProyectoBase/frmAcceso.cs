@@ -103,26 +103,38 @@ namespace Vista
                 if (dtrUsuario != null)
                 {
                     if (dtrUsuario.Read())
-                    {                        
+                    {
+                                       
                         if (dtrUsuario.GetInt32(6) == 0 || dtrUsuario.GetInt32(6) == 1 || dtrUsuario.GetInt32(6) == 2)
                         {
-                            if (dtrUsuario.GetBoolean(7) == false)
+                            if (mValidarContraseña(dtrUsuario.GetString(2)))
                             {
-                                //LLamar ventana para cambiar pw
-                                guardarUsuario();
-                                frmCambioContrsena contraseña = new frmCambioContrsena(this, conexion);
-                                contraseña.Show();
-                                this.Visible = false;
-                
-                                return false;
-                            }
+                                if (dtrUsuario.GetBoolean(7) == false)
+                                {
+                                    //LLamar ventana para cambiar pw
+                                    guardarUsuario();
+                                    frmCambioContrsena contraseña = new frmCambioContrsena(this, conexion);
+                                    contraseña.Show();
+                                    this.Visible = false;
+
+                                    return false;
+                                }
+                                else
+                                {
+                                    btnIngresar.Enabled = true;
+                                    return true;
+                                }
+                             
+                            }//fin del if que valida las contraseñas
                             else
                             {
-                                btnIngresar.Enabled = true;
-                                return true;
+
+                                MessageBox.Show("Contraseña Incorrecta");
+                                
                             }
                             
-                        }
+                            
+                        }// fin del if de estado usuario
                         else
                         {
                             MessageBox.Show("El usuario esta bloqueado", "Atención", MessageBoxButtons.OK,MessageBoxIcon.Information);
@@ -130,7 +142,7 @@ namespace Vista
                         }//Fin del pEntidadUsuario
                     }
                     else {
-                        MessageBox.Show("Usuario o contraseña errónea", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        MessageBox.Show("Usuario incorrecto", "Atención", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return false;
                     }//Fin del if del Read  
                 }
@@ -154,5 +166,19 @@ namespace Vista
             this.SetVisibleCore(false);
             
         }
+
+
+
+        public Boolean mValidarContraseña(String claveAlmacenada)
+        {
+            if (this.txtClave.Text.Equals(claveAlmacenada))
+            {
+                return true;
+            }
+              
+            return false;
+        }
     }
+
+
 }

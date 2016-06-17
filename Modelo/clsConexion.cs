@@ -231,6 +231,11 @@ namespace Modelo
                         comando.Parameters.AddWithValue("@nombre", entidadUsuario.mNombre);
                         comando.Parameters.AddWithValue("@tipoUsuario", entidadUsuario.mTipoUsuario);
                         comando.Parameters.AddWithValue("@apellidos", entidadUsuario.mApellidos);
+
+                        comando.Parameters.AddWithValue("@estadoUsuario", entidadUsuario.mEstadoUsuario);
+                        comando.Parameters.AddWithValue("@estadoContrasena", entidadUsuario.mEstadoContrasena);
+                        comando.Parameters.AddWithValue("@creadoPor", entidadUsuario.mCreadoPor);
+                        comando.Parameters.AddWithValue("@fechaCreacion", entidadUsuario.mFechaCreacion);
                         comando.ExecuteNonQuery();
                         return true;
                     }

@@ -19,7 +19,7 @@ namespace Vista
         private clsEntidadUsuario entidadUsuario;
         private clsUsuario usuario;
         private SqlDataReader dtrUsuario;
-        private SqlDataReader dtrRol;     
+        private SqlDataReader dtrRol;
         private clsConexion conexion;
         private clsEntidadRol entidadRol;
         private clsRol rol;
@@ -61,12 +61,12 @@ namespace Vista
         {
             //Se llena el combobox de las pantallas 
             dtrUsuario = pantalla.mConsultarPantallas(conexion);
-            if(dtrUsuario!=null)
-            while (dtrUsuario.Read())
-            {
-                cbPantalla.Items.Add(dtrUsuario.GetSqlString(0));
+            if (dtrUsuario != null)
+                while (dtrUsuario.Read())
+                {
+                    cbPantalla.Items.Add(dtrUsuario.GetSqlString(0));
 
-            }
+                }
             //Se llena el combobox de roles
             dtrRol = rol.mConsultarRoles(conexion);
             if (dtrRol != null)
@@ -81,11 +81,11 @@ namespace Vista
         {
             this.Hide();
             menu.Show();
-        }        
+        }
         //Método para guardar los privilegios de un usuario, dependiendo si los posee o no 
         //A razón de que en la BD se guardan booleanos y de que en la interfaz se muestran "si" o "no " es necesario
         public void llenarPrivilegiosUsuarioPantalla(ListViewItem I)
-        {            
+        {
             if (I.SubItems[1].Text == "Sí")
             {
                 entidadUsuarioPantalla.mInsertar = true;
@@ -104,12 +104,12 @@ namespace Vista
             }
 
         }
-       //Este método solamente llama a otros 2, uno para guardar los roles de un usuario y otro para almacenar los privilegios del mismo
+        //Este método solamente llama a otros 2, uno para guardar los roles de un usuario y otro para almacenar los privilegios del mismo
         public void agregarUsuarioRolPrivilegio(int idUsuarioAgregado)
-        {            
-                agregarUsuarioRol(idUsuarioAgregado);
-                agregarUsuarioPrivilegio(idUsuarioAgregado);
-                limpiar();
+        {
+            agregarUsuarioRol(idUsuarioAgregado);
+            agregarUsuarioPrivilegio(idUsuarioAgregado);
+            limpiar();
         }
         //Este método inserta los roles de un usuario, la variable idUsuarioAgregado es el usuario al que se le cargarán los roles
         public void agregarUsuarioRol(int idUsuarioAgregado)
@@ -141,12 +141,12 @@ namespace Vista
                         entidadUsuarioPantalla.mIdPantalla = dtrPantalla.GetInt32(0);
                         entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
                         llenarPrivilegiosUsuarioPantalla(I); // este método verifica si se inserta un true o false en la BD
-                        usuarioPantalla.mInsertarUsuarioPantalla(conexion, entidadUsuarioPantalla);               
+                        usuarioPantalla.mInsertarUsuarioPantalla(conexion, entidadUsuarioPantalla);
                     }
             }
         }
-       //Este método retorna el id de un usuario agregado a la base de datos, ya que cuando se inserta un usuario no se digita este
-       //Por lo cual es necesario retornar dicho id para posteriormente agregar los roles o privilegios del mismo, estas tablas exigen el id del usuario
+        //Este método retorna el id de un usuario agregado a la base de datos, ya que cuando se inserta un usuario no se digita este
+        //Por lo cual es necesario retornar dicho id para posteriormente agregar los roles o privilegios del mismo, estas tablas exigen el id del usuario
         public int seleccionIdUsuarioAgregado()
         {
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
@@ -154,32 +154,43 @@ namespace Vista
             if (dtrUsuario != null)
                 if (dtrUsuario.Read())//Debe devolver solo 1
                 {
-                    return  dtrUsuario.GetInt32(0);
+                    return dtrUsuario.GetInt32(0);
                 }
             return -1;
+        }
+
+        public string fechaSistema()
+        {
+            DateTime fechaSistema = DateTime.Today;
+            return fechaSistema.ToString("d");
         }
         //Este método inserta un usuario, además inserta los roles asignados al mismo y los privilegios. Dependiendo de la situación
         private void mAgregarUsuario()
         {
             conexion.codigo = "123";
             conexion.clave = "123";
-            int idUsuarioAgregado=-1;
+            int idUsuarioAgregado = -1;
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
             entidadUsuario.mContrasena = txtContrasena.Text;
             entidadUsuario.mNombre = txtNombre.Text;
             entidadUsuario.mTipoUsuario = cbTipoUsuario.Text;
             entidadUsuario.mApellidos = txtApellidos.Text;
 
+            entidadUsuario.mEstadoUsuario = 0;
+            entidadUsuario.mEstadoContrasena = false;
+            entidadUsuario.mCreadoPor = "lgonzalez";
+            entidadUsuario.mFechaCreacion = fechaSistema();
+
             //Se compara si se está asignando un rol o privilegio a un usuario, y si además se llenaron todos los datos del usuario
             if ((mValidarInfoUsuario() == true & mValidarPermisos(lvPrivilegios) == true) || (mValidarPermisos(lvRoles) == true & mValidarInfoUsuario() == true))
-            {                
+            {
                 //Se realiza inserción de roles y privilegios directos
                 if (mValidarPermisos(lvPrivilegios) & mValidarPermisos(lvRoles) == true)
-                {                                                                     
+                {
                     if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                     {
                         MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        idUsuarioAgregado =seleccionIdUsuarioAgregado();
+                        idUsuarioAgregado = seleccionIdUsuarioAgregado();
                         agregarUsuarioRolPrivilegio(idUsuarioAgregado);
                         limpiar();
                     }
@@ -207,11 +218,11 @@ namespace Vista
                     }
                     else
                     {//se insertan únicamente roles
-                        if (mValidarPermisos(lvRoles)== true)
+                        if (mValidarPermisos(lvRoles) == true)
                         {
                             if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                             {
-                                
+
                                 idUsuarioAgregado = seleccionIdUsuarioAgregado();
                                 agregarUsuarioRol(idUsuarioAgregado);
                                 MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -231,24 +242,24 @@ namespace Vista
             }
         }
 
-       
+
         //Modifica los datos propios de un usuario a partir del id del mismo
-        public void modificarUsuario( int idUsuarioSeleccionado)
+        public void modificarUsuario(int idUsuarioSeleccionado)
         {
             conexion.codigo = "123";
             conexion.clave = "123";
-            
+
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
             entidadUsuario.mContrasena = txtContrasena.Text;
             entidadUsuario.mNombre = txtNombre.Text;
             entidadUsuario.mTipoUsuario = cbTipoUsuario.Text;
             entidadUsuario.mApellidos = txtApellidos.Text;
 
-            
+
             if (usuario.mModificarUsuario(conexion, entidadUsuario) == true)
             {
-                MessageBox.Show("Se ha modificado el usuario","Modificación exitosa",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                
+                MessageBox.Show("Se ha modificado el usuario", "Modificación exitosa", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             }
 
         }
@@ -258,7 +269,7 @@ namespace Vista
             conexion.clave = "123";
             conexion.codigo = "123";
 
-            if (txtId.Text != "" & txtId.Text!="Automático")
+            if (txtId.Text != "" & txtId.Text != "Automático")
             {
                 if (mEliminarUsuarioRol() == true & mEliminarUsuarioPrivilegio() == true)
                 {
@@ -273,15 +284,15 @@ namespace Vista
             else
             {
                 MessageBox.Show("Favor indique el usuario a eliminar", "Búsqueda necesaria", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                
-            }                    
+
+            }
         }
         //Este método elimina los roles asociados a un usuario en específico
         public Boolean mEliminarUsuarioRol()
         {
-           
-                entidadUsuarioRol.mIdUsuario = Convert.ToInt32(txtId.Text);
-                return usuarioRol.mEliminarRolesUsuario(conexion, entidadUsuarioRol, btnAgregar.Text);           
+
+            entidadUsuarioRol.mIdUsuario = Convert.ToInt32(txtId.Text);
+            return usuarioRol.mEliminarRolesUsuario(conexion, entidadUsuarioRol, btnAgregar.Text);
         }
         //Este método elimina los privilegios asociados a un usuario en específico
         public Boolean mEliminarUsuarioPrivilegio()
@@ -293,17 +304,17 @@ namespace Vista
         //Valida que al menos se vaya a insertar un rol o un privilegio
         public Boolean mValidarPermisos(ListView lista)
         {
-            if (lista.Items.Count>0)
+            if (lista.Items.Count > 0)
             {
                 return true;
             }
 
             return false;
         }
-       //Se verifica que este toda la información de un usuario antes de ser insertado
+        //Se verifica que este toda la información de un usuario antes de ser insertado
         public Boolean mValidarInfoUsuario()
         {
-            if (txtNombre.Text!="" & txtApellidos.Text!="" & txtContrasena.Text!="" & txtNombreUsuario.Text!="" & txtNombre.Text!="" & txtApellidos.Text!="" & cbTipoUsuario.Text!="")
+            if (txtNombre.Text != "" & txtApellidos.Text != "" & txtContrasena.Text != "" & txtNombreUsuario.Text != "" & txtNombre.Text != "" & txtApellidos.Text != "" & cbTipoUsuario.Text != "")
             {
                 return true;
             }
@@ -312,8 +323,8 @@ namespace Vista
         //este método despliega una lista con todos los usuarios, para seleccionar el que se desee visualmente
         private void btnBuscar_Click(object sender, EventArgs e)
         {
-            
-            frmListaGeneral  lista = new frmListaGeneral(conexion);
+
+            frmListaGeneral lista = new frmListaGeneral(conexion);
             lista.cargarListViewUsuarios();
             lista.ShowDialog();
 
@@ -324,14 +335,14 @@ namespace Vista
 
             if (lista.mIdUsuario != 0)
             {
-                entidadUsuario.mIdUsuario=lista.mIdUsuario;
+                entidadUsuario.mIdUsuario = lista.mIdUsuario;
                 txtId.Text = Convert.ToString(lista.mIdUsuario);
-                if (mConsultaUsuario(dtrUsuario)==true)
+                if (mConsultaUsuario(dtrUsuario) == true)
                 {
                     cargarRolesUsuario();
                     cargarPrivilPantallasUsuario();
                 }
-                
+
             }
         }
         //Este método carga los roles de un usuario
@@ -340,7 +351,7 @@ namespace Vista
             conexion.clave = "123";
             conexion.codigo = "123";
             entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
-            dtrRol = rol.mConsultaRolesUsuario(conexion,entidadUsuario);
+            dtrRol = rol.mConsultaRolesUsuario(conexion, entidadUsuario);
 
             if (dtrRol != null)
             {
@@ -356,7 +367,7 @@ namespace Vista
         {
             conexion.clave = "123";
             conexion.codigo = "123";
-            entidadUsuario.mIdUsuario =Convert.ToInt32( txtId.Text);
+            entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
             dtrPantalla = pantalla.mConsultaPrivPantaUsuario(conexion, entidadUsuario);
 
             if (dtrPantalla != null)
@@ -364,7 +375,7 @@ namespace Vista
                 while (dtrPantalla.Read())
                 {
                     ListViewItem item = new ListViewItem(dtrPantalla.GetString(0));
-                    for(int i = 1; i <= 4; i++)
+                    for (int i = 1; i <= 4; i++)
                     {
                         if (dtrPantalla.GetBoolean(i) == true)
                         {
@@ -374,7 +385,7 @@ namespace Vista
                         {
                             item.SubItems.Add("No");
                         }
-                    }                    
+                    }
                     lvPrivilegios.Items.Add(item);
                 }
             }
@@ -386,9 +397,9 @@ namespace Vista
             {
                 if (dtrUsuario.Read())
                 {
-                    txtId.Text =Convert.ToString( dtrUsuario.GetInt32(0));
+                    txtId.Text = Convert.ToString(dtrUsuario.GetInt32(0));
                     txtNombreUsuario.Text = dtrUsuario.GetString(1);
-                    txtContrasena.Text= dtrUsuario.GetString(2);
+                    txtContrasena.Text = dtrUsuario.GetString(2);
                     txtNombre.Text = dtrUsuario.GetString(3);
                     txtApellidos.Text = dtrUsuario.GetString(4);
                     cbTipoUsuario.Text = dtrUsuario.GetString(5);
@@ -396,20 +407,20 @@ namespace Vista
                 }
                 else
                 {
-                    MessageBox.Show("Este usuario no existe","NOT FOUNT",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                    MessageBox.Show("Este usuario no existe", "NOT FOUNT", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     return false;
                 }
             }
             else { return false; }
         }
-     
+
         //ejecuta el método de limpiar todos los campos
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             limpiar();
         }
         //Limpia todos los campos
-        public void limpiar( )
+        public void limpiar()
         {
             txtId.Text = "Automático";
             txtContrasena.Text = "";
@@ -447,7 +458,7 @@ namespace Vista
         private void chkPrivilegio_CheckedChanged(object sender, EventArgs e)
         {
             if (cbPantalla.Enabled == true)
-            {                
+            {
                 cbPantalla.Enabled = false;
                 chkConsultar.Enabled = false;
                 chkEliminar.Enabled = false;
@@ -510,9 +521,9 @@ namespace Vista
             }
             else
             {
-                MessageBox.Show("Seleccione una pantalla","Datos incompletos",MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Seleccione una pantalla", "Datos incompletos", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            
+
         }
         //Elimina un item del listview privilegios pantallas
         private void btnEliminarPrivilegioPantalla_Click(object sender, EventArgs e)
@@ -520,20 +531,21 @@ namespace Vista
             if (itemSeleccion(lvPrivilegios) != -1)
             {
                 lvPrivilegios.Items.RemoveAt(itemSeleccion(lvPrivilegios));
+                
             }
             else
             {
                 MessageBox.Show("Seleccione un item válido", "No se ha seleccionado nada", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
-        }        
+        }
         //Retorna el rol o pantalla seleccionada de un listview
         public int itemSeleccion(ListView lista) //Usar solo 1 método
         {
             for (int i = 0; i < lista.Items.Count; i++)
             {
                 if (lista.Items[i].Selected)
-                {                    
+                {
                     return lista.Items[i].Index;
                 }
             }
@@ -548,7 +560,7 @@ namespace Vista
             }
             else
             {
-                MessageBox.Show("Seleccione un item válido","No se ha seleccionado nada",MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Seleccione un item válido", "No se ha seleccionado nada", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -569,13 +581,13 @@ namespace Vista
             conexion.clave = "123";
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
             dtrUsuario = usuario.mBuscarPorLogin(conexion, entidadUsuario);
-            
+
             if (mConsultaUsuario(dtrUsuario) == true)
             {
                 cargarRolesUsuario();
                 cargarPrivilPantallasUsuario();
             }
-            
+
         }
         //Se modifica un usuario
         private void btnModificar_Click(object sender, EventArgs e)
@@ -608,7 +620,7 @@ namespace Vista
         //Busca los datos de un usuario a partir del nombre de usuario
         private void txtNombreUsuario_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar ==(Char) Keys.Enter)
+            if (e.KeyChar == (Char)Keys.Enter)
             {
                 cargarDatosUsuario();
             }
@@ -627,24 +639,6 @@ namespace Vista
             }
         }
 
-        private void chkConsultar_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkEliminar_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void chkModificar_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

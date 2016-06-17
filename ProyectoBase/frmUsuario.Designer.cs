@@ -336,7 +336,7 @@
             this.lvPrivilegios.GridLines = true;
             this.lvPrivilegios.Location = new System.Drawing.Point(140, 32);
             this.lvPrivilegios.Name = "lvPrivilegios";
-            this.lvPrivilegios.Size = new System.Drawing.Size(323, 143);
+            this.lvPrivilegios.Size = new System.Drawing.Size(356, 143);
             this.lvPrivilegios.TabIndex = 1;
             this.lvPrivilegios.UseCompatibleStateImageBehavior = false;
             this.lvPrivilegios.View = System.Windows.Forms.View.Details;
@@ -344,7 +344,7 @@
             // lvPantallaColumna
             // 
             this.lvPantallaColumna.Text = "Pantalla";
-            this.lvPantallaColumna.Width = 98;
+            this.lvPantallaColumna.Width = 139;
             // 
             // lvInsertarColumna
             // 
@@ -363,7 +363,7 @@
             // lvEliminarColumna
             // 
             this.lvEliminarColumna.Text = "Eliminar";
-            this.lvEliminarColumna.Width = 58;
+            this.lvEliminarColumna.Width = 50;
             // 
             // lvRoles
             // 
@@ -433,7 +433,6 @@
             this.chkEliminar.TabIndex = 9;
             this.chkEliminar.Text = "Eliminar";
             this.chkEliminar.UseVisualStyleBackColor = true;
-            this.chkEliminar.CheckedChanged += new System.EventHandler(this.chkEliminar_CheckedChanged);
             // 
             // chkModificar
             // 
@@ -445,7 +444,6 @@
             this.chkModificar.TabIndex = 8;
             this.chkModificar.Text = "Modificar";
             this.chkModificar.UseVisualStyleBackColor = true;
-            this.chkModificar.CheckedChanged += new System.EventHandler(this.chkModificar_CheckedChanged);
             // 
             // chkConsultar
             // 
@@ -457,7 +455,6 @@
             this.chkConsultar.TabIndex = 7;
             this.chkConsultar.Text = "Consultar";
             this.chkConsultar.UseVisualStyleBackColor = true;
-            this.chkConsultar.CheckedChanged += new System.EventHandler(this.chkConsultar_CheckedChanged);
             // 
             // chkInsertar
             // 
@@ -497,7 +494,6 @@
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 2;
             this.label3.Text = "Privilegios de pantalla:";
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 

@@ -30,9 +30,13 @@ namespace Vista
         private clsEntidadUsuarioPantalla entidadUsuarioPantalla;
         private clsUsuarioPantalla usuarioPantalla;
 
+        private clsEntidadRolPantalla entidadRolPantalla;
+        private clsRolPantalla rolPantalla;
+
         private clsPantalla pantalla;
         private clsEntidadPantalla entidadPantalla;
         private SqlDataReader dtrPantalla;
+        private SqlDataReader dtrUsuarioRol;
 
         private frmMenuPrincipal menu;
         public frmUsuario(frmMenuPrincipal menuPrincipal)
@@ -55,16 +59,19 @@ namespace Vista
             entidadUsuarioPantalla = new clsEntidadUsuarioPantalla();
             usuarioPantalla = new clsUsuarioPantalla();
 
+            entidadRolPantalla = new clsEntidadRolPantalla();
+            rolPantalla = new clsRolPantalla();
+
         }
 
         private void frmUsuario_Load(object sender, EventArgs e)
         {
             //Se llena el combobox de las pantallas 
-            dtrUsuario = pantalla.mConsultarPantallas(conexion);
-            if (dtrUsuario != null)
-                while (dtrUsuario.Read())
+            dtrPantalla = pantalla.mConsultarPantallas(conexion);
+            if (dtrPantalla != null)
+                while (dtrPantalla.Read())
                 {
-                    cbPantalla.Items.Add(dtrUsuario.GetSqlString(0));
+                    cbPantalla.Items.Add(dtrPantalla.GetSqlString(0));
 
                 }
             //Se llena el combobox de roles
@@ -75,6 +82,31 @@ namespace Vista
                     cbRol.Items.Add(dtrRol.GetSqlString(0));
 
                 }
+            entidadUsuario.mUsuario = clsConstantes.nombreUsuario;
+            entidadUsuario.mContrasena = "";
+            dtrUsuario = usuario.mLogueoPrincipal(conexion, entidadUsuario); // saco id del usuario conectado
+            if(dtrUsuario!=null)
+                if(dtrUsuario.Read()) 
+                    entidadUsuario.mIdUsuario = dtrUsuario.GetInt32(0);
+
+            dtrUsuarioRol = rol.mConsultaRolesUsuario(conexion,entidadUsuario);//saco los roles de el usuario conectado
+            if (dtrUsuarioRol != null)
+            {        
+                if (dtrUsuarioRol.Read())
+                {
+                    if (dtrUsuarioRol.GetString(0) != "Administrador")
+                    {
+                        mActivarBotonesAdministrador(false);//NO SE PUEDE HACER ESTO, SOLO HAGO PRUEBAS
+                    }
+                    else
+                    {
+                        mActivarBotonesAdministrador(true);//NO SE PUEDE HACER ESTO, SOLO HAGO PRUEBAS
+                    }
+                }
+            }
+            //dtrUsuarioRol = rolPantalla.mPrivilegiosRol(conexion,entidadRolPantalla);
+
+
         }
         //Método para salir de la ventana y mostrar el menú principal
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -673,9 +705,9 @@ namespace Vista
                 modificarUsuario(idUsuarioSeleccionado);
 
                 //Elimino roles y privilegios
-                //mEliminarUsuarioRol();
-                //mEliminarUsuarioPrivilegio();
-                //agregarUsuarioRolPrivilegio(idUsuarioSeleccionado);
+                mEliminarUsuarioRol();
+                mEliminarUsuarioPrivilegio();
+                agregarUsuarioRolPrivilegio(idUsuarioSeleccionado);
                 limpiar();
             }
             else
@@ -710,6 +742,17 @@ namespace Vista
             {
                 MessageBox.Show("Seleccione un rol válido", "Rol no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
+        }
+
+        public void mActivarBotonesAdministrador(Boolean estado)
+        {
+            btnAgregar.Enabled = estado;
+            btnModificar.Enabled = estado;
+            btnEliminar.Enabled = estado;
+            btnConsultar.Enabled = estado;
+            btnBuscar.Enabled = estado;
+            btnAgregarPrivilegios.Enabled = estado;
+            btnAgregarPrivilegios.Enabled = estado;
         }
 
         

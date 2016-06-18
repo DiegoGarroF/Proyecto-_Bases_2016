@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="clsRolPantalla.cs" />
     <Compile Include="clsBitacora.cs" />
     <Compile Include="clsLibro.cs" />
     <Compile Include="clsPantalla.cs" />

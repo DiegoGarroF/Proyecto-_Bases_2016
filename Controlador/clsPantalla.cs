@@ -31,7 +31,11 @@ namespace Controlador
             return conexion.mSeleccionarTipoString(sentencia, pEntidadPantalla.mNombrePantalla);
         }
 
-        
+        public SqlDataReader mConsultarNombrePantalla(clsConexion conexion, clsEntidadPantalla pEntidadPantalla)
+        {
+            sentencia = "select nombre from tbPantalla where  idPantalla=@codigo";
+            return conexion.mSeleccionar(sentencia, pEntidadPantalla.mIdPantalla);
+        }
 
     }
 }

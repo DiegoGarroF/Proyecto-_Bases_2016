@@ -37,6 +37,7 @@ namespace Vista
         private clsEntidadPantalla entidadPantalla;
         private SqlDataReader dtrPantalla;
         private SqlDataReader dtrUsuarioRol;
+        private SqlDataReader dtrRolPantalla;
 
         private frmMenuPrincipal menu;
         public frmUsuario(frmMenuPrincipal menuPrincipal)
@@ -82,6 +83,7 @@ namespace Vista
                     cbRol.Items.Add(dtrRol.GetSqlString(0));
 
                 }
+            //PROCESO PARA VER SI UN USUARIO TIENE PRIVILEGIOS SOBRE ESTA VENTANA
             entidadUsuario.mUsuario = clsConstantes.nombreUsuario;
             entidadUsuario.mContrasena = "";
             dtrUsuario = usuario.mLogueoPrincipal(conexion, entidadUsuario); // saco id del usuario conectado
@@ -93,20 +95,24 @@ namespace Vista
             if (dtrUsuarioRol != null)
             {        
                 if (dtrUsuarioRol.Read())
-                {
-                    if (dtrUsuarioRol.GetString(0) != "Administrador")
-                    {
-                        mActivarBotonesAdministrador(false);//NO SE PUEDE HACER ESTO, SOLO HAGO PRUEBAS
-                    }
-                    else
-                    {
-                        mActivarBotonesAdministrador(true);//NO SE PUEDE HACER ESTO, SOLO HAGO PRUEBAS
-                    }
+                {                   
+                    entidadRolPantalla.mIdRol = dtrUsuarioRol.GetInt32(1);
+                    dtrRolPantalla = rolPantalla.mPrivilegiosRol(conexion,entidadRolPantalla);//saco los privilegios de un rol
+                    if(dtrRolPantalla!=null)
+                        if(dtrRolPantalla.Read())                            
+                    entidadPantalla.mIdPantalla = dtrRolPantalla.GetInt32(1);//Establezco el id de la pantalla encontrada en el rol
+
+                    dtrPantalla = pantalla.mConsultarNombrePantalla(conexion,entidadPantalla);//Consulto el nombre de la pantalla a la que tiene acceso
+                    if (dtrPantalla != null)
+                        if (dtrPantalla.Read())
+                            if (dtrPantalla.GetString(0) == "Mantenimiento de usuarios")
+                            {
+                                mActivarBotonesAdministrador(true);
+                            }
+                            else
+                                mActivarBotonesAdministrador(false);
                 }
-            }
-            //dtrUsuarioRol = rolPantalla.mPrivilegiosRol(conexion,entidadRolPantalla);
-
-
+            }            
         }
         //Método para salir de la ventana y mostrar el menú principal
         private void btnCancelar_Click(object sender, EventArgs e)

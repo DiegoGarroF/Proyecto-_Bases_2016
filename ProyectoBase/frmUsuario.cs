@@ -134,6 +134,10 @@ namespace Vista
                     {
                         entidadUsuarioRol.mIdRol = dtrRol.GetInt32(0);
                         entidadUsuarioRol.mIdUsuario = idUsuarioAgregado;
+                        entidadUsuarioRol.mCreadoPor = clsConstantes.nombreUsuario;
+                        entidadUsuarioRol.mFechaCreacion = fechaSistema();
+                        entidadUsuarioRol.mModificadoPor = "";
+                        entidadUsuarioRol.mFechaModificacion = "";
                         usuarioRol.mInsertarUsuarioRol(conexion, entidadUsuarioRol);
                     }
             }
@@ -152,6 +156,10 @@ namespace Vista
                         entidadUsuarioPantalla.mIdPantalla = dtrPantalla.GetInt32(0);
                         entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
                         llenarPrivilegiosUsuarioPantalla(I); // este método verifica si se inserta un true o false en la BD
+                        entidadUsuarioPantalla.mCreadoPor = clsConstantes.nombreUsuario;
+                        entidadUsuarioPantalla.mFechaCreacion = fechaSistema();
+                        entidadUsuarioPantalla.mModificadoPor = "";
+                        entidadUsuarioPantalla.mFechaModificacion = "";
                         usuarioPantalla.mInsertarUsuarioPantalla(conexion, entidadUsuarioPantalla);
                     }
             }
@@ -175,6 +183,22 @@ namespace Vista
             DateTime fechaSistema = DateTime.Today;
             return fechaSistema.ToString("d");
         }
+
+        //Metodo para verificar NO exista otro usuario con el mismo login
+        public Boolean mVerificarNombreUsuario()
+        {
+            entidadUsuario.mUsuario = txtNombreUsuario.Text;
+            dtrUsuario = usuario.mBuscarPorLogin(conexion,entidadUsuario);
+            if(dtrUsuario!=null)
+                if (dtrUsuario.Read())
+                {
+                    return true;
+                }
+                else{
+                }return false;
+
+        }
+        
         //Este método inserta un usuario, además inserta los roles asignados al mismo y los privilegios. Dependiendo de la situación
         private void mAgregarUsuario()
         {
@@ -200,50 +224,66 @@ namespace Vista
                 //Se realiza inserción de roles y privilegios directos
                 if (mValidarPermisos(lvPrivilegios) & mValidarPermisos(lvRoles) == true)
                 {
-                    if (usuario.mInsertarUsuario(conexion, entidadUsuario))
-                    {
-                        MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        idUsuarioAgregado = seleccionIdUsuarioAgregado();
-                        agregarUsuarioRolPrivilegio(idUsuarioAgregado);
-                        limpiar();
-                    }
-                    else
-                    {
-                        MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                    }
-                }
-                else
-                {//se insertan solo privilegios
-                    if (mValidarPermisos(lvPrivilegios) == true)
-                    {
-
+                    //AQUI
+                    if (mVerificarNombreUsuario() == false) { 
                         if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                         {
                             MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                             idUsuarioAgregado = seleccionIdUsuarioAgregado();
-                            agregarUsuarioPrivilegio(idUsuarioAgregado);
+                            agregarUsuarioRolPrivilegio(idUsuarioAgregado);
                             limpiar();
                         }
                         else
                         {
                             MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
+                    }else{
+                        MessageBox.Show("Ya existe un usuario con este nombre de usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
-                    else
-                    {//se insertan únicamente roles
-                        if (mValidarPermisos(lvRoles) == true)
+                }
+                else
+                {//se insertan solo privilegios
+                    if (mValidarPermisos(lvPrivilegios) == true)
+                    {
+                        if (mVerificarNombreUsuario() == false)
                         {
                             if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                             {
-
-                                idUsuarioAgregado = seleccionIdUsuarioAgregado();
-                                agregarUsuarioRol(idUsuarioAgregado);
                                 MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                idUsuarioAgregado = seleccionIdUsuarioAgregado();
+                                agregarUsuarioPrivilegio(idUsuarioAgregado);
                                 limpiar();
                             }
                             else
                             {
                                 MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            }
+                        }
+                        else{
+                            MessageBox.Show("Ya existe un usuario con este nombre de usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        }
+                    }
+                    else
+                    {//se insertan únicamente roles
+                        if (mValidarPermisos(lvRoles) == true)
+                        {
+                            if (mVerificarNombreUsuario() == false)
+                            {
+                                if (usuario.mInsertarUsuario(conexion, entidadUsuario))
+                                {
+
+                                    idUsuarioAgregado = seleccionIdUsuarioAgregado();
+                                    agregarUsuarioRol(idUsuarioAgregado);
+                                    MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    limpiar();
+                                }
+                                else
+                                {
+                                    MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                                }
+                            }
+                            else{
+                                MessageBox.Show("Ya existe un usuario con este nombre de usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
                     }
@@ -298,6 +338,7 @@ namespace Vista
                 if (mEliminarUsuarioRol() == true & mEliminarUsuarioPrivilegio() == true)
                 {
                     entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
+                    entidadUsuario.mUsuario = txtNombreUsuario.Text;
                     if (usuario.mEliminarUsuario(conexion, entidadUsuario, btnAgregar.Text))
                     {
                         MessageBox.Show("Usuario eliminado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);

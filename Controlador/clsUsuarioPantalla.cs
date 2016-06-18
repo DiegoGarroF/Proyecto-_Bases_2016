@@ -14,7 +14,7 @@ namespace Controlador
 
         public Boolean mInsertarUsuarioPantalla(clsConexion conexion, clsEntidadUsuarioPantalla pEntidadUsuarioPantalla)
         {
-            sentencia = "insert into tbUsuarioPantalla(idUsuario, idPantalla, modificar,insertar, consultar, eliminar) values (@idUsuario, @idPantalla, @modificar, @insertar, @consultar, @eliminar) ";
+            sentencia = "insert into tbUsuarioPantalla(idUsuario, idPantalla, modificar,insertar, consultar, eliminar, creadoPor, fechaCreacion) values (@idUsuario, @idPantalla, @modificar, @insertar, @consultar, @eliminar, @creadoPor, @fechaCreacion) ";
             return conexion.mEjecutar(sentencia, conexion, pEntidadUsuarioPantalla);
         }
 

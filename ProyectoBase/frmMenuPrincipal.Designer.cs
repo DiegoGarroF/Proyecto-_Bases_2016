@@ -35,7 +35,6 @@
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeUsuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoDeRolesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.mantenimientoDePantallasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.préstamosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mantenimientoPrestamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.librosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -83,8 +82,7 @@
             // 
             this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientoDeUsuariosToolStripMenuItem,
-            this.mantenimientoDeRolesToolStripMenuItem,
-            this.mantenimientoDePantallasToolStripMenuItem});
+            this.mantenimientoDeRolesToolStripMenuItem});
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
             this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
             this.usuariosToolStripMenuItem.Text = "Seguridad";
@@ -92,21 +90,15 @@
             // mantenimientoDeUsuariosToolStripMenuItem
             // 
             this.mantenimientoDeUsuariosToolStripMenuItem.Name = "mantenimientoDeUsuariosToolStripMenuItem";
-            this.mantenimientoDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.mantenimientoDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.mantenimientoDeUsuariosToolStripMenuItem.Text = "Mantenimiento de Usuarios";
             this.mantenimientoDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeUsuariosToolStripMenuItem_Click);
             // 
             // mantenimientoDeRolesToolStripMenuItem
             // 
             this.mantenimientoDeRolesToolStripMenuItem.Name = "mantenimientoDeRolesToolStripMenuItem";
-            this.mantenimientoDeRolesToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
+            this.mantenimientoDeRolesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.mantenimientoDeRolesToolStripMenuItem.Text = "Mantenimiento de Roles";
-            // 
-            // mantenimientoDePantallasToolStripMenuItem
-            // 
-            this.mantenimientoDePantallasToolStripMenuItem.Name = "mantenimientoDePantallasToolStripMenuItem";
-            this.mantenimientoDePantallasToolStripMenuItem.Size = new System.Drawing.Size(222, 22);
-            this.mantenimientoDePantallasToolStripMenuItem.Text = "Mantenimiento de Pantallas";
             // 
             // préstamosToolStripMenuItem
             // 
@@ -169,7 +161,6 @@
         private System.Windows.Forms.ToolStripMenuItem opcionNuevoLibro;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeRolesToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem mantenimientoDePantallasToolStripMenuItem;
     }
 }
 

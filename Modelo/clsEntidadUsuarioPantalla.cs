@@ -16,6 +16,11 @@ namespace Modelo
         private Boolean insertar;
         private Boolean consultar;
         private Boolean eliminar;
+
+        private string creadoPor;
+        private string fechaCreacion;
+        private string modificadoPor;
+        private string fechaModificacion;
         #endregion
 
         #region metodos
@@ -51,6 +56,26 @@ namespace Modelo
         {
             get { return eliminar; }
             set { eliminar = value; }
+        }
+        public string mCreadoPor
+        {
+            get { return creadoPor; }
+            set { creadoPor = value; }
+        }
+        public string mFechaCreacion
+        {
+            get { return fechaCreacion; }
+            set { fechaCreacion = value; }
+        }
+        public string mModificadoPor
+        {
+            get { return modificadoPor; }
+            set { modificadoPor = value; }
+        }
+        public string mFechaModificacion
+        {
+            get { return fechaModificacion; }
+            set { fechaModificacion = value; }
         }
         #endregion
     }

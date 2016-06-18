@@ -14,7 +14,7 @@ namespace Controlador
 
         public Boolean mInsertarUsuarioRol(clsConexion conexion, clsEntidadUsuarioRol pEntidadUsuarioRol)
         {
-            sentencia = "insert into tbUsuarioRol(idUsuario, idRol) values (@idUsuario, @idRol) ";
+            sentencia = "insert into tbUsuarioRol(idUsuario, idRol, creadoPor, fechaCreacion) values (@idUsuario, @idRol, @creadoPor, @fechaCreacion) ";
             return conexion.mEjecutar(sentencia, conexion, pEntidadUsuarioRol);
         }
 

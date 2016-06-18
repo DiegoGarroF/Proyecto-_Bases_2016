@@ -252,6 +252,10 @@ namespace Modelo
                             clsEntidadUsuarioRol entidadUsuarioRol = (clsEntidadUsuarioRol)objeto;
                             comando.Parameters.AddWithValue("@idUsuario", entidadUsuarioRol.mIdUsuario);
                             comando.Parameters.AddWithValue("@idRol", entidadUsuarioRol.mIdRol);
+                            comando.Parameters.AddWithValue("@creadoPor", entidadUsuarioRol.mCreadoPor);
+                            comando.Parameters.AddWithValue("@fechaCreacion", entidadUsuarioRol.mFechaCreacion);
+                            comando.Parameters.AddWithValue("@modificadoPor", entidadUsuarioRol.mModificadoPor);
+                            comando.Parameters.AddWithValue("@fechaModificacion", entidadUsuarioRol.mFechaModificacion);
                             comando.ExecuteNonQuery();
                             return true;
                         }
@@ -266,6 +270,12 @@ namespace Modelo
                                 comando.Parameters.AddWithValue("@insertar", entidadUsuarioPantalla.mInsertar);
                                 comando.Parameters.AddWithValue("@consultar", entidadUsuarioPantalla.mConsultar);
                                 comando.Parameters.AddWithValue("@eliminar", entidadUsuarioPantalla.mEliminar);
+
+                                comando.Parameters.AddWithValue("@creadoPor", entidadUsuarioPantalla.mCreadoPor);
+                                comando.Parameters.AddWithValue("@fechaCreacion", entidadUsuarioPantalla.mFechaCreacion);
+                                comando.Parameters.AddWithValue("@modificadoPor", entidadUsuarioPantalla.mModificadoPor);
+                                comando.Parameters.AddWithValue("@fechaModificacion", entidadUsuarioPantalla.mFechaModificacion);
+                                
                                 comando.ExecuteNonQuery();
                                 return true;
 

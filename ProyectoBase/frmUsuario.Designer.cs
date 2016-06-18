@@ -43,6 +43,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtId = new System.Windows.Forms.TextBox();
             this.gbxDatos = new System.Windows.Forms.GroupBox();
+            this.cbEstado = new System.Windows.Forms.ComboBox();
+            this.lblEstado = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.txtApellidos = new System.Windows.Forms.TextBox();
             this.txtNombre = new System.Windows.Forms.TextBox();
@@ -74,8 +76,6 @@
             this.cbRol = new System.Windows.Forms.ComboBox();
             this.chkRol = new System.Windows.Forms.CheckBox();
             this.chkPrivilegio = new System.Windows.Forms.CheckBox();
-            this.lblEstado = new System.Windows.Forms.Label();
-            this.cbEstado = new System.Windows.Forms.ComboBox();
             this.gbxBotones.SuspendLayout();
             this.gbxDatos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -84,6 +84,7 @@
             // 
             // btnAgregar
             // 
+            this.btnAgregar.Enabled = false;
             this.btnAgregar.Location = new System.Drawing.Point(6, 19);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 31);
@@ -128,6 +129,7 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.Enabled = false;
             this.btnEliminar.Location = new System.Drawing.Point(134, 76);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 31);
@@ -138,6 +140,7 @@
             // 
             // btnModificar
             // 
+            this.btnModificar.Enabled = false;
             this.btnModificar.Location = new System.Drawing.Point(6, 76);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 31);
@@ -148,6 +151,7 @@
             // 
             // btnConsultar
             // 
+            this.btnConsultar.Enabled = false;
             this.btnConsultar.Location = new System.Drawing.Point(134, 19);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 31);
@@ -192,6 +196,7 @@
             // 
             // btnBuscar
             // 
+            this.btnBuscar.Enabled = false;
             this.btnBuscar.Location = new System.Drawing.Point(307, 64);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(52, 24);
@@ -240,6 +245,27 @@
             this.gbxDatos.Size = new System.Drawing.Size(376, 322);
             this.gbxDatos.TabIndex = 7;
             this.gbxDatos.TabStop = false;
+            // 
+            // cbEstado
+            // 
+            this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstado.FormattingEnabled = true;
+            this.cbEstado.Items.AddRange(new object[] {
+            "Bloqueado",
+            "Desbloqueado"});
+            this.cbEstado.Location = new System.Drawing.Point(126, 281);
+            this.cbEstado.Name = "cbEstado";
+            this.cbEstado.Size = new System.Drawing.Size(110, 21);
+            this.cbEstado.TabIndex = 18;
+            // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(10, 281);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(40, 13);
+            this.lblEstado.TabIndex = 17;
+            this.lblEstado.Text = "Estado";
             // 
             // label5
             // 
@@ -310,6 +336,7 @@
             // 
             // btnEliminarPrivilegioPantalla
             // 
+            this.btnEliminarPrivilegioPantalla.Enabled = false;
             this.btnEliminarPrivilegioPantalla.Location = new System.Drawing.Point(251, 204);
             this.btnEliminarPrivilegioPantalla.Name = "btnEliminarPrivilegioPantalla";
             this.btnEliminarPrivilegioPantalla.Size = new System.Drawing.Size(75, 43);
@@ -320,6 +347,7 @@
             // 
             // btnEliminarRol
             // 
+            this.btnEliminarRol.Enabled = false;
             this.btnEliminarRol.Location = new System.Drawing.Point(12, 204);
             this.btnEliminarRol.Name = "btnEliminarRol";
             this.btnEliminarRol.Size = new System.Drawing.Size(75, 43);
@@ -521,6 +549,7 @@
             // chkRol
             // 
             this.chkRol.AutoSize = true;
+            this.chkRol.Enabled = false;
             this.chkRol.Location = new System.Drawing.Point(435, 45);
             this.chkRol.Name = "chkRol";
             this.chkRol.Size = new System.Drawing.Size(15, 14);
@@ -531,33 +560,13 @@
             // chkPrivilegio
             // 
             this.chkPrivilegio.AutoSize = true;
+            this.chkPrivilegio.Enabled = false;
             this.chkPrivilegio.Location = new System.Drawing.Point(435, 122);
             this.chkPrivilegio.Name = "chkPrivilegio";
             this.chkPrivilegio.Size = new System.Drawing.Size(15, 14);
             this.chkPrivilegio.TabIndex = 13;
             this.chkPrivilegio.UseVisualStyleBackColor = true;
             this.chkPrivilegio.CheckedChanged += new System.EventHandler(this.chkPrivilegio_CheckedChanged);
-            // 
-            // lblEstado
-            // 
-            this.lblEstado.AutoSize = true;
-            this.lblEstado.Location = new System.Drawing.Point(10, 281);
-            this.lblEstado.Name = "lblEstado";
-            this.lblEstado.Size = new System.Drawing.Size(40, 13);
-            this.lblEstado.TabIndex = 17;
-            this.lblEstado.Text = "Estado";
-            // 
-            // cbEstado
-            // 
-            this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cbEstado.FormattingEnabled = true;
-            this.cbEstado.Items.AddRange(new object[] {
-            "Bloqueado",
-            "Desbloqueado"});
-            this.cbEstado.Location = new System.Drawing.Point(126, 281);
-            this.cbEstado.Name = "cbEstado";
-            this.cbEstado.Size = new System.Drawing.Size(110, 21);
-            this.cbEstado.TabIndex = 18;
             // 
             // frmUsuario
             // 

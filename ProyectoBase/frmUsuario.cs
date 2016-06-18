@@ -105,12 +105,11 @@ namespace Vista
                     dtrPantalla = pantalla.mConsultarNombrePantalla(conexion,entidadPantalla);//Consulto el nombre de la pantalla a la que tiene acceso
                     if (dtrPantalla != null)
                         if (dtrPantalla.Read())
-                            if (dtrPantalla.GetString(0) == "Mantenimiento de usuarios")
+                            if (dtrPantalla.GetString(0) ==  "Mantenimiento de usuarios")
                             {
-                                mActivarBotonesAdministrador(true);
-                            }
-                            else
-                                mActivarBotonesAdministrador(false);
+                                mActivarBotonesAdministrador(dtrRolPantalla);
+                               
+                            }                            
                 }
             }            
         }
@@ -750,15 +749,32 @@ namespace Vista
             }
         }
 
-        public void mActivarBotonesAdministrador(Boolean estado)
+        public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
         {
-            btnAgregar.Enabled = estado;
-            btnModificar.Enabled = estado;
-            btnEliminar.Enabled = estado;
-            btnConsultar.Enabled = estado;
-            btnBuscar.Enabled = estado;
-            btnAgregarPrivilegios.Enabled = estado;
-            btnAgregarPrivilegios.Enabled = estado;
+            if (dtrPermisos.GetBoolean(2)) {
+                btnModificar.Enabled = true;
+                chkPrivilegio.Enabled = true;
+                chkRol.Enabled = true;
+                btnEliminarRol.Enabled = true;
+                btnEliminarPrivilegioPantalla.Enabled = true;
+            }            
+            if (dtrPermisos.GetBoolean(3)) {
+                btnAgregar.Enabled = true;
+                btnAgregarPrivilegios.Enabled = true;
+                btnAgregarRol.Enabled = true;
+                chkPrivilegio.Enabled = true;
+                chkRol.Enabled = true;
+                btnEliminarRol.Enabled = true;
+                btnEliminarPrivilegioPantalla.Enabled = true;
+            }        
+            if (dtrPermisos.GetBoolean(4)) {
+                btnConsultar.Enabled = true;
+                btnBuscar.Enabled = true;
+            }
+            if (dtrPermisos.GetBoolean(5)) {
+                btnEliminar.Enabled = true;
+            }
+        
         }
 
         

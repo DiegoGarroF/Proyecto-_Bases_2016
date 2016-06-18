@@ -91,6 +91,14 @@ namespace Vista
         #region Metodo Modificar
         public void mModificar()
         {
+            pEntidadLibro.setIdLibro(Convert.ToInt32(txtID.Text));            
+            pEntidadLibro.setNombre(txtNombre.Text);
+            pEntidadLibro.setISBN(txtISBN.Text);
+            pEntidadLibro.setModificadoPor(clsConstantes.nombreUsuario);
+            pEntidadLibro.setFechaModificacion(frmUsuario.fechaSistema());
+            pEntidadLibro.setCreadoPor("");
+            pEntidadLibro.setFechaCreacion("");
+
             if (libro.mModificarLibro(conexion, pEntidadLibro))
             {
                 MessageBox.Show("El Libro Ha Sido Modificado Con Exito", "Accion Efectuada", MessageBoxButtons.OK, MessageBoxIcon.Information);

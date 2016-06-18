@@ -14,7 +14,7 @@ namespace Controlador
 
         public SqlDataReader mBuscarUsuario(clsConexion conexion,clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "select idUsuario, usuario, contrasena, nombre, apellidos, tipoUsuario from tbUsuario where idUsuario=@codigo";
+            sentencia = "select idUsuario, usuario, contrasena, nombre, apellidos, tipoUsuario, estadoUsuario from tbUsuario where idUsuario=@codigo";
 
            
             return conexion.mSeleccionar(sentencia,pEntidadUsuario.mIdUsuario);
@@ -69,7 +69,7 @@ namespace Controlador
         public Boolean mModificarUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
             sentencia = "update tbUsuario set usuario=@usuario, contrasena=@contrasena, nombre=@nombre, tipoUsuario=@tipoUsuario, apellidos=@apellidos, estadoUsuario=@estadoUsuario, modificadoPor=@modificadoPor, fechaModificacion=@fechaModificacion where idUsuario=@idUsuario";
-            return conexion.mModificar(sentencia, conexion, pEntidadUsuario);
+            return conexion.mEjecutar(sentencia, conexion, pEntidadUsuario);
         }
         public Boolean mModificarContraseña(clsConexion conexion, clsEntidadUsuario pEntidadUsuario, string tipo)
         {

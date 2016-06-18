@@ -170,7 +170,7 @@ namespace Vista
             return -1;
         }
 
-        public string fechaSistema()
+        public static string fechaSistema()
         {
             DateTime fechaSistema = DateTime.Today;
             return fechaSistema.ToString("d");
@@ -191,6 +191,8 @@ namespace Vista
             entidadUsuario.mEstadoContrasena = false;
             entidadUsuario.mCreadoPor = clsConstantes.nombreUsuario;
             entidadUsuario.mFechaCreacion = fechaSistema();
+            entidadUsuario.mModificadoPor = "";
+            entidadUsuario.mFechaModificacion = "";
 
             //Se compara si se está asignando un rol o privilegio a un usuario, y si además se llenaron todos los datos del usuario
             if ((mValidarInfoUsuario() == true & mValidarPermisos(lvPrivilegios) == true) || (mValidarPermisos(lvRoles) == true & mValidarInfoUsuario() == true))
@@ -272,7 +274,9 @@ namespace Vista
 
             if(cbEstado.Text=="Desbloqueado")
                 entidadUsuario.mEstadoUsuario = 0;
-            
+
+            entidadUsuario.mCreadoPor = "";
+            entidadUsuario.mFechaCreacion = "";
             entidadUsuario.mModificadoPor = clsConstantes.nombreUsuario;
             entidadUsuario.mFechaModificacion = fechaSistema();
 
@@ -423,6 +427,13 @@ namespace Vista
                     txtNombre.Text = dtrUsuario.GetString(3);
                     txtApellidos.Text = dtrUsuario.GetString(4);
                     cbTipoUsuario.Text = dtrUsuario.GetString(5);
+                    if (dtrUsuario.GetInt32(6) < 3){
+                        cbEstado.Text = "Desbloqueado";
+                    }
+                    else{
+                        cbEstado.Text = "Bloqueado";
+                    }
+
                     return true;
                 }
                 else
@@ -450,6 +461,7 @@ namespace Vista
             cbRol.SelectedIndex = -1;
             cbPantalla.SelectedIndex = -1;
             cbTipoUsuario.SelectedIndex = -1;
+            cbEstado.SelectedIndex = -1;
             lvPrivilegios.Items.Clear();
             lvRoles.Items.Clear();
 
@@ -620,9 +632,9 @@ namespace Vista
                 modificarUsuario(idUsuarioSeleccionado);
 
                 //Elimino roles y privilegios
-                mEliminarUsuarioRol();
-                mEliminarUsuarioPrivilegio();
-                agregarUsuarioRolPrivilegio(idUsuarioSeleccionado);
+                //mEliminarUsuarioRol();
+                //mEliminarUsuarioPrivilegio();
+                //agregarUsuarioRolPrivilegio(idUsuarioSeleccionado);
                 limpiar();
             }
             else

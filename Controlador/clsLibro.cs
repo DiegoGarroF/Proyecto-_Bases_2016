@@ -20,6 +20,7 @@ namespace Controlador
         public Boolean mInsertarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
             strSentencia = "INSERT INTO tbLibro(nombre,isbn,creadoPor, fechaCreacion) VALUES(@nombre , @isbn , @creadoPor ,@fechaCreacion)";
+
             return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
 
@@ -41,7 +42,7 @@ namespace Controlador
         }
         public Boolean mModificarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)
         {
-            strSentencia = "update tbLibro set nombre=@nombre, isbn=@isbn where idLibro=@idLibro ; ";
+            strSentencia = "update tbLibro set modificadoPor=@modificadoPor , fechaModificacion=@fechaModificacion, nombre=@nombre, isbn=@isbn where idLibro=@idLibro ; ";
             return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
         public Boolean mEliminarLibro(clsConexion conexion, clsEntidadLibro pEntidadLibro)

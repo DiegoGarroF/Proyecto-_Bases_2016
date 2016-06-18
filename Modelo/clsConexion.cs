@@ -286,6 +286,10 @@ namespace Modelo
                                     comando.Parameters.AddWithValue("@nombre", pEntidadLibro.getNombre());
                                     comando.Parameters.AddWithValue("@isbn", pEntidadLibro.getISBN());
                                     comando.Parameters.AddWithValue("@idLibro", pEntidadLibro.getIdLibro());
+                                    comando.Parameters.AddWithValue("@creadoPor", pEntidadLibro.getCreadoPor());
+                                    comando.Parameters.AddWithValue("@fechaCreacion", pEntidadLibro.getFechaCreacion());
+                                    comando.Parameters.AddWithValue("@modificadoPor", pEntidadLibro.getModificadoPor());
+                                    comando.Parameters.AddWithValue("@fechaModificacion", pEntidadLibro.getFechaCreacion());
                                     comando.ExecuteNonQuery();
                                     return true;
 

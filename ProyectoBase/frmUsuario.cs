@@ -86,22 +86,33 @@ namespace Vista
         //A razón de que en la BD se guardan booleanos y de que en la interfaz se muestran "si" o "no " es necesario
         public void llenarPrivilegiosUsuarioPantalla(ListViewItem I)
         {
-            if (I.SubItems[1].Text == "Sí")
-            {
+            if (I.SubItems[1].Text == "Sí") {
                 entidadUsuarioPantalla.mInsertar = true;
+            }else{
+                entidadUsuarioPantalla.mInsertar = false;
             }
-            if (I.SubItems[2].Text == "Sí")
-            {
+
+            if (I.SubItems[2].Text == "Sí") {
                 entidadUsuarioPantalla.mConsultar = true;
             }
-            if (I.SubItems[3].Text == "Sí")
-            {
+            else{
+                entidadUsuarioPantalla.mConsultar = false;
+            }
+
+            if (I.SubItems[3].Text == "Sí"){
                 entidadUsuarioPantalla.mModificar = true;
             }
+            else{
+                entidadUsuarioPantalla.mModificar = false;
+            }
+
             if (I.SubItems[4].Text == "Sí")
             {
                 entidadUsuarioPantalla.mEliminar = true;
+            }else {
+                entidadUsuarioPantalla.mEliminar = false;
             }
+
 
         }
         //Este método solamente llama a otros 2, uno para guardar los roles de un usuario y otro para almacenar los privilegios del mismo
@@ -178,7 +189,7 @@ namespace Vista
 
             entidadUsuario.mEstadoUsuario = 0;
             entidadUsuario.mEstadoContrasena = false;
-            entidadUsuario.mCreadoPor = "lgonzalez";
+            entidadUsuario.mCreadoPor = clsConstantes.nombreUsuario;
             entidadUsuario.mFechaCreacion = fechaSistema();
 
             //Se compara si se está asignando un rol o privilegio a un usuario, y si además se llenaron todos los datos del usuario
@@ -249,12 +260,21 @@ namespace Vista
             conexion.codigo = "123";
             conexion.clave = "123";
 
+            entidadUsuario.mIdUsuario = idUsuarioSeleccionado;
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
             entidadUsuario.mContrasena = txtContrasena.Text;
             entidadUsuario.mNombre = txtNombre.Text;
             entidadUsuario.mTipoUsuario = cbTipoUsuario.Text;
             entidadUsuario.mApellidos = txtApellidos.Text;
 
+            if (cbEstado.Text == "Bloqueado")
+                entidadUsuario.mEstadoUsuario = 3;
+
+            if(cbEstado.Text=="Desbloqueado")
+                entidadUsuario.mEstadoUsuario = 0;
+            
+            entidadUsuario.mModificadoPor = clsConstantes.nombreUsuario;
+            entidadUsuario.mFechaModificacion = fechaSistema();
 
             if (usuario.mModificarUsuario(conexion, entidadUsuario) == true)
             {

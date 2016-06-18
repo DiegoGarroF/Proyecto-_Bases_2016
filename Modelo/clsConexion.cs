@@ -212,7 +212,7 @@ namespace Modelo
             }
         }
 
-        //Este metodo permitira ejecutar los Insert, Update y Delete
+        //Este metodo permitira ejecutar los Insert
         public Boolean mEjecutar(string strSentencia, clsConexion cone, Object objeto)
         {
             try
@@ -236,6 +236,8 @@ namespace Modelo
                         comando.Parameters.AddWithValue("@estadoContrasena", entidadUsuario.mEstadoContrasena);
                         comando.Parameters.AddWithValue("@creadoPor", entidadUsuario.mCreadoPor);
                         comando.Parameters.AddWithValue("@fechaCreacion", entidadUsuario.mFechaCreacion);
+
+                        
                         comando.ExecuteNonQuery();
                         return true;
                     }
@@ -366,6 +368,51 @@ namespace Modelo
                 return conexion;
             }
             return null;
+        }
+
+        public Boolean mModificar(string strSentencia, clsConexion cone, Object objeto)
+        {
+            try
+            {
+                if (mConectar(cone))
+                {
+                    comando = new SqlCommand(strSentencia, conexion);
+                    comando.CommandType = System.Data.CommandType.Text;
+
+                    if (objeto is clsEntidadUsuario)
+                    {
+                        clsEntidadUsuario entidadUsuario = (clsEntidadUsuario)objeto;
+
+                        comando.Parameters.AddWithValue("@idUsuario", entidadUsuario.mIdUsuario);
+                        comando.Parameters.AddWithValue("@usuario", entidadUsuario.mUsuario);
+                        comando.Parameters.AddWithValue("@contrasena", entidadUsuario.mContrasena);
+                        comando.Parameters.AddWithValue("@nombre", entidadUsuario.mNombre);
+                        comando.Parameters.AddWithValue("@tipoUsuario", entidadUsuario.mTipoUsuario);
+                        comando.Parameters.AddWithValue("@apellidos", entidadUsuario.mApellidos);
+
+                        comando.Parameters.AddWithValue("@estadoUsuario", entidadUsuario.mEstadoUsuario);
+                        comando.Parameters.AddWithValue("@modificadoPor", entidadUsuario.mModificadoPor);
+                        comando.Parameters.AddWithValue("@fechaModificacion", entidadUsuario.mFechaModificacion);
+                        
+
+
+                        comando.ExecuteNonQuery();
+                        return true;
+                    }
+                    else
+                    {
+                       
+                    }
+                }
+
+
+                return false;
+
+            }
+            catch
+            {
+                return false;
+            }
         }
         #endregion
     }

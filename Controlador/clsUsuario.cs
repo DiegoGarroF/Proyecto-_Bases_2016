@@ -68,8 +68,8 @@ namespace Controlador
 
         public Boolean mModificarUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "update tbUsuario set usuario=@usuario, contrasena=@contrasena, nombre=@nombre, tipoUsuario=@tipoUsuario, apellidos=@apellidos";
-            return conexion.mEjecutar(sentencia, conexion, pEntidadUsuario);
+            sentencia = "update tbUsuario set usuario=@usuario, contrasena=@contrasena, nombre=@nombre, tipoUsuario=@tipoUsuario, apellidos=@apellidos, estadoUsuario=@estadoUsuario, modificadoPor=@modificadoPor, fechaModificacion=@fechaModificacion where idUsuario=@idUsuario";
+            return conexion.mModificar(sentencia, conexion, pEntidadUsuario);
         }
         public Boolean mModificarContraseña(clsConexion conexion, clsEntidadUsuario pEntidadUsuario, string tipo)
         {

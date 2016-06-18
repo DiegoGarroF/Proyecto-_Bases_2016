@@ -74,6 +74,8 @@
             this.cbRol = new System.Windows.Forms.ComboBox();
             this.chkRol = new System.Windows.Forms.CheckBox();
             this.chkPrivilegio = new System.Windows.Forms.CheckBox();
+            this.lblEstado = new System.Windows.Forms.Label();
+            this.cbEstado = new System.Windows.Forms.ComboBox();
             this.gbxBotones.SuspendLayout();
             this.gbxDatos.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -156,7 +158,7 @@
             // 
             // txtContrasena
             // 
-            this.txtContrasena.Location = new System.Drawing.Point(128, 114);
+            this.txtContrasena.Location = new System.Drawing.Point(128, 105);
             this.txtContrasena.Name = "txtContrasena";
             this.txtContrasena.PasswordChar = '*';
             this.txtContrasena.Size = new System.Drawing.Size(153, 20);
@@ -165,7 +167,7 @@
             // lblContrasena
             // 
             this.lblContrasena.AutoSize = true;
-            this.lblContrasena.Location = new System.Drawing.Point(5, 114);
+            this.lblContrasena.Location = new System.Drawing.Point(5, 105);
             this.lblContrasena.Name = "lblContrasena";
             this.lblContrasena.Size = new System.Drawing.Size(64, 13);
             this.lblContrasena.TabIndex = 1;
@@ -174,7 +176,7 @@
             // lblNombreUsuario
             // 
             this.lblNombreUsuario.AutoSize = true;
-            this.lblNombreUsuario.Location = new System.Drawing.Point(5, 63);
+            this.lblNombreUsuario.Location = new System.Drawing.Point(5, 64);
             this.lblNombreUsuario.Name = "lblNombreUsuario";
             this.lblNombreUsuario.Size = new System.Drawing.Size(99, 13);
             this.lblNombreUsuario.TabIndex = 0;
@@ -182,7 +184,7 @@
             // 
             // txtNombreUsuario
             // 
-            this.txtNombreUsuario.Location = new System.Drawing.Point(128, 63);
+            this.txtNombreUsuario.Location = new System.Drawing.Point(128, 64);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(153, 20);
             this.txtNombreUsuario.TabIndex = 2;
@@ -190,7 +192,7 @@
             // 
             // btnBuscar
             // 
-            this.btnBuscar.Location = new System.Drawing.Point(307, 63);
+            this.btnBuscar.Location = new System.Drawing.Point(307, 64);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(52, 24);
             this.btnBuscar.TabIndex = 6;
@@ -218,6 +220,8 @@
             // 
             // gbxDatos
             // 
+            this.gbxDatos.Controls.Add(this.cbEstado);
+            this.gbxDatos.Controls.Add(this.lblEstado);
             this.gbxDatos.Controls.Add(this.label5);
             this.gbxDatos.Controls.Add(this.txtApellidos);
             this.gbxDatos.Controls.Add(this.txtNombre);
@@ -240,7 +244,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(10, 258);
+            this.label5.Location = new System.Drawing.Point(10, 241);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(31, 13);
             this.label5.TabIndex = 16;
@@ -248,14 +252,14 @@
             // 
             // txtApellidos
             // 
-            this.txtApellidos.Location = new System.Drawing.Point(126, 215);
+            this.txtApellidos.Location = new System.Drawing.Point(126, 197);
             this.txtApellidos.Name = "txtApellidos";
             this.txtApellidos.Size = new System.Drawing.Size(153, 20);
             this.txtApellidos.TabIndex = 15;
             // 
             // txtNombre
             // 
-            this.txtNombre.Location = new System.Drawing.Point(126, 169);
+            this.txtNombre.Location = new System.Drawing.Point(128, 148);
             this.txtNombre.Name = "txtNombre";
             this.txtNombre.Size = new System.Drawing.Size(153, 20);
             this.txtNombre.TabIndex = 14;
@@ -263,7 +267,7 @@
             // lblApellidos
             // 
             this.lblApellidos.AutoSize = true;
-            this.lblApellidos.Location = new System.Drawing.Point(5, 215);
+            this.lblApellidos.Location = new System.Drawing.Point(5, 197);
             this.lblApellidos.Name = "lblApellidos";
             this.lblApellidos.Size = new System.Drawing.Size(52, 13);
             this.lblApellidos.TabIndex = 13;
@@ -272,7 +276,7 @@
             // lblNombre
             // 
             this.lblNombre.AutoSize = true;
-            this.lblNombre.Location = new System.Drawing.Point(5, 169);
+            this.lblNombre.Location = new System.Drawing.Point(7, 148);
             this.lblNombre.Name = "lblNombre";
             this.lblNombre.Size = new System.Drawing.Size(47, 13);
             this.lblNombre.TabIndex = 12;
@@ -286,7 +290,7 @@
             "Administrador",
             "Estudiante",
             "Atención al cliente"});
-            this.cbTipoUsuario.Location = new System.Drawing.Point(126, 258);
+            this.cbTipoUsuario.Location = new System.Drawing.Point(126, 241);
             this.cbTipoUsuario.Name = "cbTipoUsuario";
             this.cbTipoUsuario.Size = new System.Drawing.Size(110, 21);
             this.cbTipoUsuario.TabIndex = 0;
@@ -306,7 +310,7 @@
             // 
             // btnEliminarPrivilegioPantalla
             // 
-            this.btnEliminarPrivilegioPantalla.Location = new System.Drawing.Point(271, 204);
+            this.btnEliminarPrivilegioPantalla.Location = new System.Drawing.Point(251, 204);
             this.btnEliminarPrivilegioPantalla.Name = "btnEliminarPrivilegioPantalla";
             this.btnEliminarPrivilegioPantalla.Size = new System.Drawing.Size(75, 43);
             this.btnEliminarPrivilegioPantalla.TabIndex = 3;
@@ -316,7 +320,7 @@
             // 
             // btnEliminarRol
             // 
-            this.btnEliminarRol.Location = new System.Drawing.Point(22, 206);
+            this.btnEliminarRol.Location = new System.Drawing.Point(12, 204);
             this.btnEliminarRol.Name = "btnEliminarRol";
             this.btnEliminarRol.Size = new System.Drawing.Size(75, 43);
             this.btnEliminarRol.TabIndex = 2;
@@ -334,9 +338,9 @@
             this.lvEliminarColumna});
             this.lvPrivilegios.FullRowSelect = true;
             this.lvPrivilegios.GridLines = true;
-            this.lvPrivilegios.Location = new System.Drawing.Point(140, 32);
+            this.lvPrivilegios.Location = new System.Drawing.Point(113, 32);
             this.lvPrivilegios.Name = "lvPrivilegios";
-            this.lvPrivilegios.Size = new System.Drawing.Size(356, 143);
+            this.lvPrivilegios.Size = new System.Drawing.Size(383, 143);
             this.lvPrivilegios.TabIndex = 1;
             this.lvPrivilegios.UseCompatibleStateImageBehavior = false;
             this.lvPrivilegios.View = System.Windows.Forms.View.Details;
@@ -344,7 +348,7 @@
             // lvPantallaColumna
             // 
             this.lvPantallaColumna.Text = "Pantalla";
-            this.lvPantallaColumna.Width = 139;
+            this.lvPantallaColumna.Width = 160;
             // 
             // lvInsertarColumna
             // 
@@ -363,7 +367,7 @@
             // lvEliminarColumna
             // 
             this.lvEliminarColumna.Text = "Eliminar";
-            this.lvEliminarColumna.Width = 50;
+            this.lvEliminarColumna.Width = 55;
             // 
             // lvRoles
             // 
@@ -372,7 +376,7 @@
             this.lvRoles.GridLines = true;
             this.lvRoles.Location = new System.Drawing.Point(12, 32);
             this.lvRoles.Name = "lvRoles";
-            this.lvRoles.Size = new System.Drawing.Size(109, 143);
+            this.lvRoles.Size = new System.Drawing.Size(88, 143);
             this.lvRoles.TabIndex = 0;
             this.lvRoles.UseCompatibleStateImageBehavior = false;
             this.lvRoles.View = System.Windows.Forms.View.Details;
@@ -380,7 +384,7 @@
             // lvRolColumna
             // 
             this.lvRolColumna.Text = "Rol";
-            this.lvRolColumna.Width = 105;
+            this.lvRolColumna.Width = 84;
             // 
             // groupBox1
             // 
@@ -534,6 +538,27 @@
             this.chkPrivilegio.UseVisualStyleBackColor = true;
             this.chkPrivilegio.CheckedChanged += new System.EventHandler(this.chkPrivilegio_CheckedChanged);
             // 
+            // lblEstado
+            // 
+            this.lblEstado.AutoSize = true;
+            this.lblEstado.Location = new System.Drawing.Point(10, 281);
+            this.lblEstado.Name = "lblEstado";
+            this.lblEstado.Size = new System.Drawing.Size(40, 13);
+            this.lblEstado.TabIndex = 17;
+            this.lblEstado.Text = "Estado";
+            // 
+            // cbEstado
+            // 
+            this.cbEstado.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbEstado.FormattingEnabled = true;
+            this.cbEstado.Items.AddRange(new object[] {
+            "Bloqueado",
+            "Desbloqueado"});
+            this.cbEstado.Location = new System.Drawing.Point(126, 281);
+            this.cbEstado.Name = "cbEstado";
+            this.cbEstado.Size = new System.Drawing.Size(110, 21);
+            this.cbEstado.TabIndex = 18;
+            // 
             // frmUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -609,5 +634,7 @@
         private System.Windows.Forms.Button btnEliminar;
         private System.Windows.Forms.Button btnModificar;
         private System.Windows.Forms.Button btnConsultar;
+        private System.Windows.Forms.ComboBox cbEstado;
+        private System.Windows.Forms.Label lblEstado;
     }
 }

@@ -18,14 +18,14 @@ namespace Vista
 
         private void frmLibro_Load(object sender, EventArgs e)
         {
-           
+            mSeguridadRolPantalla();
         }
         #endregion
         #region Atributos
-        const string opcion2="";
+        const string opcion2 = "";
         private clsConexion conexion;
         private SqlDataReader dtr;
-        public  clsLibro libro;
+        public clsLibro libro;
         private clsEntidadLibro pEntidadLibro;
         #endregion
         #region Constructor
@@ -91,7 +91,7 @@ namespace Vista
         #region Metodo Modificar
         public void mModificar()
         {
-            pEntidadLibro.setIdLibro(Convert.ToInt32(txtID.Text));            
+            pEntidadLibro.setIdLibro(Convert.ToInt32(txtID.Text));
             pEntidadLibro.setNombre(txtNombre.Text);
             pEntidadLibro.setISBN(txtISBN.Text);
             pEntidadLibro.setModificadoPor(clsConstantes.nombreUsuario);
@@ -136,7 +136,7 @@ namespace Vista
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            mAgreagarLibro();
+            mVerificarId();
 
         }
 
@@ -173,21 +173,38 @@ namespace Vista
                 return true;
             return false;
         }
+        #endregion 
+        #region Metodo para verificar el ID
+        public void mVerificarId()
+        {
+            if (!verificarEspacioID())
+            {
+                DialogResult opcion = MessageBox.Show("El id se encuentra registrado\n\nDesea utilizar uno de forma Automática...???", "ID LIBRO EXISTENTE", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+                if (opcion == DialogResult.Yes)
+                {
+                    this.txtID.Text = "Automatico";
+                    mAgreagarLibro();
+                }
+                else
+                {
+                    MessageBox.Show("Libro No Registrado Por Problemas de ID", "ID LIBRO EXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }// fin del if que verifca si se selecciono un libro ya existente 
+        }
         #endregion
         #region Metodo para agregar un Libro
         public void mAgreagarLibro()
         {
-            if (!verificarEspacioID())
-            {
 
-                MessageBox.Show("El id se encuentra registrado\n\nSe utilizara uno de forma Automática", "ID LIBRO EXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Stop);
-                this.txtID.Text = "Automatico";
-            }// fin del if que verifca si se selecciono un libro ya existente 
             if (verificarEspacioISBN() && verificarEspacioNombre())
             {
                 //Carga la entidad con los datos
                 pEntidadLibro.setISBN(this.txtISBN.Text);
                 pEntidadLibro.setNombre(this.txtNombre.Text);
+                pEntidadLibro.setCreadoPor(clsConstantes.nombreUsuario);
+                pEntidadLibro.setFechaCreacion(frmUsuario.fechaSistema());
+                pEntidadLibro.setModificadoPor("");
+                pEntidadLibro.setFechaModificacion("");
                 dtr = libro.mSeleccionarLibroISBN(this.conexion, pEntidadLibro);//Cinsulta un libro por isbn , con el fin de saber si existe ese isbn
 
                 if (dtr != null)
@@ -219,6 +236,77 @@ namespace Vista
             }// fin del else que virifca que los espacios esten correctamente
         }
         #endregion
+        #region Metodos para habilitar Botones
+        public void habilitarAgregar()
+        {
+            this.btnAgregar.Enabled = true;
+        }
+        public void habilitarEliminar()
+        {
+            this.btnEliminar.Enabled = true;
+        }
+        public void habilitarConsultar()
+        {
+            this.btnConsultar.Enabled = true;
+        }
+        public void habilitarModificar()
+        {
+            this.btnModificar.Enabled = true;
+        }
+        #endregion
+        #region Metodos para deshabilitar Botones
+        public void deshabilitarAgregar()
+        {
+            this.btnAgregar.Enabled = false;
+        }
+        public void deshabilitarEliminar()
+        {
+            this.btnEliminar.Enabled = false;
+        }
+        public void deshabilitarConsultar()
+        {
+            this.btnConsultar.Enabled = false;
+        }
+        public void deshabilitarModificar()
+        {
+            this.btnModificar.Enabled = false;
+        }
+        #endregion
+        #region Metodo para seguridad ROL-PANTALLA
+        public void mSeguridadRolPantalla()
+        {
+            dtr = libro.mSeleccionarRolPantalla(conexion, this.Name);
+            if (dtr != null)
+            {
+                if (dtr.Read())
+                {                 
+                    int consultar = Int32.Parse(dtr.GetString(1));
+                    int eliminar  = Int32.Parse(dtr.GetString(2));
+                    int agregar   = Int32.Parse(dtr.GetString(3));
+                    int modificar = Int32.Parse(dtr.GetString(4));
+               
+                    if (consultar== 1)
+                        habilitarConsultar();
+                    else
+                        deshabilitarConsultar();
+
+                    if ( eliminar== 1)
+                        habilitarEliminar();
+                    else
+                        deshabilitarEliminar();
+
+                    if (agregar == 1)
+                        habilitarAgregar();
+                    else
+                        deshabilitarAgregar();
+                    if (modificar == 1)
+                        habilitarModificar();
+                    else
+                        deshabilitarModificar();
+                }
+            }
+        }
+        #endregion
         #region Metodo Controlar el metodo Modificar 
         public void mControlModificar()
         {
@@ -227,14 +315,14 @@ namespace Vista
                 pEntidadLibro.setIdLibro(Int32.Parse(this.txtID.Text));
                 pEntidadLibro.setISBN(this.txtISBN.Text);
                 pEntidadLibro.setNombre(this.txtNombre.Text);
-                if(verificarEspacioISBN()&& verificarEspacioNombre())
+                if (verificarEspacioISBN() && verificarEspacioNombre())
                 {
                     dtr = libro.mSeleccionarLibroISBN(conexion, pEntidadLibro);
-                    if(dtr!=null)
+                    if (dtr != null)
                     {
-                        if(dtr.Read())
+                        if (dtr.Read())
                         {
-                            if (dtr.GetInt32(0)==Int32.Parse(this.txtID.Text))
+                            if (dtr.GetInt32(0) == Int32.Parse(this.txtID.Text))
                             {
                                 mModificar();
                             }
@@ -248,13 +336,13 @@ namespace Vista
                             mModificar();
                         }
                     }
-                    
+
                 }
                 else
                 {
                     MessageBox.Show("Complete Los Espacios", "Existen Espacios Vacios", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
-              
+
             }
             else
             {
@@ -262,7 +350,6 @@ namespace Vista
             }
         }
         #endregion
-
 
       
     }

@@ -50,5 +50,11 @@ namespace Controlador
             strSentencia = "DELETE FROM tbLibro where idLibro=@idLibro ;";
             return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
+
+        public SqlDataReader mSeleccionarRolPantalla(clsConexion conexion, String nombre)
+        {
+            strSentencia = "SELECT rP.idPantalla,rP.consultar,rP.eliminar,rP.insertar,rP.modificar FROM tbRolPantalla rP, tbPantalla p where p.idPantalla = rP.idPantalla and p.nombre =@codigo";
+            return conexion.mSeleccionarTipoString(strSentencia, nombre);
+        }
     }
 }

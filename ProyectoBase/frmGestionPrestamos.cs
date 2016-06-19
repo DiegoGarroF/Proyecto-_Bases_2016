@@ -151,6 +151,9 @@ namespace Vista
             pEntidadPrestamo.setGetidLibro = Convert.ToInt32(txtIdLibro.Text);
             pEntidadPrestamo.setGetIdUsuario = Convert.ToInt32(txtIdCliente.Text);
             pEntidadPrestamo.setGetIdUsuariocliente = Convert.ToInt32(txtIdCliente.Text);
+            pEntidadPrestamo.mCreadoPor = clsConstantes.nombreUsuario;
+            pEntidadPrestamo.mFechaCreacion = Convert.ToDateTime(fechaSistema());
+           // pEntidadPrestamo.mFechaModificado = Convert.ToDateTime("");
 
             if (prestamo.mInsertarPrestamo(conexion, pEntidadPrestamo))
             {
@@ -198,5 +201,6 @@ namespace Vista
                 MessageBox.Show("Ocurrió un error al Eliminar el Prestamo", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
+      
     }
 }

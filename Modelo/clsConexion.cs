@@ -290,6 +290,10 @@ namespace Modelo
                                     comando.Parameters.AddWithValue("@idUsuario", pEntidadPrestamo.setGetIdUsuario);
                                     comando.Parameters.AddWithValue("@idLibro", pEntidadPrestamo.setGetidLibro);
                                     comando.Parameters.AddWithValue("@idUsuarioCliente", pEntidadPrestamo.setGetIdUsuariocliente);
+                                    comando.Parameters.AddWithValue("@creadoPor", pEntidadPrestamo.mCreadoPor);
+                                    comando.Parameters.AddWithValue("@fechaCreacion", pEntidadPrestamo.mFechaCreacion);
+                                    comando.Parameters.AddWithValue("@modificadoPor", pEntidadPrestamo.mModificadoPor);
+                                    //comando.Parameters.AddWithValue("@fechaModificacion", pEntidadPrestamo.mFechaModificado);
                                     comando.ExecuteNonQuery();
                                     return true;
 
@@ -303,7 +307,7 @@ namespace Modelo
                                     comando.Parameters.AddWithValue("@creadoPor", pEntidadLibro.getCreadoPor());
                                     comando.Parameters.AddWithValue("@fechaCreacion", pEntidadLibro.getFechaCreacion());
                                     comando.Parameters.AddWithValue("@modificadoPor", pEntidadLibro.getModificadoPor());
-                                    comando.Parameters.AddWithValue("@fechaModificacion", pEntidadLibro.getFechaModificacion());
+                             //       comando.Parameters.AddWithValue("@fechaModificacion", pEntidadLibro.getFechaModificacion());
                                     comando.ExecuteNonQuery();
                                     return true;
 

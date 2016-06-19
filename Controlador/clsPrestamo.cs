@@ -34,7 +34,7 @@ namespace Controlador
         }
         public Boolean mInsertarPrestamo(clsConexion conexion, clsEntidadPrestamo pEntidadPrestamo)
         {
-            strSentencia = "insert into tbPestamo(fecha, idUsuario, idLibro, idUsuarioCliente) values (@fecha, @idUsuario, @idLibro, @idUsuarioCliente) ";
+            strSentencia = "insert into tbPestamo(fecha, idUsuario, idLibro, idUsuarioCliente, creadoPor, fechaCreacion, modificadoPor) values (@fecha, @idUsuario, @idLibro, @idUsuarioCliente, @creadoPor, @fechaCreacion, @modificadoPor) ";
             return conexion.mEjecutar(strSentencia, conexion, pEntidadPrestamo);
         }
 

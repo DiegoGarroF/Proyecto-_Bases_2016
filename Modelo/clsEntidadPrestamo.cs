@@ -14,6 +14,10 @@ namespace Modelo
         private int idLibro;
         private int idUsuarioCliente;
         private int idPrestamo;
+        private string creadoPor;
+        private DateTime fechaCreacion;
+        private string modificadoPor;
+        private DateTime fechaModificacion;
         #endregion
 
         #region Constructor
@@ -23,6 +27,8 @@ namespace Modelo
             idLibro = 0;
             idUsuarioCliente = 0;
             idPrestamo = 0;
+            creadoPor = "";
+            modificadoPor = "";
         }
         #endregion
 
@@ -38,6 +44,7 @@ namespace Modelo
             get { return fecha; }
             set { fecha = value; }
         }
+
 
         public int setGetIdUsuario
         {
@@ -57,7 +64,26 @@ namespace Modelo
             set { idUsuarioCliente = value; }
         }
 
-
+        public DateTime mFechaCreacion
+        {
+            get { return fechaCreacion; }
+            set { fechaCreacion = value; }
+        }
+        public DateTime mFechaModificado
+        {
+            get { return fechaModificacion; }
+            set { fechaModificacion = value; }
+        }
+        public string mCreadoPor
+        {
+            get { return creadoPor; }
+            set { creadoPor = value; }
+        }
+        public string mModificadoPor
+        {
+            get { return modificadoPor; }
+            set { modificadoPor = value; }
+        }
         #endregion
 
     }

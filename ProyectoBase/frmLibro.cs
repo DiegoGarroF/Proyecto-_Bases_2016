@@ -18,7 +18,7 @@ namespace Vista
 
         private void frmLibro_Load(object sender, EventArgs e)
         {
-            mSeguridadRolPantalla();
+            verificar();
         }
         #endregion
         #region Atributos
@@ -27,14 +27,16 @@ namespace Vista
         private SqlDataReader dtr;
         public clsLibro libro;
         private clsEntidadLibro pEntidadLibro;
+        private clsUsuario usuario;
         #endregion
         #region Constructor
         public frmLibro(clsConexion conexion)
         {
             InitializeComponent();
-            pEntidadLibro = new clsEntidadLibro();
-            libro = new clsLibro();
+            this.pEntidadLibro = new clsEntidadLibro();
+            this.libro = new clsLibro();
             this.conexion = conexion;
+            this.usuario = new clsUsuario();
 
 
 
@@ -351,6 +353,36 @@ namespace Vista
         }
         #endregion
 
+        public void verificar()
+        {
+            clsEntidadUsuario pEntidadUsuario = new clsEntidadUsuario();
+            dtr = libro.mSeleccionarIdUsuario(conexion, clsConstantes.nombreUsuario);
+            if(dtr!=null && dtr.Read())
+            {
+                pEntidadUsuario.mIdUsuario = dtr.GetInt32(0);
+
+                dtr=usuario.mBuscarPrivilegiosUsuario(conexion, pEntidadUsuario);
+                if(dtr!=null)
+                {
+                    if(dtr.Read())
+                    {
+                        if(dtr.GetString(6).Equals(this.Name))
+                        {
+                           if(dtr.GetString(2).Equals("true"))
+                            {
+                                this.btnModificar.Enabled = true;
+                            }
+                           else
+                            {
+                                this.btnModificar.Enabled = false;
+                            }
+                        }
+                        // u.idUsuario, ur.idRol, rp.modificar, rp.insertar, rp.consultar, rp.eliminar, p.nombre 
+                    }
+                }
+            }
+          
+        }
       
     }
 }

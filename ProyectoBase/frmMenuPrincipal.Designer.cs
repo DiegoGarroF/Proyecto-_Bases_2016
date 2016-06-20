@@ -99,6 +99,7 @@
             this.mantenimientoDeRolesToolStripMenuItem.Name = "mantenimientoDeRolesToolStripMenuItem";
             this.mantenimientoDeRolesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.mantenimientoDeRolesToolStripMenuItem.Text = "Mantenimiento de Roles";
+            this.mantenimientoDeRolesToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeRolesToolStripMenuItem_Click);
             // 
             // préstamosToolStripMenuItem
             // 

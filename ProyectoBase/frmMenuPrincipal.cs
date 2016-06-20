@@ -94,5 +94,12 @@ namespace Vista
             frmGestionPrestamos prestamos = new frmGestionPrestamos(conexion);
             prestamos.ShowDialog();
         }
+
+        private void mantenimientoDeRolesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRoles ventanaRoles = new frmRoles(this);
+            this.Hide();
+            ventanaRoles.Show();
+        }
     }
 }

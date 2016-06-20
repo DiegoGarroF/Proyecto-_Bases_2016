@@ -12,10 +12,6 @@ namespace Controlador
     {
         private string sentencia = "";
 
-        public SqlDataReader mPrivilegiosRol(clsConexion conexion, clsEntidadRolPantalla pEntidadRolPantalla)
-        {
-            sentencia = "select idRol, idPantalla, modificar, insertar, consultar, eliminar from tbRolPantalla where idRol=@codigo";
-            return conexion.mSeleccionar(sentencia,pEntidadRolPantalla.mIdRol);
-        }
+        
     }
 }

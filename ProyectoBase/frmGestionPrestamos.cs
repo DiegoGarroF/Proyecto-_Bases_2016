@@ -81,6 +81,7 @@ namespace Vista
 
         private void frmGestionPrestamos_Load(object sender, EventArgs e)
         {
+            verificar();
             mBloquearCampos();
         }
 
@@ -147,25 +148,51 @@ namespace Vista
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            pEntidadPrestamo.setGetFecha = Convert.ToDateTime(fechaSistema());
-            pEntidadPrestamo.setGetidLibro = Convert.ToInt32(txtIdLibro.Text);
-            pEntidadPrestamo.setGetIdUsuario = Convert.ToInt32(txtIdCliente.Text);
-            pEntidadPrestamo.setGetIdUsuariocliente = Convert.ToInt32(txtIdCliente.Text);
-            pEntidadPrestamo.mCreadoPor = clsConstantes.nombreUsuario;
-            pEntidadPrestamo.mFechaCreacion = Convert.ToDateTime(fechaSistema());
-           // pEntidadPrestamo.mFechaModificado = Convert.ToDateTime("");
-
-            if (prestamo.mInsertarPrestamo(conexion, pEntidadPrestamo))
+            if (verificarCampos())
             {
-                MessageBox.Show("Se inserto con Exito el Prestamo", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                mLimpiar();
+                pEntidadPrestamo.setGetFecha = Convert.ToDateTime(fechaSistema());
+                pEntidadPrestamo.setGetidLibro = Convert.ToInt32(txtIdLibro.Text);
+                pEntidadPrestamo.setGetIdUsuario = mRetornarId();
+                pEntidadPrestamo.setGetIdUsuariocliente = Convert.ToInt32(txtIdCliente.Text);
+                pEntidadPrestamo.mCreadoPor = clsConstantes.nombreUsuario;
+                pEntidadPrestamo.mFechaCreacion = Convert.ToDateTime(fechaSistema());
+                // pEntidadPrestamo.mFechaModificado = Convert.ToDateTime("");
+
+                if (prestamo.mInsertarPrestamo(conexion, pEntidadPrestamo))
+                {
+                    MessageBox.Show("Se inserto con Exito el Prestamo", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                    mLimpiar();
+                }
+                else
+                {
+                    MessageBox.Show("Ocurrió un error al insertar el Prestamo", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                }
+
             }
             else
             {
-                MessageBox.Show("Ocurrió un error al insertar el Prestamo", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                MessageBox.Show("Campos vacios. Llene todos los datos", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
+
         }
 
+        public int mRetornarId()
+        {
+            pEntidadUsuario.mUsuario= clsConstantes.nombreUsuario;
+            dataReader= usuario.mBuscarPorLogin(conexion, pEntidadUsuario);
+            if (dataReader != null)
+            {
+                if (dataReader.Read())
+                {
+                    return dataReader.GetInt32(0);
+                }
+                else
+                {
+                    return 0;
+                }
+            }
+            return 0;
+        }
         private void txtLimpiar_Click(object sender, EventArgs e)
         {
             mLimpiar();
@@ -201,6 +228,49 @@ namespace Vista
                 MessageBox.Show("Ocurrió un error al Eliminar el Prestamo", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
         }
-      
+
+
+        public Boolean verificarCampos()
+        {
+            if (txtIdLibro.Text!= "" && txtIdCliente.Text!= "")
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        public void verificar()
+        {
+            clsEntidadUsuario pEntidadUsuario = new clsEntidadUsuario();
+            dataReader = libro.mSeleccionarIdUsuario(conexion, clsConstantes.nombreUsuario);
+            if (dataReader != null && dataReader.Read())
+            {
+                pEntidadUsuario.mIdUsuario = dataReader.GetInt32(0);
+
+                dataReader = usuario.mBuscarPrivilegiosUsuario(conexion, pEntidadUsuario);
+                if (dataReader != null)
+                {
+                    if (dataReader.Read())
+                    {
+                        if (dataReader.GetString(6).Equals(this.Name))
+                        {
+                            if (dataReader.GetString(2).Equals("true"))
+                            {
+                                this.btnAgregar.Enabled = false;
+                            }
+                            else
+                            {
+                                this.btnBuscarPrestamo.Enabled = false;
+                            }
+                        }
+                        // u.idUsuario, ur.idRol, rp.modificar, rp.insertar, rp.consultar, rp.eliminar, p.nombre 
+                    }
+                }
+            }
+
+        }
+
     }
 }

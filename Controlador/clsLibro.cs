@@ -61,5 +61,10 @@ namespace Controlador
             strSentencia = "SELECT idUsuario from tbUsuario where usuario=@codigo";
             return conexion.mSeleccionarTipoString(strSentencia, usuario);
         }
+        public SqlDataReader mObtenerRolesUsuario(clsConexion conexion, String nombre)
+        {
+            strSentencia = "SELECT modificar,insertar,consultar,eliminar from RP tbRolPantalla, R tbRol ,P tbPantalla, UR tbUsuarioRol , U tbUsuario where U.idUsuario=UR.idUsuario and P.idPantalla=RP.idPantalla and R.idRol=UR.idRol and R.idRol=RP.idRol and P.nombre=@nombrePantalla and U.idUsuario=@idUsuario";
+            return conexion.mSeleccionarTipoString(strSentencia, nombre);
+        }
     }
 }

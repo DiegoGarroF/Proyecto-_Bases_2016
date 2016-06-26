@@ -333,6 +333,7 @@
             this.groupBox2.TabIndex = 12;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Roles y Privilegios asignados a este usuario";
+
             // 
             // btnEliminarPrivilegioPantalla
             // 

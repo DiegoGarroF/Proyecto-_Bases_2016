@@ -11,6 +11,7 @@ using Modelo;
 using Controlador;
 using System.Data.SqlClient;
 
+
 namespace Vista
 {
     public partial class frmRoles : Form
@@ -19,59 +20,113 @@ namespace Vista
         clsEntidadRol entidadRol;
         clsPantalla pantalla;
         SqlDataReader strRol;
+        clsEntidadRolPantalla entidadRolPantalla;
         String strPantalla;
         clsRol clRol;
         private SqlDataReader dtrPantalla;
         private frmMenuPrincipal menuPrincipal;
+        private clsEntidadUsuario entidadUsuario;
+        SqlDataReader dtrUsuario;
+        SqlDataReader dtrPrivilegiosUsuario;
+        clsUsuario usuario;
+        SqlDataReader dtrRol;
+        clsEntidadPantalla entidadPantalla;       
 
         public frmRoles(frmMenuPrincipal menu)
         {
+            entidadUsuario = new clsEntidadUsuario();
             conexion = new clsConexion();
             entidadRol = new clsEntidadRol();
             clRol = new clsRol();
+            usuario = new clsUsuario();
             this.menuPrincipal = menu;
             pantalla = new clsPantalla();
+            entidadRolPantalla = new clsEntidadRolPantalla();
+            entidadPantalla = new clsEntidadPantalla();
             InitializeComponent();
+        }
+
+        public void establecerPrivilegiosRol(ListViewItem I)
+        {
+            if (I.SubItems[1].Text == "Sí"){
+                entidadRolPantalla.mInsertar = true;
+            } else {
+                entidadRolPantalla.mInsertar = false;
+            } if (I.SubItems[2].Text == "Sí"){
+                entidadRolPantalla.mConsultar = true;
+            }else {
+                entidadRolPantalla.mConsultar = false;
+            } if (I.SubItems[3].Text == "Sí") {
+                entidadRolPantalla.mModificar = true;
+            } else {
+                entidadRolPantalla.mModificar = false;
+            } if (I.SubItems[4].Text == "Sí"){
+                entidadRolPantalla.mEliminar = true;
+            } else{
+                entidadRolPantalla.mEliminar = false;
+            }
+
+
+        
+    }
+        public void agregarRolPantalla()
+        {
+            foreach (ListViewItem I in lvPantalla.Items)//Se recorre el listview y se inserta el rol a todas las pantallas que aparecen en el listview
+            {
+                establecerPrivilegiosRol(I);
+                entidadPantalla.mNombrePantalla = I.SubItems[1].Text;
+                dtrPantalla= pantalla.mConsultaIdPantalla(conexion,entidadPantalla);
+                if(dtrPantalla!=null)
+                    if (dtrPantalla.Read())
+                    {
+                        entidadRolPantalla.mIdPantalla = dtrPantalla.GetInt32(0);
+                        entidadRolPantalla.mCreadoPor = clsConstantes.nombreUsuario;
+                        entidadRolPantalla.mFechaCreacion = frmUsuario.fechaSistema();
+                        entidadRolPantalla.mModificadoPor = "";
+                        entidadRolPantalla.mFechaModificacion = "";
+                        
+                    }
+                
+            }
+                
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (txtNombreRol.Text != "")
-            {
-               
-                entidadRol.mNombreRol = txtNombreRol.Text;
-                clRol.mInsertarRol(conexion,entidadRol);
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un rol válido", "Rol no seleccionado", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            }
+            conexion.codigo = "123";
+            conexion.clave = "123";
+            entidadRol.mNombreRol = lvPantalla.Items[0].Text;
 
-               
-             if ((mValidarInformacionRoles() == true & mValidarPermisos(lvPantalla) == true))
+            if ((mValidarInformacionRoles() == true & mValidarPermisos(lvPantalla) == true))
+            {
+                //Se realiza inserción de roles y privilegios directos
+                if (mValidarPermisos(lvPantalla) == true)
                 {
-                    //Se realiza inserción de roles y privilegios directos
-                    if (mValidarPermisos(lvPantalla) == true)
-                    {
                     if (cbPantalla.Text != null)
                     {
                         if (clRol.mInsertarRol(conexion, entidadRol))
                         {
-                            MessageBox.Show("Se ha insertado el rol", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                            limpiar();
+                            dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
+                            if (dtrRol != null)
+                                if (dtrRol.Read())
+                                {
+                                    entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
+                                    
+                                    MessageBox.Show("Se ha insertado el rol", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    limpiar();
+                                }
                         }
                         else
                         {
                             MessageBox.Show("Ocurrió un error al insertar el rol", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
-                    }
                 }
-                else
-                {
-                    MessageBox.Show("Información insuficiente para agregar un rol", "Verifique los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+            }
+            else
+            {
+                MessageBox.Show("Información insuficiente para agregar un rol", "Verifique los datos", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
 
 
         }// fin del metodo
@@ -169,6 +224,39 @@ namespace Vista
             }
         }
 
+        public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
+        {
+            if (dtrPermisos.GetBoolean(2))
+            {
+                btnModificar.Enabled = true;                                
+                btnQuitarPantalla.Enabled = true;
+                btnEliminar.Enabled = true;
+                chkConsultar.Enabled = true;
+                chkEliminar.Enabled = true;
+                chkInsertar.Enabled = true;
+                chkModificar.Enabled = true;
+            }
+            if (dtrPermisos.GetBoolean(3))
+            {
+                btnAgregar.Enabled = true;
+                btnAgregarPrivilegios.Enabled = true;
+                btnQuitarPantalla.Enabled = true;
+                chkConsultar.Enabled = true;
+                chkEliminar.Enabled = true;
+                chkInsertar.Enabled = true;
+                chkModificar.Enabled = true;            
+            }
+            if (dtrPermisos.GetBoolean(4))
+            {
+                //NO HAY CONSULTAR
+            }
+            if (dtrPermisos.GetBoolean(5))
+            {
+                btnEliminar.Enabled = true;
+            }
+
+        }
+
         private void frmRoles_Load(object sender, EventArgs e)
         {
             dtrPantalla = pantalla.mConsultarPantallas(conexion);
@@ -178,7 +266,24 @@ namespace Vista
                     cbPantalla.Items.Add(dtrPantalla.GetSqlString(0));
 
                 }
-        }
+
+            //PROCESO PARA VER SI UN USUARIO TIENE PRIVILEGIOS SOBRE ESTA VENTANA
+            entidadUsuario.mUsuario = clsConstantes.nombreUsuario;
+            entidadUsuario.mContrasena = "";
+            dtrUsuario = usuario.mLogueoPrincipal(conexion, entidadUsuario); // saco id del usuario conectado
+            if (dtrUsuario != null)
+                while (dtrUsuario.Read())
+                {
+                    entidadUsuario.mIdUsuario = dtrUsuario.GetInt32(0);
+                    dtrPrivilegiosUsuario = usuario.mBuscarPrivilegiosUsuario(conexion, entidadUsuario);
+                    if (dtrPrivilegiosUsuario != null)
+                        while (dtrPrivilegiosUsuario.Read())
+                        {
+                            if(dtrPrivilegiosUsuario.GetString(6)=="Mantenimiento de roles")
+                            mActivarBotonesAdministrador(dtrPrivilegiosUsuario);
+                        }
+                }
+        }       
 
         private void btnSalir_Click(object sender, EventArgs e)
         {

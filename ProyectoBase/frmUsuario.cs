@@ -95,11 +95,9 @@ namespace Vista
                     dtrPrivilegiosUsuaio = usuario.mBuscarPrivilegiosUsuario(conexion,entidadUsuario);
                     if (dtrPrivilegiosUsuaio != null)
                         while (dtrPrivilegiosUsuaio.Read())
-                        {
-                            if (dtrPrivilegiosUsuaio.GetString(6) == "Mantenimiento de usuarios")
-                            {
-                                mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);
-                            }
+                        { 
+                            if(dtrPrivilegiosUsuaio.GetString(6)=="Mantenimiento de usuarios")                         
+                                mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);                         
                         }                   
                 }         
         }
@@ -767,6 +765,6 @@ namespace Vista
         
         }
 
-        
+   
     }
 }

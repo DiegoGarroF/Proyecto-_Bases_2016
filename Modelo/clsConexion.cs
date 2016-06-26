@@ -311,6 +311,29 @@ namespace Modelo
                                     comando.ExecuteNonQuery();
                                     return true;
 
+                                }else if (objeto is clsEntidadRol)
+                                {
+                                    clsEntidadRol pEntidadRol = (clsEntidadRol)objeto;
+                                    comando.Parameters.AddWithValue("@nombre", pEntidadRol.mNombreRol);                                   
+                                    comando.ExecuteNonQuery();
+                                    return true;
+
+                                } else if (objeto is clsEntidadRolPantalla)
+                                {
+                                    clsEntidadRolPantalla pEntidadRolPantalla = (clsEntidadRolPantalla)objeto;
+                                    comando.Parameters.AddWithValue("@idRol", pEntidadRolPantalla.mIdRol);
+                                    comando.Parameters.AddWithValue("@idPantalla", pEntidadRolPantalla.mIdPantalla);
+                                    comando.Parameters.AddWithValue("@modificar", pEntidadRolPantalla.mModificar);
+                                    comando.Parameters.AddWithValue("@insertar", pEntidadRolPantalla.mInsertar);
+                                    comando.Parameters.AddWithValue("@consultar", pEntidadRolPantalla.mConsultar);
+                                    comando.Parameters.AddWithValue("@eliminar", pEntidadRolPantalla.mEliminar);
+                                    comando.Parameters.AddWithValue("@creadoPor", pEntidadRolPantalla.mCreadoPor);
+                                    comando.Parameters.AddWithValue("@fechaCreacion", pEntidadRolPantalla.mFechaCreacion); 
+                                    comando.Parameters.AddWithValue("@modificadoPor", pEntidadRolPantalla.mModificadoPor);
+                                    comando.Parameters.AddWithValue("@fechaModificacion", pEntidadRolPantalla.mFechaModificacion);
+                                    comando.ExecuteNonQuery();
+                                    return true;
+
                                 }
                             }
                         }

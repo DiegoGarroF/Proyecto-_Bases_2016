@@ -66,6 +66,7 @@
             // chkInsertar
             // 
             this.chkInsertar.AutoSize = true;
+            this.chkInsertar.Enabled = false;
             this.chkInsertar.Location = new System.Drawing.Point(284, 44);
             this.chkInsertar.Name = "chkInsertar";
             this.chkInsertar.Size = new System.Drawing.Size(61, 17);
@@ -75,6 +76,7 @@
             // 
             // btnAgregarPrivilegios
             // 
+            this.btnAgregarPrivilegios.Enabled = false;
             this.btnAgregarPrivilegios.Location = new System.Drawing.Point(421, 44);
             this.btnAgregarPrivilegios.Name = "btnAgregarPrivilegios";
             this.btnAgregarPrivilegios.Size = new System.Drawing.Size(75, 40);
@@ -86,6 +88,7 @@
             // chkConsultar
             // 
             this.chkConsultar.AutoSize = true;
+            this.chkConsultar.Enabled = false;
             this.chkConsultar.Location = new System.Drawing.Point(284, 67);
             this.chkConsultar.Name = "chkConsultar";
             this.chkConsultar.Size = new System.Drawing.Size(70, 17);
@@ -96,6 +99,7 @@
             // chkEliminar
             // 
             this.chkEliminar.AutoSize = true;
+            this.chkEliminar.Enabled = false;
             this.chkEliminar.Location = new System.Drawing.Point(284, 110);
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Size = new System.Drawing.Size(62, 17);
@@ -106,6 +110,7 @@
             // chkModificar
             // 
             this.chkModificar.AutoSize = true;
+            this.chkModificar.Enabled = false;
             this.chkModificar.Location = new System.Drawing.Point(284, 91);
             this.chkModificar.Name = "chkModificar";
             this.chkModificar.Size = new System.Drawing.Size(69, 17);
@@ -168,6 +173,7 @@
             // 
             // btnQuitarPantalla
             // 
+            this.btnQuitarPantalla.Enabled = false;
             this.btnQuitarPantalla.Location = new System.Drawing.Point(514, 208);
             this.btnQuitarPantalla.Name = "btnQuitarPantalla";
             this.btnQuitarPantalla.Size = new System.Drawing.Size(75, 36);

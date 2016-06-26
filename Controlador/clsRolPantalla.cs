@@ -12,6 +12,10 @@ namespace Controlador
     {
         private string sentencia = "";
 
-        
+        public Boolean mInsertarRolPantalla(clsConexion conexion, clsEntidadRolPantalla pEntidadRolPantalla)
+        {
+            sentencia = "insert into tbRolPantalla(idRol, idPantalla, modificar, insertar, consultar, eliminar, creadoPor, fechaCreacion, modificadoPor, fechaModificacion) values (@idRol,@idPantalla,@modificar,@insertar,@consultar,@eliminar,@creadoPor,@fechaCreacion,@modificadoPor,@fechaModificacion)";
+            return conexion.mEjecutar(sentencia,conexion,pEntidadRolPantalla);
+        }
     }
 }

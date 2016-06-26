@@ -30,7 +30,8 @@ namespace Vista
         SqlDataReader dtrPrivilegiosUsuario;
         clsUsuario usuario;
         SqlDataReader dtrRol;
-        clsEntidadPantalla entidadPantalla;       
+        clsEntidadPantalla entidadPantalla;
+        clsRolPantalla rolPantalla;    
 
         public frmRoles(frmMenuPrincipal menu)
         {
@@ -43,24 +44,25 @@ namespace Vista
             pantalla = new clsPantalla();
             entidadRolPantalla = new clsEntidadRolPantalla();
             entidadPantalla = new clsEntidadPantalla();
+            rolPantalla = new clsRolPantalla();
             InitializeComponent();
         }
 
         public void establecerPrivilegiosRol(ListViewItem I)
         {
-            if (I.SubItems[1].Text == "Sí"){
+            if (I.SubItems[2].Text == "Sí"){
                 entidadRolPantalla.mInsertar = true;
             } else {
                 entidadRolPantalla.mInsertar = false;
-            } if (I.SubItems[2].Text == "Sí"){
+            } if (I.SubItems[3].Text == "Sí"){
                 entidadRolPantalla.mConsultar = true;
             }else {
                 entidadRolPantalla.mConsultar = false;
-            } if (I.SubItems[3].Text == "Sí") {
+            } if (I.SubItems[4].Text == "Sí") {
                 entidadRolPantalla.mModificar = true;
             } else {
                 entidadRolPantalla.mModificar = false;
-            } if (I.SubItems[4].Text == "Sí"){
+            } if (I.SubItems[5].Text == "Sí"){
                 entidadRolPantalla.mEliminar = true;
             } else{
                 entidadRolPantalla.mEliminar = false;
@@ -84,7 +86,9 @@ namespace Vista
                         entidadRolPantalla.mFechaCreacion = frmUsuario.fechaSistema();
                         entidadRolPantalla.mModificadoPor = "";
                         entidadRolPantalla.mFechaModificacion = "";
+                        rolPantalla.mInsertarRolPantalla(conexion, entidadRolPantalla);
                         
+
                     }
                 
             }
@@ -98,21 +102,20 @@ namespace Vista
             entidadRol.mNombreRol = lvPantalla.Items[0].Text;
 
             if ((mValidarInformacionRoles() == true & mValidarPermisos(lvPantalla) == true))
-            {
-                //Se realiza inserción de roles y privilegios directos
+            {                
                 if (mValidarPermisos(lvPantalla) == true)
                 {
                     if (cbPantalla.Text != null)
                     {
                         if (clRol.mInsertarRol(conexion, entidadRol))
-                        {
+                        {                           
                             dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
                             if (dtrRol != null)
-                                if (dtrRol.Read())
+                              if (dtrRol.Read())
                                 {
                                     entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
-                                    
-                                    MessageBox.Show("Se ha insertado el rol", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                    agregarRolPantalla();
+                                    MessageBox.Show("Se ha insertado el rol completo", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                                     limpiar();
                                 }
                         }

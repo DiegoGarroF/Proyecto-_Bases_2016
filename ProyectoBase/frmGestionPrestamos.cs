@@ -24,7 +24,7 @@ namespace Vista
         private clsUsuario usuario;
         private clsPrestamo prestamo;
         private int idUsuario;
-        private SqlDataReader dataReader;
+        private SqlDataReader dataReader, dataReader2;
         #endregion
 
 
@@ -83,6 +83,53 @@ namespace Vista
         {
             verificar();
             mBloquearCampos();
+            //PROCESO PARA VER SI UN USUARIO TIENE PRIVILEGIOS SOBRE ESTA VENTANA
+            pEntidadUsuario.mUsuario = clsConstantes.nombreUsuario;
+            pEntidadUsuario.mContrasena = "";
+            dataReader = usuario.mLogueoPrincipal(conexion, pEntidadUsuario); // saco id del usuario conectado
+            if (dataReader != null)
+                while (dataReader.Read())
+                {
+                    pEntidadUsuario.mIdUsuario = dataReader.GetInt32(0);
+                    dataReader2 = usuario.mBuscarPrivilegiosUsuario(conexion, pEntidadUsuario);
+                    if (dataReader2 != null)
+                        while (dataReader2.Read())
+                        {
+                            if (dataReader2.GetString(6) == "Mantenimiento de Prestamos")
+                                mActivarBotonesAdministrador(dataReader2);
+                        }
+                }
+        }
+        public void mActivarBotonesAdministrador(SqlDataReader dataReader)
+        {
+            if (dataReader.GetBoolean(2))
+            {
+                btnEliminar.Enabled = false;
+                btnAgregar.Enabled = false;
+            }
+            if (dataReader.GetBoolean(3))
+            {
+                btnAgregar.Enabled = true;
+                btnBuscarPrestamo.Enabled = true;
+                btnEliminar.Enabled = true;
+                btnBuscarLibro.Enabled = true;
+                btnBuscarCliente.Enabled = true;
+            }
+            if (dataReader.GetBoolean(4))
+            {
+                btnBuscarPrestamo.Enabled = true;
+                btnBuscarLibro.Enabled = true;
+                btnBuscarCliente.Enabled = true;
+                btnEliminar.Enabled = false;
+                btnAgregar.Enabled = false;
+            }
+            if (dataReader.GetBoolean(5))
+            {
+                btnEliminar.Enabled = true;
+                btnBuscarPrestamo.Enabled = true;
+                btnBuscarLibro.Enabled = true;
+                btnBuscarCliente.Enabled = true;
+            }
         }
 
         private void btnBuscarLibro_Click(object sender, EventArgs e)

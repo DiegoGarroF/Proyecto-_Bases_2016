@@ -51,11 +51,6 @@ namespace Controlador
             return conexion.mEjecutar(strSentencia, conexion,pEntidadLibro);
         }
 
-        public SqlDataReader mSeleccionarRolPantalla(clsConexion conexion, String nombre)
-        {
-            strSentencia = "SELECT rP.idPantalla,rP.consultar,rP.eliminar,rP.insertar,rP.modificar FROM tbRolPantalla rP, tbPantalla p where p.idPantalla = rP.idPantalla and p.nombre =@codigo";
-            return conexion.mSeleccionarTipoString(strSentencia, nombre);
-        }
         public SqlDataReader mSeleccionarIdUsuario(clsConexion conexion, String usuario)
         {
             strSentencia = "SELECT idUsuario from tbUsuario where usuario=@codigo";
@@ -63,7 +58,12 @@ namespace Controlador
         }
         public SqlDataReader mObtenerRolesUsuario(clsConexion conexion, String codigo,String contrasena)
         {
-            strSentencia = "SELECT modificar,insertar,consultar,eliminar from tbRolPantalla RP , tbRol R  ,tbPantalla P ,tbUsuarioRol  UR  , tbUsuario U  where U.idUsuario=UR.idUsuario and P.idPantalla=RP.idPantalla and R.idRol=UR.idRol and R.idRol=RP.idRol and U.idUsuario=@codigo and P.nombre=@contrasena";
+            strSentencia = "SELECT modificar,insertar,consultar,eliminar  from tbRolPantalla RP , tbRol R  ,tbPantalla P ,tbUsuarioRol  UR  , tbUsuario U  where U.idUsuario=UR.idUsuario and P.idPantalla=RP.idPantalla and R.idRol=UR.idRol and R.idRol=RP.idRol and U.idUsuario=@codigo and P.nombre=@contrasena";
+            return conexion.mSeleccionarLogueo(strSentencia, codigo, contrasena);
+        }
+        public SqlDataReader mObtenerPrivilegiosDirectos(clsConexion conexion, String codigo, String contrasena)
+        {
+            strSentencia = "SELECT modificar,insertar,consultar,eliminar  from tbUsuarioPantalla UP , tbPantalla P where UP.idUsuario=@codigo and UP.idPantalla=P.idPantalla and P.nombre=@contrasena";
             return conexion.mSeleccionarLogueo(strSentencia, codigo, contrasena);
         }
     }

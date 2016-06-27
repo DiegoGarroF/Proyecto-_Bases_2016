@@ -268,6 +268,27 @@ namespace Vista
                         this.btnEliminar.Enabled = true;
                     }
                 }
+                //Privilegios directos al usuario para esa pantalla
+                dtr = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(pEntidadUsuario.mIdUsuario), this.Name);
+                if(dtr!=null && dtr.Read())
+                {
+                    if (dtr.GetString(0).Equals("true"))// Modificar
+                    {
+                        this.btnModificar.Enabled = true;
+                    }
+                    if (dtr.GetString(1).Equals("true"))// Insertar
+                    {
+                        this.btnAgregar.Enabled = true;
+                    }
+                    if (dtr.GetString(2).Equals("true"))//Consultar
+                    {
+                        this.btnConsultar.Enabled = true;
+                    }
+                    if (dtr.GetString(3).Equals("true"))//Eliminar
+                    {
+                        this.btnEliminar.Enabled = true;
+                    }
+                }
             }
 
         }

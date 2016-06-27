@@ -48,11 +48,12 @@ namespace Controlador
             return conexion.mSeleccionarGeneral(conexion, sentencia);
         }
 
-        public SqlDataReader mConsultarListaBitacora2(clsConexion conexion)
+        public SqlDataReader mConsultarId(clsConexion conexion)
         {
-            sentencia = "select idUsuario,nombre, apellidos, tipoUsuario from tbUsuario";
+            sentencia = "select idUsuario from tbUsuario";
             return conexion.mSeleccionarGeneral(conexion, sentencia);
         }
+
 
         public Boolean mInsertarUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {

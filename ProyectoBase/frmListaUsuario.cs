@@ -22,6 +22,7 @@ namespace Vista
         private int stUsuario;
         SqlDataReader strUsuarios;
         clsUsuario usuario;
+        clsEntidadUsuario entidadUsuario;
 
         clsConexion conexion;
 
@@ -30,6 +31,7 @@ namespace Vista
         {
             this.conexion = conexion;
             usuario = new clsUsuario();
+            entidadUsuario = new clsEntidadUsuario();
             InitializeComponent();
         }
 
@@ -42,7 +44,7 @@ namespace Vista
 
         private void frmListaUsuario_Load(object sender, EventArgs e)
         {
-            strUsuarios = usuario.mConsultarListaBitacora2(conexion);
+            strUsuarios = usuario.mConsultarListaBitacora(conexion);
             lvListaUusario.Items.Clear();
             if (strUsuarios != null)
                 while (strUsuarios.Read())
@@ -50,10 +52,8 @@ namespace Vista
                     ListViewItem item = new ListViewItem(strUsuarios.GetString(0));
                     item.SubItems.Add(strUsuarios.GetString(1));
                     item.SubItems.Add(strUsuarios.GetString(2));
-                    item.SubItems.Add(strUsuarios.GetString(3));
                     lvListaUusario.Items.Add(item);
                 }
-
         }
 
         private void lvListaUusario_SelectedIndexChanged(object sender, EventArgs e)
@@ -89,11 +89,16 @@ namespace Vista
 
             for (int i = 0; i < lvListaUusario.Items.Count; i++)
             {
-                if (lvListaUusario.Items[i].Selected)
+                if (lvListaUusario.Items["Nombre"].Selected)
                 {
-                    stUsuario = Convert.ToInt32(lvListaUusario.Items[i].Text);
+                    if (lvListaUusario.Items[i].Text == entidadUsuario.mNombre)
+                    {
+
+                       // stUsuario = Convert.ToInt32(usuario.mConsultaIdUsuario(conexion));
+                    }
 
                 }
+
             }
         }
     }

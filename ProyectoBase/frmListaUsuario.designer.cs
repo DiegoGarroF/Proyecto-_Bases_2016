@@ -51,6 +51,7 @@
             this.lvListaUusario.TabIndex = 0;
             this.lvListaUusario.UseCompatibleStateImageBehavior = false;
             this.lvListaUusario.View = System.Windows.Forms.View.Details;
+            this.lvListaUusario.SelectedIndexChanged += new System.EventHandler(this.lvListaUusario_SelectedIndexChanged_1);
             this.lvListaUusario.DoubleClick += new System.EventHandler(this.lvListaUusario_DoubleClick);
             // 
             // columnHeader1

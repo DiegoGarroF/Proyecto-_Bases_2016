@@ -39,19 +39,32 @@ namespace Vista
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-           /* frmListaUsuario frmLista = new frmListaUsuario(conexion);
+            frmListaUsuario frmLista = new frmListaUsuario(conexion);
             frmLista.ShowDialog();
-            if (frmLista.get() != " ")
+            if (frmLista.getUsuario() != " ")
             {
-                usuario.setCodigo(consultaUsu.getCodigo());
-                txtCodigo.Text = consultaUsu.getCodigo(); // para cargar
-                mConsultarCodigo();
+                entidadUsuario.mIdUsuario = Convert.ToInt32(frmLista.getUsuario());
+                tbNombreUsuario.Text = frmLista.getUsuario(); // para cargar
+                mConsultaUsuario();
+
             }
 
-    */
 
         }
 
+        public void mConsultaUsuario()
+        {
+            dtrUsuario = usuario.mConsultaIdUsuario(conexion, entidadUsuario);
+            if (dtrUsuario != null)
+            {
+                if (dtrUsuario.Read())//si existe
+                {
+                    this.tbNombreUsuario.Text = dtrUsuario.GetString(0);
+                }//Fin del if si existe
+
+            }//Fin del if dtrEstudiante!=null
+
+        }
 
 
         private void frmBitacora_Load(object sender, EventArgs e)

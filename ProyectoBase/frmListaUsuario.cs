@@ -76,5 +76,24 @@ namespace Vista
                 }
             }
         }
+
+        public string getUsuario()
+        {
+            return stUsuario;
+        }
+
+
+        private void lvListaUusario_SelectedIndexChanged_1(object sender, EventArgs e)
+        {
+
+            for (int i = 0; i < lvListaUusario.Items.Count; i++)
+            {
+                if (lvListaUusario.Items[i].Selected)
+                {
+                    stUsuario = lvListaUusario.Items[i].Text;
+
+                }
+            }
+        }
     }
 }

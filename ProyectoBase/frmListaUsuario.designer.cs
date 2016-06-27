@@ -34,6 +34,7 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbUsuario = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.SuspendLayout();
             // 
             // lvListaUusario
@@ -42,12 +43,13 @@
             this.lvListaUusario.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader4,
+            this.columnHeader2});
             this.lvListaUusario.FullRowSelect = true;
             this.lvListaUusario.GridLines = true;
             this.lvListaUusario.Location = new System.Drawing.Point(12, 45);
             this.lvListaUusario.Name = "lvListaUusario";
-            this.lvListaUusario.Size = new System.Drawing.Size(524, 362);
+            this.lvListaUusario.Size = new System.Drawing.Size(618, 362);
             this.lvListaUusario.TabIndex = 0;
             this.lvListaUusario.UseCompatibleStateImageBehavior = false;
             this.lvListaUusario.View = System.Windows.Forms.View.Details;
@@ -56,17 +58,18 @@
             // 
             // columnHeader1
             // 
-            this.columnHeader1.Text = "Nombre";
+            this.columnHeader1.Text = "IdUsuario";
             this.columnHeader1.Width = 153;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Apellidos";
+            this.columnHeader3.Text = "Nombre";
             this.columnHeader3.Width = 186;
             // 
             // columnHeader4
             // 
-            this.columnHeader4.Text = "Tipo";
+            this.columnHeader4.Text = "Apellido";
+            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.columnHeader4.Width = 177;
             // 
             // lbUsuario
@@ -88,11 +91,16 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "Tipo";
+            this.columnHeader2.Width = 94;
+            // 
             // frmListaUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(545, 465);
+            this.ClientSize = new System.Drawing.Size(650, 465);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lbUsuario);
             this.Controls.Add(this.lvListaUusario);
@@ -112,5 +120,6 @@
         private System.Windows.Forms.Button btnSalir;
         private System.Windows.Forms.ColumnHeader columnHeader3;
         private System.Windows.Forms.ColumnHeader columnHeader4;
+        private System.Windows.Forms.ColumnHeader columnHeader2;
     }
 }

@@ -19,7 +19,7 @@ namespace Vista
 
         #region Atributos 
 
-        private String stUsuario;
+        private int stUsuario;
         SqlDataReader strUsuarios;
         clsUsuario usuario;
 
@@ -42,7 +42,7 @@ namespace Vista
 
         private void frmListaUsuario_Load(object sender, EventArgs e)
         {
-            strUsuarios = usuario.mConsultarListaBitacora(conexion);
+            strUsuarios = usuario.mConsultarListaBitacora2(conexion);
             lvListaUusario.Items.Clear();
             if (strUsuarios != null)
                 while (strUsuarios.Read())
@@ -50,6 +50,7 @@ namespace Vista
                     ListViewItem item = new ListViewItem(strUsuarios.GetString(0));
                     item.SubItems.Add(strUsuarios.GetString(1));
                     item.SubItems.Add(strUsuarios.GetString(2));
+                    item.SubItems.Add(strUsuarios.GetString(3));
                     lvListaUusario.Items.Add(item);
                 }
 
@@ -61,7 +62,7 @@ namespace Vista
             {
                 if (lvListaUusario.Items[i].Selected)
                 {
-                    stUsuario = lvListaUusario.Items[i].Text;
+                    stUsuario = Convert.ToInt32(lvListaUusario.Items[i].Text);
                 }
             }
         }
@@ -72,12 +73,12 @@ namespace Vista
             {
                 if (lvListaUusario.Items[i].Selected)
                 {
-                    stUsuario = lvListaUusario.Items[i].Text;
+                    stUsuario = Convert.ToInt32(lvListaUusario.Items[i].Text);
                 }
             }
         }
 
-        public string getUsuario()
+        public int getUsuario()
         {
             return stUsuario;
         }
@@ -90,7 +91,7 @@ namespace Vista
             {
                 if (lvListaUusario.Items[i].Selected)
                 {
-                    stUsuario = lvListaUusario.Items[i].Text;
+                    stUsuario = Convert.ToInt32(lvListaUusario.Items[i].Text);
 
                 }
             }

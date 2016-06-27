@@ -41,10 +41,10 @@ namespace Vista
         {
             frmListaUsuario frmLista = new frmListaUsuario(conexion);
             frmLista.ShowDialog();
-            if (frmLista.getUsuario() != " ")
+            if (frmLista.getUsuario() != 0)
             {
-                entidadUsuario.mIdUsuario = Convert.ToInt32(frmLista.getUsuario());
-                tbNombreUsuario.Text = frmLista.getUsuario(); // para cargar
+                entidadUsuario.mIdUsuario=frmLista.getUsuario();
+                tbNombreUsuario.Text = Convert.ToString( frmLista.getUsuario()); // para cargar
                 mConsultaUsuario();
 
             }

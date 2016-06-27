@@ -18,7 +18,8 @@ namespace Vista
 
         private void frmLibro_Load(object sender, EventArgs e)
         {
-            verificar();
+            mDeshabilitarAcciones();
+            mHabilitarBotones();
         }
         #endregion
         #region Atributos
@@ -238,77 +239,48 @@ namespace Vista
             }// fin del else que virifca que los espacios esten correctamente
         }
         #endregion
-        #region Metodos para habilitar Botones
-        public void habilitarAgregar()
+        #region Metodo Para Habilitar Acciones
+        public void mHabilitarBotones()
         {
-            this.btnAgregar.Enabled = true;
-        }
-        public void habilitarEliminar()
-        {
-            this.btnEliminar.Enabled = true;
-        }
-        public void habilitarConsultar()
-        {
-            this.btnConsultar.Enabled = true;
-        }
-        public void habilitarModificar()
-        {
-            this.btnModificar.Enabled = true;
-        }
-        #endregion
-        #region Metodos para deshabilitar Botones
-        public void deshabilitarAgregar()
-        {
-            this.btnAgregar.Enabled = false;
-        }
-        public void deshabilitarEliminar()
-        {
-            this.btnEliminar.Enabled = false;
-        }
-        public void deshabilitarConsultar()
-        {
-            this.btnConsultar.Enabled = false;
-        }
-        public void deshabilitarModificar()
-        {
-            this.btnModificar.Enabled = false;
-        }
-        #endregion
-        #region Metodo para seguridad ROL-PANTALLA
-        public void mSeguridadRolPantalla()
-        {
-            dtr = libro.mSeleccionarRolPantalla(conexion, this.Name);
-            if (dtr != null)
+            clsEntidadUsuario pEntidadUsuario = new clsEntidadUsuario();
+            dtr = libro.mSeleccionarIdUsuario(conexion, clsConstantes.nombreUsuario);
+            if (dtr != null && dtr.Read())
             {
-                if (dtr.Read())
-                {                 
-                    int consultar = Int32.Parse(dtr.GetString(1));
-                    int eliminar  = Int32.Parse(dtr.GetString(2));
-                    int agregar   = Int32.Parse(dtr.GetString(3));
-                    int modificar = Int32.Parse(dtr.GetString(4));
-               
-                    if (consultar== 1)
-                        habilitarConsultar();
-                    else
-                        deshabilitarConsultar();
+                pEntidadUsuario.mIdUsuario = dtr.GetInt32(0);
 
-                    if ( eliminar== 1)
-                        habilitarEliminar();
-                    else
-                        deshabilitarEliminar();
-
-                    if (agregar == 1)
-                        habilitarAgregar();
-                    else
-                        deshabilitarAgregar();
-                    if (modificar == 1)
-                        habilitarModificar();
-                    else
-                        deshabilitarModificar();
+                dtr = libro.mObtenerRolesUsuario(this.conexion, Convert.ToString(dtr.GetInt32(0)), this.Name);
+                if (dtr != null && dtr.Read())
+                {
+                    if (dtr.GetString(0).Equals("true"))// Modificar
+                    {
+                        this.btnModificar.Enabled = true;
+                    }
+                    if (dtr.GetString(1).Equals("true"))// Insertar
+                    {
+                        this.btnAgregar.Enabled = true;
+                    }
+                    if (dtr.GetString(2).Equals("true"))//Consultar
+                    {
+                        this.btnConsultar.Enabled = true;
+                    }
+                    if (dtr.GetString(3).Equals("true"))//Eliminar
+                    {
+                        this.btnEliminar.Enabled = true;
+                    }
                 }
             }
+
         }
         #endregion
+        #region Metodo para DesHabilitar Botones
+        public void mDeshabilitarAcciones()
+        {
+            this.btnEliminar.Enabled = false;
+            this.btnModificar.Enabled = false;
+            this.btnConsultar.Enabled = false;
+            this.btnAgregar.Enabled = false;
+        }
+        #endregion     
         #region Metodo Controlar el metodo Modificar 
         public void mControlModificar()
         {
@@ -352,37 +324,7 @@ namespace Vista
             }
         }
         #endregion
+  
 
-        public void verificar()
-        {
-            clsEntidadUsuario pEntidadUsuario = new clsEntidadUsuario();
-            dtr = libro.mSeleccionarIdUsuario(conexion, clsConstantes.nombreUsuario);
-            if(dtr!=null && dtr.Read())
-            {
-                pEntidadUsuario.mIdUsuario = dtr.GetInt32(0);
-
-                dtr=usuario.mBuscarPrivilegiosUsuario(conexion, pEntidadUsuario);
-                if(dtr!=null)
-                {
-                    if(dtr.Read())
-                    {
-                        if(dtr.GetString(6).Equals(this.Name))
-                        {
-                           if(dtr.GetString(2).Equals("true"))
-                            {
-                                this.btnModificar.Enabled = true;
-                            }
-                           else
-                            {
-                                this.btnModificar.Enabled = false;
-                            }
-                        }
-                        // u.idUsuario, ur.idRol, rp.modificar, rp.insertar, rp.consultar, rp.eliminar, p.nombre 
-                    }
-                }
-            }
-          
-        }
-      
     }
 }

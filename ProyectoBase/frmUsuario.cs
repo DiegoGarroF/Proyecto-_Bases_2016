@@ -63,7 +63,7 @@ namespace Vista
 
             entidadRolPantalla = new clsEntidadRolPantalla();
             rolPantalla = new clsRolPantalla();
-
+             
         }
 
         private void frmUsuario_Load(object sender, EventArgs e)

@@ -406,7 +406,7 @@ namespace Vista
                 }
             }
             return -1;
-        }
+        } 
 
         private void btnQuitarPantalla_Click(object sender, EventArgs e)
         {

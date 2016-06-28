@@ -19,7 +19,7 @@ namespace Vista
 
         #region Atributos 
 
-        private int stUsuario;
+        private String stUsuario;
         SqlDataReader strUsuarios;
         clsUsuario usuario;
         clsEntidadUsuario entidadUsuario;
@@ -39,7 +39,9 @@ namespace Vista
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            this.Close();
+            frmBitacora bitacora = new frmBitacora(conexion);
+            bitacora.ShowDialog();
+           // this.Close();
         }
 
         private void frmListaUsuario_Load(object sender, EventArgs e)
@@ -62,7 +64,7 @@ namespace Vista
             {
                 if (lvListaUusario.Items[i].Selected)
                 {
-                    stUsuario = Convert.ToInt32(lvListaUusario.Items[i].Text);
+                    stUsuario = lvListaUusario.Items[i].Text;
                 }
             }
         }
@@ -73,12 +75,12 @@ namespace Vista
             {
                 if (lvListaUusario.Items[i].Selected)
                 {
-                    stUsuario = Convert.ToInt32(lvListaUusario.Items[i].Text);
+                    stUsuario = lvListaUusario.Items[i].Text;
                 }
             }
         }
 
-        public int getUsuario()
+        public String getUsuario()
         {
             return stUsuario;
         }
@@ -89,15 +91,13 @@ namespace Vista
 
             for (int i = 0; i < lvListaUusario.Items.Count; i++)
             {
-                if (lvListaUusario.Items["Nombre"].Selected)
+                if (lvListaUusario.Items[i].Selected)
                 {
-                    if (lvListaUusario.Items[i].Text == entidadUsuario.mNombre)
-                    {
 
-                       // stUsuario = Convert.ToInt32(usuario.mConsultaIdUsuario(conexion));
-                    }
+                    stUsuario = lvListaUusario.Items[i].Text;
+                 }
 
-                }
+                
 
             }
         }

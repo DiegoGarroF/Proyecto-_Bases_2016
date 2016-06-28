@@ -20,8 +20,11 @@ namespace Vista
         clsBitacora clbitacora;
         SqlDataReader dtrUsuario;
         clsUsuario usuario;
+        Object entidad;
         clsConexion conexion;
-
+        clsEntidadBitacora entidadBitacora;
+        frmListaUsuario frmLista;
+        DateTime localDate = DateTime.Now;
 
         public frmBitacora(clsConexion conexion)
         {
@@ -29,6 +32,8 @@ namespace Vista
             clbitacora = new clsBitacora();
             entidadUsuario = new clsEntidadUsuario();
             this.conexion = conexion;
+            entidadBitacora = new clsEntidadBitacora();
+            frmLista = new frmListaUsuario(conexion);
             InitializeComponent();
         }
 
@@ -39,22 +44,22 @@ namespace Vista
 
         private void btnConsultar_Click(object sender, EventArgs e)
         {
-            frmListaUsuario frmLista = new frmListaUsuario(conexion);
+            
             frmLista.ShowDialog();
-            if (frmLista.getUsuario() != 0)
+            if (frmLista.getUsuario() != "")
             {
-                entidadUsuario.mIdUsuario=frmLista.getUsuario();
+                entidadUsuario.mNombre=frmLista.getUsuario();
                 tbNombreUsuario.Text = Convert.ToString( frmLista.getUsuario()); // para cargar
-                mConsultaUsuario();
+                mConsultarBitacora();
 
             }
 
 
         }
 
-        public void mConsultaUsuario()
+        public void mConsultarBitacora()
         {
-            dtrUsuario = usuario.mConsultaIdUsuario(conexion, entidadUsuario);
+            dtrUsuario = clbitacora.mConsultaGeneral(conexion);
             if (dtrUsuario != null)
             {
                 if (dtrUsuario.Read())//si existe
@@ -70,19 +75,62 @@ namespace Vista
         private void frmBitacora_Load(object sender, EventArgs e)
         {
             dtrUsuario = clbitacora.mConsultaGeneral(conexion);
-            if (clbitacora.mTrigger(conexion, entidadUsuario) == true)
+
+            if (frmLista.getUsuario() == entidadUsuario.mNombre)
+            {
+
+                // dtrUsuario = clbitacora.mInsertarBitacora(conexion, pEntidadBitacora);
+                if (entidadUsuario.mIdUsuario == entidadBitacora.getIdUsuario())
+                {
+                    entidadBitacora.setFecha(Convert.ToDateTime(entidadUsuario.mFechaModificacion));
+                    entidadBitacora.setHora(localDate);
+                    if (entidad is clsEntidadUsuario)
+                        entidadBitacora.setTabla("tbUsuario");
+                    else
+                        if (entidad is clsEntidadLibro)
+                    {
+                        entidadBitacora.setTabla("tbLibro");
+                        entidadBitacora.setDescripcion("hola");
+                    }
+
+                    else
+                        if (entidad is clsEntidadPrestamo)
+                    { 
+                        entidadBitacora.setTabla("tbPrestamo");
+                        entidadBitacora.setDescripcion("hola");
+                    }
+                    else
+                        if (entidad is clsEntidadPantalla)
+                    { 
+                        entidadBitacora.setTabla("tbPantalla");
+                    entidadBitacora.setDescripcion("hola");
+                }
+                else
+                        if (entidad is clsEntidadRol)
+                        entidadBitacora.setTabla("tbRol");
+                    else
+                        if (entidad is clsEntidadRolPantalla)
+                        entidadBitacora.setTabla("tbRolPantalla");
+                    else
+                        if (entidad is clsUsuarioPantalla)
+                        entidadBitacora.setTabla("tbUsuarioPantalla");
+                    else
+                        if (entidad is clsEntidadUsuarioRol)
+                        entidadBitacora.setTabla("tbUsuarioRol");
+
+                }
 
                 lvBitacora.Items.Clear();
-            if (dtrUsuario != null)
-                while (dtrUsuario.Read())
-                {
-                    ListViewItem item = new ListViewItem(dtrUsuario.GetString(0));
-                    item.SubItems.Add(dtrUsuario.GetString(1));
-                    item.SubItems.Add(dtrUsuario.GetString(2));
-                    item.SubItems.Add(dtrUsuario.GetString(3));
-                    item.SubItems.Add(dtrUsuario.GetString(4));
-                    lvBitacora.Items.Add(item);
-                }
+                if (dtrUsuario != null)
+                    while (dtrUsuario.Read())
+                    {
+                        ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetString(0)));
+                        item.SubItems.Add(dtrUsuario.GetString(1));
+                        item.SubItems.Add(dtrUsuario.GetString(2));
+                        item.SubItems.Add(dtrUsuario.GetString(3));
+                        lvBitacora.Items.Add(item);
+                    }
+            }
         }
     }
 }

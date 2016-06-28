@@ -223,20 +223,11 @@ namespace Vista
             }
         }
 
-
-
-      
         public void mModificarRol()
         {
-            if (!verificarNombre()&& lvPantalla != null)
+            if (lvPantalla != null)
             {
-                btnQuitarPantalla.Enabled = true;
-                
-                if(strRol!=null)
-                {
-                    entidadRol.mNombreRol = txtNombreRol.Text;
-                }
-               
+                               
             }
             else
             {
@@ -267,6 +258,9 @@ namespace Vista
                 chkEliminar.Enabled = true;
                 chkInsertar.Enabled = true;
                 chkModificar.Enabled = true;
+                btnBuscar.Enabled = true;
+                txtNombreRol.Enabled = true;
+                btnLimpiar.Enabled = true;
             }
             if (dtrPermisos.GetBoolean(3))
             {
@@ -276,15 +270,22 @@ namespace Vista
                 chkConsultar.Enabled = true;
                 chkEliminar.Enabled = true;
                 chkInsertar.Enabled = true;
-                chkModificar.Enabled = true;            
+                chkModificar.Enabled = true;
+                btnBuscar.Enabled = true;
+                txtNombreRol.Enabled = true;
+                btnLimpiar.Enabled = true;
             }
             if (dtrPermisos.GetBoolean(4))
             {
-                //NO HAY CONSULTAR
+                btnBuscar.Enabled = true;
+                txtNombreRol.Enabled = true;
+                btnLimpiar.Enabled = true;
             }
             if (dtrPermisos.GetBoolean(5))
             {
                 btnEliminar.Enabled = true;
+                btnBuscar.Enabled = true;
+                txtNombreRol.Enabled = true;                
             }
 
         }
@@ -417,6 +418,72 @@ namespace Vista
             else
             {
                 MessageBox.Show("Seleccione un item válido", "No se ha seleccionado nada", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnBuscar_Click(object sender, EventArgs e)
+        {
+            cargarDatos();
+        }
+
+        public void cargarDatos()
+        {
+            lvPantalla.Items.Clear();
+            conexion.codigo = "123";
+            conexion.clave = "123";
+            entidadRol.mNombreRol = txtNombreRol.Text;
+            dtrRol = clRol.mConsultarRolesPriv(conexion,entidadRol);
+            if (dtrRol != null)
+                while (dtrRol.Read())
+                {
+                    ListViewItem item = new ListViewItem(dtrRol.GetString(0));
+                    item.SubItems.Add(dtrRol.GetString(1));
+                    for (int i = 2; i <= 5; i++)
+                    {
+                        if (dtrRol.GetBoolean(i) == true)
+                        {
+                            item.SubItems.Add("Sí");
+                        }
+                        else
+                        {
+                            item.SubItems.Add("No");
+                        }
+                    }
+                    lvPantalla.Items.Add(item);
+                }
+        }
+
+        private void txtNombreRol_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == (Char)(Keys.Enter))
+            {
+                cargarDatos();
+            }
+        }
+
+        private void btnLimpiar_Click(object sender, EventArgs e)
+        {
+            txtNombreRol.Text = "";
+            lvPantalla.Items.Clear();
+        }
+
+        private void btnEliminar_Click(object sender, EventArgs e)
+        {
+            if (lvPantalla.Items != null)
+            {
+                if (lvPantalla.Items[0].Text != "") { 
+                entidadRol.mNombreRol = lvPantalla.Items[0].Text;
+                dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
+                if (dtrRol != null)
+                    if (dtrRol.Read())
+                    {
+                        entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
+                        rolPantalla.mEliminarRolPantalla(conexion, entidadRolPantalla);
+                        clRol.mEliminarRol(conexion, entidadRol);
+                        limpiar();
+                         MessageBox.Show("Rol eliminado","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
+                    }
+                }
             }
         }
     }

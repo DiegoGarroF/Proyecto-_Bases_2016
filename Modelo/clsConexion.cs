@@ -178,6 +178,25 @@ namespace Modelo
                                     comando.Parameters.AddWithValue("@id", pEntidadLibro.getIdLibro());
                                     comando.ExecuteNonQuery();
                                 }
+                                else
+                                {
+                                    if (objeto is clsEntidadRol)
+                                    {
+                                        clsEntidadRol pEntidadRol = (clsEntidadRol)objeto;
+                                        comando.Parameters.AddWithValue("@nombre", pEntidadRol.mNombreRol);
+                                        comando.ExecuteNonQuery();
+                                    }
+                                    else
+                                    {
+                                        if (objeto is clsEntidadRolPantalla)
+                                        {
+                                            clsEntidadRolPantalla pEntidadRolPantalla = (clsEntidadRolPantalla)objeto;
+                                            comando.Parameters.AddWithValue("@idRol", pEntidadRolPantalla.mIdRol);
+                                            comando.ExecuteNonQuery();
+                                        }
+                                        
+                                    }
+                                }
                             }
                             }
                         }

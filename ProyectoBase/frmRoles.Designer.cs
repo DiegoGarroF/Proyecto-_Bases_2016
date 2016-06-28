@@ -51,13 +51,15 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.btnBuscar = new System.Windows.Forms.Button();
+            this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(281, 16);
+            this.label3.Location = new System.Drawing.Point(360, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(112, 13);
             this.label3.TabIndex = 26;
@@ -67,7 +69,7 @@
             // 
             this.chkInsertar.AutoSize = true;
             this.chkInsertar.Enabled = false;
-            this.chkInsertar.Location = new System.Drawing.Point(284, 44);
+            this.chkInsertar.Location = new System.Drawing.Point(363, 44);
             this.chkInsertar.Name = "chkInsertar";
             this.chkInsertar.Size = new System.Drawing.Size(61, 17);
             this.chkInsertar.TabIndex = 27;
@@ -77,7 +79,7 @@
             // btnAgregarPrivilegios
             // 
             this.btnAgregarPrivilegios.Enabled = false;
-            this.btnAgregarPrivilegios.Location = new System.Drawing.Point(421, 44);
+            this.btnAgregarPrivilegios.Location = new System.Drawing.Point(500, 44);
             this.btnAgregarPrivilegios.Name = "btnAgregarPrivilegios";
             this.btnAgregarPrivilegios.Size = new System.Drawing.Size(75, 40);
             this.btnAgregarPrivilegios.TabIndex = 31;
@@ -89,7 +91,7 @@
             // 
             this.chkConsultar.AutoSize = true;
             this.chkConsultar.Enabled = false;
-            this.chkConsultar.Location = new System.Drawing.Point(284, 67);
+            this.chkConsultar.Location = new System.Drawing.Point(363, 67);
             this.chkConsultar.Name = "chkConsultar";
             this.chkConsultar.Size = new System.Drawing.Size(70, 17);
             this.chkConsultar.TabIndex = 28;
@@ -100,7 +102,7 @@
             // 
             this.chkEliminar.AutoSize = true;
             this.chkEliminar.Enabled = false;
-            this.chkEliminar.Location = new System.Drawing.Point(284, 110);
+            this.chkEliminar.Location = new System.Drawing.Point(363, 110);
             this.chkEliminar.Name = "chkEliminar";
             this.chkEliminar.Size = new System.Drawing.Size(62, 17);
             this.chkEliminar.TabIndex = 30;
@@ -111,7 +113,7 @@
             // 
             this.chkModificar.AutoSize = true;
             this.chkModificar.Enabled = false;
-            this.chkModificar.Location = new System.Drawing.Point(284, 91);
+            this.chkModificar.Location = new System.Drawing.Point(363, 91);
             this.chkModificar.Name = "chkModificar";
             this.chkModificar.Size = new System.Drawing.Size(69, 17);
             this.chkModificar.TabIndex = 29;
@@ -120,6 +122,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnBuscar);
             this.groupBox1.Controls.Add(this.cbPantalla);
             this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label4);
@@ -141,7 +144,7 @@
             // 
             this.cbPantalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPantalla.FormattingEnabled = true;
-            this.cbPantalla.Location = new System.Drawing.Point(94, 68);
+            this.cbPantalla.Location = new System.Drawing.Point(73, 72);
             this.cbPantalla.Name = "cbPantalla";
             this.cbPantalla.Size = new System.Drawing.Size(154, 21);
             this.cbPantalla.TabIndex = 27;
@@ -149,7 +152,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(26, 71);
+            this.label4.Location = new System.Drawing.Point(5, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(48, 13);
             this.label4.TabIndex = 26;
@@ -157,15 +160,17 @@
             // 
             // txtNombreRol
             // 
-            this.txtNombreRol.Location = new System.Drawing.Point(94, 28);
+            this.txtNombreRol.Enabled = false;
+            this.txtNombreRol.Location = new System.Drawing.Point(73, 32);
             this.txtNombreRol.Name = "txtNombreRol";
             this.txtNombreRol.Size = new System.Drawing.Size(154, 20);
             this.txtNombreRol.TabIndex = 22;
+            this.txtNombreRol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreRol_KeyPress);
             // 
             // lbNombre
             // 
             this.lbNombre.AutoSize = true;
-            this.lbNombre.Location = new System.Drawing.Point(26, 31);
+            this.lbNombre.Location = new System.Drawing.Point(5, 35);
             this.lbNombre.Name = "lbNombre";
             this.lbNombre.Size = new System.Drawing.Size(63, 13);
             this.lbNombre.TabIndex = 21;
@@ -236,6 +241,7 @@
             this.btnEliminar.TabIndex = 25;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
+            this.btnEliminar.Click += new System.EventHandler(this.btnEliminar_Click);
             // 
             // btnModificar
             // 
@@ -261,7 +267,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(309, 433);
+            this.btnSalir.Location = new System.Drawing.Point(418, 433);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 35);
             this.btnSalir.TabIndex = 30;
@@ -269,11 +275,33 @@
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Enabled = false;
+            this.btnBuscar.Location = new System.Drawing.Point(245, 25);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 33);
+            this.btnBuscar.TabIndex = 32;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
+            // btnLimpiar
+            // 
+            this.btnLimpiar.Location = new System.Drawing.Point(316, 433);
+            this.btnLimpiar.Name = "btnLimpiar";
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 35);
+            this.btnLimpiar.TabIndex = 33;
+            this.btnLimpiar.Text = "Limpiar";
+            this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
+            // 
             // frmRoles
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(601, 500);
+            this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnQuitarPantalla);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnEliminar);
@@ -315,5 +343,7 @@
         private System.Windows.Forms.ColumnHeader columnaConsultar;
         private System.Windows.Forms.ColumnHeader columnaModificar;
         private System.Windows.Forms.ColumnHeader columnaEliminar;
+        private System.Windows.Forms.Button btnBuscar;
+        private System.Windows.Forms.Button btnLimpiar;
     }
 }

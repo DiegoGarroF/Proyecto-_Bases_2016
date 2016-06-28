@@ -17,5 +17,10 @@ namespace Controlador
                 sentencia = "insert into tbRolPantalla(idRol, idPantalla, modificar, insertar, consultar, eliminar, creadoPor, fechaCreacion, modificadoPor, fechaModificacion) values (@idRol,@idPantalla,@modificar,@insertar,@consultar,@eliminar,@creadoPor,@fechaCreacion,@modificadoPor,@fechaModificacion)";
                 conexion.mEjecutarTransaction(sentencia, connection, pEntidadRolPantalla);       
         }
+        public Boolean mEliminarRolPantalla(clsConexion conexion, clsEntidadRolPantalla pEntidadRolPantalla)
+        {
+            sentencia = "delete from tbRolPantalla where idRol=@idRol";
+            return conexion.mEjecutarElimModif(sentencia,conexion,pEntidadRolPantalla,"");
+        }
     }
 }

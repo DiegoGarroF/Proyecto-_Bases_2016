@@ -48,5 +48,16 @@ namespace Controlador
             sentencia = "select nombre from tbRol";
             return conexion.mSeleccionarGeneral(conexion, sentencia);
         }
+        public SqlDataReader mConsultarRolesPriv(clsConexion conexion, clsEntidadRol pEntidadRol)
+        {
+            sentencia = "select r.nombre,p.nombre, rp.insertar,rp.consultar,rp.modificar, rp.eliminar from tbRol r, tbRolPantalla rp, tbPantalla p where r.idRol = rp.idRol and rp.idPantalla = p.idPantalla and r.nombre = @codigo";
+            return conexion.mSeleccionarTipoString(sentencia, pEntidadRol.mNombreRol);
+        }
+
+        public Boolean mEliminarRol(clsConexion conexion, clsEntidadRol pEntidadRol)
+        {
+            sentencia = "delete from tbRol where nombre=@nombre";
+            return conexion.mEjecutarElimModif(sentencia,conexion, pEntidadRol,"");
+        }
     }
 }

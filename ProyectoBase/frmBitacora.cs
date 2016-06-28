@@ -124,7 +124,7 @@ namespace Vista
                 if (dtrUsuario != null)
                     while (dtrUsuario.Read())
                     {
-                        ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetString(0)));
+                        ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetDateTime(0)));
                         item.SubItems.Add(dtrUsuario.GetString(1));
                         item.SubItems.Add(dtrUsuario.GetString(2));
                         item.SubItems.Add(dtrUsuario.GetString(3));

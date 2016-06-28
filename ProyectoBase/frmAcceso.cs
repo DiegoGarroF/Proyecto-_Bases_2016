@@ -41,7 +41,6 @@ namespace Vista
         private void frmAcceso_Load(object sender, EventArgs e)
         {//no borrar
 
-
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -62,7 +61,8 @@ namespace Vista
                 {
                     MessageBox.Show("Ingrese un usuario válido","OJO",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
                 }
-            }                
+            }     
+                     
                 
         }
 

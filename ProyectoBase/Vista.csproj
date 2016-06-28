@@ -234,6 +234,27 @@
   <ItemGroup>
     <None Include="Resources\book.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\user2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clave.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\clave2.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\apagar3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\continue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\continuar.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -28,71 +28,95 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtClave = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnIngresar = new System.Windows.Forms.Button();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 42);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(54, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Usuario:";
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(12, 77);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(43, 13);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "Clave:";
             // 
             // txtUsuario
             // 
-            this.txtUsuario.Location = new System.Drawing.Point(80, 35);
+            this.txtUsuario.Location = new System.Drawing.Point(122, 42);
             this.txtUsuario.Name = "txtUsuario";
-            this.txtUsuario.Size = new System.Drawing.Size(136, 20);
+            this.txtUsuario.Size = new System.Drawing.Size(148, 20);
             this.txtUsuario.TabIndex = 0;
             this.txtUsuario.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtUsuario_KeyPress);
             // 
             // txtClave
             // 
-            this.txtClave.Location = new System.Drawing.Point(80, 70);
+            this.txtClave.Location = new System.Drawing.Point(122, 148);
             this.txtClave.Name = "txtClave";
             this.txtClave.PasswordChar = '*';
-            this.txtClave.Size = new System.Drawing.Size(136, 20);
+            this.txtClave.Size = new System.Drawing.Size(148, 20);
             this.txtClave.TabIndex = 1;
             this.txtClave.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtClave_KeyPress);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.pictureBox1);
+            this.groupBox1.Controls.Add(this.pictureBox2);
+            this.groupBox1.Controls.Add(this.txtUsuario);
+            this.groupBox1.Controls.Add(this.txtClave);
+            this.groupBox1.Location = new System.Drawing.Point(21, 12);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(297, 220);
+            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Datos";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = global::ProyectoBase.Properties.Resources.user2;
+            this.pictureBox1.Location = new System.Drawing.Point(19, 30);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(65, 50);
+            this.pictureBox1.TabIndex = 4;
+            this.pictureBox1.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ProyectoBase.Properties.Resources.clave2;
+            this.pictureBox2.Location = new System.Drawing.Point(19, 133);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(63, 48);
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            // 
             // btnSalir
             // 
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(150, 144);
+            this.btnSalir.Image = global::ProyectoBase.Properties.Resources.apagar3;
+            this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnSalir.Location = new System.Drawing.Point(216, 248);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 31);
+            this.btnSalir.Size = new System.Drawing.Size(75, 39);
             this.btnSalir.TabIndex = 3;
             this.btnSalir.Text = "Salir";
+            this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
             // btnIngresar
             // 
             this.btnIngresar.Enabled = false;
+            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnIngresar.Location = new System.Drawing.Point(34, 144);
+            this.btnIngresar.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnIngresar.Image = global::ProyectoBase.Properties.Resources.continuar;
+            this.btnIngresar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnIngresar.Location = new System.Drawing.Point(40, 248);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(75, 31);
+            this.btnIngresar.Size = new System.Drawing.Size(89, 43);
             this.btnIngresar.TabIndex = 2;
             this.btnIngresar.Text = "Aceptar";
+            this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIngresar.UseVisualStyleBackColor = true;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             // 
@@ -100,33 +124,33 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.PeachPuff;
-            this.ClientSize = new System.Drawing.Size(258, 204);
+            this.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.ClientSize = new System.Drawing.Size(352, 302);
             this.ControlBox = false;
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIngresar);
-            this.Controls.Add(this.txtClave);
-            this.Controls.Add(this.txtUsuario);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "frmAcceso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventana de acceso";
             this.Load += new System.EventHandler(this.frmAcceso_Load);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox txtUsuario;
         private System.Windows.Forms.TextBox txtClave;
         private System.Windows.Forms.Button btnIngresar;
         private System.Windows.Forms.Button btnSalir;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.GroupBox groupBox1;
     }
 }
 

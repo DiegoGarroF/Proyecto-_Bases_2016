@@ -63,6 +63,16 @@ namespace ProyectoBase.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _continue {
+            get {
+                object obj = ResourceManager.GetObject("continue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap apagar {
             get {
                 object obj = ResourceManager.GetObject("apagar", resourceCulture);
@@ -76,6 +86,16 @@ namespace ProyectoBase.Properties {
         internal static System.Drawing.Bitmap apagar2 {
             get {
                 object obj = ResourceManager.GetObject("apagar2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap apagar3 {
+            get {
+                object obj = ResourceManager.GetObject("apagar3", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -126,6 +146,36 @@ namespace ProyectoBase.Properties {
         internal static System.Drawing.Bitmap buscar {
             get {
                 object obj = ResourceManager.GetObject("buscar", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap clave {
+            get {
+                object obj = ResourceManager.GetObject("clave", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap clave2 {
+            get {
+                object obj = ResourceManager.GetObject("clave2", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap continuar {
+            get {
+                object obj = ResourceManager.GetObject("continuar", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -206,6 +256,26 @@ namespace ProyectoBase.Properties {
         internal static System.Drawing.Bitmap setting {
             get {
                 object obj = ResourceManager.GetObject("setting", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user {
+            get {
+                object obj = ResourceManager.GetObject("user", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap user2 {
+            get {
+                object obj = ResourceManager.GetObject("user2", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

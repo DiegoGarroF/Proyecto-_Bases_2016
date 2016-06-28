@@ -227,7 +227,25 @@ namespace Vista
         {
             if (lvPantalla != null)
             {
-                               
+                entidadRol.mNombreRol = lvPantalla.Items[0].Text;
+                dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
+                if(dtrRol!=null)
+                    if (dtrRol.Read())
+                    {
+                        entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
+                        rolPantalla.mEliminarRolPantalla(conexion, entidadRolPantalla);
+                    }
+                using (SqlConnection connection = new SqlConnection(conexion.retornarSentenciaConeccion(conexion)))
+                {
+                    connection.Open();
+                    try{
+                        agregarRolPantalla(connection);
+                        MessageBox.Show("Rol modificado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch{
+                        MessageBox.Show("No se ha modificado correctamente el rol", "Error de modificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    } 
+                }
             }
             else
             {
@@ -465,6 +483,10 @@ namespace Vista
         {
             txtNombreRol.Text = "";
             lvPantalla.Items.Clear();
+            chkConsultar.Enabled = false;
+            chkEliminar.Enabled = false;
+            chkInsertar.Enabled = false;
+            chkModificar.Enabled = false;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

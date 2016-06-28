@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Modelo;
 using System.Data.SqlClient;
 
+
 namespace Controlador
 {
    public class clsRol
@@ -18,20 +19,31 @@ namespace Controlador
             return conexion.mSeleccionar(sentencia, pEntidadUsuario.mIdUsuario);
         }
 
-        public Boolean mInsertarRol(clsConexion conexion, clsEntidadRol pEntidadRol)
+        public void mInsertarRol(clsConexion conexion, clsEntidadRol pEntidadRol)
         {
-            sentencia = "insert into tbRol(nombre) values (@nombre)";
-            return conexion.mEjecutar(sentencia, conexion, pEntidadRol);
+            using (SqlConnection connection = new SqlConnection(conexion.retornarSentenciaConeccion(conexion)))
+            {
+                sentencia = "insert into tbRol(nombre) values (@nombre)";
+                connection.Open();
+                conexion.mEjecutarTransaction(sentencia, connection, pEntidadRol);
+            }
+                
+            //return conexion.mEjecutar(sentencia, conexion, pEntidadRol);
+        }
+        public SqlDataReader mConsultaIdRolScope(clsConexion conexion, clsEntidadRol pEntidadRol, SqlConnection connection)
+        {
+                sentencia = "select idRol from tbRol where  nombre=@nombre";
+                return conexion.mSeleccionarScope(sentencia, connection, pEntidadRol);    
         }
 
+        
         public SqlDataReader mConsultaIdRoles(clsConexion conexion, clsEntidadRol pEntidadRol)
         {
             sentencia = "select idRol from tbRol where  nombre=@codigo";
             return conexion.mSeleccionarTipoString(sentencia, pEntidadRol.mNombreRol);
         }
-        
 
-       public SqlDataReader mConsultarRoles(clsConexion conexion)
+        public SqlDataReader mConsultarRoles(clsConexion conexion)
         {
             sentencia = "select nombre from tbRol";
             return conexion.mSeleccionarGeneral(conexion, sentencia);

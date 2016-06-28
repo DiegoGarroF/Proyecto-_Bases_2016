@@ -29,6 +29,11 @@ namespace Controlador
         {
             sentencia = "select idPantalla from tbPantalla where  nombre=@codigo";
             return conexion.mSeleccionarTipoString(sentencia, pEntidadPantalla.mNombrePantalla);
-        }       
+        }
+        public SqlDataReader mConsultaIdPantallaScope(clsConexion conexion, clsEntidadPantalla pEntidadPantalla, SqlConnection connection)
+        {
+            sentencia = "select idPantalla from tbPantalla where  nombre=@nombre";
+            return conexion.mSeleccionarScope(sentencia,connection ,pEntidadPantalla);
+        }
     }
 }

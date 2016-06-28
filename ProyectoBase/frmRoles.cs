@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Modelo;
 using Controlador;
 using System.Data.SqlClient;
+using System.Transactions;
 
 
 namespace Vista
@@ -31,7 +32,8 @@ namespace Vista
         clsUsuario usuario;
         SqlDataReader dtrRol;
         clsEntidadPantalla entidadPantalla;
-        clsRolPantalla rolPantalla;    
+        clsRolPantalla rolPantalla;   
+        IAsyncResult pruebaRol; 
 
         public frmRoles(frmMenuPrincipal menu)
         {
@@ -71,28 +73,25 @@ namespace Vista
 
         
     }
-        public void agregarRolPantalla()
+        public void agregarRolPantalla(SqlConnection connection)
         {
             foreach (ListViewItem I in lvPantalla.Items)//Se recorre el listview y se inserta el rol a todas las pantallas que aparecen en el listview
             {
                 establecerPrivilegiosRol(I);
                 entidadPantalla.mNombrePantalla = I.SubItems[1].Text;
-                dtrPantalla= pantalla.mConsultaIdPantalla(conexion,entidadPantalla);
+                dtrPantalla= pantalla.mConsultaIdPantallaScope(conexion,entidadPantalla, connection);//aqui ocupa otra trasacción
                 if(dtrPantalla!=null)
                     if (dtrPantalla.Read())
                     {
                         entidadRolPantalla.mIdPantalla = dtrPantalla.GetInt32(0);
+                        dtrPantalla.Close();
                         entidadRolPantalla.mCreadoPor = clsConstantes.nombreUsuario;
                         entidadRolPantalla.mFechaCreacion = frmUsuario.fechaSistema();
                         entidadRolPantalla.mModificadoPor = "";
                         entidadRolPantalla.mFechaModificacion = "";
-                        rolPantalla.mInsertarRolPantalla(conexion, entidadRolPantalla);
-                        
-
+                        rolPantalla.mInsertarRolPantalla(conexion, entidadRolPantalla, connection);
                     }
-                
-            }
-                
+            }               
         }
 
         private void btnAgregar_Click(object sender, EventArgs e)
@@ -107,22 +106,52 @@ namespace Vista
                 {
                     if (cbPantalla.Text != null)
                     {
-                        if (clRol.mInsertarRol(conexion, entidadRol))
-                        {                           
-                            dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
-                            if (dtrRol != null)
-                              if (dtrRol.Read())
-                                {
-                                    entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
-                                    agregarRolPantalla();
-                                    MessageBox.Show("Se ha insertado el rol completo", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                                    limpiar();
-                                }
-                        }
-                        else
+
+                        using (TransactionScope transactionScope = new TransactionScope())
                         {
-                            MessageBox.Show("Ocurrió un error al insertar el rol", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                            try
+                            {
+                                clRol.mInsertarRol(conexion, entidadRol);
+
+                                using (SqlConnection connection = new SqlConnection(conexion.retornarSentenciaConeccion(conexion)))
+                                {
+                                    connection.Open();
+                                    dtrRol = clRol.mConsultaIdRolScope(conexion, entidadRol, connection);//otro scope aquí ocupo
+
+                                    if (dtrRol != null)
+                                        if (dtrRol.Read())//ERROR AL LEER
+                                        {
+                                            entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
+                                            dtrRol.Close();
+                                            agregarRolPantalla(connection);
+                                            transactionScope.Complete();
+                                            MessageBox.Show("Se ha insertado el rol completo", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                            limpiar();
+                                        }
+                                }
+                            }
+                            catch
+                            {
+                                MessageBox.Show("No se ha insertado el rol completo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
+
+                        //    if (clRol.mInsertarRol(conexion, entidadRol))
+                        //    {                           
+                        //        dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
+                        //        if (dtrRol != null)
+                        //          if (dtrRol.Read())
+                        //            {
+                        //                entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
+                        //                agregarRolPantalla();
+                        //                MessageBox.Show("Se ha insertado el rol completo", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        //                limpiar();
+                        //            }
+                        //    }
+                        //    else
+                        //    {
+                        //        MessageBox.Show("Ocurrió un error al insertar el rol", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                        //    }
                     }
                 }
             }
@@ -137,7 +166,7 @@ namespace Vista
 
         public Boolean mValidarInformacionRoles()
         {
-            if (txtNombreRol.Text != "")
+            if (lvPantalla.Items[0].Text != "")
             {
                 return true;
             }

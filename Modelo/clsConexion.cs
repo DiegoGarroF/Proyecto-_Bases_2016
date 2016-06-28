@@ -413,7 +413,57 @@ namespace Modelo
                 return conexion;
             }
             return null;
-        }       
+        }
+
+        public void mEjecutarTransaction(string strSentencia, SqlConnection cone, Object objeto)
+        {
+            comando = new SqlCommand(strSentencia, cone);
+            comando.CommandType = System.Data.CommandType.Text;
+            if (objeto is clsEntidadRol)
+            {
+                clsEntidadRol entidadRol = (clsEntidadRol)objeto;
+                comando.Parameters.AddWithValue("@nombre", entidadRol.mNombreRol);
+            }
+            else
+            {
+                if (objeto is clsEntidadRolPantalla)
+                {                    
+                    clsEntidadRolPantalla pEntidadRolPantalla = (clsEntidadRolPantalla)objeto;
+                    comando.Parameters.AddWithValue("@idRol", pEntidadRolPantalla.mIdRol);
+                    comando.Parameters.AddWithValue("@idPantalla", pEntidadRolPantalla.mIdPantalla);
+                    comando.Parameters.AddWithValue("@modificar", pEntidadRolPantalla.mModificar);
+                    comando.Parameters.AddWithValue("@insertar", pEntidadRolPantalla.mInsertar);
+                    comando.Parameters.AddWithValue("@consultar", pEntidadRolPantalla.mConsultar);
+                    comando.Parameters.AddWithValue("@eliminar", pEntidadRolPantalla.mEliminar);
+                    comando.Parameters.AddWithValue("@creadoPor", pEntidadRolPantalla.mCreadoPor);
+                    comando.Parameters.AddWithValue("@fechaCreacion", pEntidadRolPantalla.mFechaCreacion);
+                    comando.Parameters.AddWithValue("@modificadoPor", pEntidadRolPantalla.mModificadoPor);
+                    comando.Parameters.AddWithValue("@fechaModificacion", pEntidadRolPantalla.mFechaModificacion);
+                }
+            }                
+            comando.ExecuteNonQuery();           
+        }
+        public string retornarSentenciaConeccion(clsConexion cone)
+        {
+            return "user id='" + cone.codigo+ "';password='" + cone.clave + "'; Data Source='" + mNomServidor() + "'; Initial Catalog='" + this.baseDatos + "'";
+        }
+        public SqlDataReader mSeleccionarScope(string strSentencia, SqlConnection cone, Object objeto)
+        {
+            comando = new SqlCommand(strSentencia, cone);
+            comando.CommandType = System.Data.CommandType.Text;
+                      
+            if (objeto is clsEntidadRol)
+            {
+                clsEntidadRol pEntidadRol = (clsEntidadRol)objeto;
+                comando.Parameters.AddWithValue("@nombre", pEntidadRol.mNombreRol);
+            }
+            if (objeto is clsEntidadPantalla)
+            {
+                clsEntidadPantalla pEntidadPantalla = (clsEntidadPantalla)objeto;
+                comando.Parameters.AddWithValue("@nombre", pEntidadPantalla.mNombrePantalla);
+            }
+            return comando.ExecuteReader();
+        }
         #endregion
     }
 }

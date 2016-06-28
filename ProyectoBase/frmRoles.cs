@@ -227,7 +227,25 @@ namespace Vista
         {
             if (lvPantalla != null)
             {
-                               
+                entidadRol.mNombreRol = lvPantalla.Items[0].Text;
+                dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
+                if(dtrRol!=null)
+                    if (dtrRol.Read())
+                    {
+                        entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
+                        rolPantalla.mEliminarRolPantalla(conexion, entidadRolPantalla);
+                    }
+                using (SqlConnection connection = new SqlConnection(conexion.retornarSentenciaConeccion(conexion)))
+                {
+                    connection.Open();
+                    try{
+                        agregarRolPantalla(connection);
+                        MessageBox.Show("Rol modificado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch{
+                        MessageBox.Show("No se ha modificado correctamente el rol", "Error de modificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    } 
+                }
             }
             else
             {
@@ -249,7 +267,7 @@ namespace Vista
 
         public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
         {
-            if (dtrPermisos.GetBoolean(2))
+            if (dtrPermisos.GetBoolean(0))
             {
                 btnModificar.Enabled = true;                                
                 btnQuitarPantalla.Enabled = true;
@@ -262,7 +280,7 @@ namespace Vista
                 txtNombreRol.Enabled = true;
                 btnLimpiar.Enabled = true;
             }
-            if (dtrPermisos.GetBoolean(3))
+            if (dtrPermisos.GetBoolean(1))
             {
                 btnAgregar.Enabled = true;
                 btnAgregarPrivilegios.Enabled = true;
@@ -275,13 +293,13 @@ namespace Vista
                 txtNombreRol.Enabled = true;
                 btnLimpiar.Enabled = true;
             }
-            if (dtrPermisos.GetBoolean(4))
+            if (dtrPermisos.GetBoolean(2))
             {
                 btnBuscar.Enabled = true;
                 txtNombreRol.Enabled = true;
                 btnLimpiar.Enabled = true;
             }
-            if (dtrPermisos.GetBoolean(5))
+            if (dtrPermisos.GetBoolean(3))
             {
                 btnEliminar.Enabled = true;
                 btnBuscar.Enabled = true;
@@ -312,9 +330,16 @@ namespace Vista
                     if (dtrPrivilegiosUsuario != null)
                         while (dtrPrivilegiosUsuario.Read())
                         {
-                            if(dtrPrivilegiosUsuario.GetString(6)=="Mantenimiento de roles")
-                            mActivarBotonesAdministrador(dtrPrivilegiosUsuario);
+                            if (dtrPrivilegiosUsuario.GetString(4) == this.Name)
+                                mActivarBotonesAdministrador(dtrPrivilegiosUsuario);
                         }
+                    clsLibro libro = new clsLibro();
+                    dtrPrivilegiosUsuario = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(entidadUsuario.mIdUsuario), this.Name);
+                    if(dtrPrivilegiosUsuario!=null)
+                    while (dtrPrivilegiosUsuario.Read())
+                    {
+                        mActivarBotonesAdministrador(dtrPrivilegiosUsuario);
+                    }
                 }
         }       
 
@@ -465,6 +490,10 @@ namespace Vista
         {
             txtNombreRol.Text = "";
             lvPantalla.Items.Clear();
+            chkConsultar.Enabled = false;
+            chkEliminar.Enabled = false;
+            chkInsertar.Enabled = false;
+            chkModificar.Enabled = false;
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

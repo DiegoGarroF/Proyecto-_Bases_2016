@@ -72,9 +72,38 @@ namespace Vista
             dtrPantalla = pantalla.mConsultarPantallas(conexion);
             if (dtrPantalla != null)
                 while (dtrPantalla.Read())
-                {
-                    cbPantalla.Items.Add(dtrPantalla.GetSqlString(0));
-
+                {                    
+                    if (dtrPantalla.GetSqlString(0) == this.Name)
+                    {
+                        cbPantalla.Items.Add("Mantenimiento de usuarios");
+                    }
+                    else {
+                        if (dtrPantalla.GetSqlString(0) == "frmRoles")
+                        {
+                            cbPantalla.Items.Add("Mantenimiento de roles");
+                        }
+                        else
+                        {
+                            if (dtrPantalla.GetSqlString(0) == "frmBitacora")
+                            {
+                                cbPantalla.Items.Add("Auditoría");
+                            }
+                            else
+                            {
+                                if (dtrPantalla.GetSqlString(0) == "frmGestionPrestamos")
+                                {
+                                    cbPantalla.Items.Add("Mantenimiento de prestamos");
+                                }
+                                else
+                                {
+                                    if (dtrPantalla.GetSqlString(0) == "frmLibro")
+                                    {
+                                        cbPantalla.Items.Add("Mantenimiento de libros");
+                                    }
+                                }
+                            }
+                        }
+                    }                                            
                 }
             //Se llena el combobox de roles
             dtrRol = rol.mConsultarRoles(conexion);
@@ -96,7 +125,7 @@ namespace Vista
                     if (dtrPrivilegiosUsuaio != null)
                         while (dtrPrivilegiosUsuaio.Read())
                         { 
-                            if(dtrPrivilegiosUsuaio.GetString(6)=="Mantenimiento de usuarios")                         
+                            if(dtrPrivilegiosUsuaio.GetString(4)==this.Name)                         
                                 mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);                         
                         }                   
                 }         
@@ -147,12 +176,53 @@ namespace Vista
             agregarUsuarioPrivilegio(idUsuarioAgregado);
             limpiar();
         }
+
+        public string retornarPantalla(string nombre)
+        {
+            if (nombre == "Mantenimiento de usuarios")
+            {
+                return this.Name;
+            }
+            else
+            {
+                if (nombre == "Mantenimiento de roles")
+                {
+                    return "frmRoles";
+                }
+                else
+                {
+                    if (nombre == "Auditoria")
+                    {
+                        return "frmBitacora";
+                    }
+                    else
+                    {
+                        if (nombre == "Mantenimiento de prestamos")
+                        {
+                            return "frmGestionPrestamos";
+                        }
+                        else
+                        {
+                            if (nombre == "Mantenimiento de libros")
+                            {
+                                return "frmLibro";
+                            }
+                            else
+                            {
+                                return "";
+                            }
+                        }
+                    }
+                }
+            }
+        }
         //Este método inserta los roles de un usuario, la variable idUsuarioAgregado es el usuario al que se le cargarán los roles
         public void agregarUsuarioRol(int idUsuarioAgregado)
         {
             foreach (ListViewItem I in lvRoles.Items)//Se recorre el listview y se insertan todos los roles que aparecen en el listview
             {
-                entidadRol.mNombreRol = I.SubItems[0].Text;
+                
+                //entidadRol.mNombreRol = I.SubItems[0].Text;
                 dtrRol = rol.mConsultaIdRoles(conexion, entidadRol);
                 if (dtrRol != null)
                     if (dtrRol.Read())
@@ -173,7 +243,7 @@ namespace Vista
             entidadUsuarioPantalla.mIdUsuario = idUsuarioAgregado;
             foreach (ListViewItem I in lvPrivilegios.Items)//Se recorre el listview y se insertan todos los privilegios que aparecen en el listview
             {
-                entidadPantalla.mNombrePantalla = I.SubItems[0].Text;
+                entidadPantalla.mNombrePantalla = retornarPantalla(I.SubItems[0].Text);
                 dtrPantalla = pantalla.mConsultaIdPantalla(conexion, entidadPantalla);
                 if (dtrPantalla != null)
                     if (dtrPantalla.Read())
@@ -739,14 +809,14 @@ namespace Vista
 
         public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
         {
-            if (dtrPermisos.GetBoolean(2)) {
+            if (dtrPermisos.GetBoolean(0)) {
                 btnModificar.Enabled = true;
                 chkPrivilegio.Enabled = true;
                 chkRol.Enabled = true;
                 btnEliminarRol.Enabled = true;
                 btnEliminarPrivilegioPantalla.Enabled = true;
             }            
-            if (dtrPermisos.GetBoolean(3)) {
+            if (dtrPermisos.GetBoolean(1)) {
                 btnAgregar.Enabled = true;
                 btnAgregarPrivilegios.Enabled = true;
                 btnAgregarRol.Enabled = true;
@@ -755,11 +825,11 @@ namespace Vista
                 btnEliminarRol.Enabled = true;
                 btnEliminarPrivilegioPantalla.Enabled = true;
             }        
-            if (dtrPermisos.GetBoolean(4)) {
+            if (dtrPermisos.GetBoolean(2)) {
                 btnConsultar.Enabled = true;
                 btnBuscar.Enabled = true;
             }
-            if (dtrPermisos.GetBoolean(5)) {
+            if (dtrPermisos.GetBoolean(3)) {
                 btnEliminar.Enabled = true;
             }
         

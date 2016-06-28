@@ -76,6 +76,12 @@ namespace Vista
             txtIdLibro.Enabled = false;
             txtNombreLibro.Enabled = false;
             txtIsbn.Enabled = false;
+            btnAgregar.Enabled = false;
+            btnBuscarPrestamo.Enabled = false;
+            btnBuscarCliente.Enabled = false;
+            btnBuscarLibro.Enabled = false;
+            btnEliminar.Enabled = false;
+
         }
 
 
@@ -83,52 +89,86 @@ namespace Vista
         {
             verificar();
             mBloquearCampos();
-            //PROCESO PARA VER SI UN USUARIO TIENE PRIVILEGIOS SOBRE ESTA VENTANA
-            pEntidadUsuario.mUsuario = clsConstantes.nombreUsuario;
-            pEntidadUsuario.mContrasena = "";
-            dataReader = usuario.mLogueoPrincipal(conexion, pEntidadUsuario); // saco id del usuario conectado
-            if (dataReader != null)
-                while (dataReader.Read())
+            mHabilitarBotones();
+        }
+        public void mHabilitarBotones()
+        {
+
+            clsEntidadUsuario pEntidadUsuario = new clsEntidadUsuario();
+            dataReader = prestamo.mSeleccionarIdUsuario(conexion, clsConstantes.nombreUsuario);
+            if (dataReader != null && dataReader.Read())
+            {
+                pEntidadUsuario.mIdUsuario = dataReader.GetInt32(0);
+
+                dataReader = prestamo.mObtenerRolesUsuario(this.conexion, Convert.ToString(dataReader.GetInt32(0)), this.Name);
+                if (dataReader != null && dataReader.Read())
                 {
-                    pEntidadUsuario.mIdUsuario = dataReader.GetInt32(0);
-                    dataReader2 = usuario.mBuscarPrivilegiosUsuario(conexion, pEntidadUsuario);
-                    if (dataReader2 != null)
-                        while (dataReader2.Read())
-                        {
-                            if (dataReader2.GetString(6) == "Mantenimiento de Prestamos")
-                                mActivarBotonesAdministrador(dataReader2);
-                        }
+                    if (dataReader.GetBoolean(0))// Modificar
+                    {
+                        
+                    }
+                    if (dataReader.GetBoolean(1))// Insertar
+                    {
+                        this.btnAgregar.Enabled = true;
+                    }
+                    if (dataReader.GetBoolean(2))//Consultar
+                    {
+                        this.btnBuscarPrestamo.Enabled = true;
+                        this.btnBuscarLibro.Enabled = true;
+                        this.btnBuscarCliente.Enabled = true;
+                    }
+                    if (dataReader.GetBoolean(3))//Eliminar
+                    {
+                        this.btnEliminar.Enabled = true;
+                    }
                 }
+                //Privilegios directos al usuario para esa pantalla
+                dataReader = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(pEntidadUsuario.mIdUsuario), this.Name);
+                if (dataReader != null && dataReader.Read())
+                {
+                    if (dataReader.GetBoolean(0))// Modificar
+                    {
+                        
+                    }
+                    if (dataReader.GetBoolean(1))// Insertar
+                    {
+                        this.btnAgregar.Enabled = true;
+                    }
+                    if (dataReader.GetBoolean(2))//Consultar
+                    {
+                        this.btnBuscarPrestamo.Enabled = true;
+                        this.btnBuscarLibro.Enabled = true;
+                        this.btnBuscarCliente.Enabled = true;
+                    }
+                    if (dataReader.GetBoolean(3))//Eliminar
+                    {
+                        this.btnEliminar.Enabled = true;
+                    }
+                }
+            }
         }
         public void mActivarBotonesAdministrador(SqlDataReader dataReader)
         {
-            if (dataReader.GetBoolean(2))
+            if (dataReader.GetBoolean(2))//Modificar
             {
-                btnEliminar.Enabled = false;
-                btnAgregar.Enabled = false;
+                
             }
-            if (dataReader.GetBoolean(3))
+            if (dataReader.GetBoolean(3))//Insertar
             {
                 btnAgregar.Enabled = true;
                 btnBuscarPrestamo.Enabled = true;
-                btnEliminar.Enabled = true;
                 btnBuscarLibro.Enabled = true;
                 btnBuscarCliente.Enabled = true;
             }
-            if (dataReader.GetBoolean(4))
+            if (dataReader.GetBoolean(4))//Consultar
             {
                 btnBuscarPrestamo.Enabled = true;
                 btnBuscarLibro.Enabled = true;
                 btnBuscarCliente.Enabled = true;
-                btnEliminar.Enabled = false;
-                btnAgregar.Enabled = false;
             }
-            if (dataReader.GetBoolean(5))
+            if (dataReader.GetBoolean(5))//Eliminar
             {
                 btnEliminar.Enabled = true;
-                btnBuscarPrestamo.Enabled = true;
-                btnBuscarLibro.Enabled = true;
-                btnBuscarCliente.Enabled = true;
             }
         }
 

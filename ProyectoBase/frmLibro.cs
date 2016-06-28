@@ -139,6 +139,7 @@ namespace Vista
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
+          
             mVerificarId();
 
         }
@@ -193,6 +194,10 @@ namespace Vista
                     MessageBox.Show("Libro No Registrado Por Problemas de ID", "ID LIBRO EXISTENTE", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }// fin del if que verifca si se selecciono un libro ya existente 
+            else
+            {
+                mAgreagarLibro();
+            }
         }
         #endregion
         #region Metodo para agregar un Libro
@@ -251,19 +256,19 @@ namespace Vista
                 dtr = libro.mObtenerRolesUsuario(this.conexion, Convert.ToString(dtr.GetInt32(0)), this.Name);
                 if (dtr != null && dtr.Read())
                 {
-                    if (dtr.GetString(0).Equals("true"))// Modificar
+                    if (dtr.GetBoolean(0)==true)// Modificar
                     {
                         this.btnModificar.Enabled = true;
                     }
-                    if (dtr.GetString(1).Equals("true"))// Insertar
+                    if (dtr.GetBoolean(1))// Insertar
                     {
                         this.btnAgregar.Enabled = true;
                     }
-                    if (dtr.GetString(2).Equals("true"))//Consultar
+                    if (dtr.GetBoolean(2))//Consultar
                     {
                         this.btnConsultar.Enabled = true;
                     }
-                    if (dtr.GetString(3).Equals("true"))//Eliminar
+                    if (dtr.GetBoolean(3))//Eliminar
                     {
                         this.btnEliminar.Enabled = true;
                     }
@@ -272,19 +277,19 @@ namespace Vista
                 dtr = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(pEntidadUsuario.mIdUsuario), this.Name);
                 if(dtr!=null && dtr.Read())
                 {
-                    if (dtr.GetString(0).Equals("true"))// Modificar
+                    if (dtr.GetBoolean(0))// Modificar
                     {
                         this.btnModificar.Enabled = true;
                     }
-                    if (dtr.GetString(1).Equals("true"))// Insertar
+                    if (dtr.GetBoolean(1))// Insertar
                     {
                         this.btnAgregar.Enabled = true;
                     }
-                    if (dtr.GetString(2).Equals("true"))//Consultar
+                    if (dtr.GetBoolean(2))//Consultar
                     {
                         this.btnConsultar.Enabled = true;
                     }
-                    if (dtr.GetString(3).Equals("true"))//Eliminar
+                    if (dtr.GetBoolean(3))//Eliminar
                     {
                         this.btnEliminar.Enabled = true;
                     }

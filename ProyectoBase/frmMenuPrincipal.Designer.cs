@@ -44,6 +44,7 @@
             // 
             // menuStrip1
             // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.usuariosToolStripMenuItem,
@@ -66,6 +67,9 @@
             // 
             // salirToolStripMenuItem
             // 
+            this.salirToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.salirToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.salirToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.auditoria2;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
             this.salirToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
             this.salirToolStripMenuItem.Text = "Auditoría";
@@ -73,6 +77,10 @@
             // 
             // salirToolStripMenuItem1
             // 
+            this.salirToolStripMenuItem1.BackColor = System.Drawing.Color.DimGray;
+            this.salirToolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.salirToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.salirToolStripMenuItem1.Image = global::ProyectoBase.Properties.Resources.apagar2;
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
             this.salirToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
             this.salirToolStripMenuItem1.Text = "Salir";
@@ -89,6 +97,9 @@
             // 
             // mantenimientoDeUsuariosToolStripMenuItem
             // 
+            this.mantenimientoDeUsuariosToolStripMenuItem.BackColor = System.Drawing.Color.DimGray;
+            this.mantenimientoDeUsuariosToolStripMenuItem.ForeColor = System.Drawing.Color.Cornsilk;
+            this.mantenimientoDeUsuariosToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.usuarios;
             this.mantenimientoDeUsuariosToolStripMenuItem.Name = "mantenimientoDeUsuariosToolStripMenuItem";
             this.mantenimientoDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.mantenimientoDeUsuariosToolStripMenuItem.Text = "Mantenimiento de Usuarios";
@@ -96,6 +107,9 @@
             // 
             // mantenimientoDeRolesToolStripMenuItem
             // 
+            this.mantenimientoDeRolesToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.mantenimientoDeRolesToolStripMenuItem.ForeColor = System.Drawing.Color.Cornsilk;
+            this.mantenimientoDeRolesToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.rol;
             this.mantenimientoDeRolesToolStripMenuItem.Name = "mantenimientoDeRolesToolStripMenuItem";
             this.mantenimientoDeRolesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
             this.mantenimientoDeRolesToolStripMenuItem.Text = "Mantenimiento de Roles";
@@ -111,6 +125,9 @@
             // 
             // mantenimientoPrestamoToolStripMenuItem
             // 
+            this.mantenimientoPrestamoToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.mantenimientoPrestamoToolStripMenuItem.ForeColor = System.Drawing.Color.FloralWhite;
+            this.mantenimientoPrestamoToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.setting;
             this.mantenimientoPrestamoToolStripMenuItem.Name = "mantenimientoPrestamoToolStripMenuItem";
             this.mantenimientoPrestamoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.mantenimientoPrestamoToolStripMenuItem.Text = "Mantenimiento";
@@ -126,6 +143,9 @@
             // 
             // opcionNuevoLibro
             // 
+            this.opcionNuevoLibro.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.opcionNuevoLibro.ForeColor = System.Drawing.Color.Cornsilk;
+            this.opcionNuevoLibro.Image = global::ProyectoBase.Properties.Resources.book;
             this.opcionNuevoLibro.Name = "opcionNuevoLibro";
             this.opcionNuevoLibro.Size = new System.Drawing.Size(156, 22);
             this.opcionNuevoLibro.Text = "Mantenimiento";
@@ -135,7 +155,9 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(632, 453);
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackgroundImage = global::ProyectoBase.Properties.Resources.biblioteca;
+            this.ClientSize = new System.Drawing.Size(632, 449);
             this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
             this.IsMdiContainer = true;

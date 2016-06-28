@@ -267,7 +267,7 @@ namespace Vista
 
         public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
         {
-            if (dtrPermisos.GetBoolean(2))
+            if (dtrPermisos.GetBoolean(0))
             {
                 btnModificar.Enabled = true;                                
                 btnQuitarPantalla.Enabled = true;
@@ -280,7 +280,7 @@ namespace Vista
                 txtNombreRol.Enabled = true;
                 btnLimpiar.Enabled = true;
             }
-            if (dtrPermisos.GetBoolean(3))
+            if (dtrPermisos.GetBoolean(1))
             {
                 btnAgregar.Enabled = true;
                 btnAgregarPrivilegios.Enabled = true;
@@ -293,13 +293,13 @@ namespace Vista
                 txtNombreRol.Enabled = true;
                 btnLimpiar.Enabled = true;
             }
-            if (dtrPermisos.GetBoolean(4))
+            if (dtrPermisos.GetBoolean(2))
             {
                 btnBuscar.Enabled = true;
                 txtNombreRol.Enabled = true;
                 btnLimpiar.Enabled = true;
             }
-            if (dtrPermisos.GetBoolean(5))
+            if (dtrPermisos.GetBoolean(3))
             {
                 btnEliminar.Enabled = true;
                 btnBuscar.Enabled = true;
@@ -330,9 +330,16 @@ namespace Vista
                     if (dtrPrivilegiosUsuario != null)
                         while (dtrPrivilegiosUsuario.Read())
                         {
-                            if(dtrPrivilegiosUsuario.GetString(6)=="Mantenimiento de roles")
-                            mActivarBotonesAdministrador(dtrPrivilegiosUsuario);
+                            if (dtrPrivilegiosUsuario.GetString(4) == this.Name)
+                                mActivarBotonesAdministrador(dtrPrivilegiosUsuario);
                         }
+                    clsLibro libro = new clsLibro();
+                    dtrPrivilegiosUsuario = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(entidadUsuario.mIdUsuario), this.Name);
+                    if(dtrPrivilegiosUsuario!=null)
+                    while (dtrPrivilegiosUsuario.Read())
+                    {
+                        mActivarBotonesAdministrador(dtrPrivilegiosUsuario);
+                    }
                 }
         }       
 

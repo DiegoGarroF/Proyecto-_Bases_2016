@@ -91,7 +91,7 @@ namespace Controlador
 
         public SqlDataReader mBuscarPrivilegiosUsuario(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
         {
-            sentencia = "select u.idUsuario, ur.idRol, rp.modificar, rp.insertar, rp.consultar, rp.eliminar, p.nombre from tbUsuario u, tbUsuarioRol ur, tbRolPantalla rp, tbPantalla p where u.idUsuario = ur.idUsuario and ur.idRol = rp.idRol and rp.idPantalla = p.idPantalla and u.idUsuario=@codigo";
+            sentencia = "select  rp.modificar, rp.insertar, rp.consultar, rp.eliminar, p.nombre from tbUsuario u, tbUsuarioRol ur, tbRolPantalla rp, tbPantalla p where u.idUsuario = ur.idUsuario and ur.idRol = rp.idRol and rp.idPantalla = p.idPantalla and u.idUsuario=@codigo";
             return conexion.mSeleccionar(sentencia, pEntidadUsuario.mIdUsuario);
         }
     }

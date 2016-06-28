@@ -72,9 +72,38 @@ namespace Vista
             dtrPantalla = pantalla.mConsultarPantallas(conexion);
             if (dtrPantalla != null)
                 while (dtrPantalla.Read())
-                {
-                    cbPantalla.Items.Add(dtrPantalla.GetSqlString(0));
-
+                {                    
+                    if (dtrPantalla.GetSqlString(0) == this.Name)
+                    {
+                        cbPantalla.Items.Add("Mantenimiento de usuarios");
+                    }
+                    else {
+                        if (dtrPantalla.GetSqlString(0) == "frmRoles")
+                        {
+                            cbPantalla.Items.Add("Mantenimiento de roles");
+                        }
+                        else
+                        {
+                            if (dtrPantalla.GetSqlString(0) == "frmBitacora")
+                            {
+                                cbPantalla.Items.Add("Auditoría");
+                            }
+                            else
+                            {
+                                if (dtrPantalla.GetSqlString(0) == "frmGestionPrestamos")
+                                {
+                                    cbPantalla.Items.Add("Mantenimiento de prestamos");
+                                }
+                                else
+                                {
+                                    if (dtrPantalla.GetSqlString(0) == "frmLibro")
+                                    {
+                                        cbPantalla.Items.Add("Mantenimiento de libros");
+                                    }
+                                }
+                            }
+                        }
+                    }                                            
                 }
             //Se llena el combobox de roles
             dtrRol = rol.mConsultarRoles(conexion);
@@ -96,7 +125,7 @@ namespace Vista
                     if (dtrPrivilegiosUsuaio != null)
                         while (dtrPrivilegiosUsuaio.Read())
                         { 
-                            if(dtrPrivilegiosUsuaio.GetString(6)=="Mantenimiento de usuarios")                         
+                            if(dtrPrivilegiosUsuaio.GetString(6)==this.Name)                         
                                 mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);                         
                         }                   
                 }         

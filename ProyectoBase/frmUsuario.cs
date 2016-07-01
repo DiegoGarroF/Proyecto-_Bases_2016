@@ -128,7 +128,15 @@ namespace Vista
                             if(dtrPrivilegiosUsuaio.GetString(4)==this.Name)                         
                                 mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);                         
                         }                   
-                }         
+                }
+
+            clsLibro libro = new clsLibro();
+            dtrPrivilegiosUsuaio = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(entidadUsuario.mIdUsuario), this.Name);
+            if (dtrPrivilegiosUsuaio != null)
+                while (dtrPrivilegiosUsuaio.Read())
+                {
+                    mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);
+                }
         }
         //Método para salir de la ventana y mostrar el menú principal
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -222,7 +230,7 @@ namespace Vista
             foreach (ListViewItem I in lvRoles.Items)//Se recorre el listview y se insertan todos los roles que aparecen en el listview
             {
                 
-                //entidadRol.mNombreRol = I.SubItems[0].Text;
+                entidadRol.mNombreRol = I.SubItems[0].Text;
                 dtrRol = rol.mConsultaIdRoles(conexion, entidadRol);
                 if (dtrRol != null)
                     if (dtrRol.Read())

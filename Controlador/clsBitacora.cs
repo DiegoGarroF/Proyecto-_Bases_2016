@@ -20,14 +20,20 @@ namespace Controlador
 
         public Boolean mInsertarBitacora(clsConexion conexion,clsEntidadBitacora pEntidadBitacora)
         {
-            sentencia = "insert into tbBitacora(fecha,hora, tabla,descripcion,idUsuario) VALUES('"+pEntidadBitacora.getFecha()+"', '"+pEntidadBitacora.getHora()+"', '"+pEntidadBitacora.getTabla()+"', '"+pEntidadBitacora.getDescripcion()+"', '"+pEntidadBitacora.getIdUsuario()+"' )";
+            sentencia = "insert into tbBitacora(fecha,hora,idUsuario) VALUES('"+pEntidadBitacora.getFecha()+"', '"+pEntidadBitacora.getHora()+"', "+pEntidadBitacora.getIdUsuario()+"' )";
 
             return conexion.mEjecutar(sentencia, conexion, pEntidadBitacora);
         }
 
+        public SqlDataReader mConsultarContraseña(clsConexion conexion, clsEntidadBitacora pEntidadBitacora)
+        {
+            sentencia = "select contrasena from tbUsuario where idUsuario='"+pEntidadBitacora.getIdUsuario()+"'";
+            return conexion.mSeleccionarGeneral(conexion, sentencia);
+        }
+
         public SqlDataReader mConsultaGeneral(clsConexion conexion )
         {
-            sentencia = "select fecha, hora,tabla, descripcion from tbBitacora";
+            sentencia = "select fecha, hora,idUsuario from tbBitacora";
             return conexion.mSeleccionarGeneral(conexion, sentencia);
         }
 

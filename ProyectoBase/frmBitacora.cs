@@ -17,10 +17,11 @@ namespace Vista
     {
 
         clsEntidadUsuario entidadUsuario;
+        DateTime fecha ;
         clsBitacora clbitacora;
         SqlDataReader dtrUsuario;
         clsUsuario usuario;
-        Object entidad;
+        frmAcceso frmAcceso;
         clsConexion conexion;
         clsEntidadBitacora entidadBitacora;
         frmListaUsuario frmLista;
@@ -29,8 +30,10 @@ namespace Vista
         public frmBitacora(clsConexion conexion)
         {
             usuario = new clsUsuario();
+            fecha = new DateTime();
             clbitacora = new clsBitacora();
             entidadUsuario = new clsEntidadUsuario();
+            frmAcceso = new frmAcceso();
             this.conexion = conexion;
             entidadBitacora = new clsEntidadBitacora();
             frmLista = new frmListaUsuario(conexion);
@@ -51,6 +54,10 @@ namespace Vista
                 entidadUsuario.mNombre=frmLista.getUsuario();
                 tbNombreUsuario.Text = Convert.ToString( frmLista.getUsuario()); // para cargar
                 mConsultarBitacora();
+                if (mInsertarBitacora() == true)
+                {
+                    llenarDatosTabla();
+                }
 
             }
 
@@ -64,73 +71,70 @@ namespace Vista
             {
                 if (dtrUsuario.Read())//si existe
                 {
-                    this.tbNombreUsuario.Text = dtrUsuario.GetString(0);
+                    this.tbNombreUsuario.Text = dtrUsuario.GetString(1);
                 }//Fin del if si existe
 
             }//Fin del if dtrEstudiante!=null
 
         }
 
+        public Boolean mInsertarBitacora()
+        {
+            if (frmAcceso.mValidarContraseña(Convert.ToString(clbitacora.mConsultarContraseña(conexion, entidadBitacora))) == true)
+            {
+                clbitacora.mInsertarBitacora(conexion, entidadBitacora);
+                entidadBitacora.setFecha(DateTime.Today);
+                entidadBitacora.setHora(DateTime.Now);
+                entidadBitacora.setIdiUsuario(entidadUsuario.mIdUsuario);
+                lvBitacora.Items.Clear();
+
+                return true;
+            }
+            else
+                return false;
+        }
+    
+
 
         private void frmBitacora_Load(object sender, EventArgs e)
+        {
+             
+        }
+
+        public void llenarDatosTabla()
         {
             dtrUsuario = clbitacora.mConsultaGeneral(conexion);
 
             if (frmLista.getUsuario() == entidadUsuario.mNombre)
             {
 
-                // dtrUsuario = clbitacora.mInsertarBitacora(conexion, pEntidadBitacora);
                 if (entidadUsuario.mIdUsuario == entidadBitacora.getIdUsuario())
                 {
                     entidadBitacora.setFecha(Convert.ToDateTime(entidadUsuario.mFechaModificacion));
                     entidadBitacora.setHora(localDate);
-                    if (entidad is clsEntidadUsuario)
-                        entidadBitacora.setTabla("tbUsuario");
-                    else
-                        if (entidad is clsEntidadLibro)
-                    {
-                        entidadBitacora.setTabla("tbLibro");
-                        entidadBitacora.setDescripcion("hola");
-                    }
-
-                    else
-                        if (entidad is clsEntidadPrestamo)
-                    { 
-                        entidadBitacora.setTabla("tbPrestamo");
-                        entidadBitacora.setDescripcion("hola");
-                    }
-                    else
-                        if (entidad is clsEntidadPantalla)
-                    { 
-                        entidadBitacora.setTabla("tbPantalla");
-                    entidadBitacora.setDescripcion("hola");
-                }
-                else
-                        if (entidad is clsEntidadRol)
-                        entidadBitacora.setTabla("tbRol");
-                    else
-                        if (entidad is clsEntidadRolPantalla)
-                        entidadBitacora.setTabla("tbRolPantalla");
-                    else
-                        if (entidad is clsUsuarioPantalla)
-                        entidadBitacora.setTabla("tbUsuarioPantalla");
-                    else
-                        if (entidad is clsEntidadUsuarioRol)
-                        entidadBitacora.setTabla("tbUsuarioRol");
 
                 }
 
-                lvBitacora.Items.Clear();
                 if (dtrUsuario != null)
                     while (dtrUsuario.Read())
                     {
-                        ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetDateTime(0)));
-                        item.SubItems.Add(dtrUsuario.GetString(1));
-                        item.SubItems.Add(dtrUsuario.GetString(2));
-                        item.SubItems.Add(dtrUsuario.GetString(3));
-                        lvBitacora.Items.Add(item);
+                        if (entidadUsuario.mIdUsuario == entidadBitacora.getIdUsuario())
+                        {
+                            if (mInsertarBitacora() == true)
+                            {
+                                ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetDateTime(0)));
+                                item.SubItems.Add(dtrUsuario.GetString(1));
+                                item.SubItems.Add(Convert.ToString(dtrUsuario.GetInt32(2)));
+                                lvBitacora.Items.Add(item);
+                            }
+                        }
                     }
+
             }
+
+
+
+
         }
     }
 }

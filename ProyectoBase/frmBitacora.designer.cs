@@ -34,7 +34,6 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.btnConsultar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.SuspendLayout();
@@ -60,13 +59,12 @@
             this.lvBitacora.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4});
+            this.columnHeader3});
             this.lvBitacora.FullRowSelect = true;
             this.lvBitacora.GridLines = true;
             this.lvBitacora.Location = new System.Drawing.Point(25, 70);
             this.lvBitacora.Name = "lvBitacora";
-            this.lvBitacora.Size = new System.Drawing.Size(639, 258);
+            this.lvBitacora.Size = new System.Drawing.Size(322, 258);
             this.lvBitacora.TabIndex = 2;
             this.lvBitacora.UseCompatibleStateImageBehavior = false;
             this.lvBitacora.View = System.Windows.Forms.View.Details;
@@ -79,17 +77,12 @@
             // columnHeader2
             // 
             this.columnHeader2.Text = "Hora";
-            this.columnHeader2.Width = 63;
+            this.columnHeader2.Width = 78;
             // 
             // columnHeader3
             // 
-            this.columnHeader3.Text = "Nombre de la Tabla";
-            this.columnHeader3.Width = 122;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Descripcion";
-            this.columnHeader4.Width = 346;
+            this.columnHeader3.Text = "identificador Usuario";
+            this.columnHeader3.Width = 119;
             // 
             // btnConsultar
             // 
@@ -103,7 +96,7 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(656, 344);
+            this.btnSalir.Location = new System.Drawing.Point(257, 344);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 4;
@@ -115,7 +108,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(760, 379);
+            this.ClientSize = new System.Drawing.Size(366, 379);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnConsultar);
             this.Controls.Add(this.lvBitacora);
@@ -137,7 +130,6 @@
         private System.Windows.Forms.ColumnHeader columnHeader1;
         private System.Windows.Forms.ColumnHeader columnHeader2;
         private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
         private System.Windows.Forms.Button btnConsultar;
         private System.Windows.Forms.Button btnSalir;
     }

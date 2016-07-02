@@ -20,6 +20,7 @@ namespace Vista
         DateTime fecha ;
         clsBitacora clbitacora;
         SqlDataReader dtrUsuario;
+        SqlDataReader dtrBitacora;
         clsUsuario usuario;
         frmAcceso frmAcceso;
         clsConexion conexion;
@@ -80,22 +81,12 @@ namespace Vista
 
         public Boolean mInsertarBitacora()
         {
-
-                
-                entidadBitacora.setFecha(DateTime.Today);
+                 entidadBitacora.setFecha(DateTime.Today);
                 //entidadBitacora.setHora(DateTime.Now);
                 entidadBitacora.setIdiUsuario(entidadUsuario.mIdUsuario);
                 lvBitacora.Items.Clear();
              return clbitacora.mInsertarBitacora(conexion, entidadBitacora);
         }
-    
-
-
-        private void frmBitacora_Load(object sender, EventArgs e)
-        {
-             
-        }
-
         public void llenarDatosTabla()
         {
             dtrUsuario = clbitacora.mConsultaGeneral(conexion);
@@ -124,12 +115,20 @@ namespace Vista
                             }
                         }
                     }
-
             }
+        }
 
-
-
-
+        private void frmBitacora_Load(object sender, EventArgs e)
+        {
+            dtrBitacora = clbitacora.mConsultaGeneral(conexion);
+            if (dtrBitacora != null)
+                while (dtrBitacora.Read())
+                {
+                    ListViewItem item = new ListViewItem(dtrBitacora.GetDateTime(0).ToString("dd/MM/yyyy"));
+                    item.SubItems.Add(dtrBitacora.GetString(1));
+                    item.SubItems.Add(Convert.ToString(dtrBitacora.GetInt32(2)));
+                    lvBitacora.Items.Add(item);
+                }
         }
     }
 }

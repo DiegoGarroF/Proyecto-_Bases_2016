@@ -115,6 +115,7 @@
             this.Controls.Add(this.lbNombreUsuario);
             this.Controls.Add(this.tbNombreUsuario);
             this.Name = "frmBitacora";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmBitacora";
             this.Load += new System.EventHandler(this.frmBitacora_Load);
             this.ResumeLayout(false);

@@ -80,18 +80,13 @@ namespace Vista
 
         public Boolean mInsertarBitacora()
         {
-            if (frmAcceso.mValidarContraseña(Convert.ToString(clbitacora.mConsultarContraseña(conexion, entidadBitacora))) == true)
-            {
-                clbitacora.mInsertarBitacora(conexion, entidadBitacora);
+
+                
                 entidadBitacora.setFecha(DateTime.Today);
-                entidadBitacora.setHora(DateTime.Now);
+                //entidadBitacora.setHora(DateTime.Now);
                 entidadBitacora.setIdiUsuario(entidadUsuario.mIdUsuario);
                 lvBitacora.Items.Clear();
-
-                return true;
-            }
-            else
-                return false;
+             return clbitacora.mInsertarBitacora(conexion, entidadBitacora);
         }
     
 
@@ -111,7 +106,7 @@ namespace Vista
                 if (entidadUsuario.mIdUsuario == entidadBitacora.getIdUsuario())
                 {
                     entidadBitacora.setFecha(Convert.ToDateTime(entidadUsuario.mFechaModificacion));
-                    entidadBitacora.setHora(localDate);
+                    //entidadBitacora.setHora(localDate);
 
                 }
 

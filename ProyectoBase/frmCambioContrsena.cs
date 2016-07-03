@@ -46,6 +46,18 @@ namespace Vista
             }
         }
 
+        public Boolean conFirmarTamaño()
+        {
+            if (txtNuevaContraseña.TextLength==8 && txtConfirmarContraseña.TextLength==8)
+            {
+                return true;
+            }
+            else
+            {
+                MessageBox.Show("Asegurese que las contraseñas las contrseñas tengan minimo 8 caracteres", "OJO", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
+                return false;
+            }
+        }
         private void frmCambioContrsena_Load(object sender, EventArgs e)
         {
             txtUsuario.Text = acceso.guardarUsuario();
@@ -57,9 +69,12 @@ namespace Vista
             acceso.Show();
             this.Close();
         }
-        public void actualizarContraseña()
+        public string encriptar(String contraseña)
         {
-            
+            string resultado = string.Empty;
+            byte[] encriptar = System.Text.Encoding.Unicode.GetBytes(contraseña);
+            resultado = Convert.ToBase64String(encriptar);
+            return resultado;
         }
 
         public Boolean verificarCampos()
@@ -78,10 +93,10 @@ namespace Vista
         { 
             if(verificarCampos()== true)
             {
-                if (confirmarCcontra() == true)
+                if (confirmarCcontra() == true && conFirmarTamaño()==true)
                 {
                     pEntidadUsuario.mUsuario = txtUsuario.Text;
-                    pEntidadUsuario.mContrasena = txtNuevaContraseña.Text;
+                    pEntidadUsuario.mContrasena = encriptar(txtNuevaContraseña.Text);
                     if (usuario.mModificarContraseña(conexion, pEntidadUsuario , btnConfirmar.Text="Modificar"))
                     {
                         MessageBox.Show("Contraseña cambiada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);

@@ -133,7 +133,8 @@ namespace Vista
                         if (dtrUsuario.GetInt32(6) == 0 || dtrUsuario.GetInt32(6) == 1 || dtrUsuario.GetInt32(6) == 2)
                         {
                             entidadUsuario.mEstadoUsuario = dtrUsuario.GetInt32(6);
-                            if (mValidarContraseña(dtrUsuario.GetString(2)))
+                            
+                            if (mValidarContraseña(desencriptar(dtrUsuario.GetString(2))))
                             {
                                 if (dtrUsuario.GetBoolean(7) == false)
                                 {
@@ -202,7 +203,13 @@ namespace Vista
         }
 
 
-
+       public string desencriptar(String claveAlmacenada)
+        {
+            string resultado = string.Empty;
+            byte[] desencriptar = Convert.FromBase64String(claveAlmacenada);
+            resultado = System.Text.Encoding.Unicode.GetString(desencriptar);
+            return resultado;
+        }
         public Boolean mValidarContraseña(String claveAlmacenada)
         {
             if (this.txtClave.Text.Equals(claveAlmacenada))

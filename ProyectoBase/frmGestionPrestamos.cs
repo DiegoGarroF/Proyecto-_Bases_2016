@@ -27,7 +27,7 @@ namespace Vista
         private SqlDataReader dataReader, dataReader2;
         #endregion
 
-
+        //Constructor de la calse frmPrestamos
         public frmGestionPrestamos(clsConexion conexion)
         {
             this.conexion = conexion;
@@ -41,6 +41,7 @@ namespace Vista
             InitializeComponent();
         }
 
+        //Metodo para buscar un cliente boton
         private void btnBuscarCliente_Click(object sender, EventArgs e)
         {
             frmListaGeneral listaGeneral = new frmListaGeneral(conexion);
@@ -54,6 +55,7 @@ namespace Vista
 
             }
         }
+        //Metodo para cargar la informacion de un cliente
         public void cargarCamposCliente()
         {
             pEntidadUsuario.mIdUsuario = Convert.ToInt32(txtIdCliente.Text);
@@ -68,6 +70,7 @@ namespace Vista
             }
         }
 
+        //metodo para bloquear todos los campos que no se pueden modificar
         public void mBloquearCampos()
         {
             txtApellidos.Enabled = false;
@@ -87,10 +90,12 @@ namespace Vista
 
         private void frmGestionPrestamos_Load(object sender, EventArgs e)
         {
-            verificar();
+//            verificar();
             mBloquearCampos();
             mHabilitarBotones();
         }
+
+        //Metodo que realiza una consulta en la base de datos y ve todos los privilegios que este tiene con este sistema
         public void mHabilitarBotones()
         {
 
@@ -147,31 +152,8 @@ namespace Vista
                 }
             }
         }
-        public void mActivarBotonesAdministrador(SqlDataReader dataReader)
-        {
-            if (dataReader.GetBoolean(2))//Modificar
-            {
-                
-            }
-            if (dataReader.GetBoolean(3))//Insertar
-            {
-                btnAgregar.Enabled = true;
-                btnBuscarPrestamo.Enabled = true;
-                btnBuscarLibro.Enabled = true;
-                btnBuscarCliente.Enabled = true;
-            }
-            if (dataReader.GetBoolean(4))//Consultar
-            {
-                btnBuscarPrestamo.Enabled = true;
-                btnBuscarLibro.Enabled = true;
-                btnBuscarCliente.Enabled = true;
-            }
-            if (dataReader.GetBoolean(5))//Eliminar
-            {
-                btnEliminar.Enabled = true;
-            }
-        }
-
+        
+        //Metodo para buscar los libros almacenados en las bases de datos
         private void btnBuscarLibro_Click(object sender, EventArgs e)
         {
             frmListaGeneral listaGeneral = new frmListaGeneral(conexion);
@@ -185,6 +167,8 @@ namespace Vista
 
             }
         }
+
+        //Metodo para cargar los campos de los libros
         public void cargarCamposLibro()
         {
             pEntidadLibro.setIdLibro(Convert.ToInt32(txtIdLibro.Text));
@@ -199,6 +183,7 @@ namespace Vista
             }
         }
 
+        //Metodo que realiza una consulta de todos los prestamos que se encuentran registrados en las base de datos
         private void btnBuscarPrestamo_Click(object sender, EventArgs e)
         {
             frmConsultaPrestamos consulta = new frmConsultaPrestamos(conexion);
@@ -213,6 +198,7 @@ namespace Vista
             }
         }
 
+        //Accion de boton salir
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -223,6 +209,8 @@ namespace Vista
             DateTime fechaSistema = DateTime.Today;
             return fechaSistema.ToString("d");
         }
+
+        //Metodo para limpiar los campos de la ventana
         public void mLimpiar()
         {
             txtApellidos.Text = "";
@@ -233,6 +221,7 @@ namespace Vista
             txtNombreLibro.Text = "";
         }
 
+        //Boton que realiza la accion de agregar en ella se llaman los metodos correspondientes
         private void btnAgregar_Click(object sender, EventArgs e)
         {
             if (verificarCampos())
@@ -263,6 +252,7 @@ namespace Vista
 
         }
 
+        //Retorna el id de usuario conectado 
         public int mRetornarId()
         {
             pEntidadUsuario.mUsuario= clsConstantes.nombreUsuario;
@@ -280,11 +270,14 @@ namespace Vista
             }
             return 0;
         }
+        //Accion de boton para limpiar un 
         private void txtLimpiar_Click(object sender, EventArgs e)
         {
             mLimpiar();
         }
 
+
+        //Accion del boton eliminar y con ello llama al metodo de eliminar un prestamo
         private void btnEliminar_Click(object sender, EventArgs e)
         {
             frmConsultaPrestamos consulta = new frmConsultaPrestamos(conexion);
@@ -301,6 +294,7 @@ namespace Vista
 
             }
         }
+        //Metodo que se utiliza para borrar algun prestamo
         public void eliminarPrestamo()
         {
             pEntidadPrestamo.setGetidLibro = Convert.ToInt32(txtIdLibro.Text);
@@ -316,7 +310,7 @@ namespace Vista
             }
         }
 
-
+        //Verifica que no existan campos vacios para realizar el prestamo
         public Boolean verificarCampos()
         {
             if (txtIdLibro.Text!= "" && txtIdCliente.Text!= "")
@@ -328,36 +322,6 @@ namespace Vista
                 return false;
             }
         }
-        public void verificar()
-        {
-            clsEntidadUsuario pEntidadUsuario = new clsEntidadUsuario();
-            dataReader = libro.mSeleccionarIdUsuario(conexion, clsConstantes.nombreUsuario);
-            if (dataReader != null && dataReader.Read())
-            {
-                pEntidadUsuario.mIdUsuario = dataReader.GetInt32(0);
-
-                dataReader = usuario.mBuscarPrivilegiosUsuario(conexion, pEntidadUsuario);
-                if (dataReader != null)
-                {
-                    if (dataReader.Read())
-                    {
-                        if (dataReader.GetString(6).Equals(this.Name))
-                        {
-                            if (dataReader.GetString(2).Equals("true"))
-                            {
-                                this.btnAgregar.Enabled = false;
-                            }
-                            else
-                            {
-                                this.btnBuscarPrestamo.Enabled = false;
-                            }
-                        }
-                        // u.idUsuario, ur.idRol, rp.modificar, rp.insertar, rp.consultar, rp.eliminar, p.nombre 
-                    }
-                }
-            }
-
-        }
-
+      
     }
 }

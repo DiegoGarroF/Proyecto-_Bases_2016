@@ -12,30 +12,28 @@ namespace Controlador
         private string sentencia = "";
 
 
-        public Boolean mTrigger(clsConexion conexion, clsEntidadUsuario pEntidadUsuario)
-        {
-            sentencia = " IF OBJECT_ID ('CONTROL_BITACORA') IS NOT NULL BEGIN DROP TRIGGER CONTROL_BITACORA;  END; CREATE TRIGGER CONTROL_BITACORA ON tbUsuario FOR INSERT AS BEGIN DECLARE @FECHA DATE, @HORA TIME(7), @TABLA NVARCHAR(50), @DESCRIPCION NVARCHAR(50), @IDUSUARIO INT;    SET @FECHA = (SELECT FECHA FROM DELETED); SET  @HORA = (SELECT HORA FROM DELETED); SET @DESCRIPCION = (SELECT DESCRIPCION FROM DELETED); SET @IDUSUARIO = (SELECT @IDUSUARIO FROM DELETED))  INSERT INTO BITACORA VALUES (@FECHA, QHORA, @DESCRIPCION, @IDUSUARIO) END; ";
-            return conexion.mEjecutar(sentencia, conexion, pEntidadUsuario);
-        }
-
         public Boolean mInsertarBitacora(clsConexion conexion,clsEntidadBitacora pEntidadBitacora)
         {
-            sentencia = "insert into tbBitacora(fecha,hora,idUsuario) VALUES('"+pEntidadBitacora.getFecha()+"', '"+pEntidadBitacora.getHora()+"', "+pEntidadBitacora.getIdUsuario()+"' )";
+            sentencia = "insert into tbBitacora(fecha,hora,idUsuario) VALUES(@fecha,@hora,@idUsuario)";
 
             return conexion.mEjecutar(sentencia, conexion, pEntidadBitacora);
         }
 
-        public SqlDataReader mConsultarContraseña(clsConexion conexion, clsEntidadBitacora pEntidadBitacora)
-        {
-            sentencia = "select contrasena from tbUsuario where idUsuario='"+pEntidadBitacora.getIdUsuario()+"'";
-            return conexion.mSeleccionarGeneral(conexion, sentencia);
-        }
 
         public SqlDataReader mConsultaGeneral(clsConexion conexion )
         {
             sentencia = "select fecha, hora,idUsuario from tbBitacora";
             return conexion.mSeleccionarGeneral(conexion, sentencia);
         }
-
+        public SqlDataReader mHoraServidor(clsConexion conexion)
+        {
+            sentencia = "SELECT Convert(varchar(5),GetDate(), 108)";
+            return conexion.mSeleccionarGeneral(conexion, sentencia);
+        }
+        public SqlDataReader mConsultaEspecifica(clsConexion conexion, clsEntidadBitacora pEntidadBitacora)
+        {
+            sentencia = "select fecha, hora,idUsuario from tbBitacora where idUsuario=@codigo";
+            return conexion.mSeleccionar(sentencia, pEntidadBitacora.getIdUsuario());
+        }
     }
 }

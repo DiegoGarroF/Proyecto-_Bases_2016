@@ -28,47 +28,16 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lvListaUusario = new System.Windows.Forms.ListView();
-            this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.lbUsuario = new System.Windows.Forms.Label();
             this.btnSalir = new System.Windows.Forms.Button();
+            this.dgvUsuarios = new System.Windows.Forms.DataGridView();
+            this.ColIdUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColNombre = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColApellidos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ColTipoUsuario = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lvListaUusario
-            // 
-            this.lvListaUusario.Activation = System.Windows.Forms.ItemActivation.TwoClick;
-            this.lvListaUusario.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader2});
-            this.lvListaUusario.FullRowSelect = true;
-            this.lvListaUusario.GridLines = true;
-            this.lvListaUusario.Location = new System.Drawing.Point(12, 45);
-            this.lvListaUusario.Name = "lvListaUusario";
-            this.lvListaUusario.Size = new System.Drawing.Size(464, 362);
-            this.lvListaUusario.TabIndex = 0;
-            this.lvListaUusario.UseCompatibleStateImageBehavior = false;
-            this.lvListaUusario.View = System.Windows.Forms.View.Details;
-            this.lvListaUusario.SelectedIndexChanged += new System.EventHandler(this.lvListaUusario_SelectedIndexChanged_1);
-            this.lvListaUusario.DoubleClick += new System.EventHandler(this.lvListaUusario_DoubleClick);
-            // 
-            // columnHeader3
-            // 
-            this.columnHeader3.Text = "Nombre";
-            this.columnHeader3.Width = 186;
-            // 
-            // columnHeader4
-            // 
-            this.columnHeader4.Text = "Apellido";
-            this.columnHeader4.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.columnHeader4.Width = 177;
-            // 
-            // columnHeader2
-            // 
-            this.columnHeader2.Text = "Tipo";
-            this.columnHeader2.Width = 94;
             // 
             // lbUsuario
             // 
@@ -81,37 +50,83 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(231, 413);
+            this.btnSalir.Location = new System.Drawing.Point(182, 310);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 23);
+            this.btnSalir.Size = new System.Drawing.Size(75, 31);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
+            // dgvUsuarios
+            // 
+            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.LightGray;
+            this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.ColIdUsuario,
+            this.ColUsuario,
+            this.ColNombre,
+            this.ColApellidos,
+            this.ColTipoUsuario});
+            this.dgvUsuarios.Location = new System.Drawing.Point(12, 52);
+            this.dgvUsuarios.Name = "dgvUsuarios";
+            this.dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvUsuarios.Size = new System.Drawing.Size(444, 222);
+            this.dgvUsuarios.TabIndex = 3;
+            this.dgvUsuarios.RowHeaderMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvUsuarios_RowHeaderMouseClick);
+            // 
+            // ColIdUsuario
+            // 
+            this.ColIdUsuario.HeaderText = "idUsuario";
+            this.ColIdUsuario.Name = "ColIdUsuario";
+            this.ColIdUsuario.Visible = false;
+            // 
+            // ColUsuario
+            // 
+            this.ColUsuario.HeaderText = "Usuario";
+            this.ColUsuario.Name = "ColUsuario";
+            // 
+            // ColNombre
+            // 
+            this.ColNombre.HeaderText = "Nombre";
+            this.ColNombre.Name = "ColNombre";
+            // 
+            // ColApellidos
+            // 
+            this.ColApellidos.HeaderText = "Apellidos";
+            this.ColApellidos.Name = "ColApellidos";
+            // 
+            // ColTipoUsuario
+            // 
+            this.ColTipoUsuario.HeaderText = "Tipo Usuario";
+            this.ColTipoUsuario.Name = "ColTipoUsuario";
+            // 
             // frmListaUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(487, 465);
+            this.ClientSize = new System.Drawing.Size(487, 354);
+            this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lbUsuario);
-            this.Controls.Add(this.lvListaUusario);
             this.Name = "frmListaUsuario";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListaUsuario";
             this.Load += new System.EventHandler(this.frmListaUsuario_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dgvUsuarios)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.ListView lvListaUusario;
         private System.Windows.Forms.Label lbUsuario;
         private System.Windows.Forms.Button btnSalir;
-        private System.Windows.Forms.ColumnHeader columnHeader3;
-        private System.Windows.Forms.ColumnHeader columnHeader4;
-        private System.Windows.Forms.ColumnHeader columnHeader2;
+        private System.Windows.Forms.DataGridView dgvUsuarios;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColIdUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColUsuario;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColNombre;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColApellidos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ColTipoUsuario;
     }
 }

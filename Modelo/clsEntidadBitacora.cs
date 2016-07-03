@@ -15,9 +15,7 @@ namespace Modelo
 
         private int idBitacora;
         private DateTime fecha;
-        private DateTime hora;
-        private String tabla;
-        private String descripcion;
+        private string hora;
         private int idUsuario;
         #endregion
 
@@ -27,8 +25,6 @@ namespace Modelo
             this.idBitacora = 0;
             //this.fecha ="";
             //this.hora = "";
-            this.tabla = "";
-            this.descripcion = "";
             this.idUsuario = 0;
         }
         #endregion
@@ -47,19 +43,12 @@ namespace Modelo
             this.fecha = fecha;
         }
 
-        public void setHora(DateTime hora)
+        public void setHora(string hora)
         {
             this.hora = hora;
         }
 
-        public void setTabla(String tabla)
-        {
-            this.tabla = tabla;
-        }
-        public void setDescripcion(String descripcion)
-        {
-            this.descripcion = descripcion;
-        }
+
         public void setIdiUsuario(int idUsuario)
         {
             this.idUsuario = idUsuario;
@@ -79,28 +68,15 @@ namespace Modelo
             return fecha;
         }
 
-        public DateTime getHora()
+        public string getHora()
         {
             return hora;
         }
-
-        public String getTabla()
-        {
-            return tabla;
-        }
-        public String getDescripcion()
-        {
-            return descripcion;
-        }
+       
         public int getIdUsuario()
         {
             return idUsuario;
-        }
-
-
-
-       
-
+        }       
         #endregion
     }
 }

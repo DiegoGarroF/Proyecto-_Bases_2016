@@ -21,9 +21,12 @@ namespace Vista
         #region
         
         SqlDataReader dtrUsuario; //Retorno de las tuplas
+        SqlDataReader dtrBitacora;
         int contador = 0;
         clsEntidadUsuario entidadUsuario;
         clsUsuario usuario;
+        clsEntidadBitacora entidadBitacora;
+        clsBitacora clBitacora;
         #endregion
 
         //Inicializamos los atributos que utilizaremos en toda la clase
@@ -35,12 +38,33 @@ namespace Vista
             InitializeComponent();
             this.conexion = new clsConexion();
             entidadUsuario = new clsEntidadUsuario();
-            usuario = new clsUsuario();            
+            usuario = new clsUsuario();
+            entidadBitacora = new clsEntidadBitacora();
+            clBitacora = new clsBitacora();
         }
 
         private void frmAcceso_Load(object sender, EventArgs e)
         {//no borrar
 
+        }
+        public Boolean mInsertarBitacora()
+        {
+            entidadBitacora.setFecha(DateTime.Today);
+            dtrBitacora = clBitacora.mHoraServidor(conexion);
+            if(dtrBitacora!=null)
+                if(dtrBitacora.Read())
+                      entidadBitacora.setHora(dtrBitacora.GetString(0));
+
+            clsUsuario usuario = new clsUsuario();
+            entidadUsuario.mUsuario = clsConstantes.nombreUsuario;
+            dtrUsuario = usuario.mConsultaIdUsuario(conexion, entidadUsuario);
+            if (dtrUsuario != null)
+                if (dtrUsuario.Read())
+                {
+                    entidadBitacora.setIdiUsuario(dtrUsuario.GetInt32(0));
+                }
+
+            return clBitacora.mInsertarBitacora(conexion, entidadBitacora);
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -172,6 +196,7 @@ namespace Vista
             entidadUsuario.mEstadoUsuario = 0;
             clsConstantes.nombreUsuario = entidadUsuario.mUsuario;
             usuario.mModificarEstadoUsuario(conexion, entidadUsuario);
+            mInsertarBitacora();
             this.SetVisibleCore(false);
             
         }

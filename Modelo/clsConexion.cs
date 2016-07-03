@@ -354,6 +354,16 @@ namespace Modelo
                                     return true;
 
                                 }
+                                else if (objeto is clsEntidadBitacora)
+                                {
+                                    clsEntidadBitacora pEntidadBitacora = (clsEntidadBitacora)objeto;
+                                    comando.Parameters.AddWithValue("@fecha", pEntidadBitacora.getFecha());
+                                    comando.Parameters.AddWithValue("@hora", pEntidadBitacora.getHora());
+                                    comando.Parameters.AddWithValue("@idUsuario", pEntidadBitacora.getIdUsuario());
+                                    comando.ExecuteNonQuery();
+                                    return true;
+
+                                }
                             }
                         }
                     }

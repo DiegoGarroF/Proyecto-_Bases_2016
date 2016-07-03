@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Modelo;
 using System.Data.SqlClient;
 using Controlador;
+using System.Collections;
 
 namespace Vista
 {
@@ -20,12 +21,14 @@ namespace Vista
         DateTime fecha ;
         clsBitacora clbitacora;
         SqlDataReader dtrUsuario;
+        SqlDataReader dtrBitacora;
         clsUsuario usuario;
         frmAcceso frmAcceso;
         clsConexion conexion;
         clsEntidadBitacora entidadBitacora;
         frmListaUsuario frmLista;
         DateTime localDate = DateTime.Now;
+        SqlDataReader dtrPrivilegiosUsuaio;
 
         public frmBitacora(clsConexion conexion)
         {
@@ -36,7 +39,7 @@ namespace Vista
             frmAcceso = new frmAcceso();
             this.conexion = conexion;
             entidadBitacora = new clsEntidadBitacora();
-            frmLista = new frmListaUsuario(conexion);
+            frmLista = new frmListaUsuario(conexion, this);
             InitializeComponent();
         }
 
@@ -46,95 +49,130 @@ namespace Vista
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            
-            frmLista.ShowDialog();
-            if (frmLista.getUsuario() != "")
-            {
-                entidadUsuario.mNombre=frmLista.getUsuario();
-                tbNombreUsuario.Text = Convert.ToString( frmLista.getUsuario()); // para cargar
-                mConsultarBitacora();
-                if (mInsertarBitacora() == true)
-                {
-                    llenarDatosTabla();
-                }
+        {            
+            frmLista.Show();
+            this.Hide();
+        }
 
+        public void mConsultarBitacora(ArrayList idUsuarios)
+        {
+            lvBitacora.Items.Clear();
+            for(int i=0; i<idUsuarios.Count; i++)
+            {
+                entidadBitacora.setIdiUsuario(Convert.ToInt32(idUsuarios[i]));
+                dtrBitacora = clbitacora.mConsultaEspecifica(conexion, entidadBitacora);
+                if(dtrBitacora!=null)
+                    while (dtrBitacora.Read())
+                    {
+                        ListViewItem item = new ListViewItem(dtrBitacora.GetDateTime(0).ToString("dd/MM/yyyy"));
+                        item.SubItems.Add(dtrBitacora.GetString(1));
+                        
+
+                        entidadUsuario.mIdUsuario = entidadBitacora.getIdUsuario();
+                        dtrUsuario = usuario.mBuscarUsuario(conexion, entidadUsuario);
+                        if (dtrUsuario != null)
+                            if (dtrUsuario.Read())
+                            {
+                                item.SubItems.Add(dtrUsuario.GetString(1));
+                                lvBitacora.Items.Add(item);
+                            }
+                    }
             }
-
-
-        }
-
-        public void mConsultarBitacora()
-        {
-            dtrUsuario = clbitacora.mConsultaGeneral(conexion);
-            if (dtrUsuario != null)
-            {
-                if (dtrUsuario.Read())//si existe
-                {
-                    this.tbNombreUsuario.Text = dtrUsuario.GetString(1);
-                }//Fin del if si existe
-
-            }//Fin del if dtrEstudiante!=null
-
-        }
-
-        public Boolean mInsertarBitacora()
-        {
-            if (frmAcceso.mValidarContraseña(Convert.ToString(clbitacora.mConsultarContraseña(conexion, entidadBitacora))) == true)
-            {
-                clbitacora.mInsertarBitacora(conexion, entidadBitacora);
-                entidadBitacora.setFecha(DateTime.Today);
-                entidadBitacora.setHora(DateTime.Now);
-                entidadBitacora.setIdiUsuario(entidadUsuario.mIdUsuario);
-                lvBitacora.Items.Clear();
-
-                return true;
-            }
-            else
-                return false;
-        }
-    
-
+        }   
+       
 
         private void frmBitacora_Load(object sender, EventArgs e)
         {
-             
+
+            //PROCESO PARA VER SI UN USUARIO TIENE PRIVILEGIOS SOBRE ESTA VENTANA
+            entidadUsuario.mUsuario = clsConstantes.nombreUsuario;
+            entidadUsuario.mContrasena = "";
+            dtrUsuario = usuario.mLogueoPrincipal(conexion, entidadUsuario); // saco id del usuario conectado
+            if (dtrUsuario != null)
+                while (dtrUsuario.Read())
+                {
+                    entidadUsuario.mIdUsuario = dtrUsuario.GetInt32(0);
+                    dtrPrivilegiosUsuaio = usuario.mBuscarPrivilegiosUsuario(conexion, entidadUsuario);
+                    if (dtrPrivilegiosUsuaio != null)
+                        while (dtrPrivilegiosUsuaio.Read())
+                        {
+                            if (dtrPrivilegiosUsuaio.GetString(4) == this.Name) {
+
+                                mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);
+                                
+                            }
+                        }
+                }
+
+            clsLibro libro = new clsLibro();
+            dtrPrivilegiosUsuaio = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(entidadUsuario.mIdUsuario), this.Name);
+            if (dtrPrivilegiosUsuaio != null)
+                while (dtrPrivilegiosUsuaio.Read())
+                {
+                    mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);
+                }
         }
 
         public void llenarDatosTabla()
         {
-            dtrUsuario = clbitacora.mConsultaGeneral(conexion);
-
-            if (frmLista.getUsuario() == entidadUsuario.mNombre)
-            {
-
-                if (entidadUsuario.mIdUsuario == entidadBitacora.getIdUsuario())
+            dtrBitacora = clbitacora.mConsultaGeneral(conexion);
+            if (dtrBitacora != null)
+                while (dtrBitacora.Read())
                 {
-                    entidadBitacora.setFecha(Convert.ToDateTime(entidadUsuario.mFechaModificacion));
-                    entidadBitacora.setHora(localDate);
+                    ListViewItem item = new ListViewItem(dtrBitacora.GetDateTime(0).ToString("dd/MM/yyyy"));
+                    item.SubItems.Add(dtrBitacora.GetString(1));
+
+                    entidadUsuario.mIdUsuario = dtrBitacora.GetInt32(2);
+                    dtrUsuario = usuario.mBuscarUsuario(conexion, entidadUsuario);
+                    if (dtrUsuario != null)
+                        if (dtrUsuario.Read())
+                        {
+                            item.SubItems.Add(dtrUsuario.GetString(1));
+                            lvBitacora.Items.Add(item);
+                        }
 
                 }
+        }
 
-                if (dtrUsuario != null)
-                    while (dtrUsuario.Read())
-                    {
-                        if (entidadUsuario.mIdUsuario == entidadBitacora.getIdUsuario())
-                        {
-                            if (mInsertarBitacora() == true)
-                            {
-                                ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetDateTime(0)));
-                                item.SubItems.Add(dtrUsuario.GetString(1));
-                                item.SubItems.Add(Convert.ToString(dtrUsuario.GetInt32(2)));
-                                lvBitacora.Items.Add(item);
-                            }
-                        }
-                    }
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+            llenarDatosTabla();
+        }
 
+        private void tbNombreUsuario_KeyUp(object sender, KeyEventArgs e)
+        {
+            
+            if (txtNombreUsuario.Text != "") { 
+            entidadUsuario.mUsuario = txtNombreUsuario.Text;
+            dtrUsuario= usuario.mConsultaIdUsuario(conexion, entidadUsuario);
+            
+            if(dtrUsuario!=null)
+                if (dtrUsuario.Read())
+                {
+                    ArrayList array = new ArrayList();
+                    array.Add(dtrUsuario.GetInt32(0));
+                    lvBitacora.Items.Clear();
+                    mConsultarBitacora(array);
+                }
+            }
+            else
+            {
+                lvBitacora.Items.Clear();
+                llenarDatosTabla();
             }
 
-
-
-
+        }
+        public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
+        {
+            
+            if (dtrPermisos.GetBoolean(2))//Se activan opciones de búsqueda
+            {
+                btnConsultar.Enabled = true;
+                btnRefrescar.Enabled = true;
+                txtNombreUsuario.Enabled = true;
+                llenarDatosTabla();
+            }
+            
         }
     }
 }

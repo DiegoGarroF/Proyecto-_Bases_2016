@@ -48,7 +48,7 @@ namespace Vista
 
         public Boolean conFirmarTamaño()
         {
-            if (txtNuevaContraseña.TextLength==8 && txtConfirmarContraseña.TextLength==8)
+            if (txtNuevaContraseña.TextLength>=8 && txtConfirmarContraseña.TextLength>=8)
             {
                 return true;
             }

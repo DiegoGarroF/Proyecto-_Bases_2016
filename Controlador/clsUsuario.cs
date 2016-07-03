@@ -44,7 +44,7 @@ namespace Controlador
         //Creo que este método no va en esta clase
         public SqlDataReader mConsultarListaBitacora(clsConexion conexion)
         {
-            sentencia = "select nombre, apellidos, tipoUsuario from tbUsuario";
+            sentencia = "select nombre, apellidos, tipoUsuario,idUsuario, usuario from tbUsuario";
             return conexion.mSeleccionarGeneral(conexion, sentencia);
         }
 

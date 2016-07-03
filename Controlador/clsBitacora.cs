@@ -30,6 +30,10 @@ namespace Controlador
             sentencia = "SELECT Convert(varchar(5),GetDate(), 108)";
             return conexion.mSeleccionarGeneral(conexion, sentencia);
         }
-
+        public SqlDataReader mConsultaEspecifica(clsConexion conexion, clsEntidadBitacora pEntidadBitacora)
+        {
+            sentencia = "select fecha, hora,idUsuario from tbBitacora where idUsuario=@codigo";
+            return conexion.mSeleccionar(sentencia, pEntidadBitacora.getIdUsuario());
+        }
     }
 }

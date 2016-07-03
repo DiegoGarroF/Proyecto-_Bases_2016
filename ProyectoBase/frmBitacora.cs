@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Modelo;
 using System.Data.SqlClient;
 using Controlador;
+using System.Collections;
 
 namespace Vista
 {
@@ -37,7 +38,7 @@ namespace Vista
             frmAcceso = new frmAcceso();
             this.conexion = conexion;
             entidadBitacora = new clsEntidadBitacora();
-            frmLista = new frmListaUsuario(conexion);
+            frmLista = new frmListaUsuario(conexion, this);
             InitializeComponent();
         }
 
@@ -47,78 +48,44 @@ namespace Vista
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
-        {
-            
-            frmLista.ShowDialog();
-            if (frmLista.getUsuario() != "")
-            {
-                entidadUsuario.mNombre=frmLista.getUsuario();
-                tbNombreUsuario.Text = Convert.ToString( frmLista.getUsuario()); // para cargar
-                mConsultarBitacora();
-                if (mInsertarBitacora() == true)
-                {
-                    llenarDatosTabla();
-                }
-
-            }
-
-
+        {            
+            frmLista.Show();
+            this.Hide();
         }
 
-        public void mConsultarBitacora()
+        public void mConsultarBitacora(ArrayList idUsuarios)
         {
-            dtrUsuario = clbitacora.mConsultaGeneral(conexion);
-            if (dtrUsuario != null)
+            lvBitacora.Items.Clear();
+            for(int i=0; i<idUsuarios.Count; i++)
             {
-                if (dtrUsuario.Read())//si existe
-                {
-                    this.tbNombreUsuario.Text = dtrUsuario.GetString(1);
-                }//Fin del if si existe
-
-            }//Fin del if dtrEstudiante!=null
-
-        }
-
-        public Boolean mInsertarBitacora()
-        {
-                 entidadBitacora.setFecha(DateTime.Today);
-                //entidadBitacora.setHora(DateTime.Now);
-                entidadBitacora.setIdiUsuario(entidadUsuario.mIdUsuario);
-                lvBitacora.Items.Clear();
-             return clbitacora.mInsertarBitacora(conexion, entidadBitacora);
-        }
-        public void llenarDatosTabla()
-        {
-            dtrUsuario = clbitacora.mConsultaGeneral(conexion);
-
-            if (frmLista.getUsuario() == entidadUsuario.mNombre)
-            {
-
-                if (entidadUsuario.mIdUsuario == entidadBitacora.getIdUsuario())
-                {
-                    entidadBitacora.setFecha(Convert.ToDateTime(entidadUsuario.mFechaModificacion));
-                    //entidadBitacora.setHora(localDate);
-
-                }
-
-                if (dtrUsuario != null)
-                    while (dtrUsuario.Read())
+                entidadBitacora.setIdiUsuario(Convert.ToInt32(idUsuarios[i]));
+                dtrBitacora = clbitacora.mConsultaEspecifica(conexion, entidadBitacora);
+                if(dtrBitacora!=null)
+                    while (dtrBitacora.Read())
                     {
-                        if (entidadUsuario.mIdUsuario == entidadBitacora.getIdUsuario())
-                        {
-                            if (mInsertarBitacora() == true)
+                        ListViewItem item = new ListViewItem(dtrBitacora.GetDateTime(0).ToString("dd/MM/yyyy"));
+                        item.SubItems.Add(dtrBitacora.GetString(1));
+                        
+
+                        entidadUsuario.mIdUsuario = entidadBitacora.getIdUsuario();
+                        dtrUsuario = usuario.mBuscarUsuario(conexion, entidadUsuario);
+                        if (dtrUsuario != null)
+                            if (dtrUsuario.Read())
                             {
-                                ListViewItem item = new ListViewItem(Convert.ToString(dtrUsuario.GetDateTime(0)));
                                 item.SubItems.Add(dtrUsuario.GetString(1));
-                                item.SubItems.Add(Convert.ToString(dtrUsuario.GetInt32(2)));
                                 lvBitacora.Items.Add(item);
                             }
-                        }
                     }
             }
-        }
+        }   
+       
 
         private void frmBitacora_Load(object sender, EventArgs e)
+        {
+            llenarDatosTabla();
+        }
+
+        public void llenarDatosTabla()
         {
             dtrBitacora = clbitacora.mConsultaGeneral(conexion);
             if (dtrBitacora != null)
@@ -126,9 +93,46 @@ namespace Vista
                 {
                     ListViewItem item = new ListViewItem(dtrBitacora.GetDateTime(0).ToString("dd/MM/yyyy"));
                     item.SubItems.Add(dtrBitacora.GetString(1));
-                    item.SubItems.Add(Convert.ToString(dtrBitacora.GetInt32(2)));
-                    lvBitacora.Items.Add(item);
+
+                    entidadUsuario.mIdUsuario = dtrBitacora.GetInt32(2);
+                    dtrUsuario = usuario.mBuscarUsuario(conexion, entidadUsuario);
+                    if (dtrUsuario != null)
+                        if (dtrUsuario.Read())
+                        {
+                            item.SubItems.Add(dtrUsuario.GetString(1));
+                            lvBitacora.Items.Add(item);
+                        }
+
                 }
+        }
+
+        private void btnRefrescar_Click(object sender, EventArgs e)
+        {
+            llenarDatosTabla();
+        }
+
+        private void tbNombreUsuario_KeyUp(object sender, KeyEventArgs e)
+        {
+            
+            if (txtNombreUsuario.Text != "") { 
+            entidadUsuario.mUsuario = txtNombreUsuario.Text;
+            dtrUsuario= usuario.mConsultaIdUsuario(conexion, entidadUsuario);
+            
+            if(dtrUsuario!=null)
+                if (dtrUsuario.Read())
+                {
+                    ArrayList array = new ArrayList();
+                    array.Add(dtrUsuario.GetInt32(0));
+                    lvBitacora.Items.Clear();
+                    mConsultarBitacora(array);
+                }
+            }
+            else
+            {
+                lvBitacora.Items.Clear();
+                llenarDatosTabla();
+            }
+
         }
     }
 }

@@ -28,6 +28,7 @@ namespace Vista
         clsEntidadBitacora entidadBitacora;
         frmListaUsuario frmLista;
         DateTime localDate = DateTime.Now;
+        SqlDataReader dtrPrivilegiosUsuaio;
 
         public frmBitacora(clsConexion conexion)
         {
@@ -82,7 +83,34 @@ namespace Vista
 
         private void frmBitacora_Load(object sender, EventArgs e)
         {
-            llenarDatosTabla();
+
+            //PROCESO PARA VER SI UN USUARIO TIENE PRIVILEGIOS SOBRE ESTA VENTANA
+            entidadUsuario.mUsuario = clsConstantes.nombreUsuario;
+            entidadUsuario.mContrasena = "";
+            dtrUsuario = usuario.mLogueoPrincipal(conexion, entidadUsuario); // saco id del usuario conectado
+            if (dtrUsuario != null)
+                while (dtrUsuario.Read())
+                {
+                    entidadUsuario.mIdUsuario = dtrUsuario.GetInt32(0);
+                    dtrPrivilegiosUsuaio = usuario.mBuscarPrivilegiosUsuario(conexion, entidadUsuario);
+                    if (dtrPrivilegiosUsuaio != null)
+                        while (dtrPrivilegiosUsuaio.Read())
+                        {
+                            if (dtrPrivilegiosUsuaio.GetString(4) == this.Name) {
+
+                                mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);
+                                
+                            }
+                        }
+                }
+
+            clsLibro libro = new clsLibro();
+            dtrPrivilegiosUsuaio = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(entidadUsuario.mIdUsuario), this.Name);
+            if (dtrPrivilegiosUsuaio != null)
+                while (dtrPrivilegiosUsuaio.Read())
+                {
+                    mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);
+                }
         }
 
         public void llenarDatosTabla()
@@ -133,6 +161,18 @@ namespace Vista
                 llenarDatosTabla();
             }
 
+        }
+        public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
+        {
+            
+            if (dtrPermisos.GetBoolean(2))//Se activan opciones de búsqueda
+            {
+                btnConsultar.Enabled = true;
+                btnRefrescar.Enabled = true;
+                txtNombreUsuario.Enabled = true;
+                llenarDatosTabla();
+            }
+            
         }
     }
 }

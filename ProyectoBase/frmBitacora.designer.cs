@@ -41,6 +41,7 @@
             // 
             // txtNombreUsuario
             // 
+            this.txtNombreUsuario.Enabled = false;
             this.txtNombreUsuario.Location = new System.Drawing.Point(138, 23);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
             this.txtNombreUsuario.Size = new System.Drawing.Size(100, 20);
@@ -88,6 +89,7 @@
             // 
             // btnConsultar
             // 
+            this.btnConsultar.Enabled = false;
             this.btnConsultar.Location = new System.Drawing.Point(272, 19);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
@@ -108,6 +110,7 @@
             // 
             // btnRefrescar
             // 
+            this.btnRefrescar.Enabled = false;
             this.btnRefrescar.Location = new System.Drawing.Point(66, 344);
             this.btnRefrescar.Name = "btnRefrescar";
             this.btnRefrescar.Size = new System.Drawing.Size(75, 33);

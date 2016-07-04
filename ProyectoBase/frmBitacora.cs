@@ -54,6 +54,8 @@ namespace Vista
             this.Hide();
         }
 
+        //Coloca en el listView las bitácoras de uno o varios usuarios seleccionados
+        //realiza la consulta a la BD a partir de los ID de los usuarios seleccionados
         public void mConsultarBitacora(ArrayList idUsuarios)
         {
             lvBitacora.Items.Clear();
@@ -113,6 +115,7 @@ namespace Vista
                 }
         }
 
+        //Llena el listview con todas las bitácoras existentes en la BD
         public void llenarDatosTabla()
         {
             dtrBitacora = clbitacora.mConsultaGeneral(conexion);
@@ -134,11 +137,15 @@ namespace Vista
                 }
         }
 
+        //Vuelve a colocar todas en el listview, todas las bitácoras existentes en la BD
         private void btnRefrescar_Click(object sender, EventArgs e)
         {
+            lvBitacora.Items.Clear();
             llenarDatosTabla();
         }
 
+        //Busca las bitácoras de un usuario, cada vez que se levante una tecla
+        //Para mostrarlas en el listview
         private void tbNombreUsuario_KeyUp(object sender, KeyEventArgs e)
         {
             
@@ -162,6 +169,7 @@ namespace Vista
             }
 
         }
+        //Activa las opciones de búsqueda, en caso de un usuario posea los permisos
         public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
         {
             

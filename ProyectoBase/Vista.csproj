@@ -255,6 +255,27 @@
   <ItemGroup>
     <None Include="Resources\continuar.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\898ace26950590ab505e0d6908fde96e.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\images.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\rotulo-de-biblioteca_23-2147502675.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1467610091_close_blue.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1467610095_sub_blue_accept.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1467610349_misc_17.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\1467610430_logout.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

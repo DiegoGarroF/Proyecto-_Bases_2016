@@ -42,17 +42,19 @@
             // lbUsuario
             // 
             this.lbUsuario.AutoSize = true;
+            this.lbUsuario.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbUsuario.Location = new System.Drawing.Point(104, 15);
             this.lbUsuario.Name = "lbUsuario";
-            this.lbUsuario.Size = new System.Drawing.Size(121, 13);
+            this.lbUsuario.Size = new System.Drawing.Size(164, 15);
             this.lbUsuario.TabIndex = 1;
             this.lbUsuario.Text = "Información de Usuarios";
             // 
             // btnSalir
             // 
+            this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(182, 310);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 31);
+            this.btnSalir.Size = new System.Drawing.Size(75, 24);
             this.btnSalir.TabIndex = 2;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -60,7 +62,7 @@
             // 
             // dgvUsuarios
             // 
-            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.LightGray;
+            this.dgvUsuarios.BackgroundColor = System.Drawing.Color.SpringGreen;
             this.dgvUsuarios.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvUsuarios.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.ColIdUsuario,
@@ -105,6 +107,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(487, 354);
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.btnSalir);

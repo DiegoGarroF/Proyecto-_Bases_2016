@@ -37,9 +37,11 @@
             // lvGeneral
             // 
             this.lvGeneral.Activation = System.Windows.Forms.ItemActivation.TwoClick;
+            this.lvGeneral.BackColor = System.Drawing.Color.SpringGreen;
             this.lvGeneral.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.lvIdentificadorColumna,
             this.lvNombreComlumna});
+            this.lvGeneral.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvGeneral.FullRowSelect = true;
             this.lvGeneral.GridLines = true;
             this.lvGeneral.LabelEdit = true;
@@ -64,6 +66,7 @@
             // 
             // btnSalir
             // 
+            this.btnSalir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(192, 212);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(51, 29);
@@ -76,7 +79,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(244, 241);
+            this.BackColor = System.Drawing.Color.SlateGray;
+            this.ClientSize = new System.Drawing.Size(254, 247);
             this.ControlBox = false;
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lvGeneral);

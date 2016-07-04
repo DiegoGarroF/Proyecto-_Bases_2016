@@ -652,7 +652,8 @@ namespace Vista
                 btnAgregarPrivilegios.Enabled = true;
             }
         }
-        //Agrega los privilegios de una pantalla al listview respectivo
+        //Agrega los privilegios de una pantalla al listview respectivo, dependiendo de los privilegios en la bd
+        //Es necesario xq en la BD se almacenan como true o false...
         private void btnAgregarPrivilegios_Click(object sender, EventArgs e)
         {
             if (cbPantalla.Text != "")
@@ -815,16 +816,19 @@ namespace Vista
             }
         }
 
+        //Activa los botones, textbox, checkbox, etc... cuando un usuario posee los privilegios indicados
         public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
         {
-            if (dtrPermisos.GetBoolean(0)) {
+            if (dtrPermisos.GetBoolean(0))
+            {
                 btnModificar.Enabled = true;
                 chkPrivilegio.Enabled = true;
                 chkRol.Enabled = true;
                 btnEliminarRol.Enabled = true;
                 btnEliminarPrivilegioPantalla.Enabled = true;
-            }            
-            if (dtrPermisos.GetBoolean(1)) {
+            }
+            if (dtrPermisos.GetBoolean(1))
+            {
                 btnAgregar.Enabled = true;
                 btnAgregarPrivilegios.Enabled = true;
                 btnAgregarRol.Enabled = true;
@@ -832,17 +836,18 @@ namespace Vista
                 chkRol.Enabled = true;
                 btnEliminarRol.Enabled = true;
                 btnEliminarPrivilegioPantalla.Enabled = true;
-            }        
-            if (dtrPermisos.GetBoolean(2)) {
+            }
+            if (dtrPermisos.GetBoolean(2))
+            {
                 btnConsultar.Enabled = true;
                 btnBuscar.Enabled = true;
             }
-            if (dtrPermisos.GetBoolean(3)) {
+            if (dtrPermisos.GetBoolean(3))
+            {
                 btnEliminar.Enabled = true;
             }
-        
-        }
 
-   
+        }       
+      
     }
 }

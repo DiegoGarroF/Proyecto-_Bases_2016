@@ -55,6 +55,7 @@
             // 
             // btnAgregar
             // 
+            this.btnAgregar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Location = new System.Drawing.Point(22, 237);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 23);
@@ -65,6 +66,7 @@
             // 
             // btnEliminar
             // 
+            this.btnEliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(314, 237);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 23);
@@ -75,6 +77,7 @@
             // 
             // btnBuscarPrestamo
             // 
+            this.btnBuscarPrestamo.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarPrestamo.Location = new System.Drawing.Point(129, 237);
             this.btnBuscarPrestamo.Name = "btnBuscarPrestamo";
             this.btnBuscarPrestamo.Size = new System.Drawing.Size(75, 23);
@@ -92,6 +95,7 @@
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.txtIdCliente);
             this.groupBox1.Controls.Add(this.IdCliente);
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 34);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(283, 147);
@@ -103,7 +107,7 @@
             // 
             this.txtApellidos.Location = new System.Drawing.Point(71, 102);
             this.txtApellidos.Name = "txtApellidos";
-            this.txtApellidos.Size = new System.Drawing.Size(100, 20);
+            this.txtApellidos.Size = new System.Drawing.Size(100, 22);
             this.txtApellidos.TabIndex = 11;
             // 
             // label1
@@ -111,12 +115,13 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(6, 102);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(52, 13);
+            this.label1.Size = new System.Drawing.Size(58, 14);
             this.label1.TabIndex = 10;
             this.label1.Text = "Apellidos:";
             // 
             // btnBuscarCliente
             // 
+            this.btnBuscarCliente.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarCliente.Location = new System.Drawing.Point(202, 25);
             this.btnBuscarCliente.Name = "btnBuscarCliente";
             this.btnBuscarCliente.Size = new System.Drawing.Size(75, 23);
@@ -129,7 +134,7 @@
             // 
             this.txtNombreCliente.Location = new System.Drawing.Point(71, 64);
             this.txtNombreCliente.Name = "txtNombreCliente";
-            this.txtNombreCliente.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreCliente.Size = new System.Drawing.Size(100, 22);
             this.txtNombreCliente.TabIndex = 3;
             // 
             // label2
@@ -137,7 +142,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(7, 71);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(47, 13);
+            this.label2.Size = new System.Drawing.Size(54, 14);
             this.label2.TabIndex = 2;
             this.label2.Text = "Nombre:";
             // 
@@ -145,7 +150,7 @@
             // 
             this.txtIdCliente.Location = new System.Drawing.Point(71, 30);
             this.txtIdCliente.Name = "txtIdCliente";
-            this.txtIdCliente.Size = new System.Drawing.Size(100, 20);
+            this.txtIdCliente.Size = new System.Drawing.Size(100, 22);
             this.txtIdCliente.TabIndex = 1;
             // 
             // IdCliente
@@ -153,7 +158,7 @@
             this.IdCliente.AutoSize = true;
             this.IdCliente.Location = new System.Drawing.Point(7, 30);
             this.IdCliente.Name = "IdCliente";
-            this.IdCliente.Size = new System.Drawing.Size(51, 13);
+            this.IdCliente.Size = new System.Drawing.Size(59, 14);
             this.IdCliente.TabIndex = 0;
             this.IdCliente.Text = "IdCliente:";
             // 
@@ -166,6 +171,7 @@
             this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.txtIdLibro);
             this.groupBox2.Controls.Add(this.label4);
+            this.groupBox2.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(393, 34);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(283, 147);
@@ -177,7 +183,7 @@
             // 
             this.txtIsbn.Location = new System.Drawing.Point(71, 105);
             this.txtIsbn.Name = "txtIsbn";
-            this.txtIsbn.Size = new System.Drawing.Size(100, 20);
+            this.txtIsbn.Size = new System.Drawing.Size(100, 22);
             this.txtIsbn.TabIndex = 13;
             // 
             // label5
@@ -185,12 +191,13 @@
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(6, 105);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(35, 13);
+            this.label5.Size = new System.Drawing.Size(37, 14);
             this.label5.TabIndex = 12;
             this.label5.Text = "ISBN:";
             // 
             // btnBuscarLibro
             // 
+            this.btnBuscarLibro.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscarLibro.Location = new System.Drawing.Point(202, 25);
             this.btnBuscarLibro.Name = "btnBuscarLibro";
             this.btnBuscarLibro.Size = new System.Drawing.Size(75, 23);
@@ -203,7 +210,7 @@
             // 
             this.txtNombreLibro.Location = new System.Drawing.Point(73, 68);
             this.txtNombreLibro.Name = "txtNombreLibro";
-            this.txtNombreLibro.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreLibro.Size = new System.Drawing.Size(100, 22);
             this.txtNombreLibro.TabIndex = 7;
             // 
             // label3
@@ -211,7 +218,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(6, 71);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(47, 13);
+            this.label3.Size = new System.Drawing.Size(54, 14);
             this.label3.TabIndex = 6;
             this.label3.Text = "Nombre:";
             // 
@@ -219,7 +226,7 @@
             // 
             this.txtIdLibro.Location = new System.Drawing.Point(73, 30);
             this.txtIdLibro.Name = "txtIdLibro";
-            this.txtIdLibro.Size = new System.Drawing.Size(100, 20);
+            this.txtIdLibro.Size = new System.Drawing.Size(100, 22);
             this.txtIdLibro.TabIndex = 5;
             // 
             // label4
@@ -227,12 +234,13 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(6, 30);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.Size = new System.Drawing.Size(48, 14);
             this.label4.TabIndex = 4;
             this.label4.Text = "IdLibro:";
             // 
             // btnSalir
             // 
+            this.btnSalir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(420, 237);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
@@ -243,6 +251,7 @@
             // 
             // txtLimpiar
             // 
+            this.txtLimpiar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtLimpiar.Location = new System.Drawing.Point(220, 237);
             this.txtLimpiar.Name = "txtLimpiar";
             this.txtLimpiar.Size = new System.Drawing.Size(75, 23);
@@ -255,6 +264,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(717, 312);
             this.ControlBox = false;
             this.Controls.Add(this.txtLimpiar);

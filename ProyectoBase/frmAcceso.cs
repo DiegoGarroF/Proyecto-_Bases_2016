@@ -27,6 +27,7 @@ namespace Vista
         clsUsuario usuario;
         clsEntidadBitacora entidadBitacora;
         clsBitacora clBitacora;
+        string ClaveTemporal;
         #endregion
 
         //Inicializamos los atributos que utilizaremos en toda la clase
@@ -133,8 +134,9 @@ namespace Vista
                         if (dtrUsuario.GetInt32(6) == 0 || dtrUsuario.GetInt32(6) == 1 || dtrUsuario.GetInt32(6) == 2)
                         {
                             entidadUsuario.mEstadoUsuario = dtrUsuario.GetInt32(6);
-                            
-                            if (mValidarContraseña(desencriptar(dtrUsuario.GetString(2))))
+
+                            //ClaveTemporal = desencriptar(dtrUsuario.GetString(2));
+                            if (mValidarContraseña(dtrUsuario.GetString(2)))
                             {
                                 if (dtrUsuario.GetBoolean(7) == false)
                                 {
@@ -148,10 +150,14 @@ namespace Vista
                                 }
                                 else
                                 {
-                                    btnIngresar.Enabled = true;
-                                    this.txtClave.Enabled = false;
-                                    this.txtUsuario.Enabled = false;
-                                    return true;
+                                    
+                                        btnIngresar.Enabled = true;
+                                        this.txtClave.Enabled = false;
+                                        this.txtUsuario.Enabled = false;
+                                        return true;
+
+                                    
+                                   
                                 }
                              
                             }//fin del if que valida las contraseñas
@@ -202,6 +208,14 @@ namespace Vista
             
         }
 
+        public Boolean verificarEncriptacion(string claveTemporar)
+        {
+            if(desencriptar(claveTemporar)!= "")
+            {
+                return true;
+            }
+            return false;
+        }
 
        public string desencriptar(String claveAlmacenada)
         {
@@ -210,14 +224,48 @@ namespace Vista
             resultado = System.Text.Encoding.Unicode.GetString(desencriptar);
             return resultado;
         }
+        public string encriptar(String contraseña)
+        {
+            string resultado = string.Empty;
+            byte[] encriptar = System.Text.Encoding.Unicode.GetBytes(contraseña);
+            resultado = Convert.ToBase64String(encriptar);
+            return resultado;
+        }
         public Boolean mValidarContraseña(String claveAlmacenada)
         {
+            
             if (this.txtClave.Text.Equals(claveAlmacenada))
             {
                 return true;
             }
-              
-            return false;
+            else
+            {
+
+                ClaveTemporal = encriptar(txtClave.Text);
+
+
+                if (this.txtClave.Text.Equals(desencriptar(ClaveTemporal)))
+                {
+                    if (this.txtClave.Text.Equals(desencriptar(claveAlmacenada)))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        return false;
+                    }
+                    
+                }
+                else
+                {
+                    return false;
+                }
+                         
+                                  
+
+            }
+            
+
         }
     }
 

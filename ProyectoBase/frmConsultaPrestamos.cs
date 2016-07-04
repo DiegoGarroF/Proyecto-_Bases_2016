@@ -27,7 +27,7 @@ namespace Vista
             InitializeComponent();
             this.conexion = conexion;
             this.prestamo = new clsPrestamo();
-           
+
         }
 
         private void btnSalir_Click(object sender, EventArgs e)
@@ -57,8 +57,8 @@ namespace Vista
             {
                 if (lvConsultaPrestamos.Items[i].Selected)
                 {
-                  //  idUsuarios = Convert.ToInt32(lvConsultaPrestamos.Items[i].Text);
-                    idLibros= Convert.ToInt32( lvConsultaPrestamos.Items[i].SubItems[3].Text);
+                    //  idUsuarios = Convert.ToInt32(lvConsultaPrestamos.Items[i].Text);
+                    idLibros = Convert.ToInt32(lvConsultaPrestamos.Items[i].SubItems[3].Text);
                     idCLiente = Convert.ToInt32(lvConsultaPrestamos.Items[i].SubItems[4].Text);
                 }
             }
@@ -76,7 +76,7 @@ namespace Vista
         public void mCargarListViewPrestamos()
         {
             dataReader = prestamo.mConsultaGeneral(conexion);
-            if (dataReader!= null)
+            if (dataReader != null)
             {
                 while (dataReader.Read())
                 {

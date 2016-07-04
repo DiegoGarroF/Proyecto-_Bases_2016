@@ -82,7 +82,9 @@
             // 
             // btnConsultar
             // 
-            this.btnConsultar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnConsultar.BackColor = System.Drawing.Color.SlateGray;
+            this.btnConsultar.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
+            this.btnConsultar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnConsultar.Image = global::ProyectoBase.Properties.Resources.buscar;
             this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
             this.btnConsultar.Location = new System.Drawing.Point(249, 19);
@@ -128,15 +130,16 @@
             // 
             // btnAgregar
             // 
-            this.btnAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnAgregar.BackColor = System.Drawing.Color.SlateGray;
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAgregar.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
+            this.btnAgregar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnAgregar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
             this.btnAgregar.Location = new System.Drawing.Point(24, 255);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(89, 51);
+            this.btnAgregar.Size = new System.Drawing.Size(64, 40);
             this.btnAgregar.TabIndex = 8;
-            this.btnAgregar.Text = "Add";
             this.btnAgregar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnAgregar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnAgregar.UseVisualStyleBackColor = false;
@@ -144,15 +147,16 @@
             // 
             // btnEliminar
             // 
-            this.btnEliminar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnEliminar.BackColor = System.Drawing.Color.SlateGray;
             this.btnEliminar.BackgroundImage = global::ProyectoBase.Properties.Resources.detele;
-            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.btnEliminar.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
+            this.btnEliminar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(293, 255);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(87, 51);
+            this.btnEliminar.Size = new System.Drawing.Size(54, 40);
             this.btnEliminar.TabIndex = 7;
-            this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnEliminar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEliminar.UseVisualStyleBackColor = false;
@@ -160,17 +164,18 @@
             // 
             // btnModificar
             // 
-            this.btnModificar.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnModificar.BackColor = System.Drawing.Color.SlateGray;
             this.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnModificar.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
+            this.btnModificar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnModificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
-            this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.TopRight;
+            this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
             this.btnModificar.Location = new System.Drawing.Point(161, 255);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(98, 51);
+            this.btnModificar.Size = new System.Drawing.Size(57, 40);
             this.btnModificar.TabIndex = 6;
-            this.btnModificar.Text = "Modificar";
             this.btnModificar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
             this.btnModificar.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnModificar.UseVisualStyleBackColor = false;
@@ -178,10 +183,12 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.BackColor = System.Drawing.SystemColors.ButtonFace;
+            this.btnSalir.BackColor = System.Drawing.Color.SlateGray;
             this.btnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalir.BackgroundImage")));
+            this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(359, 0);
+            this.btnSalir.Location = new System.Drawing.Point(359, 1);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(49, 50);
             this.btnSalir.TabIndex = 0;
@@ -192,6 +199,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(409, 307);
             this.ControlBox = false;
             this.Controls.Add(this.btnAgregar);
@@ -199,6 +207,7 @@
             this.Controls.Add(this.btnModificar);
             this.Controls.Add(this.Datos);
             this.Controls.Add(this.btnSalir);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLibro";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Administración de Libros";

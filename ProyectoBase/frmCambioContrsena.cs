@@ -28,11 +28,11 @@ namespace Vista
             this.conexion = conexion;
             pEntidadUsuario = new clsEntidadUsuario();
             usuario = new clsUsuario();
-        
+
             InitializeComponent();
         }
 
-      
+
         public Boolean confirmarCcontra()
         {
             if (txtNuevaContraseña.Text.Equals(txtConfirmarContraseña.Text))
@@ -48,7 +48,7 @@ namespace Vista
 
         public Boolean conFirmarTamaño()
         {
-            if (txtNuevaContraseña.TextLength>=8 && txtConfirmarContraseña.TextLength>=8)
+            if (txtNuevaContraseña.TextLength >= 8 && txtConfirmarContraseña.TextLength >= 8)
             {
                 return true;
             }
@@ -79,7 +79,7 @@ namespace Vista
 
         public Boolean verificarCampos()
         {
-            if (txtNuevaContraseña.Text != "" & txtConfirmarContraseña.Text!="")
+            if (txtNuevaContraseña.Text != "" & txtConfirmarContraseña.Text != "")
             {
                 return true;
             }
@@ -90,14 +90,14 @@ namespace Vista
             }
         }
         private void btnConfirmar_Click(object sender, EventArgs e)
-        { 
-            if(verificarCampos()== true)
+        {
+            if (verificarCampos() == true)
             {
-                if (confirmarCcontra() == true && conFirmarTamaño()==true)
+                if (confirmarCcontra() == true && conFirmarTamaño() == true)
                 {
                     pEntidadUsuario.mUsuario = txtUsuario.Text;
                     pEntidadUsuario.mContrasena = encriptar(txtNuevaContraseña.Text);
-                    if (usuario.mModificarContraseña(conexion, pEntidadUsuario , btnConfirmar.Text="Modificar"))
+                    if (usuario.mModificarContraseña(conexion, pEntidadUsuario, btnConfirmar.Text = "Modificar"))
                     {
                         clsConstantes.nombreUsuario = txtUsuario.Text;
                         MessageBox.Show("Contraseña cambiada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
@@ -105,7 +105,7 @@ namespace Vista
                         menu.Show();
                         this.Hide();
                     }
-                    
+
                 }
                 else
                 {

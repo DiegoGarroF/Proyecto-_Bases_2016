@@ -63,7 +63,7 @@ namespace Vista
 
             entidadRolPantalla = new clsEntidadRolPantalla();
             rolPantalla = new clsRolPantalla();
-             
+
         }
 
         private void frmUsuario_Load(object sender, EventArgs e)
@@ -72,12 +72,13 @@ namespace Vista
             dtrPantalla = pantalla.mConsultarPantallas(conexion);
             if (dtrPantalla != null)
                 while (dtrPantalla.Read())
-                {                    
+                {
                     if (dtrPantalla.GetSqlString(0) == this.Name)
                     {
                         cbPantalla.Items.Add("Mantenimiento de usuarios");
                     }
-                    else {
+                    else
+                    {
                         if (dtrPantalla.GetSqlString(0) == "frmRoles")
                         {
                             cbPantalla.Items.Add("Mantenimiento de roles");
@@ -103,7 +104,7 @@ namespace Vista
                                 }
                             }
                         }
-                    }                                            
+                    }
                 }
             //Se llena el combobox de roles
             dtrRol = rol.mConsultarRoles(conexion);
@@ -117,17 +118,17 @@ namespace Vista
             entidadUsuario.mUsuario = clsConstantes.nombreUsuario;
             entidadUsuario.mContrasena = "";
             dtrUsuario = usuario.mLogueoPrincipal(conexion, entidadUsuario); // saco id del usuario conectado
-            if(dtrUsuario!=null)
-                while(dtrUsuario.Read())
+            if (dtrUsuario != null)
+                while (dtrUsuario.Read())
                 {
                     entidadUsuario.mIdUsuario = dtrUsuario.GetInt32(0);
-                    dtrPrivilegiosUsuaio = usuario.mBuscarPrivilegiosUsuario(conexion,entidadUsuario);
+                    dtrPrivilegiosUsuaio = usuario.mBuscarPrivilegiosUsuario(conexion, entidadUsuario);
                     if (dtrPrivilegiosUsuaio != null)
                         while (dtrPrivilegiosUsuaio.Read())
-                        { 
-                            if(dtrPrivilegiosUsuaio.GetString(4)==this.Name)                         
-                                mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);                         
-                        }                   
+                        {
+                            if (dtrPrivilegiosUsuaio.GetString(4) == this.Name)
+                                mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);
+                        }
                 }
 
             clsLibro libro = new clsLibro();
@@ -148,30 +149,39 @@ namespace Vista
         //A razón de que en la BD se guardan booleanos y de que en la interfaz se muestran "si" o "no " es necesario
         public void llenarPrivilegiosUsuarioPantalla(ListViewItem I)
         {
-            if (I.SubItems[1].Text == "Sí") {
+            if (I.SubItems[1].Text == "Sí")
+            {
                 entidadUsuarioPantalla.mInsertar = true;
-            }else{
+            }
+            else
+            {
                 entidadUsuarioPantalla.mInsertar = false;
             }
 
-            if (I.SubItems[2].Text == "Sí") {
+            if (I.SubItems[2].Text == "Sí")
+            {
                 entidadUsuarioPantalla.mConsultar = true;
             }
-            else{
+            else
+            {
                 entidadUsuarioPantalla.mConsultar = false;
             }
 
-            if (I.SubItems[3].Text == "Sí"){
+            if (I.SubItems[3].Text == "Sí")
+            {
                 entidadUsuarioPantalla.mModificar = true;
             }
-            else{
+            else
+            {
                 entidadUsuarioPantalla.mModificar = false;
             }
 
             if (I.SubItems[4].Text == "Sí")
             {
                 entidadUsuarioPantalla.mEliminar = true;
-            }else {
+            }
+            else
+            {
                 entidadUsuarioPantalla.mEliminar = false;
             }
 
@@ -229,7 +239,7 @@ namespace Vista
         {
             foreach (ListViewItem I in lvRoles.Items)//Se recorre el listview y se insertan todos los roles que aparecen en el listview
             {
-                
+
                 entidadRol.mNombreRol = I.SubItems[0].Text;
                 dtrRol = rol.mConsultaIdRoles(conexion, entidadRol);
                 if (dtrRol != null)
@@ -291,17 +301,19 @@ namespace Vista
         public Boolean mVerificarNombreUsuario()
         {
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
-            dtrUsuario = usuario.mBuscarPorLogin(conexion,entidadUsuario);
-            if(dtrUsuario!=null)
+            dtrUsuario = usuario.mBuscarPorLogin(conexion, entidadUsuario);
+            if (dtrUsuario != null)
                 if (dtrUsuario.Read())
                 {
                     return true;
                 }
-                else{
-                }return false;
+                else
+                {
+                }
+            return false;
 
         }
-        
+
         //Este método inserta un usuario, además inserta los roles asignados al mismo y los privilegios. Dependiendo de la situación
         private void mAgregarUsuario()
         {
@@ -328,7 +340,8 @@ namespace Vista
                 if (mValidarPermisos(lvPrivilegios) & mValidarPermisos(lvRoles) == true)
                 {
                     //AQUI
-                    if (mVerificarNombreUsuario() == false) { 
+                    if (mVerificarNombreUsuario() == false)
+                    {
                         if (usuario.mInsertarUsuario(conexion, entidadUsuario))
                         {
                             MessageBox.Show("Se ha insertado el usuario", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -340,7 +353,9 @@ namespace Vista
                         {
                             MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
-                    }else{
+                    }
+                    else
+                    {
                         MessageBox.Show("Ya existe un usuario con este nombre de usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                     }
                 }
@@ -362,7 +377,8 @@ namespace Vista
                                 MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
-                        else{
+                        else
+                        {
                             MessageBox.Show("Ya existe un usuario con este nombre de usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         }
                     }
@@ -385,7 +401,8 @@ namespace Vista
                                     MessageBox.Show("Ocurrió un error al insertar el usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                                 }
                             }
-                            else{
+                            else
+                            {
                                 MessageBox.Show("Ya existe un usuario con este nombre de usuario", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                             }
                         }
@@ -415,7 +432,7 @@ namespace Vista
             if (cbEstado.Text == "Bloqueado")
                 entidadUsuario.mEstadoUsuario = 3;
 
-            if(cbEstado.Text=="Desbloqueado")
+            if (cbEstado.Text == "Desbloqueado")
                 entidadUsuario.mEstadoUsuario = 0;
 
             entidadUsuario.mCreadoPor = "";
@@ -571,10 +588,12 @@ namespace Vista
                     txtNombre.Text = dtrUsuario.GetString(3);
                     txtApellidos.Text = dtrUsuario.GetString(4);
                     cbTipoUsuario.Text = dtrUsuario.GetString(5);
-                    if (dtrUsuario.GetInt32(6) < 3){
+                    if (dtrUsuario.GetInt32(6) < 3)
+                    {
                         cbEstado.Text = "Desbloqueado";
                     }
-                    else{
+                    else
+                    {
                         cbEstado.Text = "Bloqueado";
                     }
 
@@ -708,7 +727,7 @@ namespace Vista
             if (itemSeleccion(lvPrivilegios) != -1)
             {
                 lvPrivilegios.Items.RemoveAt(itemSeleccion(lvPrivilegios));
-                
+
             }
             else
             {
@@ -847,7 +866,7 @@ namespace Vista
                 btnEliminar.Enabled = true;
             }
 
-        }       
-      
+        }
+
     }
 }

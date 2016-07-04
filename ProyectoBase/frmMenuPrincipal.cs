@@ -20,7 +20,7 @@ namespace Vista
         private clsLibro libro;
         private clsEntidadUsuario pEntidadUsuario;
         private frmLibro nuevoLibro;
-      
+
         public frmMenuPrincipal(clsConexion conexion)
         {
             InitializeComponent();
@@ -29,9 +29,9 @@ namespace Vista
             this.libro = new clsLibro();
             this.pEntidadUsuario = new clsEntidadUsuario();
             this.nuevoLibro = new frmLibro(this.conexion);
-            
-            this.verificarPrivilegios(this.nuevoLibro.Name,opcionNuevoLibro);
-         
+
+            this.verificarPrivilegios(this.nuevoLibro.Name, opcionNuevoLibro);
+
 
         }
 
@@ -46,7 +46,7 @@ namespace Vista
         }
 
         private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
-        {                        
+        {
             //usuario.setBtnAccionTipo(mEstablecerTipoBoton(clsConstantes.AGREGAR));
             this.Hide();
             usuario.limpiar();
@@ -54,14 +54,14 @@ namespace Vista
             usuario.Show();
         }
 
-        
+
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-           frmBitacora  frmBitacora = new frmBitacora(conexion);
+            frmBitacora frmBitacora = new frmBitacora(conexion);
             frmBitacora.Show();
         }
 
-      
+
 
         private void opcionMantenimientoLibros(object sender, EventArgs e)
         {
@@ -73,7 +73,7 @@ namespace Vista
 
         private void mantenimientoDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+
             this.Hide();
             usuario.limpiar();
             //usuario.controlAgregarRolPriv(0);
@@ -93,11 +93,11 @@ namespace Vista
             ventanaRoles.Show();
         }
 
-        public Boolean verificarPrivilegios( String nombreFrame,ToolStripMenuItem item)
+        public Boolean verificarPrivilegios(String nombreFrame, ToolStripMenuItem item)
         {
 
             dtr = libro.mSeleccionarIdUsuario(conexion, clsConstantes.nombreUsuario);
-            if(dtr!=null&& dtr.Read())
+            if (dtr != null && dtr.Read())
             {
                 pEntidadUsuario.mIdUsuario = dtr.GetInt32(0);
                 dtr = libro.mObtenerRolesUsuario(this.conexion, Convert.ToString(dtr.GetInt32(0)), nombreFrame);
@@ -106,9 +106,9 @@ namespace Vista
                     if (dtr.GetBoolean(0) || dtr.GetBoolean(1) || dtr.GetBoolean(2) || dtr.GetBoolean(3))
                     {
                         item.Visible = true;
-                        
+
                     }
-                 }
+                }
                 dtr = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(pEntidadUsuario.mIdUsuario), nombreFrame);
                 while (dtr != null && dtr.Read())
                 {

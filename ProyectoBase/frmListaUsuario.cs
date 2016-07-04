@@ -28,32 +28,32 @@ namespace Vista
         clsConexion conexion;
 
         #endregion
-        public frmListaUsuario(clsConexion conexion,frmBitacora ventana)
+        public frmListaUsuario(clsConexion conexion, frmBitacora ventana)
         {
             this.conexion = conexion;
             usuario = new clsUsuario();
             entidadUsuario = new clsEntidadUsuario();
-            InitializeComponent();            
+            InitializeComponent();
             this.ventanaBitacora = ventana;
         }
 
-        
+
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
-            
+
             ventanaBitacora.Show();
             this.Hide();
         }
 
         private void frmListaUsuario_Load(object sender, EventArgs e)
         {
-            strUsuarios = usuario.mConsultarListaBitacora(conexion);            
+            strUsuarios = usuario.mConsultarListaBitacora(conexion);
             dgvUsuarios.Rows.Clear();
             if (strUsuarios != null)
                 while (strUsuarios.Read())
                 {
-                    int reglon = dgvUsuarios.Rows.Add();                    
+                    int reglon = dgvUsuarios.Rows.Add();
                     dgvUsuarios.Rows[reglon].Cells["ColNombre"].Value = strUsuarios.GetString(0);
                     dgvUsuarios.Rows[reglon].Cells["ColApellidos"].Value = strUsuarios.GetString(1);
                     dgvUsuarios.Rows[reglon].Cells["ColTipoUsuario"].Value = strUsuarios.GetString(2);
@@ -102,7 +102,7 @@ namespace Vista
             //        stUsuario = lvListaUusario.Items[i].Text;
             //     }
 
-                
+
 
             //}
         }

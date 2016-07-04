@@ -32,8 +32,8 @@ namespace Vista
         clsUsuario usuario;
         SqlDataReader dtrRol;
         clsEntidadPantalla entidadPantalla;
-        clsRolPantalla rolPantalla;   
-        IAsyncResult pruebaRol; 
+        clsRolPantalla rolPantalla;
+        IAsyncResult pruebaRol;
 
         public frmRoles(frmMenuPrincipal menu)
         {
@@ -53,24 +53,39 @@ namespace Vista
         //Coloca en la entidadRolPantalla el privilegio elegido para el rol que se va a crear        
         public void establecerPrivilegiosRol(ListViewItem I)
         {
-            if (I.SubItems[2].Text == "Sí"){
+            if (I.SubItems[2].Text == "Sí")
+            {
                 entidadRolPantalla.mInsertar = true;
-            } else {
+            }
+            else
+            {
                 entidadRolPantalla.mInsertar = false;
-            } if (I.SubItems[3].Text == "Sí"){
+            }
+            if (I.SubItems[3].Text == "Sí")
+            {
                 entidadRolPantalla.mConsultar = true;
-            }else {
+            }
+            else
+            {
                 entidadRolPantalla.mConsultar = false;
-            } if (I.SubItems[4].Text == "Sí") {
+            }
+            if (I.SubItems[4].Text == "Sí")
+            {
                 entidadRolPantalla.mModificar = true;
-            } else {
+            }
+            else
+            {
                 entidadRolPantalla.mModificar = false;
-            } if (I.SubItems[5].Text == "Sí"){
+            }
+            if (I.SubItems[5].Text == "Sí")
+            {
                 entidadRolPantalla.mEliminar = true;
-            } else{
+            }
+            else
+            {
                 entidadRolPantalla.mEliminar = false;
-            }       
-    }
+            }
+        }
         //Inserta un los la relación RolPantalla, la cual es básicamente privilegios del rol
         public void agregarRolPantalla(SqlConnection connection)
         {
@@ -78,8 +93,8 @@ namespace Vista
             {
                 establecerPrivilegiosRol(I);
                 entidadPantalla.mNombrePantalla = mRetornarVentanaSeleccionada(I.SubItems[1].Text);
-                dtrPantalla= pantalla.mConsultaIdPantallaScope(conexion,entidadPantalla, connection);//aqui ocupa otra trasacción
-                if(dtrPantalla!=null)
+                dtrPantalla = pantalla.mConsultaIdPantallaScope(conexion, entidadPantalla, connection);//aqui ocupa otra trasacción
+                if (dtrPantalla != null)
                     if (dtrPantalla.Read())
                     {
                         entidadRolPantalla.mIdPantalla = dtrPantalla.GetInt32(0);
@@ -90,7 +105,7 @@ namespace Vista
                         entidadRolPantalla.mFechaModificacion = "";
                         rolPantalla.mInsertarRolPantalla(conexion, entidadRolPantalla, connection);
                     }
-            }               
+            }
         }
         //Realiza la verificación previo a insertar un rol, llama al método de insertar el rol
         //Y posteriormente llama a insertar los privilegios
@@ -102,7 +117,7 @@ namespace Vista
             entidadRol.mNombreRol = lvPantalla.Items[0].Text;
 
             if ((mValidarInformacionRoles() == true & mValidarPermisos(lvPantalla) == true))
-            {                
+            {
                 if (mValidarPermisos(lvPantalla) == true)
                 {
                     if (cbPantalla.Text != null)
@@ -136,7 +151,7 @@ namespace Vista
                                 MessageBox.Show("No se ha insertado el rol completo", "ERROR", MessageBoxButtons.OK, MessageBoxIcon.Error);
                             }
                         }
-                       
+
                     }
                 }
             }
@@ -171,10 +186,10 @@ namespace Vista
 
         //Limpia los campos de la ventana
         public void limpiar()
-        {           
+        {
             txtNombreRol.Text = "";
             cbPantalla.SelectedIndex = -1;
-            lvPantalla.Items.Clear();            
+            lvPantalla.Items.Clear();
 
             chkConsultar.Checked = false;
             chkEliminar.Checked = false;
@@ -193,7 +208,7 @@ namespace Vista
             if (!this.txtNombreRol.Text.Trim().Equals(""))
                 return true;
             return false;
-        }    
+        }
 
         //Modifica el rol que se encuentre en el listview
         public void mModificarRol()
@@ -202,7 +217,7 @@ namespace Vista
             {
                 entidadRol.mNombreRol = lvPantalla.Items[0].Text;
                 dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
-                if(dtrRol!=null)
+                if (dtrRol != null)
                     if (dtrRol.Read())
                     {
                         entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
@@ -211,13 +226,15 @@ namespace Vista
                 using (SqlConnection connection = new SqlConnection(conexion.retornarSentenciaConeccion(conexion)))
                 {
                     connection.Open();
-                    try{
+                    try
+                    {
                         agregarRolPantalla(connection);
                         MessageBox.Show("Rol modificado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch{
+                    catch
+                    {
                         MessageBox.Show("No se ha modificado correctamente el rol", "Error de modificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    } 
+                    }
                 }
             }
             else
@@ -233,7 +250,7 @@ namespace Vista
         {
             if (dtrPermisos.GetBoolean(0))
             {
-                btnModificar.Enabled = true;                                
+                btnModificar.Enabled = true;
                 btnQuitarPantalla.Enabled = true;
                 btnEliminar.Enabled = true;
                 chkConsultar.Enabled = true;
@@ -267,7 +284,7 @@ namespace Vista
             {
                 btnEliminar.Enabled = true;
                 btnBuscar.Enabled = true;
-                txtNombreRol.Enabled = true;                
+                txtNombreRol.Enabled = true;
             }
 
         }
@@ -294,7 +311,7 @@ namespace Vista
                     else
                     {
                         if (ventana == "Mantenimiento de prestamos")
-                        {                            
+                        {
                             return "frmGestionPrestamos";
                         }
                         else
@@ -373,13 +390,13 @@ namespace Vista
                         }
                     clsLibro libro = new clsLibro();
                     dtrPrivilegiosUsuario = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(entidadUsuario.mIdUsuario), this.Name);
-                    if(dtrPrivilegiosUsuario!=null)
-                    while (dtrPrivilegiosUsuario.Read())
-                    {
-                        mActivarBotonesAdministrador(dtrPrivilegiosUsuario);
-                    }
+                    if (dtrPrivilegiosUsuario != null)
+                        while (dtrPrivilegiosUsuario.Read())
+                        {
+                            mActivarBotonesAdministrador(dtrPrivilegiosUsuario);
+                        }
                 }
-        }       
+        }
 
         private void btnSalir_Click(object sender, EventArgs e)
         {
@@ -392,7 +409,7 @@ namespace Vista
         //colocando así "sí o no" si se posee el privilegio, en lugar de "true o false"
         private void btnAgregarPrivilegios_Click(object sender, EventArgs e)
         {
-            if ((verificarNombre()==true) &(cbPantalla.Text!=""))
+            if ((verificarNombre() == true) & (cbPantalla.Text != ""))
             {
                 if (verificarRolPantallaLista(lvPantalla, txtNombreRol.Text, cbPantalla.Text))
                 {
@@ -442,9 +459,9 @@ namespace Vista
             }
             else
             {
-                MessageBox.Show("Datos insuficientes","Falta información",MessageBoxButtons.OK,MessageBoxIcon.Exclamation);
+                MessageBox.Show("Datos insuficientes", "Falta información", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
             }
-            
+
         }
         //Verifica que no hayan dos roles iguales en el mismo listview y que no haya un rol y una pantalla repetida en el mismo
         public Boolean verificarRolPantallaLista(ListView lista, string rol, string pantalla)
@@ -452,7 +469,7 @@ namespace Vista
             Boolean estado = true;
             foreach (ListViewItem I in lista.Items)
             {
-                if (((I.SubItems[0].Text == rol)&((I.SubItems[1].Text ==pantalla))) ||(I.SubItems[0].Text!=rol))
+                if (((I.SubItems[0].Text == rol) & ((I.SubItems[1].Text == pantalla))) || (I.SubItems[0].Text != rol))
                 {
                     Console.WriteLine("NO Pruede agregar");
                     return false;
@@ -472,7 +489,7 @@ namespace Vista
                 }
             }
             return -1;
-        } 
+        }
         //Remueve una pantalla del listview
         private void btnQuitarPantalla_Click(object sender, EventArgs e)
         {
@@ -500,7 +517,7 @@ namespace Vista
             conexion.codigo = "123";
             conexion.clave = "123";
             entidadRol.mNombreRol = txtNombreRol.Text;
-            dtrRol = clRol.mConsultarRolesPriv(conexion,entidadRol);
+            dtrRol = clRol.mConsultarRolesPriv(conexion, entidadRol);
             if (dtrRol != null)
                 while (dtrRol.Read())
                 {
@@ -534,7 +551,7 @@ namespace Vista
         {
             txtNombreRol.Text = "";
             lvPantalla.Items.Clear();
-            chkConsultar.Checked =false ;
+            chkConsultar.Checked = false;
             chkEliminar.Checked = false;
             chkInsertar.Checked = false;
             chkModificar.Checked = false;
@@ -546,18 +563,19 @@ namespace Vista
         {
             if (lvPantalla.Items != null)
             {
-                if (lvPantalla.Items[0].Text != "") { 
-                entidadRol.mNombreRol = lvPantalla.Items[0].Text;
-                dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
-                if (dtrRol != null)
-                    if (dtrRol.Read())
-                    {
-                        entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
-                        rolPantalla.mEliminarRolPantalla(conexion, entidadRolPantalla);
-                        clRol.mEliminarRol(conexion, entidadRol);
-                        limpiar();
-                         MessageBox.Show("Rol eliminado","Éxito",MessageBoxButtons.OK,MessageBoxIcon.Information);
-                    }
+                if (lvPantalla.Items[0].Text != "")
+                {
+                    entidadRol.mNombreRol = lvPantalla.Items[0].Text;
+                    dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
+                    if (dtrRol != null)
+                        if (dtrRol.Read())
+                        {
+                            entidadRolPantalla.mIdRol = dtrRol.GetInt32(0);
+                            rolPantalla.mEliminarRolPantalla(conexion, entidadRolPantalla);
+                            clRol.mEliminarRol(conexion, entidadRol);
+                            limpiar();
+                            MessageBox.Show("Rol eliminado", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        }
                 }
             }
         }

@@ -31,11 +31,11 @@
             this.txtUsuario = new System.Windows.Forms.TextBox();
             this.txtClave = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lbMensaje = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.btnSalir = new System.Windows.Forms.Button();
             this.btnIngresar = new System.Windows.Forms.Button();
-            this.lbMensaje = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
@@ -75,6 +75,15 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Datos";
             // 
+            // lbMensaje
+            // 
+            this.lbMensaje.AutoSize = true;
+            this.lbMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbMensaje.Location = new System.Drawing.Point(140, 275);
+            this.lbMensaje.Name = "lbMensaje";
+            this.lbMensaje.Size = new System.Drawing.Size(0, 18);
+            this.lbMensaje.TabIndex = 7;
+            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = global::ProyectoBase.Properties.Resources.user2;
@@ -97,14 +106,15 @@
             // 
             this.btnSalir.BackColor = System.Drawing.Color.Transparent;
             this.btnSalir.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnSalir.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
+            this.btnSalir.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalir.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnSalir.Image = global::ProyectoBase.Properties.Resources._1467610430_logout;
+            this.btnSalir.Image = global::ProyectoBase.Properties.Resources.no;
             this.btnSalir.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnSalir.Location = new System.Drawing.Point(243, 250);
+            this.btnSalir.Location = new System.Drawing.Point(243, 238);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(48, 39);
+            this.btnSalir.Size = new System.Drawing.Size(61, 51);
             this.btnSalir.TabIndex = 3;
             this.btnSalir.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnSalir.UseVisualStyleBackColor = false;
@@ -116,28 +126,20 @@
             this.btnIngresar.BackColor = System.Drawing.Color.Transparent;
             this.btnIngresar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.btnIngresar.Enabled = false;
-            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btnIngresar.FlatAppearance.BorderColor = System.Drawing.Color.SlateGray;
+            this.btnIngresar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnIngresar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnIngresar.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btnIngresar.Image = global::ProyectoBase.Properties.Resources._1467610349_misc_17;
+            this.btnIngresar.Image = global::ProyectoBase.Properties.Resources.ok;
             this.btnIngresar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnIngresar.Location = new System.Drawing.Point(40, 248);
+            this.btnIngresar.Location = new System.Drawing.Point(40, 238);
             this.btnIngresar.Name = "btnIngresar";
-            this.btnIngresar.Size = new System.Drawing.Size(47, 43);
+            this.btnIngresar.Size = new System.Drawing.Size(52, 53);
             this.btnIngresar.TabIndex = 2;
             this.btnIngresar.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btnIngresar.UseVisualStyleBackColor = false;
             this.btnIngresar.Click += new System.EventHandler(this.btnIngresar_Click);
             this.btnIngresar.MouseMove += new System.Windows.Forms.MouseEventHandler(this.btnIngresar_MouseMove);
-            // 
-            // lbMensaje
-            // 
-            this.lbMensaje.AutoSize = true;
-            this.lbMensaje.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbMensaje.Location = new System.Drawing.Point(140, 275);
-            this.lbMensaje.Name = "lbMensaje";
-            this.lbMensaje.Size = new System.Drawing.Size(0, 18);
-            this.lbMensaje.TabIndex = 7;
             // 
             // frmAcceso
             // 
@@ -153,7 +155,7 @@
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.btnIngresar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Underline, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmAcceso";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Ventana de acceso";

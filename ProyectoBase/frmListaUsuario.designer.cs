@@ -112,6 +112,7 @@
             this.Controls.Add(this.dgvUsuarios);
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lbUsuario);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmListaUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmListaUsuario";

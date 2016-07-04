@@ -37,7 +37,7 @@ namespace Vista
             prestamo = new clsPrestamo();
             pEntidadUsuario = new clsEntidadUsuario();
             usuario = new clsUsuario();
-            
+
             InitializeComponent();
         }
 
@@ -90,7 +90,7 @@ namespace Vista
 
         private void frmGestionPrestamos_Load(object sender, EventArgs e)
         {
-//            verificar();
+            //            verificar();
             mBloquearCampos();
             mHabilitarBotones();
         }
@@ -110,7 +110,7 @@ namespace Vista
                 {
                     if (dataReader.GetBoolean(0))// Modificar
                     {
-                        
+
                     }
                     if (dataReader.GetBoolean(1))// Insertar
                     {
@@ -133,7 +133,7 @@ namespace Vista
                 {
                     if (dataReader.GetBoolean(0))// Modificar
                     {
-                        
+
                     }
                     if (dataReader.GetBoolean(1))// Insertar
                     {
@@ -152,7 +152,7 @@ namespace Vista
                 }
             }
         }
-        
+
         //Metodo para buscar los libros almacenados en las bases de datos
         private void btnBuscarLibro_Click(object sender, EventArgs e)
         {
@@ -161,7 +161,7 @@ namespace Vista
             listaGeneral.ShowDialog();
             if (listaGeneral.mIdUsuario != 0)
             {
-               // pEntidadLibro.setIdLibro(Convert.ToInt32( listaGeneral.mIdUsuario));
+                // pEntidadLibro.setIdLibro(Convert.ToInt32( listaGeneral.mIdUsuario));
                 txtIdLibro.Text = Convert.ToString(listaGeneral.mIdUsuario);
                 cargarCamposLibro();
 
@@ -173,7 +173,7 @@ namespace Vista
         {
             pEntidadLibro.setIdLibro(Convert.ToInt32(txtIdLibro.Text));
             dataReader = libro.mSeleccionarLibroID(conexion, pEntidadLibro);
-            if (dataReader!= null)
+            if (dataReader != null)
             {
                 if (dataReader.Read())
                 {
@@ -189,7 +189,7 @@ namespace Vista
             frmConsultaPrestamos consulta = new frmConsultaPrestamos(conexion);
             consulta.mCargarListViewPrestamos();
             consulta.ShowDialog();
-            if (consulta.mIdLibros!=0)
+            if (consulta.mIdLibros != 0)
             {
                 txtIdLibro.Text = Convert.ToString(consulta.mIdLibros);
                 txtIdCliente.Text = Convert.ToString(consulta.mIdCLiente);
@@ -255,8 +255,8 @@ namespace Vista
         //Retorna el id de usuario conectado 
         public int mRetornarId()
         {
-            pEntidadUsuario.mUsuario= clsConstantes.nombreUsuario;
-            dataReader= usuario.mBuscarPorLogin(conexion, pEntidadUsuario);
+            pEntidadUsuario.mUsuario = clsConstantes.nombreUsuario;
+            dataReader = usuario.mBuscarPorLogin(conexion, pEntidadUsuario);
             if (dataReader != null)
             {
                 if (dataReader.Read())
@@ -299,7 +299,7 @@ namespace Vista
         {
             pEntidadPrestamo.setGetidLibro = Convert.ToInt32(txtIdLibro.Text);
             pEntidadPrestamo.setGetIdUsuariocliente = Convert.ToInt32(txtIdCliente.Text);
-            if(prestamo.mEliminarPrestamo(conexion, pEntidadPrestamo, btnEliminar.Text))
+            if (prestamo.mEliminarPrestamo(conexion, pEntidadPrestamo, btnEliminar.Text))
             {
                 MessageBox.Show("Se Elimino con Exito el Prestamo", "Fracaso", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                 mLimpiar();
@@ -313,7 +313,7 @@ namespace Vista
         //Verifica que no existan campos vacios para realizar el prestamo
         public Boolean verificarCampos()
         {
-            if (txtIdLibro.Text!= "" && txtIdCliente.Text!= "")
+            if (txtIdLibro.Text != "" && txtIdCliente.Text != "")
             {
                 return true;
             }
@@ -322,6 +322,6 @@ namespace Vista
                 return false;
             }
         }
-      
+
     }
 }

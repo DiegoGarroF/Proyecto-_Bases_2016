@@ -103,6 +103,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lvConsultaPrestamos);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmConsultaPrestamos";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Consulta Prestamos";

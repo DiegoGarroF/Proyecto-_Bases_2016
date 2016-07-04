@@ -18,7 +18,7 @@ namespace Vista
     {
 
         clsEntidadUsuario entidadUsuario;
-        DateTime fecha ;
+        DateTime fecha;
         clsBitacora clbitacora;
         SqlDataReader dtrUsuario;
         SqlDataReader dtrBitacora;
@@ -49,7 +49,7 @@ namespace Vista
         }
 
         private void btnConsultar_Click(object sender, EventArgs e)
-        {            
+        {
             frmLista.Show();
             this.Hide();
         }
@@ -59,16 +59,16 @@ namespace Vista
         public void mConsultarBitacora(ArrayList idUsuarios)
         {
             lvBitacora.Items.Clear();
-            for(int i=0; i<idUsuarios.Count; i++)
+            for (int i = 0; i < idUsuarios.Count; i++)
             {
                 entidadBitacora.setIdiUsuario(Convert.ToInt32(idUsuarios[i]));
                 dtrBitacora = clbitacora.mConsultaEspecifica(conexion, entidadBitacora);
-                if(dtrBitacora!=null)
+                if (dtrBitacora != null)
                     while (dtrBitacora.Read())
                     {
                         ListViewItem item = new ListViewItem(dtrBitacora.GetDateTime(0).ToString("dd/MM/yyyy"));
                         item.SubItems.Add(dtrBitacora.GetString(1));
-                        
+
 
                         entidadUsuario.mIdUsuario = entidadBitacora.getIdUsuario();
                         dtrUsuario = usuario.mBuscarUsuario(conexion, entidadUsuario);
@@ -80,8 +80,8 @@ namespace Vista
                             }
                     }
             }
-        }   
-       
+        }
+
 
         private void frmBitacora_Load(object sender, EventArgs e)
         {
@@ -98,10 +98,11 @@ namespace Vista
                     if (dtrPrivilegiosUsuaio != null)
                         while (dtrPrivilegiosUsuaio.Read())
                         {
-                            if (dtrPrivilegiosUsuaio.GetString(4) == this.Name) {
+                            if (dtrPrivilegiosUsuaio.GetString(4) == this.Name)
+                            {
 
                                 mActivarBotonesAdministrador(dtrPrivilegiosUsuaio);
-                                
+
                             }
                         }
                 }
@@ -148,19 +149,20 @@ namespace Vista
         //Para mostrarlas en el listview
         private void tbNombreUsuario_KeyUp(object sender, KeyEventArgs e)
         {
-            
-            if (txtNombreUsuario.Text != "") { 
-            entidadUsuario.mUsuario = txtNombreUsuario.Text;
-            dtrUsuario= usuario.mConsultaIdUsuario(conexion, entidadUsuario);
-            
-            if(dtrUsuario!=null)
-                if (dtrUsuario.Read())
-                {
-                    ArrayList array = new ArrayList();
-                    array.Add(dtrUsuario.GetInt32(0));
-                    lvBitacora.Items.Clear();
-                    mConsultarBitacora(array);
-                }
+
+            if (txtNombreUsuario.Text != "")
+            {
+                entidadUsuario.mUsuario = txtNombreUsuario.Text;
+                dtrUsuario = usuario.mConsultaIdUsuario(conexion, entidadUsuario);
+
+                if (dtrUsuario != null)
+                    if (dtrUsuario.Read())
+                    {
+                        ArrayList array = new ArrayList();
+                        array.Add(dtrUsuario.GetInt32(0));
+                        lvBitacora.Items.Clear();
+                        mConsultarBitacora(array);
+                    }
             }
             else
             {
@@ -172,7 +174,7 @@ namespace Vista
         //Activa las opciones de búsqueda, en caso de un usuario posea los permisos
         public void mActivarBotonesAdministrador(SqlDataReader dtrPermisos)
         {
-            
+
             if (dtrPermisos.GetBoolean(2))//Se activan opciones de búsqueda
             {
                 btnConsultar.Enabled = true;
@@ -180,7 +182,7 @@ namespace Vista
                 txtNombreUsuario.Enabled = true;
                 llenarDatosTabla();
             }
-            
+
         }
     }
 }

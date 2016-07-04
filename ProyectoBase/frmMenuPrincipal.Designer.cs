@@ -44,7 +44,11 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.SlateGray;
+            this.menuStrip1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Document);
+            this.menuStrip1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.usuariosToolStripMenuItem,
@@ -53,9 +57,9 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(737, 24);
-            this.menuStrip1.TabIndex = 4;
-            this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.Professional;
+            this.menuStrip1.Size = new System.Drawing.Size(531, 24);
+            this.menuStrip1.TabIndex = 8;
             // 
             // archivoToolStripMenuItem
             // 
@@ -70,7 +74,7 @@
             // 
             // salirToolStripMenuItem
             // 
-            this.salirToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen;
+            this.salirToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.salirToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.salirToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.auditoria2;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
@@ -80,7 +84,7 @@
             // 
             // salirToolStripMenuItem1
             // 
-            this.salirToolStripMenuItem1.BackColor = System.Drawing.Color.SpringGreen;
+            this.salirToolStripMenuItem1.BackColor = System.Drawing.Color.White;
             this.salirToolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
             this.salirToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.salirToolStripMenuItem1.Image = global::ProyectoBase.Properties.Resources.apagar2;
@@ -102,7 +106,7 @@
             // 
             // mantenimientoDeUsuariosToolStripMenuItem
             // 
-            this.mantenimientoDeUsuariosToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen;
+            this.mantenimientoDeUsuariosToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.mantenimientoDeUsuariosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.mantenimientoDeUsuariosToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.usuarios;
             this.mantenimientoDeUsuariosToolStripMenuItem.Name = "mantenimientoDeUsuariosToolStripMenuItem";
@@ -112,7 +116,7 @@
             // 
             // mantenimientoDeRolesToolStripMenuItem
             // 
-            this.mantenimientoDeRolesToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen;
+            this.mantenimientoDeRolesToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.mantenimientoDeRolesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.mantenimientoDeRolesToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.rol;
             this.mantenimientoDeRolesToolStripMenuItem.Name = "mantenimientoDeRolesToolStripMenuItem";
@@ -132,7 +136,7 @@
             // 
             // mantenimientoPrestamoToolStripMenuItem
             // 
-            this.mantenimientoPrestamoToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen;
+            this.mantenimientoPrestamoToolStripMenuItem.BackColor = System.Drawing.Color.White;
             this.mantenimientoPrestamoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.mantenimientoPrestamoToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.setting;
             this.mantenimientoPrestamoToolStripMenuItem.Name = "mantenimientoPrestamoToolStripMenuItem";
@@ -152,7 +156,7 @@
             // 
             // opcionNuevoLibro
             // 
-            this.opcionNuevoLibro.BackColor = System.Drawing.Color.SpringGreen;
+            this.opcionNuevoLibro.BackColor = System.Drawing.Color.White;
             this.opcionNuevoLibro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.opcionNuevoLibro.Image = global::ProyectoBase.Properties.Resources.book;
             this.opcionNuevoLibro.Name = "opcionNuevoLibro";
@@ -166,12 +170,12 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackgroundImage = global::ProyectoBase.Properties.Resources.rotulo_de_biblioteca_23_2147502675;
-            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(737, 484);
+            this.BackgroundImage = global::ProyectoBase.Properties.Resources.Mas;
+            this.ClientSize = new System.Drawing.Size(531, 315);
             this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.IsMdiContainer = true;
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

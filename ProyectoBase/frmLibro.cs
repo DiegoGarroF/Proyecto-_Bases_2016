@@ -100,7 +100,7 @@ namespace Vista
 
                 pEntidadLibro.setIdLibro(Int32.Parse(txtID.Text));// carga la entidad libro con el id 
                 dtr = libro.mSeleccionarLibroID(conexion, pEntidadLibro);// hace la consulta del libro por ID 
-                if (dtr != null&& dtr.Read())// si la consulta devuelve registros entonces se llenan los campos con los datos devueltos
+                if (dtr != null && dtr.Read())// si la consulta devuelve registros entonces se llenan los campos con los datos devueltos
                 {
                     this.txtNombre.Text = dtr.GetString(1);
                     this.txtISBN.Text = dtr.GetString(2);
@@ -117,7 +117,7 @@ namespace Vista
              * un aspecto importante es el creadoPor y el modificadoPor 
              * estos campos se cargan vacios porque asi lo requiere el metodo para validar los datos que no sean codigo vasura
              */
-             
+
             pEntidadLibro.setIdLibro(Convert.ToInt32(txtID.Text));
             pEntidadLibro.setNombre(txtNombre.Text);
             pEntidadLibro.setISBN(txtISBN.Text);
@@ -310,9 +310,9 @@ namespace Vista
 
                 //se hace una consulta para verificar los roles que tenga ese usuario con respecto a esa ventana
                 dtr = libro.mObtenerRolesUsuario(this.conexion, Convert.ToString(dtr.GetInt32(0)), this.Name);
-                while(dtr != null && dtr.Read())// se recorre los registros obtenidos y se verifica los privilegios para cada boton en ese role
+                while (dtr != null && dtr.Read())// se recorre los registros obtenidos y se verifica los privilegios para cada boton en ese role
                 {
-                    if (dtr.GetBoolean(0)==true)// Modificar
+                    if (dtr.GetBoolean(0) == true)// Modificar
                     {
                         this.btnModificar.Enabled = true;
                     }
@@ -331,7 +331,7 @@ namespace Vista
                 }
                 //Privilegios directos al usuario para esa pantalla
                 dtr = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(pEntidadUsuario.mIdUsuario), this.Name);
-                if(dtr!=null && dtr.Read())
+                if (dtr != null && dtr.Read())
                 {
                     if (dtr.GetBoolean(0))// Modificar
                     {

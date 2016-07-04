@@ -85,6 +85,7 @@
             // btnAgregar
             // 
             this.btnAgregar.Enabled = false;
+            this.btnAgregar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Location = new System.Drawing.Point(6, 19);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 34);
@@ -95,6 +96,7 @@
             // 
             // btnCancelar
             // 
+            this.btnCancelar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(255, 66);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 33);
@@ -105,6 +107,7 @@
             // 
             // btnLimpiar
             // 
+            this.btnLimpiar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Location = new System.Drawing.Point(255, 19);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 34);
@@ -131,6 +134,7 @@
             // btnEliminar
             // 
             this.btnEliminar.Enabled = false;
+            this.btnEliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(134, 66);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 33);
@@ -142,6 +146,7 @@
             // btnModificar
             // 
             this.btnModificar.Enabled = false;
+            this.btnModificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.Location = new System.Drawing.Point(6, 66);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 34);
@@ -153,6 +158,7 @@
             // btnConsultar
             // 
             this.btnConsultar.Enabled = false;
+            this.btnConsultar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.Location = new System.Drawing.Point(134, 19);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 34);
@@ -200,6 +206,7 @@
             // btnBuscar
             // 
             this.btnBuscar.Enabled = false;
+            this.btnBuscar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBuscar.Location = new System.Drawing.Point(291, 64);
             this.btnBuscar.Name = "btnBuscar";
             this.btnBuscar.Size = new System.Drawing.Size(52, 24);
@@ -225,7 +232,8 @@
             this.txtId.Name = "txtId";
             this.txtId.Size = new System.Drawing.Size(153, 22);
             this.txtId.TabIndex = 1;
-            this.txtId.Text = "Automático";            
+            this.txtId.Text = "Automático";
+            // 
             // gbxDatos
             // 
             this.gbxDatos.Controls.Add(this.cbEstado);
@@ -346,6 +354,7 @@
             // btnEliminarPrivilegioPantalla
             // 
             this.btnEliminarPrivilegioPantalla.Enabled = false;
+            this.btnEliminarPrivilegioPantalla.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarPrivilegioPantalla.Location = new System.Drawing.Point(251, 204);
             this.btnEliminarPrivilegioPantalla.Name = "btnEliminarPrivilegioPantalla";
             this.btnEliminarPrivilegioPantalla.Size = new System.Drawing.Size(75, 43);
@@ -357,6 +366,7 @@
             // btnEliminarRol
             // 
             this.btnEliminarRol.Enabled = false;
+            this.btnEliminarRol.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminarRol.Location = new System.Drawing.Point(12, 204);
             this.btnEliminarRol.Name = "btnEliminarRol";
             this.btnEliminarRol.Size = new System.Drawing.Size(75, 43);
@@ -449,6 +459,7 @@
             // btnAgregarRol
             // 
             this.btnAgregarRol.Enabled = false;
+            this.btnAgregarRol.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarRol.Location = new System.Drawing.Point(352, 16);
             this.btnAgregarRol.Name = "btnAgregarRol";
             this.btnAgregarRol.Size = new System.Drawing.Size(75, 37);
@@ -460,6 +471,7 @@
             // btnAgregarPrivilegios
             // 
             this.btnAgregarPrivilegios.Enabled = false;
+            this.btnAgregarPrivilegios.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregarPrivilegios.Location = new System.Drawing.Point(352, 124);
             this.btnAgregarPrivilegios.Name = "btnAgregarPrivilegios";
             this.btnAgregarPrivilegios.Size = new System.Drawing.Size(75, 42);
@@ -598,6 +610,8 @@
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.gbxDatos);
             this.Controls.Add(this.gbxBotones);
+            this.DoubleBuffered = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmUsuario";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Manejo de usuarios";

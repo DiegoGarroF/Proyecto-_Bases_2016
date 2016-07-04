@@ -176,7 +176,7 @@ namespace Vista
         // Cuando se presiona el botn modificar se llama al metodo mModificar y se hacen las comparaciones respectivas y modifica un libro
         private void btnModificar_Click(object sender, EventArgs e)
         {
-            mModificar();
+            mControlModificar();
         }
         #endregion
         #region Metodos Control espacios

@@ -326,7 +326,7 @@ namespace Modelo
                                     comando.Parameters.AddWithValue("@creadoPor", pEntidadLibro.getCreadoPor());
                                     comando.Parameters.AddWithValue("@fechaCreacion", pEntidadLibro.getFechaCreacion());
                                     comando.Parameters.AddWithValue("@modificadoPor", pEntidadLibro.getModificadoPor());
-                             //       comando.Parameters.AddWithValue("@fechaModificacion", pEntidadLibro.getFechaModificacion());
+                                    comando.Parameters.AddWithValue("@fechaModificacion", pEntidadLibro.getFechaModificacion());
                                     comando.ExecuteNonQuery();
                                     return true;
 

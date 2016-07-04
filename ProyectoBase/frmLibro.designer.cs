@@ -168,7 +168,7 @@
             this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.TopRight;
             this.btnModificar.Location = new System.Drawing.Point(161, 255);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(91, 51);
+            this.btnModificar.Size = new System.Drawing.Size(98, 51);
             this.btnModificar.TabIndex = 6;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.TextAlign = System.Drawing.ContentAlignment.TopLeft;

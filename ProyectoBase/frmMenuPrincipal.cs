@@ -8,19 +8,30 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Modelo;
-
+using Controlador;
+using System.Data.SqlClient;
 namespace Vista
 {
     public partial class frmMenuPrincipal : Form
     {
-
+        private SqlDataReader dtr;
         private frmUsuario usuario;
         private clsConexion conexion;
+        private clsLibro libro;
+        private clsEntidadUsuario pEntidadUsuario;
+        private frmLibro nuevoLibro;
+      
         public frmMenuPrincipal(clsConexion conexion)
         {
             InitializeComponent();
             usuario = new frmUsuario(this);
             this.conexion = conexion;
+            this.libro = new clsLibro();
+            this.pEntidadUsuario = new clsEntidadUsuario();
+            this.nuevoLibro = new frmLibro(this.conexion);
+            
+            this.verificarPrivilegios(this.nuevoLibro.Name,opcionNuevoLibro);
+         
 
         }
 
@@ -43,31 +54,10 @@ namespace Vista
             usuario.Show();
         }
 
-        public string mEstablecerTipoBoton(string tipo)
-        {             
-            switch (tipo)
-            {
-                case clsConstantes.AGREGAR:
-                    return clsConstantes.AGREGAR;
-
-                case clsConstantes.MODIFICAR:
-                   return clsConstantes.MODIFICAR;
-               
-                case clsConstantes.CONSULTAR:                
-                    return clsConstantes.CONSULTAR;
-
-                case clsConstantes.ELIMINAR:
-                    return clsConstantes.ELIMINAR;
-                    
-            }
-            return null;
-        }
-
-       
-
+        
         private void salirToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmBitacora frmBitacora = new frmBitacora(conexion);
+           frmBitacora  frmBitacora = new frmBitacora(conexion);
             frmBitacora.Show();
         }
 
@@ -75,7 +65,8 @@ namespace Vista
 
         private void opcionMantenimientoLibros(object sender, EventArgs e)
         {
-            frmLibro nuevoLibro = new frmLibro(conexion);
+
+            nuevoLibro = new frmLibro(conexion);
             nuevoLibro.Visible = true;
             this.Close();
         }
@@ -100,6 +91,35 @@ namespace Vista
             frmRoles ventanaRoles = new frmRoles(this);
             this.Hide();
             ventanaRoles.Show();
+        }
+
+        public Boolean verificarPrivilegios( String nombreFrame,ToolStripMenuItem item)
+        {
+
+            dtr = libro.mSeleccionarIdUsuario(conexion, clsConstantes.nombreUsuario);
+            if(dtr!=null&& dtr.Read())
+            {
+                pEntidadUsuario.mIdUsuario = dtr.GetInt32(0);
+                dtr = libro.mObtenerRolesUsuario(this.conexion, Convert.ToString(dtr.GetInt32(0)), nombreFrame);
+                while (dtr != null && dtr.Read())
+                {
+                    if (dtr.GetBoolean(0) || dtr.GetBoolean(1) || dtr.GetBoolean(2) || dtr.GetBoolean(3))
+                    {
+                        item.Visible = true;
+                        
+                    }
+                 }
+                dtr = libro.mObtenerPrivilegiosDirectos(this.conexion, Convert.ToString(pEntidadUsuario.mIdUsuario), nombreFrame);
+                while (dtr != null && dtr.Read())
+                {
+                    if (dtr.GetBoolean(0) || dtr.GetBoolean(1) || dtr.GetBoolean(2) || dtr.GetBoolean(3))
+                    {
+
+                        item.Visible = true;
+                    }
+                }
+            }
+            return false;
         }
     }
 }

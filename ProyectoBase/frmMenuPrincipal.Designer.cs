@@ -74,7 +74,7 @@
             this.salirToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.salirToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.auditoria2;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.salirToolStripMenuItem.Text = "Auditoría";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
@@ -85,7 +85,7 @@
             this.salirToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.salirToolStripMenuItem1.Image = global::ProyectoBase.Properties.Resources.apagar2;
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(122, 22);
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
             // 
@@ -158,6 +158,7 @@
             this.opcionNuevoLibro.Name = "opcionNuevoLibro";
             this.opcionNuevoLibro.Size = new System.Drawing.Size(155, 22);
             this.opcionNuevoLibro.Text = "Mantenimiento";
+            this.opcionNuevoLibro.Visible = false;
             this.opcionNuevoLibro.Click += new System.EventHandler(this.opcionMantenimientoLibros);
             // 
             // frmMenuPrincipal

@@ -197,11 +197,12 @@ namespace Vista
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {
-            
+            clsConstantes.nombreUsuario = entidadUsuario.mUsuario;
             frmMenuPrincipal menu = new frmMenuPrincipal(conexion);
             menu.Show();
             entidadUsuario.mEstadoUsuario = 0;
             clsConstantes.nombreUsuario = entidadUsuario.mUsuario;
+          
             usuario.mModificarEstadoUsuario(conexion, entidadUsuario);
             mInsertarBitacora();
             this.SetVisibleCore(false);
@@ -243,7 +244,6 @@ namespace Vista
 
                 ClaveTemporal = encriptar(txtClave.Text);
 
-
                 if (this.txtClave.Text.Equals(desencriptar(ClaveTemporal)))
                 {
                     if (this.txtClave.Text.Equals(desencriptar(claveAlmacenada)))
@@ -253,19 +253,28 @@ namespace Vista
                     else
                     {
                         return false;
-                    }
-                    
+                    }                    
                 }
                 else
                 {
                     return false;
                 }
-                         
-                                  
-
             }
-            
+        }
 
+        private void btnSalir_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.lbMensaje.Text = "EXIT";
+        }
+
+        private void frmAcceso_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.lbMensaje.Text = "";
+        }
+
+        private void btnIngresar_MouseMove(object sender, MouseEventArgs e)
+        {
+            this.lbMensaje.Text = "MORE";
         }
     }
 

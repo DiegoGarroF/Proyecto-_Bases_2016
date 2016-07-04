@@ -220,8 +220,7 @@
             this.lvPantalla.Size = new System.Drawing.Size(481, 200);
             this.lvPantalla.TabIndex = 31;
             this.lvPantalla.UseCompatibleStateImageBehavior = false;
-            this.lvPantalla.View = System.Windows.Forms.View.Details;
-            this.lvPantalla.SelectedIndexChanged += new System.EventHandler(this.lvPantalla_SelectedIndexChanged);
+            this.lvPantalla.View = System.Windows.Forms.View.Details;            
             // 
             // columnaRol
             // 

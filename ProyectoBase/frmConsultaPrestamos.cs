@@ -81,7 +81,7 @@ namespace Vista
                 while (dataReader.Read())
                 {
                     ListViewItem item = new ListViewItem(Convert.ToString(dataReader.GetInt32(0)));
-                    item.SubItems.Add(Convert.ToString(dataReader.GetDateTime(1)));
+                    item.SubItems.Add(Convert.ToString(dataReader.GetDateTime(1).ToString("dd/MM/yyyy")));
                     item.SubItems.Add(Convert.ToString(dataReader.GetInt32(2)));
                     item.SubItems.Add(Convert.ToString(dataReader.GetInt32(3)));
                     item.SubItems.Add(Convert.ToString(dataReader.GetInt32(4)));

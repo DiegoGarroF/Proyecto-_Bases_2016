@@ -137,7 +137,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 37);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(577, 145);
+            this.groupBox1.Size = new System.Drawing.Size(599, 149);
             this.groupBox1.TabIndex = 28;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Roles";
@@ -194,7 +194,7 @@
             // 
             this.btnQuitarPantalla.Enabled = false;
             this.btnQuitarPantalla.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitarPantalla.Location = new System.Drawing.Point(514, 208);
+            this.btnQuitarPantalla.Location = new System.Drawing.Point(536, 208);
             this.btnQuitarPantalla.Name = "btnQuitarPantalla";
             this.btnQuitarPantalla.Size = new System.Drawing.Size(75, 36);
             this.btnQuitarPantalla.TabIndex = 32;
@@ -217,10 +217,10 @@
             this.lvPantalla.GridLines = true;
             this.lvPantalla.Location = new System.Drawing.Point(13, 208);
             this.lvPantalla.Name = "lvPantalla";
-            this.lvPantalla.Size = new System.Drawing.Size(481, 200);
+            this.lvPantalla.Size = new System.Drawing.Size(517, 204);
             this.lvPantalla.TabIndex = 31;
             this.lvPantalla.UseCompatibleStateImageBehavior = false;
-            this.lvPantalla.View = System.Windows.Forms.View.Details;            
+            this.lvPantalla.View = System.Windows.Forms.View.Details;
             // 
             // columnaRol
             // 
@@ -230,7 +230,7 @@
             // columnaPantalla
             // 
             this.columnaPantalla.Text = "Pantalla";
-            this.columnaPantalla.Width = 141;
+            this.columnaPantalla.Width = 183;
             // 
             // columnaInsertar
             // 
@@ -253,7 +253,7 @@
             // 
             this.btnEliminar.Enabled = false;
             this.btnEliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEliminar.Location = new System.Drawing.Point(213, 433);
+            this.btnEliminar.Location = new System.Drawing.Point(251, 432);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(75, 27);
             this.btnEliminar.TabIndex = 25;
@@ -265,7 +265,7 @@
             // 
             this.btnModificar.Enabled = false;
             this.btnModificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnModificar.Location = new System.Drawing.Point(123, 433);
+            this.btnModificar.Location = new System.Drawing.Point(161, 432);
             this.btnModificar.Name = "btnModificar";
             this.btnModificar.Size = new System.Drawing.Size(75, 27);
             this.btnModificar.TabIndex = 24;
@@ -277,7 +277,7 @@
             // 
             this.btnAgregar.Enabled = false;
             this.btnAgregar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAgregar.Location = new System.Drawing.Point(25, 433);
+            this.btnAgregar.Location = new System.Drawing.Point(63, 432);
             this.btnAgregar.Name = "btnAgregar";
             this.btnAgregar.Size = new System.Drawing.Size(75, 27);
             this.btnAgregar.TabIndex = 23;
@@ -288,7 +288,7 @@
             // btnSalir
             // 
             this.btnSalir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalir.Location = new System.Drawing.Point(418, 433);
+            this.btnSalir.Location = new System.Drawing.Point(456, 432);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(74, 27);
             this.btnSalir.TabIndex = 30;
@@ -299,7 +299,7 @@
             // btnLimpiar
             // 
             this.btnLimpiar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnLimpiar.Location = new System.Drawing.Point(316, 433);
+            this.btnLimpiar.Location = new System.Drawing.Point(354, 432);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 27);
             this.btnLimpiar.TabIndex = 33;
@@ -312,7 +312,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SlateGray;
-            this.ClientSize = new System.Drawing.Size(601, 500);
+            this.ClientSize = new System.Drawing.Size(623, 502);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnQuitarPantalla);
             this.Controls.Add(this.btnSalir);

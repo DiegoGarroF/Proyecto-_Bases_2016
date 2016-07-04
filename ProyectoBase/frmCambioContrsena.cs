@@ -99,6 +99,7 @@ namespace Vista
                     pEntidadUsuario.mContrasena = encriptar(txtNuevaContraseña.Text);
                     if (usuario.mModificarContraseña(conexion, pEntidadUsuario , btnConfirmar.Text="Modificar"))
                     {
+                        clsConstantes.nombreUsuario = txtUsuario.Text;
                         MessageBox.Show("Contraseña cambiada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
                         frmMenuPrincipal menu = new frmMenuPrincipal(conexion);
                         menu.Show();

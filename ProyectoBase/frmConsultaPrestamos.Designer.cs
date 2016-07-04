@@ -39,17 +39,19 @@
             // 
             // lvConsultaPrestamos
             // 
+            this.lvConsultaPrestamos.BackColor = System.Drawing.Color.SpringGreen;
             this.lvConsultaPrestamos.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.idPrestamos,
             this.fecha,
             this.idUsuario,
             this.idLibro,
             this.idUsuarioCliente});
+            this.lvConsultaPrestamos.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvConsultaPrestamos.FullRowSelect = true;
             this.lvConsultaPrestamos.GridLines = true;
-            this.lvConsultaPrestamos.Location = new System.Drawing.Point(-2, -1);
+            this.lvConsultaPrestamos.Location = new System.Drawing.Point(12, 12);
             this.lvConsultaPrestamos.Name = "lvConsultaPrestamos";
-            this.lvConsultaPrestamos.Size = new System.Drawing.Size(617, 232);
+            this.lvConsultaPrestamos.Size = new System.Drawing.Size(601, 232);
             this.lvConsultaPrestamos.TabIndex = 0;
             this.lvConsultaPrestamos.UseCompatibleStateImageBehavior = false;
             this.lvConsultaPrestamos.View = System.Windows.Forms.View.Details;
@@ -83,7 +85,8 @@
             // 
             // btnSalir
             // 
-            this.btnSalir.Location = new System.Drawing.Point(517, 246);
+            this.btnSalir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalir.Location = new System.Drawing.Point(526, 258);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(75, 23);
             this.btnSalir.TabIndex = 1;
@@ -95,7 +98,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(616, 281);
+            this.BackColor = System.Drawing.Color.SlateGray;
+            this.ClientSize = new System.Drawing.Size(639, 293);
             this.ControlBox = false;
             this.Controls.Add(this.btnSalir);
             this.Controls.Add(this.lvConsultaPrestamos);

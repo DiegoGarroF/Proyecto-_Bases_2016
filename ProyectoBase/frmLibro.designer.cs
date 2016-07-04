@@ -32,6 +32,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.Datos = new System.Windows.Forms.GroupBox();
+            this.btnConsultar = new System.Windows.Forms.Button();
             this.txtID = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtISBN = new System.Windows.Forms.TextBox();
@@ -39,7 +40,6 @@
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnEliminar = new System.Windows.Forms.Button();
             this.btnModificar = new System.Windows.Forms.Button();
-            this.btnConsultar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
             this.Datos.SuspendLayout();
             this.SuspendLayout();
@@ -49,7 +49,7 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(16, 101);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(44, 13);
+            this.label1.Size = new System.Drawing.Size(50, 14);
             this.label1.TabIndex = 1;
             this.label1.Text = "Nombre";
             // 
@@ -58,7 +58,7 @@
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(16, 176);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(32, 13);
+            this.label2.Size = new System.Drawing.Size(33, 14);
             this.label2.TabIndex = 2;
             this.label2.Text = "ISBN";
             // 
@@ -71,6 +71,7 @@
             this.Datos.Controls.Add(this.txtNombre);
             this.Datos.Controls.Add(this.label1);
             this.Datos.Controls.Add(this.label2);
+            this.Datos.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Datos.Location = new System.Drawing.Point(53, 12);
             this.Datos.Name = "Datos";
             this.Datos.RightToLeft = System.Windows.Forms.RightToLeft.No;
@@ -79,12 +80,26 @@
             this.Datos.TabStop = false;
             this.Datos.Text = "Datos";
             // 
+            // btnConsultar
+            // 
+            this.btnConsultar.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.btnConsultar.Image = global::ProyectoBase.Properties.Resources.buscar;
+            this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.btnConsultar.Location = new System.Drawing.Point(249, 19);
+            this.btnConsultar.Name = "btnConsultar";
+            this.btnConsultar.Size = new System.Drawing.Size(45, 39);
+            this.btnConsultar.TabIndex = 10;
+            this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
+            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
+            this.btnConsultar.UseVisualStyleBackColor = false;
+            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
+            // 
             // txtID
             // 
             this.txtID.Enabled = false;
             this.txtID.Location = new System.Drawing.Point(81, 29);
             this.txtID.Name = "txtID";
-            this.txtID.Size = new System.Drawing.Size(151, 20);
+            this.txtID.Size = new System.Drawing.Size(151, 22);
             this.txtID.TabIndex = 9;
             this.txtID.Text = "Automatico";
             // 
@@ -93,7 +108,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(16, 36);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(18, 13);
+            this.label3.Size = new System.Drawing.Size(19, 14);
             this.label3.TabIndex = 8;
             this.label3.Text = "ID";
             // 
@@ -101,20 +116,21 @@
             // 
             this.txtISBN.Location = new System.Drawing.Point(81, 173);
             this.txtISBN.Name = "txtISBN";
-            this.txtISBN.Size = new System.Drawing.Size(151, 20);
+            this.txtISBN.Size = new System.Drawing.Size(151, 22);
             this.txtISBN.TabIndex = 7;
             // 
             // txtNombre
             // 
             this.txtNombre.Location = new System.Drawing.Point(81, 101);
             this.txtNombre.Name = "txtNombre";
-            this.txtNombre.Size = new System.Drawing.Size(151, 20);
+            this.txtNombre.Size = new System.Drawing.Size(151, 22);
             this.txtNombre.TabIndex = 5;
             // 
             // btnAgregar
             // 
             this.btnAgregar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnAgregar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnAgregar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Image = ((System.Drawing.Image)(resources.GetObject("btnAgregar.Image")));
             this.btnAgregar.Location = new System.Drawing.Point(24, 255);
             this.btnAgregar.Name = "btnAgregar";
@@ -131,6 +147,7 @@
             this.btnEliminar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnEliminar.BackgroundImage = global::ProyectoBase.Properties.Resources.detele;
             this.btnEliminar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnEliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(293, 255);
             this.btnEliminar.Name = "btnEliminar";
             this.btnEliminar.Size = new System.Drawing.Size(87, 51);
@@ -145,6 +162,7 @@
             // 
             this.btnModificar.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnModificar.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.btnModificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.ForeColor = System.Drawing.SystemColors.ControlText;
             this.btnModificar.Image = ((System.Drawing.Image)(resources.GetObject("btnModificar.Image")));
             this.btnModificar.ImageAlign = System.Drawing.ContentAlignment.TopRight;
@@ -158,24 +176,11 @@
             this.btnModificar.UseVisualStyleBackColor = false;
             this.btnModificar.Click += new System.EventHandler(this.btnModificar_Click);
             // 
-            // btnConsultar
-            // 
-            this.btnConsultar.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.btnConsultar.Image = global::ProyectoBase.Properties.Resources.buscar;
-            this.btnConsultar.ImageAlign = System.Drawing.ContentAlignment.BottomLeft;
-            this.btnConsultar.Location = new System.Drawing.Point(249, 19);
-            this.btnConsultar.Name = "btnConsultar";
-            this.btnConsultar.Size = new System.Drawing.Size(45, 39);
-            this.btnConsultar.TabIndex = 10;
-            this.btnConsultar.TextAlign = System.Drawing.ContentAlignment.TopLeft;
-            this.btnConsultar.TextImageRelation = System.Windows.Forms.TextImageRelation.TextAboveImage;
-            this.btnConsultar.UseVisualStyleBackColor = false;
-            this.btnConsultar.Click += new System.EventHandler(this.btnConsultar_Click);
-            // 
             // btnSalir
             // 
             this.btnSalir.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.btnSalir.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btnSalir.BackgroundImage")));
+            this.btnSalir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(359, 0);
             this.btnSalir.Name = "btnSalir";
             this.btnSalir.Size = new System.Drawing.Size(49, 50);

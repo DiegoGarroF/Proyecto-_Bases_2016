@@ -44,7 +44,7 @@
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.menuStrip1.BackColor = System.Drawing.Color.SlateGray;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
             this.usuariosToolStripMenuItem,
@@ -52,7 +52,8 @@
             this.librosToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(632, 24);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(7, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(737, 24);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -61,28 +62,30 @@
             this.archivoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.salirToolStripMenuItem,
             this.salirToolStripMenuItem1});
+            this.archivoToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.archivoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.archivoToolStripMenuItem.Name = "archivoToolStripMenuItem";
-            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
+            this.archivoToolStripMenuItem.Size = new System.Drawing.Size(59, 20);
             this.archivoToolStripMenuItem.Text = "Archivo";
             // 
             // salirToolStripMenuItem
             // 
-            this.salirToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.salirToolStripMenuItem.ForeColor = System.Drawing.SystemColors.Control;
+            this.salirToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen;
+            this.salirToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.salirToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.auditoria2;
             this.salirToolStripMenuItem.Name = "salirToolStripMenuItem";
-            this.salirToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.salirToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem.Text = "Auditoría";
             this.salirToolStripMenuItem.Click += new System.EventHandler(this.salirToolStripMenuItem_Click);
             // 
             // salirToolStripMenuItem1
             // 
-            this.salirToolStripMenuItem1.BackColor = System.Drawing.Color.DimGray;
+            this.salirToolStripMenuItem1.BackColor = System.Drawing.Color.SpringGreen;
             this.salirToolStripMenuItem1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.salirToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ControlLightLight;
+            this.salirToolStripMenuItem1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.salirToolStripMenuItem1.Image = global::ProyectoBase.Properties.Resources.apagar2;
             this.salirToolStripMenuItem1.Name = "salirToolStripMenuItem1";
-            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(123, 22);
+            this.salirToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
             this.salirToolStripMenuItem1.Text = "Salir";
             this.salirToolStripMenuItem1.Click += new System.EventHandler(this.salirToolStripMenuItem1_Click);
             // 
@@ -91,27 +94,29 @@
             this.usuariosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientoDeUsuariosToolStripMenuItem,
             this.mantenimientoDeRolesToolStripMenuItem});
+            this.usuariosToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.usuariosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(72, 20);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(73, 20);
             this.usuariosToolStripMenuItem.Text = "Seguridad";
             // 
             // mantenimientoDeUsuariosToolStripMenuItem
             // 
-            this.mantenimientoDeUsuariosToolStripMenuItem.BackColor = System.Drawing.Color.DimGray;
-            this.mantenimientoDeUsuariosToolStripMenuItem.ForeColor = System.Drawing.Color.Cornsilk;
+            this.mantenimientoDeUsuariosToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen;
+            this.mantenimientoDeUsuariosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.mantenimientoDeUsuariosToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.usuarios;
             this.mantenimientoDeUsuariosToolStripMenuItem.Name = "mantenimientoDeUsuariosToolStripMenuItem";
-            this.mantenimientoDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.mantenimientoDeUsuariosToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.mantenimientoDeUsuariosToolStripMenuItem.Text = "Mantenimiento de Usuarios";
             this.mantenimientoDeUsuariosToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeUsuariosToolStripMenuItem_Click);
             // 
             // mantenimientoDeRolesToolStripMenuItem
             // 
-            this.mantenimientoDeRolesToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mantenimientoDeRolesToolStripMenuItem.ForeColor = System.Drawing.Color.Cornsilk;
+            this.mantenimientoDeRolesToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen;
+            this.mantenimientoDeRolesToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.mantenimientoDeRolesToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.rol;
             this.mantenimientoDeRolesToolStripMenuItem.Name = "mantenimientoDeRolesToolStripMenuItem";
-            this.mantenimientoDeRolesToolStripMenuItem.Size = new System.Drawing.Size(220, 22);
+            this.mantenimientoDeRolesToolStripMenuItem.Size = new System.Drawing.Size(221, 22);
             this.mantenimientoDeRolesToolStripMenuItem.Text = "Mantenimiento de Roles";
             this.mantenimientoDeRolesToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoDeRolesToolStripMenuItem_Click);
             // 
@@ -119,17 +124,19 @@
             // 
             this.préstamosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mantenimientoPrestamoToolStripMenuItem});
+            this.préstamosToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.préstamosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.préstamosToolStripMenuItem.Name = "préstamosToolStripMenuItem";
-            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(74, 20);
+            this.préstamosToolStripMenuItem.Size = new System.Drawing.Size(75, 20);
             this.préstamosToolStripMenuItem.Text = "Préstamos";
             // 
             // mantenimientoPrestamoToolStripMenuItem
             // 
-            this.mantenimientoPrestamoToolStripMenuItem.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.mantenimientoPrestamoToolStripMenuItem.ForeColor = System.Drawing.Color.FloralWhite;
+            this.mantenimientoPrestamoToolStripMenuItem.BackColor = System.Drawing.Color.SpringGreen;
+            this.mantenimientoPrestamoToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.mantenimientoPrestamoToolStripMenuItem.Image = global::ProyectoBase.Properties.Resources.setting;
             this.mantenimientoPrestamoToolStripMenuItem.Name = "mantenimientoPrestamoToolStripMenuItem";
-            this.mantenimientoPrestamoToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.mantenimientoPrestamoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.mantenimientoPrestamoToolStripMenuItem.Text = "Mantenimiento";
             this.mantenimientoPrestamoToolStripMenuItem.Click += new System.EventHandler(this.mantenimientoPrestamoToolStripMenuItem_Click);
             // 
@@ -137,29 +144,33 @@
             // 
             this.librosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.opcionNuevoLibro});
+            this.librosToolStripMenuItem.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.librosToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.librosToolStripMenuItem.Name = "librosToolStripMenuItem";
-            this.librosToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.librosToolStripMenuItem.Size = new System.Drawing.Size(50, 20);
             this.librosToolStripMenuItem.Text = "Libros";
             // 
             // opcionNuevoLibro
             // 
-            this.opcionNuevoLibro.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.opcionNuevoLibro.ForeColor = System.Drawing.Color.Cornsilk;
+            this.opcionNuevoLibro.BackColor = System.Drawing.Color.SpringGreen;
+            this.opcionNuevoLibro.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.opcionNuevoLibro.Image = global::ProyectoBase.Properties.Resources.book;
             this.opcionNuevoLibro.Name = "opcionNuevoLibro";
-            this.opcionNuevoLibro.Size = new System.Drawing.Size(156, 22);
+            this.opcionNuevoLibro.Size = new System.Drawing.Size(155, 22);
             this.opcionNuevoLibro.Text = "Mantenimiento";
             this.opcionNuevoLibro.Click += new System.EventHandler(this.opcionMantenimientoLibros);
             // 
             // frmMenuPrincipal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.BackgroundImage = global::ProyectoBase.Properties.Resources.biblioteca;
-            this.ClientSize = new System.Drawing.Size(632, 449);
+            this.BackgroundImage = global::ProyectoBase.Properties.Resources.rotulo_de_biblioteca_23_2147502675;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.ClientSize = new System.Drawing.Size(737, 484);
             this.ControlBox = false;
             this.Controls.Add(this.menuStrip1);
+            this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.IsMdiContainer = true;
             this.Name = "frmMenuPrincipal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

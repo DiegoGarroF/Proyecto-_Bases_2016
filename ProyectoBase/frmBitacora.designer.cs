@@ -42,27 +42,31 @@
             // txtNombreUsuario
             // 
             this.txtNombreUsuario.Enabled = false;
+            this.txtNombreUsuario.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtNombreUsuario.Location = new System.Drawing.Point(138, 23);
             this.txtNombreUsuario.Name = "txtNombreUsuario";
-            this.txtNombreUsuario.Size = new System.Drawing.Size(100, 20);
+            this.txtNombreUsuario.Size = new System.Drawing.Size(100, 22);
             this.txtNombreUsuario.TabIndex = 0;
             this.txtNombreUsuario.KeyUp += new System.Windows.Forms.KeyEventHandler(this.tbNombreUsuario_KeyUp);
             // 
             // lbNombreUsuario
             // 
             this.lbNombreUsuario.AutoSize = true;
+            this.lbNombreUsuario.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbNombreUsuario.Location = new System.Drawing.Point(36, 23);
             this.lbNombreUsuario.Name = "lbNombreUsuario";
-            this.lbNombreUsuario.Size = new System.Drawing.Size(83, 13);
+            this.lbNombreUsuario.Size = new System.Drawing.Size(93, 14);
             this.lbNombreUsuario.TabIndex = 1;
             this.lbNombreUsuario.Text = "Nombre Usuario";
             // 
             // lvBitacora
             // 
+            this.lvBitacora.BackColor = System.Drawing.Color.SpringGreen;
             this.lvBitacora.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnHeader1,
             this.columnHeader2,
             this.columnHeader3});
+            this.lvBitacora.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvBitacora.FullRowSelect = true;
             this.lvBitacora.GridLines = true;
             this.lvBitacora.Location = new System.Drawing.Point(25, 70);
@@ -90,6 +94,7 @@
             // btnConsultar
             // 
             this.btnConsultar.Enabled = false;
+            this.btnConsultar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConsultar.Location = new System.Drawing.Point(272, 19);
             this.btnConsultar.Name = "btnConsultar";
             this.btnConsultar.Size = new System.Drawing.Size(75, 23);
@@ -100,9 +105,10 @@
             // 
             // btnSalir
             // 
+            this.btnSalir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(229, 344);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 33);
+            this.btnSalir.Size = new System.Drawing.Size(75, 29);
             this.btnSalir.TabIndex = 4;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
@@ -111,9 +117,10 @@
             // btnRefrescar
             // 
             this.btnRefrescar.Enabled = false;
+            this.btnRefrescar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnRefrescar.Location = new System.Drawing.Point(66, 344);
             this.btnRefrescar.Name = "btnRefrescar";
-            this.btnRefrescar.Size = new System.Drawing.Size(75, 33);
+            this.btnRefrescar.Size = new System.Drawing.Size(75, 29);
             this.btnRefrescar.TabIndex = 5;
             this.btnRefrescar.Text = "Refrescar";
             this.btnRefrescar.UseVisualStyleBackColor = true;
@@ -123,6 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(366, 385);
             this.Controls.Add(this.btnRefrescar);
             this.Controls.Add(this.btnSalir);

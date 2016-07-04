@@ -63,6 +63,56 @@ namespace ProyectoBase.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap _1467610091_close_blue {
+            get {
+                object obj = ResourceManager.GetObject("1467610091_close_blue", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1467610095_sub_blue_accept {
+            get {
+                object obj = ResourceManager.GetObject("1467610095_sub_blue_accept", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1467610349_misc_17 {
+            get {
+                object obj = ResourceManager.GetObject("1467610349_misc_17", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _1467610430_logout {
+            get {
+                object obj = ResourceManager.GetObject("1467610430_logout", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap _898ace26950590ab505e0d6908fde96e {
+            get {
+                object obj = ResourceManager.GetObject("898ace26950590ab505e0d6908fde96e", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap _continue {
             get {
                 object obj = ResourceManager.GetObject("continue", resourceCulture);
@@ -203,6 +253,16 @@ namespace ProyectoBase.Properties {
         /// <summary>
         ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap images {
+            get {
+                object obj = ResourceManager.GetObject("images", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap login {
             get {
                 object obj = ResourceManager.GetObject("login", resourceCulture);
@@ -226,6 +286,16 @@ namespace ProyectoBase.Properties {
         internal static System.Drawing.Bitmap roles {
             get {
                 object obj = ResourceManager.GetObject("roles", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Busca un recurso adaptado de tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap rotulo_de_biblioteca_23_2147502675 {
+            get {
+                object obj = ResourceManager.GetObject("rotulo-de-biblioteca_23-2147502675", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

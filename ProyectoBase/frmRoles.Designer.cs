@@ -35,6 +35,7 @@
             this.chkEliminar = new System.Windows.Forms.CheckBox();
             this.chkModificar = new System.Windows.Forms.CheckBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnBuscar = new System.Windows.Forms.Button();
             this.cbPantalla = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.txtNombreRol = new System.Windows.Forms.TextBox();
@@ -51,7 +52,6 @@
             this.btnModificar = new System.Windows.Forms.Button();
             this.btnAgregar = new System.Windows.Forms.Button();
             this.btnSalir = new System.Windows.Forms.Button();
-            this.btnBuscar = new System.Windows.Forms.Button();
             this.btnLimpiar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -61,7 +61,7 @@
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(360, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(112, 13);
+            this.label3.Size = new System.Drawing.Size(125, 14);
             this.label3.TabIndex = 26;
             this.label3.Text = "Privilegios de pantalla:";
             // 
@@ -69,9 +69,9 @@
             // 
             this.chkInsertar.AutoSize = true;
             this.chkInsertar.Enabled = false;
-            this.chkInsertar.Location = new System.Drawing.Point(363, 44);
+            this.chkInsertar.Location = new System.Drawing.Point(363, 45);
             this.chkInsertar.Name = "chkInsertar";
-            this.chkInsertar.Size = new System.Drawing.Size(61, 17);
+            this.chkInsertar.Size = new System.Drawing.Size(68, 18);
             this.chkInsertar.TabIndex = 27;
             this.chkInsertar.Text = "Insertar";
             this.chkInsertar.UseVisualStyleBackColor = true;
@@ -79,9 +79,10 @@
             // btnAgregarPrivilegios
             // 
             this.btnAgregarPrivilegios.Enabled = false;
-            this.btnAgregarPrivilegios.Location = new System.Drawing.Point(500, 44);
+            this.btnAgregarPrivilegios.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAgregarPrivilegios.Location = new System.Drawing.Point(465, 44);
             this.btnAgregarPrivilegios.Name = "btnAgregarPrivilegios";
-            this.btnAgregarPrivilegios.Size = new System.Drawing.Size(75, 40);
+            this.btnAgregarPrivilegios.Size = new System.Drawing.Size(75, 31);
             this.btnAgregarPrivilegios.TabIndex = 31;
             this.btnAgregarPrivilegios.Text = "Agregar";
             this.btnAgregarPrivilegios.UseVisualStyleBackColor = true;
@@ -93,7 +94,7 @@
             this.chkConsultar.Enabled = false;
             this.chkConsultar.Location = new System.Drawing.Point(363, 67);
             this.chkConsultar.Name = "chkConsultar";
-            this.chkConsultar.Size = new System.Drawing.Size(70, 17);
+            this.chkConsultar.Size = new System.Drawing.Size(76, 18);
             this.chkConsultar.TabIndex = 28;
             this.chkConsultar.Text = "Consultar";
             this.chkConsultar.UseVisualStyleBackColor = true;
@@ -104,7 +105,7 @@
             this.chkEliminar.Enabled = false;
             this.chkEliminar.Location = new System.Drawing.Point(363, 110);
             this.chkEliminar.Name = "chkEliminar";
-            this.chkEliminar.Size = new System.Drawing.Size(62, 17);
+            this.chkEliminar.Size = new System.Drawing.Size(66, 18);
             this.chkEliminar.TabIndex = 30;
             this.chkEliminar.Text = "Eliminar";
             this.chkEliminar.UseVisualStyleBackColor = true;
@@ -115,7 +116,7 @@
             this.chkModificar.Enabled = false;
             this.chkModificar.Location = new System.Drawing.Point(363, 91);
             this.chkModificar.Name = "chkModificar";
-            this.chkModificar.Size = new System.Drawing.Size(69, 17);
+            this.chkModificar.Size = new System.Drawing.Size(73, 18);
             this.chkModificar.TabIndex = 29;
             this.chkModificar.Text = "Modificar";
             this.chkModificar.UseVisualStyleBackColor = true;
@@ -133,6 +134,7 @@
             this.groupBox1.Controls.Add(this.chkConsultar);
             this.groupBox1.Controls.Add(this.chkModificar);
             this.groupBox1.Controls.Add(this.chkEliminar);
+            this.groupBox1.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 37);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(577, 145);
@@ -140,13 +142,25 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Roles";
             // 
+            // btnBuscar
+            // 
+            this.btnBuscar.Enabled = false;
+            this.btnBuscar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnBuscar.Location = new System.Drawing.Point(245, 25);
+            this.btnBuscar.Name = "btnBuscar";
+            this.btnBuscar.Size = new System.Drawing.Size(75, 29);
+            this.btnBuscar.TabIndex = 32;
+            this.btnBuscar.Text = "Buscar";
+            this.btnBuscar.UseVisualStyleBackColor = true;
+            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
+            // 
             // cbPantalla
             // 
             this.cbPantalla.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbPantalla.FormattingEnabled = true;
             this.cbPantalla.Location = new System.Drawing.Point(73, 72);
             this.cbPantalla.Name = "cbPantalla";
-            this.cbPantalla.Size = new System.Drawing.Size(154, 21);
+            this.cbPantalla.Size = new System.Drawing.Size(154, 22);
             this.cbPantalla.TabIndex = 27;
             // 
             // label4
@@ -154,7 +168,7 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(5, 75);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(48, 13);
+            this.label4.Size = new System.Drawing.Size(52, 14);
             this.label4.TabIndex = 26;
             this.label4.Text = "Pantalla:";
             // 
@@ -163,7 +177,7 @@
             this.txtNombreRol.Enabled = false;
             this.txtNombreRol.Location = new System.Drawing.Point(73, 32);
             this.txtNombreRol.Name = "txtNombreRol";
-            this.txtNombreRol.Size = new System.Drawing.Size(154, 20);
+            this.txtNombreRol.Size = new System.Drawing.Size(154, 22);
             this.txtNombreRol.TabIndex = 22;
             this.txtNombreRol.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtNombreRol_KeyPress);
             // 
@@ -172,13 +186,14 @@
             this.lbNombre.AutoSize = true;
             this.lbNombre.Location = new System.Drawing.Point(5, 35);
             this.lbNombre.Name = "lbNombre";
-            this.lbNombre.Size = new System.Drawing.Size(63, 13);
+            this.lbNombre.Size = new System.Drawing.Size(70, 14);
             this.lbNombre.TabIndex = 21;
             this.lbNombre.Text = "Nombre Rol";
             // 
             // btnQuitarPantalla
             // 
             this.btnQuitarPantalla.Enabled = false;
+            this.btnQuitarPantalla.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnQuitarPantalla.Location = new System.Drawing.Point(514, 208);
             this.btnQuitarPantalla.Name = "btnQuitarPantalla";
             this.btnQuitarPantalla.Size = new System.Drawing.Size(75, 36);
@@ -189,6 +204,7 @@
             // 
             // lvPantalla
             // 
+            this.lvPantalla.BackColor = System.Drawing.Color.SpringGreen;
             this.lvPantalla.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.columnaRol,
             this.columnaPantalla,
@@ -196,11 +212,12 @@
             this.columnaConsultar,
             this.columnaModificar,
             this.columnaEliminar});
+            this.lvPantalla.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lvPantalla.FullRowSelect = true;
             this.lvPantalla.GridLines = true;
-            this.lvPantalla.Location = new System.Drawing.Point(12, 208);
+            this.lvPantalla.Location = new System.Drawing.Point(13, 208);
             this.lvPantalla.Name = "lvPantalla";
-            this.lvPantalla.Size = new System.Drawing.Size(472, 200);
+            this.lvPantalla.Size = new System.Drawing.Size(481, 200);
             this.lvPantalla.TabIndex = 31;
             this.lvPantalla.UseCompatibleStateImageBehavior = false;
             this.lvPantalla.View = System.Windows.Forms.View.Details;
@@ -223,6 +240,7 @@
             // columnaConsultar
             // 
             this.columnaConsultar.Text = "Consultar";
+            this.columnaConsultar.Width = 64;
             // 
             // columnaModificar
             // 
@@ -235,9 +253,10 @@
             // btnEliminar
             // 
             this.btnEliminar.Enabled = false;
+            this.btnEliminar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEliminar.Location = new System.Drawing.Point(213, 433);
             this.btnEliminar.Name = "btnEliminar";
-            this.btnEliminar.Size = new System.Drawing.Size(75, 35);
+            this.btnEliminar.Size = new System.Drawing.Size(75, 27);
             this.btnEliminar.TabIndex = 25;
             this.btnEliminar.Text = "Eliminar";
             this.btnEliminar.UseVisualStyleBackColor = true;
@@ -246,9 +265,10 @@
             // btnModificar
             // 
             this.btnModificar.Enabled = false;
+            this.btnModificar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnModificar.Location = new System.Drawing.Point(123, 433);
             this.btnModificar.Name = "btnModificar";
-            this.btnModificar.Size = new System.Drawing.Size(75, 35);
+            this.btnModificar.Size = new System.Drawing.Size(75, 27);
             this.btnModificar.TabIndex = 24;
             this.btnModificar.Text = "Modificar";
             this.btnModificar.UseVisualStyleBackColor = true;
@@ -257,9 +277,10 @@
             // btnAgregar
             // 
             this.btnAgregar.Enabled = false;
+            this.btnAgregar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAgregar.Location = new System.Drawing.Point(25, 433);
             this.btnAgregar.Name = "btnAgregar";
-            this.btnAgregar.Size = new System.Drawing.Size(75, 35);
+            this.btnAgregar.Size = new System.Drawing.Size(75, 27);
             this.btnAgregar.TabIndex = 23;
             this.btnAgregar.Text = "Agregar";
             this.btnAgregar.UseVisualStyleBackColor = true;
@@ -267,30 +288,21 @@
             // 
             // btnSalir
             // 
+            this.btnSalir.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalir.Location = new System.Drawing.Point(418, 433);
             this.btnSalir.Name = "btnSalir";
-            this.btnSalir.Size = new System.Drawing.Size(75, 35);
+            this.btnSalir.Size = new System.Drawing.Size(74, 27);
             this.btnSalir.TabIndex = 30;
             this.btnSalir.Text = "Salir";
             this.btnSalir.UseVisualStyleBackColor = true;
             this.btnSalir.Click += new System.EventHandler(this.btnSalir_Click);
             // 
-            // btnBuscar
-            // 
-            this.btnBuscar.Enabled = false;
-            this.btnBuscar.Location = new System.Drawing.Point(245, 25);
-            this.btnBuscar.Name = "btnBuscar";
-            this.btnBuscar.Size = new System.Drawing.Size(75, 33);
-            this.btnBuscar.TabIndex = 32;
-            this.btnBuscar.Text = "Buscar";
-            this.btnBuscar.UseVisualStyleBackColor = true;
-            this.btnBuscar.Click += new System.EventHandler(this.btnBuscar_Click);
-            // 
             // btnLimpiar
             // 
+            this.btnLimpiar.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnLimpiar.Location = new System.Drawing.Point(316, 433);
             this.btnLimpiar.Name = "btnLimpiar";
-            this.btnLimpiar.Size = new System.Drawing.Size(75, 35);
+            this.btnLimpiar.Size = new System.Drawing.Size(75, 27);
             this.btnLimpiar.TabIndex = 33;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
@@ -300,6 +312,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.SlateGray;
             this.ClientSize = new System.Drawing.Size(601, 500);
             this.Controls.Add(this.btnLimpiar);
             this.Controls.Add(this.btnQuitarPantalla);

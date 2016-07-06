@@ -39,6 +39,8 @@
             this.mantenimientoPrestamoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.librosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opcionNuevoLibro = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lbUsuarioLog = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +49,7 @@
             this.menuStrip1.AccessibleRole = System.Windows.Forms.AccessibleRole.Grip;
             this.menuStrip1.BackColor = System.Drawing.Color.White;
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.menuStrip1.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Document);
+            this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImeMode = System.Windows.Forms.ImeMode.Hiragana;
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.archivoToolStripMenuItem,
@@ -165,14 +167,38 @@
             this.opcionNuevoLibro.Visible = false;
             this.opcionNuevoLibro.Click += new System.EventHandler(this.opcionMantenimientoLibros);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.White;
+            this.label1.Font = new System.Drawing.Font("Tahoma", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(511, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(71, 18);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Usuario:";
+            // 
+            // lbUsuarioLog
+            // 
+            this.lbUsuarioLog.AutoSize = true;
+            this.lbUsuarioLog.BackColor = System.Drawing.Color.White;
+            this.lbUsuarioLog.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbUsuarioLog.Location = new System.Drawing.Point(588, 0);
+            this.lbUsuarioLog.Name = "lbUsuarioLog";
+            this.lbUsuarioLog.Size = new System.Drawing.Size(0, 18);
+            this.lbUsuarioLog.TabIndex = 11;
+            // 
             // frmMenuPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 14F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.ButtonFace;
             this.BackgroundImage = global::ProyectoBase.Properties.Resources.IMG_20160706_WA0011_jpg;
             this.ClientSize = new System.Drawing.Size(684, 516);
             this.ControlBox = false;
+            this.Controls.Add(this.lbUsuarioLog);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
             this.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -200,6 +226,8 @@
         private System.Windows.Forms.ToolStripMenuItem opcionNuevoLibro;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem mantenimientoDeRolesToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lbUsuarioLog;
     }
 }
 

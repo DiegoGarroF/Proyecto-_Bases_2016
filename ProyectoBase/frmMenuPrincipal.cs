@@ -31,7 +31,7 @@ namespace Vista
             this.nuevoLibro = new frmLibro(this.conexion);
             this.acceso = acceso;
             this.verificarPrivilegios(this.nuevoLibro.Name, opcionNuevoLibro);
-
+            lbUsuarioLog.Text = clsConstantes.nombreUsuario;
 
         }
 

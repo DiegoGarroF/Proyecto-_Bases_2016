@@ -92,7 +92,8 @@ namespace Vista
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             if (verificarCampos() == true)
-            {
+            {                
+
                 if (confirmarCcontra() == true && conFirmarTamaño() == true)
                 {
                     pEntidadUsuario.mUsuario = txtUsuario.Text;

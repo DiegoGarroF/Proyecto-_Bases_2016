@@ -283,6 +283,7 @@
     <None Include="Resources\no.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\IMG-20160706-WA0011.jpg.jpeg" />
     <Content Include="Resources\Mas.jpg" />
     <None Include="Resources\Mas1.jpg" />
   </ItemGroup>

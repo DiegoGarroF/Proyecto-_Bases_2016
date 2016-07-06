@@ -37,7 +37,7 @@ namespace Vista
         {
             
             InitializeComponent();
-            this.conexion = new clsConexion();
+            this.conexion = new clsConexion("123","123", "BDBiblioteca");
             entidadUsuario = new clsEntidadUsuario();
             usuario = new clsUsuario();
             entidadBitacora = new clsEntidadBitacora();
@@ -114,9 +114,7 @@ namespace Vista
         {
             if (contador <= 2)
             {
-                //llenado de variables o atributos del servidor para conectarme a la BD
-                conexion.codigo="123";
-                conexion.clave="123";
+
 
                 //llenado de los atributos de la clase EntidadUsuario
                 entidadUsuario.mUsuario = txtUsuario.Text;
@@ -246,7 +244,7 @@ namespace Vista
 
                 if (this.txtClave.Text.Equals(desencriptar(ClaveTemporal)))
                 {
-                    if (this.txtClave.Text.Equals(desencriptar(claveAlmacenada)))
+                    if (encriptar(this.txtClave.Text).Equals(claveAlmacenada))
                     {
                         return true;
                     }

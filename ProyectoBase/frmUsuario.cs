@@ -35,19 +35,17 @@ namespace Vista
 
         private clsPantalla pantalla;
         private clsEntidadPantalla entidadPantalla;
-        private SqlDataReader dtrPantalla;
-        private SqlDataReader dtrUsuarioRol;
-        private SqlDataReader dtrRolPantalla;
+        private SqlDataReader dtrPantalla;        
         private SqlDataReader dtrPrivilegiosUsuaio;
 
         private frmMenuPrincipal menu;
-        public frmUsuario(frmMenuPrincipal menuPrincipal)
+        public frmUsuario(frmMenuPrincipal menuPrincipal,clsConexion conexion)
         {
             InitializeComponent();
             this.menu = menuPrincipal;
             entidadUsuario = new clsEntidadUsuario();
             usuario = new clsUsuario();
-            conexion = new clsConexion();
+            this.conexion = conexion;
 
             entidadRol = new clsEntidadRol();
             rol = new clsRol();
@@ -316,9 +314,7 @@ namespace Vista
 
         //Este método inserta un usuario, además inserta los roles asignados al mismo y los privilegios. Dependiendo de la situación
         private void mAgregarUsuario()
-        {
-            conexion.codigo = "123";
-            conexion.clave = "123";
+        {            
             int idUsuarioAgregado = -1;
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
             entidadUsuario.mContrasena = txtContrasena.Text;
@@ -419,8 +415,6 @@ namespace Vista
         //Modifica los datos propios de un usuario a partir del id del mismo
         public void modificarUsuario(int idUsuarioSeleccionado)
         {
-            conexion.codigo = "123";
-            conexion.clave = "123";
 
             entidadUsuario.mIdUsuario = idUsuarioSeleccionado;
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
@@ -449,10 +443,7 @@ namespace Vista
         }
         //Este método elimina un usuario, SOLO USUARIO
         public void mEliminarUsuario()
-        {
-            conexion.clave = "123";
-            conexion.codigo = "123";
-
+        {           
             if (txtId.Text != "" & txtId.Text != "Automático")
             {
                 if (mEliminarUsuarioRol() == true & mEliminarUsuarioPrivilegio() == true)
@@ -511,10 +502,7 @@ namespace Vista
 
             frmListaGeneral lista = new frmListaGeneral(conexion);
             lista.cargarListViewUsuarios();
-            lista.ShowDialog();
-
-            conexion.codigo = "123";
-            conexion.clave = "123";
+            lista.ShowDialog();            
             entidadUsuario.mIdUsuario = lista.mIdUsuario;
             dtrUsuario = usuario.mBuscarUsuario(conexion, entidadUsuario);
 
@@ -533,8 +521,6 @@ namespace Vista
         //Este método carga los roles de un usuario
         public void cargarRolesUsuario()
         {
-            conexion.clave = "123";
-            conexion.codigo = "123";
             entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
             dtrRol = rol.mConsultaRolesUsuario(conexion, entidadUsuario);
 
@@ -550,8 +536,7 @@ namespace Vista
         //Este método carga los privilegios directos de un usuario
         public void cargarPrivilPantallasUsuario()
         {
-            conexion.clave = "123";
-            conexion.codigo = "123";
+            
             entidadUsuario.mIdUsuario = Convert.ToInt32(txtId.Text);
             dtrPantalla = pantalla.mConsultaPrivPantaUsuario(conexion, entidadUsuario);
 
@@ -773,8 +758,7 @@ namespace Vista
         //Se cargan los roles y privilegios directos de un usuario
         public void cargarDatosUsuario()
         {
-            conexion.codigo = "123";
-            conexion.clave = "123";
+            
             entidadUsuario.mUsuario = txtNombreUsuario.Text;
             dtrUsuario = usuario.mBuscarPorLogin(conexion, entidadUsuario);
 
@@ -809,8 +793,6 @@ namespace Vista
         //Ejecuta el metodo agregarUsuario
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            conexion.codigo = "123";
-            conexion.clave = "123";
             mAgregarUsuario();
         }
         //Busca los datos de un usuario a partir del nombre de usuario

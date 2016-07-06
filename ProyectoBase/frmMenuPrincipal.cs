@@ -23,8 +23,7 @@ namespace Vista
 
         public frmMenuPrincipal(clsConexion conexion)
         {
-            InitializeComponent();
-            usuario = new frmUsuario(this);
+            InitializeComponent();            
             this.conexion = conexion;
             this.libro = new clsLibro();
             this.pEntidadUsuario = new clsEntidadUsuario();
@@ -73,10 +72,9 @@ namespace Vista
 
         private void mantenimientoDeUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            usuario = new frmUsuario(this,conexion);
             this.Hide();
-            usuario.limpiar();
-            //usuario.controlAgregarRolPriv(0);
+            usuario.limpiar();            
             usuario.Show();
         }
 
@@ -88,7 +86,7 @@ namespace Vista
 
         private void mantenimientoDeRolesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRoles ventanaRoles = new frmRoles(this);
+            frmRoles ventanaRoles = new frmRoles(this, conexion);
             this.Hide();
             ventanaRoles.Show();
         }

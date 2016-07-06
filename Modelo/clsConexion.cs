@@ -12,8 +12,7 @@ namespace Modelo
         //Area de la declaracion de todas las variables
         #region Atributos
         private string _codigo;
-        private string _clave;
-        private string _perfil;
+        private string _clave;        
         private string _baseDatos;
 
         private SqlConnection conexion; //Guardar la cadena de conexion del usuario con la BD
@@ -23,12 +22,11 @@ namespace Modelo
         //Establecemos el metodo nicial
         #region Constructor
 
-        public clsConexion()
+        public clsConexion(string codigo,string clave, string baseD)
         {
-            this._codigo = "123";
-            this._clave = "123";
-            this._perfil = "";
-            this._baseDatos = "BDBiblioteca";
+            this._codigo = codigo;
+            this._clave = clave;
+            this._baseDatos = baseD;
         }
 
         #endregion
@@ -46,11 +44,7 @@ namespace Modelo
             set { this._clave = value; }
             get { return this._clave; }
         }
-        public string perfil
-        {
-            set { this._perfil = value; }
-            get { return this._perfil; }
-        }
+        
         public string baseDatos
         {
             set { this._baseDatos = value; }
@@ -452,6 +446,8 @@ namespace Modelo
             {
                 clsEntidadRol entidadRol = (clsEntidadRol)objeto;
                 comando.Parameters.AddWithValue("@nombre", entidadRol.mNombreRol);
+                comando.Parameters.AddWithValue("@creadoPor", entidadRol.mCreadoPor);
+                comando.Parameters.AddWithValue("@fechaCreacion", entidadRol.mFechaCreacion);
             }
             else
             {

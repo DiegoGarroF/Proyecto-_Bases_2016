@@ -10,6 +10,10 @@ namespace Modelo
     {
         private int idRol;
         private string nombreRol;
+        private string creadoPor;
+        private string fechaCreacion;
+        private string modificadoPor;
+        private string fechaModificacion;
 
         public int mIdRol
         {
@@ -22,5 +26,27 @@ namespace Modelo
             get { return nombreRol; }
             set { nombreRol = value; }
         }
+
+        public string mCreadoPor
+        {
+            get { return creadoPor; }
+            set { creadoPor = value; }
+        }
+        public string mFechaCreacion
+        {
+            get { return fechaCreacion; }
+            set { fechaCreacion = value; }
+        }
+        public string mModificadoPor
+        {
+            get { return modificadoPor; }
+            set { modificadoPor = value; }
+        }
+        public string mFechaModificacion
+        {
+            get { return fechaModificacion; }
+            set { fechaModificacion = value; }
+        }
+
     }
 }

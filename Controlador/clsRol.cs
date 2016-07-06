@@ -23,7 +23,7 @@ namespace Controlador
         {
             using (SqlConnection connection = new SqlConnection(conexion.retornarSentenciaConeccion(conexion)))
             {
-                sentencia = "insert into tbRol(nombre) values (@nombre)";
+                sentencia = "insert into tbRol(nombre, creadoPor,fechaCreacion) values (@nombre, @creadoPor, @fechaCreacion)";
                 connection.Open();
                 conexion.mEjecutarTransaction(sentencia, connection, pEntidadRol);
             }

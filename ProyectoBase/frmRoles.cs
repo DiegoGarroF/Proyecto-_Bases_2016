@@ -35,10 +35,10 @@ namespace Vista
         clsRolPantalla rolPantalla;
         IAsyncResult pruebaRol;
 
-        public frmRoles(frmMenuPrincipal menu)
+        public frmRoles(frmMenuPrincipal menu, clsConexion conexion)
         {
             entidadUsuario = new clsEntidadUsuario();
-            conexion = new clsConexion();
+            this.conexion = conexion;
             entidadRol = new clsEntidadRol();
             clRol = new clsRol();
             usuario = new clsUsuario();
@@ -111,11 +111,12 @@ namespace Vista
         //Y posteriormente llama a insertar los privilegios
         //ESTE MÉTODO SE EJECUTA BAJO TRANSACCIONES, EN CASO QUE ALGO FALLE, SE CANCELAN LAS INSERCIONES
         private void btnAgregar_Click(object sender, EventArgs e)
-        {
-            conexion.codigo = "123";
-            conexion.clave = "123";
+        {           
             entidadRol.mNombreRol = lvPantalla.Items[0].Text;
-
+            entidadRol.mCreadoPor = clsConstantes.nombreUsuario;
+            entidadRol.mModificadoPor = "";
+            entidadRol.mFechaCreacion = frmUsuario.fechaSistema();
+            entidadRol.mFechaModificacion = "";
             if ((mValidarInformacionRoles() == true & mValidarPermisos(lvPantalla) == true))
             {
                 if (mValidarPermisos(lvPantalla) == true)
@@ -513,9 +514,7 @@ namespace Vista
         //partir de una búsqueda por nombre del rol
         public void cargarDatos()
         {
-            lvPantalla.Items.Clear();
-            conexion.codigo = "123";
-            conexion.clave = "123";
+            lvPantalla.Items.Clear();            
             entidadRol.mNombreRol = txtNombreRol.Text;
             dtrRol = clRol.mConsultarRolesPriv(conexion, entidadRol);
             if (dtrRol != null)

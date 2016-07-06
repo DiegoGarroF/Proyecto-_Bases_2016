@@ -101,7 +101,7 @@ namespace Vista
                     {
                         clsConstantes.nombreUsuario = txtUsuario.Text;
                         MessageBox.Show("Contraseña cambiada con exito", "Exito", MessageBoxButtons.OK, MessageBoxIcon.Exclamation);
-                        frmMenuPrincipal menu = new frmMenuPrincipal(conexion);
+                        frmMenuPrincipal menu = new frmMenuPrincipal(conexion, acceso);
                         menu.Show();
                         this.Hide();
                     }

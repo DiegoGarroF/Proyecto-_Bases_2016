@@ -20,15 +20,16 @@ namespace Vista
         private clsLibro libro;
         private clsEntidadUsuario pEntidadUsuario;
         private frmLibro nuevoLibro;
+        frmAcceso acceso;
 
-        public frmMenuPrincipal(clsConexion conexion)
+        public frmMenuPrincipal(clsConexion conexion, frmAcceso acceso)
         {
             InitializeComponent();            
             this.conexion = conexion;
             this.libro = new clsLibro();
             this.pEntidadUsuario = new clsEntidadUsuario();
             this.nuevoLibro = new frmLibro(this.conexion);
-
+            this.acceso = acceso;
             this.verificarPrivilegios(this.nuevoLibro.Name, opcionNuevoLibro);
 
 
@@ -41,7 +42,9 @@ namespace Vista
 
         private void salirToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            this.Hide();
+            acceso = new frmAcceso();
+            acceso.Show();
         }
 
         private void administrarUsuariosToolStripMenuItem_Click(object sender, EventArgs e)

@@ -35,7 +35,7 @@ namespace Vista
         private SqlDataReader dtr;
         public clsLibro libro;
         private clsEntidadLibro pEntidadLibro;
-        private clsUsuario usuario;
+        private clsUsuario usuario;        
         #endregion
         #region Constructor
 
@@ -49,8 +49,7 @@ namespace Vista
             this.pEntidadLibro = new clsEntidadLibro();
             this.libro = new clsLibro();
             this.conexion = conexion;
-            this.usuario = new clsUsuario();
-
+            this.usuario = new clsUsuario();            
 
 
         }
@@ -154,8 +153,10 @@ namespace Vista
         private void btnSalir_Click(object sender, EventArgs e)
         {
             this.Close();
-            frmMenuPrincipal frmMenu = new frmMenuPrincipal(conexion);
-            frmMenu.Visible = true;
+            frmAcceso acces = new frmAcceso();
+            frmMenuPrincipal menu = new frmMenuPrincipal(conexion, acces);
+            menu.Visible = true;
+            acces.Close();
         }
         // cuando se presiona en boton consultar se llama al metodo mConsultar que abre el listView
         private void btnConsultar_Click(object sender, EventArgs e)

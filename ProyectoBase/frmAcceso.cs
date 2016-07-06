@@ -196,7 +196,7 @@ namespace Vista
         private void btnIngresar_Click(object sender, EventArgs e)
         {
             clsConstantes.nombreUsuario = entidadUsuario.mUsuario;
-            frmMenuPrincipal menu = new frmMenuPrincipal(conexion);
+            frmMenuPrincipal menu = new frmMenuPrincipal(conexion, this);
             menu.Show();
             entidadUsuario.mEstadoUsuario = 0;
             clsConstantes.nombreUsuario = entidadUsuario.mUsuario;

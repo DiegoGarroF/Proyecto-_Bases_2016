@@ -216,7 +216,11 @@ namespace Vista
         {
             if (lvPantalla != null)
             {
+                if (lvPantalla.Items.Count>0) { 
+
                 entidadRol.mNombreRol = lvPantalla.Items[0].Text;
+                entidadRol.mModificadoPor = clsConstantes.nombreUsuario;
+                entidadRol.mFechaModificacion = frmUsuario.fechaSistema();
                 dtrRol = clRol.mConsultaIdRoles(conexion, entidadRol);
                 if (dtrRol != null)
                     if (dtrRol.Read())
@@ -237,6 +241,11 @@ namespace Vista
                         MessageBox.Show("No se ha modificado correctamente el rol", "Error de modificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
                 }
+            }
+            else
+            {
+                MessageBox.Show("Debe asignar privilegios a este rol", "Error de modificación", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
             }
             else
             {
